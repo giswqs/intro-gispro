@@ -6,6 +6,8 @@ This repository contains the code examples for the book - **Introduction to GIS 
 
 Stay tuned for more information about the book and its release date.
 
+![book cover](https://assets.gishub.org/images/gispro-book-cover.png)
+
 ## Table of Contents
 
 - **Preface**
