@@ -1,5 +1,8 @@
 # intro-gispro
 
+[![image](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/giswqs/intro-gispro/HEAD)
+[![image](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/intro-gispro/blob/main)
+
 ## Introduction
 
 This repository contains the code examples for the book - **Introduction to GIS Programming: A Practical Python Guide to Open Source Geospatial Tools**
