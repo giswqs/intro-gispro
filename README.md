@@ -47,7 +47,8 @@ Stay tuned for more information about the book and its release date.
 The code examples can be run using Docker.
 
 ```bash
-docker run -it -p 8888:8888 -v $(pwd):/app/workspace giswqs/gispro:latest
+docker pull giswqs/pygis:latest
+docker run -it -p 8888:8888 -v $(pwd):/app/workspace giswqs/pygis:latest
 ```
 
 ## Acknowledgments

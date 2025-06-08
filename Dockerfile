@@ -1,5 +1,5 @@
 # 1. Base image
-FROM ghcr.io/opengeos/geospatial:latest
+FROM giswqs/pygis:latest
 
 # 2. Metadata (optional)
 LABEL maintainer="giswqs@gmail.com"
@@ -27,4 +27,4 @@ WORKDIR /app
 CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--allow-root", "--no-browser"]
 
 # 8. Mount workspace directory and run container
-# docker run -it -p 8888:8888 -v $(pwd):/app/workspace giswqs/gispro:latest
+# docker run -it -p 8888:8888 -v $(pwd):/app/workspace giswqs/pygis:latest
