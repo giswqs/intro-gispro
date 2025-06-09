@@ -37,10 +37,10 @@ jobs:
         run: |
           uv run jupyter-book build .
       # Deploy the book's HTML to gh-pages branch
-      - name: Copy images to gh-pages branch
-        run: |
-          cp -r book/images _build/html/book/images
-          find . -type f -exec sed -i 's|book/geospatial/images|../images|g' {} +
+      # - name: Copy images to gh-pages branch
+      #   run: |
+      #     cp -r book/images _build/html/book/images
+      #     find . -type f -exec sed -i 's|book/geospatial/images|../images|g' {} +
 
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v4
