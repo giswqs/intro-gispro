@@ -1,0 +1,931 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>18. Multi-dimensional Data Analysis with Xarray &#8212; Introduction to GIS Programming</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/geospatial/xarray';</script>
+    <link rel="canonical" href="https://gispro.gishub.org/book/geospatial/xarray.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="19. Raster Analysis with Rioxarray" href="rioxarray.html" />
+    <link rel="prev" title="17. Working with Raster Data using Rasterio" href="rasterio.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Introduction to GIS Programming - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Introduction to GIS Programming - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">Preface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Setup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/overview.html">1. Overview of Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/conda.html">2. Introduction to Python Package Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">3. Setting Up Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/git.html">4. Version Control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/colab.html">5. Using Google Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/jupyterlab.html">6. Working with JupyterLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/docker.html">7. Using Docker</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Programming Fundamentals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/variables.html">8. Variables and Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/data-structures.html">9. Python Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/string-operations.html">10. String Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/looping.html">11. Loops and Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/functions-classes.html">12. Functions and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/files.html">13. Working with Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/numpy-pandas.html">14. Data Analysis with NumPy and Pandas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Geospatial Programming with Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">15. Introduction to Geospatial Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geopandas.html">16. Vector Data Analysis with GeoPandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data using Rasterio</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">18. Multi-dimensional Data Analysis with Xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rioxarray.html">19. Raster Analysis with Rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">20. Interactive Visualization with Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">21. Geoprocessing with WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maplibre.html">22. 3D Mapping with MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">24. Hyperspectral Data Visualization with HyperCoast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. Spatial Database Analysis with DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. GDAL and OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Web Apps with Voila and Solara</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/giswqs/intro-gispro/main?urlpath=tree/book/geospatial/xarray.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/giswqs/intro-gispro/blob/main/book/geospatial/xarray.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/giswqs/intro-gispro" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/intro-gispro/edit/main/book/geospatial/xarray.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/intro-gispro/issues/new?title=Issue%20on%20page%20%2Fbook/geospatial/xarray.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/geospatial/xarray.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Multi-dimensional Data Analysis with Xarray</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">18.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">18.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-concepts">18.3. Core Concepts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-data-structures">18.3.1. Core Data Structures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-power-of-labels-and-coordinates">18.3.2. The Power of Labels and Coordinates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-efficiency-and-lazy-evaluation">18.3.3. Memory Efficiency and Lazy Evaluation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-xarray">18.4. Installing Xarray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xarray-data-structures">18.5. Xarray Data Structures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-a-dataset">18.6. Loading a Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-dataarrays">18.7. Working with DataArrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataarray-components">18.8. DataArray Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-selecting-data">18.9. Indexing and Selecting Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-operations-on-dataarrays">18.10. Performing Operations on DataArrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-with-xarray">18.11. Visualization with Xarray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-datasets">18.12. Working with Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-numpy">18.13. Comparison with NumPy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#without-xarray-using-numpy">18.13.1. Without Xarray (Using NumPy)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-xarray">18.13.2. With Xarray</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-indexing-label-vs-position-based-indexing">18.14. Advanced Indexing: Label vs. Position-Based Indexing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#label-based-indexing">18.14.1. Label-based Indexing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#position-based-indexing">18.14.2. Position-based Indexing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-computations-with-xarray">18.15. High-Level Computations with Xarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby-operation">18.15.1. GroupBy Operation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-with-weights">18.15.2. Computation with Weights</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rolling-window-operation">18.15.3. Rolling Window Operation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-files">18.16. Reading and Writing Files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-to-netcdf">18.16.1. Writing to netCDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-from-netcdf">18.16.2. Reading from netCDF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-xarray-concepts-and-techniques">18.17. Advanced Xarray Concepts and Techniques</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-time-series-data">18.17.1. Working with Time Series Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-based-indexing-and-resampling">18.17.1.1. Time-based Indexing and Resampling</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-irregular-time-series">18.17.1.2. Handling Irregular Time Series</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geospatial-operations-and-coordinate-reference-systems">18.17.2. Geospatial Operations and Coordinate Reference Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-transformations">18.17.2.1. Coordinate Transformations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-cartopy-for-advanced-plotting">18.17.2.2. Integration with Cartopy for Advanced Plotting</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-optimization-with-dask">18.17.3. Performance Optimization with Dask</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-multiple-file-datasets">18.17.4. Working with Multiple File Datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-analysis-functions-and-universal-functions">18.17.5. Custom Analysis Functions and Universal Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-quality-assessment-and-cleaning">18.17.6. Data Quality Assessment and Cleaning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#real-world-applications-and-case-studies">18.18. Real-World Applications and Case Studies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-change-analysis">18.18.1. Climate Change Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extreme-event-analysis">18.18.2. Extreme Event Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-and-performance-optimization">18.19. Best Practices and Performance Optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-management-strategies">18.19.1. Memory Management Strategies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-organization-and-reproducibility">18.19.2. Code Organization and Reproducibility</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">18.20. Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">18.21. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-exploring-a-new-dataset">18.21.1. Exercise 1: Exploring a New Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-data-selection-and-indexing">18.21.2. Exercise 2: Data Selection and Indexing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-performing-arithmetic-operations">18.21.3. Exercise 3: Performing Arithmetic Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-groupby-and-resampling">18.21.4. Exercise 4: GroupBy and Resampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-writing-data-to-netcdf">18.21.5. Exercise 5: Writing Data to netCDF</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="multi-dimensional-data-analysis-with-xarray">
+<h1><span class="section-number">18. </span>Multi-dimensional Data Analysis with Xarray<a class="headerlink" href="#multi-dimensional-data-analysis-with-xarray" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">18.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+</section>
+<section id="learning-objectives">
+<h2><span class="section-number">18.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+</section>
+<section id="core-concepts">
+<h2><span class="section-number">18.3. </span>Core Concepts<a class="headerlink" href="#core-concepts" title="Link to this heading">#</a></h2>
+<section id="core-data-structures">
+<h3><span class="section-number">18.3.1. </span>Core Data Structures<a class="headerlink" href="#core-data-structures" title="Link to this heading">#</a></h3>
+</section>
+<section id="the-power-of-labels-and-coordinates">
+<h3><span class="section-number">18.3.2. </span>The Power of Labels and Coordinates<a class="headerlink" href="#the-power-of-labels-and-coordinates" title="Link to this heading">#</a></h3>
+</section>
+<section id="memory-efficiency-and-lazy-evaluation">
+<h3><span class="section-number">18.3.3. </span>Memory Efficiency and Lazy Evaluation<a class="headerlink" href="#memory-efficiency-and-lazy-evaluation" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="installing-xarray">
+<h2><span class="section-number">18.4. </span>Installing Xarray<a class="headerlink" href="#installing-xarray" title="Link to this heading">#</a></h2>
+</section>
+<section id="xarray-data-structures">
+<h2><span class="section-number">18.5. </span>Xarray Data Structures<a class="headerlink" href="#xarray-data-structures" title="Link to this heading">#</a></h2>
+</section>
+<section id="loading-a-dataset">
+<h2><span class="section-number">18.6. </span>Loading a Dataset<a class="headerlink" href="#loading-a-dataset" title="Link to this heading">#</a></h2>
+</section>
+<section id="working-with-dataarrays">
+<h2><span class="section-number">18.7. </span>Working with DataArrays<a class="headerlink" href="#working-with-dataarrays" title="Link to this heading">#</a></h2>
+</section>
+<section id="dataarray-components">
+<h2><span class="section-number">18.8. </span>DataArray Components<a class="headerlink" href="#dataarray-components" title="Link to this heading">#</a></h2>
+</section>
+<section id="indexing-and-selecting-data">
+<h2><span class="section-number">18.9. </span>Indexing and Selecting Data<a class="headerlink" href="#indexing-and-selecting-data" title="Link to this heading">#</a></h2>
+</section>
+<section id="performing-operations-on-dataarrays">
+<h2><span class="section-number">18.10. </span>Performing Operations on DataArrays<a class="headerlink" href="#performing-operations-on-dataarrays" title="Link to this heading">#</a></h2>
+</section>
+<section id="visualization-with-xarray">
+<h2><span class="section-number">18.11. </span>Visualization with Xarray<a class="headerlink" href="#visualization-with-xarray" title="Link to this heading">#</a></h2>
+</section>
+<section id="working-with-datasets">
+<h2><span class="section-number">18.12. </span>Working with Datasets<a class="headerlink" href="#working-with-datasets" title="Link to this heading">#</a></h2>
+</section>
+<section id="comparison-with-numpy">
+<h2><span class="section-number">18.13. </span>Comparison with NumPy<a class="headerlink" href="#comparison-with-numpy" title="Link to this heading">#</a></h2>
+<section id="without-xarray-using-numpy">
+<h3><span class="section-number">18.13.1. </span>Without Xarray (Using NumPy)<a class="headerlink" href="#without-xarray-using-numpy" title="Link to this heading">#</a></h3>
+</section>
+<section id="with-xarray">
+<h3><span class="section-number">18.13.2. </span>With Xarray<a class="headerlink" href="#with-xarray" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="advanced-indexing-label-vs-position-based-indexing">
+<h2><span class="section-number">18.14. </span>Advanced Indexing: Label vs. Position-Based Indexing<a class="headerlink" href="#advanced-indexing-label-vs-position-based-indexing" title="Link to this heading">#</a></h2>
+<section id="label-based-indexing">
+<h3><span class="section-number">18.14.1. </span>Label-based Indexing<a class="headerlink" href="#label-based-indexing" title="Link to this heading">#</a></h3>
+</section>
+<section id="position-based-indexing">
+<h3><span class="section-number">18.14.2. </span>Position-based Indexing<a class="headerlink" href="#position-based-indexing" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="high-level-computations-with-xarray">
+<h2><span class="section-number">18.15. </span>High-Level Computations with Xarray<a class="headerlink" href="#high-level-computations-with-xarray" title="Link to this heading">#</a></h2>
+<section id="groupby-operation">
+<h3><span class="section-number">18.15.1. </span>GroupBy Operation<a class="headerlink" href="#groupby-operation" title="Link to this heading">#</a></h3>
+</section>
+<section id="computation-with-weights">
+<h3><span class="section-number">18.15.2. </span>Computation with Weights<a class="headerlink" href="#computation-with-weights" title="Link to this heading">#</a></h3>
+</section>
+<section id="rolling-window-operation">
+<h3><span class="section-number">18.15.3. </span>Rolling Window Operation<a class="headerlink" href="#rolling-window-operation" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="reading-and-writing-files">
+<h2><span class="section-number">18.16. </span>Reading and Writing Files<a class="headerlink" href="#reading-and-writing-files" title="Link to this heading">#</a></h2>
+<section id="writing-to-netcdf">
+<h3><span class="section-number">18.16.1. </span>Writing to netCDF<a class="headerlink" href="#writing-to-netcdf" title="Link to this heading">#</a></h3>
+</section>
+<section id="reading-from-netcdf">
+<h3><span class="section-number">18.16.2. </span>Reading from netCDF<a class="headerlink" href="#reading-from-netcdf" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="advanced-xarray-concepts-and-techniques">
+<h2><span class="section-number">18.17. </span>Advanced Xarray Concepts and Techniques<a class="headerlink" href="#advanced-xarray-concepts-and-techniques" title="Link to this heading">#</a></h2>
+<section id="working-with-time-series-data">
+<h3><span class="section-number">18.17.1. </span>Working with Time Series Data<a class="headerlink" href="#working-with-time-series-data" title="Link to this heading">#</a></h3>
+<section id="time-based-indexing-and-resampling">
+<h4><span class="section-number">18.17.1.1. </span>Time-based Indexing and Resampling<a class="headerlink" href="#time-based-indexing-and-resampling" title="Link to this heading">#</a></h4>
+</section>
+<section id="handling-irregular-time-series">
+<h4><span class="section-number">18.17.1.2. </span>Handling Irregular Time Series<a class="headerlink" href="#handling-irregular-time-series" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="geospatial-operations-and-coordinate-reference-systems">
+<h3><span class="section-number">18.17.2. </span>Geospatial Operations and Coordinate Reference Systems<a class="headerlink" href="#geospatial-operations-and-coordinate-reference-systems" title="Link to this heading">#</a></h3>
+<section id="coordinate-transformations">
+<h4><span class="section-number">18.17.2.1. </span>Coordinate Transformations<a class="headerlink" href="#coordinate-transformations" title="Link to this heading">#</a></h4>
+</section>
+<section id="integration-with-cartopy-for-advanced-plotting">
+<h4><span class="section-number">18.17.2.2. </span>Integration with Cartopy for Advanced Plotting<a class="headerlink" href="#integration-with-cartopy-for-advanced-plotting" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="performance-optimization-with-dask">
+<h3><span class="section-number">18.17.3. </span>Performance Optimization with Dask<a class="headerlink" href="#performance-optimization-with-dask" title="Link to this heading">#</a></h3>
+</section>
+<section id="working-with-multiple-file-datasets">
+<h3><span class="section-number">18.17.4. </span>Working with Multiple File Datasets<a class="headerlink" href="#working-with-multiple-file-datasets" title="Link to this heading">#</a></h3>
+</section>
+<section id="custom-analysis-functions-and-universal-functions">
+<h3><span class="section-number">18.17.5. </span>Custom Analysis Functions and Universal Functions<a class="headerlink" href="#custom-analysis-functions-and-universal-functions" title="Link to this heading">#</a></h3>
+</section>
+<section id="data-quality-assessment-and-cleaning">
+<h3><span class="section-number">18.17.6. </span>Data Quality Assessment and Cleaning<a class="headerlink" href="#data-quality-assessment-and-cleaning" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="real-world-applications-and-case-studies">
+<h2><span class="section-number">18.18. </span>Real-World Applications and Case Studies<a class="headerlink" href="#real-world-applications-and-case-studies" title="Link to this heading">#</a></h2>
+<section id="climate-change-analysis">
+<h3><span class="section-number">18.18.1. </span>Climate Change Analysis<a class="headerlink" href="#climate-change-analysis" title="Link to this heading">#</a></h3>
+</section>
+<section id="extreme-event-analysis">
+<h3><span class="section-number">18.18.2. </span>Extreme Event Analysis<a class="headerlink" href="#extreme-event-analysis" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="best-practices-and-performance-optimization">
+<h2><span class="section-number">18.19. </span>Best Practices and Performance Optimization<a class="headerlink" href="#best-practices-and-performance-optimization" title="Link to this heading">#</a></h2>
+<section id="memory-management-strategies">
+<h3><span class="section-number">18.19.1. </span>Memory Management Strategies<a class="headerlink" href="#memory-management-strategies" title="Link to this heading">#</a></h3>
+</section>
+<section id="code-organization-and-reproducibility">
+<h3><span class="section-number">18.19.2. </span>Code Organization and Reproducibility<a class="headerlink" href="#code-organization-and-reproducibility" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="key-takeaways">
+<h2><span class="section-number">18.20. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
+</section>
+<section id="exercises">
+<h2><span class="section-number">18.21. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="exercise-1-exploring-a-new-dataset">
+<h3><span class="section-number">18.21.1. </span>Exercise 1: Exploring a New Dataset<a class="headerlink" href="#exercise-1-exploring-a-new-dataset" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-2-data-selection-and-indexing">
+<h3><span class="section-number">18.21.2. </span>Exercise 2: Data Selection and Indexing<a class="headerlink" href="#exercise-2-data-selection-and-indexing" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-3-performing-arithmetic-operations">
+<h3><span class="section-number">18.21.3. </span>Exercise 3: Performing Arithmetic Operations<a class="headerlink" href="#exercise-3-performing-arithmetic-operations" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-4-groupby-and-resampling">
+<h3><span class="section-number">18.21.4. </span>Exercise 4: GroupBy and Resampling<a class="headerlink" href="#exercise-4-groupby-and-resampling" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-5-writing-data-to-netcdf">
+<h3><span class="section-number">18.21.5. </span>Exercise 5: Writing Data to netCDF<a class="headerlink" href="#exercise-5-writing-data-to-netcdf" title="Link to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "giswqs/intro-gispro",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/geospatial"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="rasterio.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>Working with Raster Data using Rasterio</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="rioxarray.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">19. </span>Raster Analysis with Rioxarray</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">18.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">18.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-concepts">18.3. Core Concepts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-data-structures">18.3.1. Core Data Structures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-power-of-labels-and-coordinates">18.3.2. The Power of Labels and Coordinates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-efficiency-and-lazy-evaluation">18.3.3. Memory Efficiency and Lazy Evaluation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-xarray">18.4. Installing Xarray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xarray-data-structures">18.5. Xarray Data Structures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-a-dataset">18.6. Loading a Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-dataarrays">18.7. Working with DataArrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataarray-components">18.8. DataArray Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-selecting-data">18.9. Indexing and Selecting Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-operations-on-dataarrays">18.10. Performing Operations on DataArrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-with-xarray">18.11. Visualization with Xarray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-datasets">18.12. Working with Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-numpy">18.13. Comparison with NumPy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#without-xarray-using-numpy">18.13.1. Without Xarray (Using NumPy)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-xarray">18.13.2. With Xarray</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-indexing-label-vs-position-based-indexing">18.14. Advanced Indexing: Label vs. Position-Based Indexing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#label-based-indexing">18.14.1. Label-based Indexing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#position-based-indexing">18.14.2. Position-based Indexing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-computations-with-xarray">18.15. High-Level Computations with Xarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby-operation">18.15.1. GroupBy Operation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-with-weights">18.15.2. Computation with Weights</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rolling-window-operation">18.15.3. Rolling Window Operation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-files">18.16. Reading and Writing Files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-to-netcdf">18.16.1. Writing to netCDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-from-netcdf">18.16.2. Reading from netCDF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-xarray-concepts-and-techniques">18.17. Advanced Xarray Concepts and Techniques</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-time-series-data">18.17.1. Working with Time Series Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-based-indexing-and-resampling">18.17.1.1. Time-based Indexing and Resampling</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-irregular-time-series">18.17.1.2. Handling Irregular Time Series</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geospatial-operations-and-coordinate-reference-systems">18.17.2. Geospatial Operations and Coordinate Reference Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-transformations">18.17.2.1. Coordinate Transformations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-cartopy-for-advanced-plotting">18.17.2.2. Integration with Cartopy for Advanced Plotting</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-optimization-with-dask">18.17.3. Performance Optimization with Dask</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-multiple-file-datasets">18.17.4. Working with Multiple File Datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-analysis-functions-and-universal-functions">18.17.5. Custom Analysis Functions and Universal Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-quality-assessment-and-cleaning">18.17.6. Data Quality Assessment and Cleaning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#real-world-applications-and-case-studies">18.18. Real-World Applications and Case Studies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-change-analysis">18.18.1. Climate Change Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extreme-event-analysis">18.18.2. Extreme Event Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-and-performance-optimization">18.19. Best Practices and Performance Optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-management-strategies">18.19.1. Memory Management Strategies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-organization-and-reproducibility">18.19.2. Code Organization and Reproducibility</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">18.20. Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">18.21. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-exploring-a-new-dataset">18.21.1. Exercise 1: Exploring a New Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-data-selection-and-indexing">18.21.2. Exercise 2: Data Selection and Indexing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-performing-arithmetic-operations">18.21.3. Exercise 3: Performing Arithmetic Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-groupby-and-resampling">18.21.4. Exercise 4: GroupBy and Resampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-writing-data-to-netcdf">18.21.5. Exercise 5: Writing Data to netCDF</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Qiusheng Wu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1372 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>23. Cloud Computing with Geemap &#8212; Introduction to GIS Programming</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/geospatial/geemap';</script>
+    <link rel="canonical" href="https://gispro.gishub.org/book/geospatial/geemap.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="24. Hyperspectral Data Visualization with HyperCoast" href="hypercoast.html" />
+    <link rel="prev" title="22. 3D Mapping with MapLibre" href="maplibre.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Introduction to GIS Programming - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Introduction to GIS Programming - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">Preface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Setup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/overview.html">1. Overview of Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/conda.html">2. Introduction to Python Package Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">3. Setting Up Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/git.html">4. Version Control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/colab.html">5. Using Google Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/jupyterlab.html">6. Working with JupyterLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/docker.html">7. Using Docker</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Programming Fundamentals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/variables.html">8. Variables and Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/data-structures.html">9. Python Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/string-operations.html">10. String Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/looping.html">11. Loops and Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/functions-classes.html">12. Functions and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/files.html">13. Working with Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/numpy-pandas.html">14. Data Analysis with NumPy and Pandas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Geospatial Programming with Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="get-started.html">15. Introduction to Geospatial Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geopandas.html">16. Vector Data Analysis with GeoPandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data using Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xarray.html">18. Multi-dimensional Data Analysis with Xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rioxarray.html">19. Raster Analysis with Rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">20. Interactive Visualization with Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">21. Geoprocessing with WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maplibre.html">22. 3D Mapping with MapLibre</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">23. Cloud Computing with Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">24. Hyperspectral Data Visualization with HyperCoast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. Spatial Database Analysis with DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. GDAL and OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Web Apps with Voila and Solara</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/giswqs/intro-gispro/main?urlpath=tree/book/geospatial/geemap.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/giswqs/intro-gispro/blob/main/book/geospatial/geemap.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/giswqs/intro-gispro" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/intro-gispro/edit/main/book/geospatial/geemap.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/intro-gispro/issues/new?title=Issue%20on%20page%20%2Fbook/geospatial/geemap.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/geospatial/geemap.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Cloud Computing with Geemap</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">23.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">23.2. Learning Objectives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">23.2.1. Prerequisites</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-google-earth-engine">23.3. Introduction to Google Earth Engine</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-earth-engine-overview">23.3.1. Google Earth Engine Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-geemap">23.3.2. Installing Geemap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">23.3.3. Import Libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticate-and-initialize-earth-engine">23.3.4. Authenticate and Initialize Earth Engine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-interactive-maps">23.3.5. Creating Interactive Maps</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-maps">23.3.5.1. Example Maps</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-basemaps">23.3.6. Adding Basemaps</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-multiple-basemaps">23.3.6.1. Adding Multiple Basemaps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-available-basemaps">23.3.6.2. Listing Available Basemaps</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-basemaps">23.3.7. Google Basemaps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-interactive-maps-and-tools">23.4. Introduction to Interactive Maps and Tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basemap-selector">23.4.1. Basemap Selector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layer-manager">23.4.2. Layer Manager</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspector-tool">23.4.3. Inspector Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layer-editor">23.4.4. Layer Editor</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-band-image">23.4.4.1. Single-Band image</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-band-image">23.4.4.2. Multi-Band image</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-collection">23.4.4.3. Feature Collection</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-control">23.4.5. Draw Control</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-earth-engine-data-catalog">23.5. The Earth Engine Data Catalog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-datasets-on-the-earth-engine-website">23.5.1. Searching Datasets on the Earth Engine Website</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-datasets-within-geemap">23.5.2. Searching Datasets Within Geemap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-datasets-module-in-geemap">23.5.3. Using the Datasets Module in Geemap</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-data-types">23.6. Earth Engine Data Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-raster-data">23.7. Earth Engine Raster Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image">23.7.1. Image</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-earth-engine-images">23.7.1.1. Loading Earth Engine Images</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-earth-engine-images">23.7.1.2. Visualizing Earth Engine Images</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imagecollection">23.7.2. ImageCollection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-image-collections">23.7.2.1. Loading Image Collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-image-collections">23.7.2.2. Filtering Image Collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-image-collections">23.7.2.3. Visualizing Image Collections</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-vector-data">23.8. Earth Engine Vector Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-feature-collections">23.8.1. Loading Feature Collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-feature-collections">23.8.2. Filtering Feature Collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-feature-collections">23.8.3. Visualizing Feature Collections</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-tools-for-visualizing-earth-engine-data">23.9. More Tools for Visualizing Earth Engine Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-plotting-tool">23.9.1. Using the Plotting Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legends">23.9.2. Legends</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-legends">23.9.2.1. Built-in Legends</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-legends">23.9.2.2. Custom Legends</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#color-bars">23.9.3. Color Bars</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-panel-maps">23.9.4. Split-panel Maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linked-maps">23.9.5. Linked Maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-inspector">23.9.6. Timeseries Inspector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-slider">23.9.7. Time Slider</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-of-vector-data">23.10. Processing of Vector Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-geojson">23.10.1. From GeoJSON</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-shapefile">23.10.2. From Shapefile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-geodataframe">23.10.3. From GeoDataFrame</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-geojson">23.10.4. To GeoJSON</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-shapefile">23.10.5. To Shapefile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-geodataframe">23.10.6. To GeoDataFrame</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-dataframe">23.10.7. To DataFrame</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-csv">23.10.8. To CSV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-of-raster-data">23.11. Processing of Raster Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-pixel-values">23.11.1. Extract Pixel Values</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-values-to-points">23.11.1.1. Extracting Values to Points</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-pixel-values-along-a-transect">23.11.1.2. Extracting Pixel Values Along a Transect</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics">23.11.2. Zonal Statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics-with-an-image-and-a-feature-collection">23.11.2.1. Zonal Statistics with an Image and a Feature Collection</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics-by-group">23.11.2.2. Zonal Statistics by Group</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics-with-two-images">23.11.2.3. Zonal Statistics with Two Images</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-algebra">23.11.3. Map Algebra</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-local-geospatial-data">23.12. Working with Local Geospatial Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raster-data">23.12.1. Raster Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-band-raster-data">23.12.1.1. Single-Band Raster Data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-band-raster-data">23.12.1.2. Multi-Band Raster Data</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-data">23.12.2. Vector Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geojson">23.12.2.1. GeoJSON</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#shapefile">23.12.2.2. Shapefile</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geodataframe">23.12.2.3. GeoDataFrame</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geopackage">23.12.2.4. GeoPackage</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-to-vector">23.12.2.5. CSV to Vector</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-cloud-optimized-geotiffs">23.13. Accessing Cloud Optimized GeoTIFFs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-optimized-geotiffs-cog">23.13.1. Cloud Optimized GeoTIFFs (COG)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatiotemporal-asset-catalog-stac">23.13.2. SpatioTemporal Asset Catalog (STAC)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-earth-engine-data">23.14. Exporting Earth Engine Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-images">23.14.1. Exporting Images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-image-collections">23.14.2. Exporting Image Collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-feature-collections">23.14.3. Exporting Feature Collections</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-timelapse-animations">23.15. Creating Timelapse Animations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-timelapse">23.15.1. Landsat Timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentinel-2-timelapse">23.15.2. Sentinel-2 Timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modis-timelapse">23.15.3. MODIS Timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goes-timelapse">23.15.4. GOES Timelapse</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#charting-earth-engine-data">23.16. Charting Earth Engine Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charting-features">23.16.1. Charting Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">23.16.1.1. Import libraries</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-by-feature">23.16.1.2. feature_by_feature</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-by-property">23.16.1.3. feature.by_property</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-groups">23.16.1.4. feature_groups</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-histogram">23.16.1.5. feature_histogram</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charting-images">23.16.2. Charting Images</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-by-region">23.16.2.1. image_by_region</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-regions">23.16.2.2. image_regions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-by-class">23.16.2.3. image_by_class</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-histogram">23.16.2.4. image_histogram</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charting-image-collections">23.16.3. Charting Image Collections</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-series">23.16.3.1. image_series</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-series-by-region">23.16.3.2. image_series_by_region</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-doy-series">23.16.3.3. image_doy_series</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-doy-series-by-year">23.16.3.4. image_doy_series_by_year</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-doy-series-by-region">23.16.3.5. image_doy_series_by_region</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charting-array-and-list">23.16.4. Charting Array and List</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">23.16.4.1. Scatter Plot</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transect-line-plot">23.16.4.2. Transect Line Plot</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-scatter-plot">23.16.4.3. Metadata Scatter Plot</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mapped-function-scatter-line-plot">23.16.4.4. Mapped Function Scatter &amp; Line Plot</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charting-data-table">23.16.5. Charting Data Table</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-datatable-chart">23.16.5.1. Manual DataTable chart</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#computed-datatable-chart">23.16.5.2. Computed DataTable chart</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interval-chart">23.16.5.3. Interval chart</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">23.17. Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">23.18. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-visualizing-dem-data">23.18.1. Exercise 1: Visualizing DEM Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-cloud-free-composite-with-sentinel-2-or-landsat">23.18.2. Exercise 2: Cloud-Free Composite with Sentinel-2 or Landsat</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-visualizing-naip-imagery">23.18.3. Exercise 3: Visualizing NAIP Imagery</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-visualizing-watershed-boundaries">23.18.4. Exercise 4: Visualizing Watershed Boundaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-visualizing-land-cover-change">23.18.5. Exercise 5: Visualizing Land Cover Change</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-creating-a-landsat-timelapse-animation">23.18.6. Exercise 6: Creating a Landsat Timelapse Animation</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cloud-computing-with-geemap">
+<h1><span class="section-number">23. </span>Cloud Computing with Geemap<a class="headerlink" href="#cloud-computing-with-geemap" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">23.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+</section>
+<section id="learning-objectives">
+<h2><span class="section-number">23.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<section id="prerequisites">
+<h3><span class="section-number">23.2.1. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="introduction-to-google-earth-engine">
+<h2><span class="section-number">23.3. </span>Introduction to Google Earth Engine<a class="headerlink" href="#introduction-to-google-earth-engine" title="Link to this heading">#</a></h2>
+<section id="google-earth-engine-overview">
+<h3><span class="section-number">23.3.1. </span>Google Earth Engine Overview<a class="headerlink" href="#google-earth-engine-overview" title="Link to this heading">#</a></h3>
+</section>
+<section id="installing-geemap">
+<h3><span class="section-number">23.3.2. </span>Installing Geemap<a class="headerlink" href="#installing-geemap" title="Link to this heading">#</a></h3>
+</section>
+<section id="import-libraries">
+<h3><span class="section-number">23.3.3. </span>Import Libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
+</section>
+<section id="authenticate-and-initialize-earth-engine">
+<h3><span class="section-number">23.3.4. </span>Authenticate and Initialize Earth Engine<a class="headerlink" href="#authenticate-and-initialize-earth-engine" title="Link to this heading">#</a></h3>
+</section>
+<section id="creating-interactive-maps">
+<h3><span class="section-number">23.3.5. </span>Creating Interactive Maps<a class="headerlink" href="#creating-interactive-maps" title="Link to this heading">#</a></h3>
+<section id="example-maps">
+<h4><span class="section-number">23.3.5.1. </span>Example Maps<a class="headerlink" href="#example-maps" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="adding-basemaps">
+<h3><span class="section-number">23.3.6. </span>Adding Basemaps<a class="headerlink" href="#adding-basemaps" title="Link to this heading">#</a></h3>
+<section id="adding-multiple-basemaps">
+<h4><span class="section-number">23.3.6.1. </span>Adding Multiple Basemaps<a class="headerlink" href="#adding-multiple-basemaps" title="Link to this heading">#</a></h4>
+</section>
+<section id="listing-available-basemaps">
+<h4><span class="section-number">23.3.6.2. </span>Listing Available Basemaps<a class="headerlink" href="#listing-available-basemaps" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="google-basemaps">
+<h3><span class="section-number">23.3.7. </span>Google Basemaps<a class="headerlink" href="#google-basemaps" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="introduction-to-interactive-maps-and-tools">
+<h2><span class="section-number">23.4. </span>Introduction to Interactive Maps and Tools<a class="headerlink" href="#introduction-to-interactive-maps-and-tools" title="Link to this heading">#</a></h2>
+<section id="basemap-selector">
+<h3><span class="section-number">23.4.1. </span>Basemap Selector<a class="headerlink" href="#basemap-selector" title="Link to this heading">#</a></h3>
+</section>
+<section id="layer-manager">
+<h3><span class="section-number">23.4.2. </span>Layer Manager<a class="headerlink" href="#layer-manager" title="Link to this heading">#</a></h3>
+</section>
+<section id="inspector-tool">
+<h3><span class="section-number">23.4.3. </span>Inspector Tool<a class="headerlink" href="#inspector-tool" title="Link to this heading">#</a></h3>
+</section>
+<section id="layer-editor">
+<h3><span class="section-number">23.4.4. </span>Layer Editor<a class="headerlink" href="#layer-editor" title="Link to this heading">#</a></h3>
+<section id="single-band-image">
+<h4><span class="section-number">23.4.4.1. </span>Single-Band image<a class="headerlink" href="#single-band-image" title="Link to this heading">#</a></h4>
+</section>
+<section id="multi-band-image">
+<h4><span class="section-number">23.4.4.2. </span>Multi-Band image<a class="headerlink" href="#multi-band-image" title="Link to this heading">#</a></h4>
+</section>
+<section id="feature-collection">
+<h4><span class="section-number">23.4.4.3. </span>Feature Collection<a class="headerlink" href="#feature-collection" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="draw-control">
+<h3><span class="section-number">23.4.5. </span>Draw Control<a class="headerlink" href="#draw-control" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="the-earth-engine-data-catalog">
+<h2><span class="section-number">23.5. </span>The Earth Engine Data Catalog<a class="headerlink" href="#the-earth-engine-data-catalog" title="Link to this heading">#</a></h2>
+<section id="searching-datasets-on-the-earth-engine-website">
+<h3><span class="section-number">23.5.1. </span>Searching Datasets on the Earth Engine Website<a class="headerlink" href="#searching-datasets-on-the-earth-engine-website" title="Link to this heading">#</a></h3>
+</section>
+<section id="searching-datasets-within-geemap">
+<h3><span class="section-number">23.5.2. </span>Searching Datasets Within Geemap<a class="headerlink" href="#searching-datasets-within-geemap" title="Link to this heading">#</a></h3>
+</section>
+<section id="using-the-datasets-module-in-geemap">
+<h3><span class="section-number">23.5.3. </span>Using the Datasets Module in Geemap<a class="headerlink" href="#using-the-datasets-module-in-geemap" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="earth-engine-data-types">
+<h2><span class="section-number">23.6. </span>Earth Engine Data Types<a class="headerlink" href="#earth-engine-data-types" title="Link to this heading">#</a></h2>
+</section>
+<section id="earth-engine-raster-data">
+<h2><span class="section-number">23.7. </span>Earth Engine Raster Data<a class="headerlink" href="#earth-engine-raster-data" title="Link to this heading">#</a></h2>
+<section id="image">
+<h3><span class="section-number">23.7.1. </span>Image<a class="headerlink" href="#image" title="Link to this heading">#</a></h3>
+<section id="loading-earth-engine-images">
+<h4><span class="section-number">23.7.1.1. </span>Loading Earth Engine Images<a class="headerlink" href="#loading-earth-engine-images" title="Link to this heading">#</a></h4>
+</section>
+<section id="visualizing-earth-engine-images">
+<h4><span class="section-number">23.7.1.2. </span>Visualizing Earth Engine Images<a class="headerlink" href="#visualizing-earth-engine-images" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="imagecollection">
+<h3><span class="section-number">23.7.2. </span>ImageCollection<a class="headerlink" href="#imagecollection" title="Link to this heading">#</a></h3>
+<section id="loading-image-collections">
+<h4><span class="section-number">23.7.2.1. </span>Loading Image Collections<a class="headerlink" href="#loading-image-collections" title="Link to this heading">#</a></h4>
+</section>
+<section id="filtering-image-collections">
+<h4><span class="section-number">23.7.2.2. </span>Filtering Image Collections<a class="headerlink" href="#filtering-image-collections" title="Link to this heading">#</a></h4>
+</section>
+<section id="visualizing-image-collections">
+<h4><span class="section-number">23.7.2.3. </span>Visualizing Image Collections<a class="headerlink" href="#visualizing-image-collections" title="Link to this heading">#</a></h4>
+</section>
+</section>
+</section>
+<section id="earth-engine-vector-data">
+<h2><span class="section-number">23.8. </span>Earth Engine Vector Data<a class="headerlink" href="#earth-engine-vector-data" title="Link to this heading">#</a></h2>
+<section id="loading-feature-collections">
+<h3><span class="section-number">23.8.1. </span>Loading Feature Collections<a class="headerlink" href="#loading-feature-collections" title="Link to this heading">#</a></h3>
+</section>
+<section id="filtering-feature-collections">
+<h3><span class="section-number">23.8.2. </span>Filtering Feature Collections<a class="headerlink" href="#filtering-feature-collections" title="Link to this heading">#</a></h3>
+</section>
+<section id="visualizing-feature-collections">
+<h3><span class="section-number">23.8.3. </span>Visualizing Feature Collections<a class="headerlink" href="#visualizing-feature-collections" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="more-tools-for-visualizing-earth-engine-data">
+<h2><span class="section-number">23.9. </span>More Tools for Visualizing Earth Engine Data<a class="headerlink" href="#more-tools-for-visualizing-earth-engine-data" title="Link to this heading">#</a></h2>
+<section id="using-the-plotting-tool">
+<h3><span class="section-number">23.9.1. </span>Using the Plotting Tool<a class="headerlink" href="#using-the-plotting-tool" title="Link to this heading">#</a></h3>
+</section>
+<section id="legends">
+<h3><span class="section-number">23.9.2. </span>Legends<a class="headerlink" href="#legends" title="Link to this heading">#</a></h3>
+<section id="built-in-legends">
+<h4><span class="section-number">23.9.2.1. </span>Built-in Legends<a class="headerlink" href="#built-in-legends" title="Link to this heading">#</a></h4>
+</section>
+<section id="custom-legends">
+<h4><span class="section-number">23.9.2.2. </span>Custom Legends<a class="headerlink" href="#custom-legends" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="color-bars">
+<h3><span class="section-number">23.9.3. </span>Color Bars<a class="headerlink" href="#color-bars" title="Link to this heading">#</a></h3>
+</section>
+<section id="split-panel-maps">
+<h3><span class="section-number">23.9.4. </span>Split-panel Maps<a class="headerlink" href="#split-panel-maps" title="Link to this heading">#</a></h3>
+</section>
+<section id="linked-maps">
+<h3><span class="section-number">23.9.5. </span>Linked Maps<a class="headerlink" href="#linked-maps" title="Link to this heading">#</a></h3>
+</section>
+<section id="timeseries-inspector">
+<h3><span class="section-number">23.9.6. </span>Timeseries Inspector<a class="headerlink" href="#timeseries-inspector" title="Link to this heading">#</a></h3>
+</section>
+<section id="time-slider">
+<h3><span class="section-number">23.9.7. </span>Time Slider<a class="headerlink" href="#time-slider" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="processing-of-vector-data">
+<h2><span class="section-number">23.10. </span>Processing of Vector Data<a class="headerlink" href="#processing-of-vector-data" title="Link to this heading">#</a></h2>
+<section id="from-geojson">
+<h3><span class="section-number">23.10.1. </span>From GeoJSON<a class="headerlink" href="#from-geojson" title="Link to this heading">#</a></h3>
+</section>
+<section id="from-shapefile">
+<h3><span class="section-number">23.10.2. </span>From Shapefile<a class="headerlink" href="#from-shapefile" title="Link to this heading">#</a></h3>
+</section>
+<section id="from-geodataframe">
+<h3><span class="section-number">23.10.3. </span>From GeoDataFrame<a class="headerlink" href="#from-geodataframe" title="Link to this heading">#</a></h3>
+</section>
+<section id="to-geojson">
+<h3><span class="section-number">23.10.4. </span>To GeoJSON<a class="headerlink" href="#to-geojson" title="Link to this heading">#</a></h3>
+</section>
+<section id="to-shapefile">
+<h3><span class="section-number">23.10.5. </span>To Shapefile<a class="headerlink" href="#to-shapefile" title="Link to this heading">#</a></h3>
+</section>
+<section id="to-geodataframe">
+<h3><span class="section-number">23.10.6. </span>To GeoDataFrame<a class="headerlink" href="#to-geodataframe" title="Link to this heading">#</a></h3>
+</section>
+<section id="to-dataframe">
+<h3><span class="section-number">23.10.7. </span>To DataFrame<a class="headerlink" href="#to-dataframe" title="Link to this heading">#</a></h3>
+</section>
+<section id="to-csv">
+<h3><span class="section-number">23.10.8. </span>To CSV<a class="headerlink" href="#to-csv" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="processing-of-raster-data">
+<h2><span class="section-number">23.11. </span>Processing of Raster Data<a class="headerlink" href="#processing-of-raster-data" title="Link to this heading">#</a></h2>
+<section id="extract-pixel-values">
+<h3><span class="section-number">23.11.1. </span>Extract Pixel Values<a class="headerlink" href="#extract-pixel-values" title="Link to this heading">#</a></h3>
+<section id="extracting-values-to-points">
+<h4><span class="section-number">23.11.1.1. </span>Extracting Values to Points<a class="headerlink" href="#extracting-values-to-points" title="Link to this heading">#</a></h4>
+</section>
+<section id="extracting-pixel-values-along-a-transect">
+<h4><span class="section-number">23.11.1.2. </span>Extracting Pixel Values Along a Transect<a class="headerlink" href="#extracting-pixel-values-along-a-transect" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="zonal-statistics">
+<h3><span class="section-number">23.11.2. </span>Zonal Statistics<a class="headerlink" href="#zonal-statistics" title="Link to this heading">#</a></h3>
+<section id="zonal-statistics-with-an-image-and-a-feature-collection">
+<h4><span class="section-number">23.11.2.1. </span>Zonal Statistics with an Image and a Feature Collection<a class="headerlink" href="#zonal-statistics-with-an-image-and-a-feature-collection" title="Link to this heading">#</a></h4>
+</section>
+<section id="zonal-statistics-by-group">
+<h4><span class="section-number">23.11.2.2. </span>Zonal Statistics by Group<a class="headerlink" href="#zonal-statistics-by-group" title="Link to this heading">#</a></h4>
+</section>
+<section id="zonal-statistics-with-two-images">
+<h4><span class="section-number">23.11.2.3. </span>Zonal Statistics with Two Images<a class="headerlink" href="#zonal-statistics-with-two-images" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="map-algebra">
+<h3><span class="section-number">23.11.3. </span>Map Algebra<a class="headerlink" href="#map-algebra" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="working-with-local-geospatial-data">
+<h2><span class="section-number">23.12. </span>Working with Local Geospatial Data<a class="headerlink" href="#working-with-local-geospatial-data" title="Link to this heading">#</a></h2>
+<section id="raster-data">
+<h3><span class="section-number">23.12.1. </span>Raster Data<a class="headerlink" href="#raster-data" title="Link to this heading">#</a></h3>
+<section id="single-band-raster-data">
+<h4><span class="section-number">23.12.1.1. </span>Single-Band Raster Data<a class="headerlink" href="#single-band-raster-data" title="Link to this heading">#</a></h4>
+</section>
+<section id="multi-band-raster-data">
+<h4><span class="section-number">23.12.1.2. </span>Multi-Band Raster Data<a class="headerlink" href="#multi-band-raster-data" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="vector-data">
+<h3><span class="section-number">23.12.2. </span>Vector Data<a class="headerlink" href="#vector-data" title="Link to this heading">#</a></h3>
+<section id="geojson">
+<h4><span class="section-number">23.12.2.1. </span>GeoJSON<a class="headerlink" href="#geojson" title="Link to this heading">#</a></h4>
+</section>
+<section id="shapefile">
+<h4><span class="section-number">23.12.2.2. </span>Shapefile<a class="headerlink" href="#shapefile" title="Link to this heading">#</a></h4>
+</section>
+<section id="geodataframe">
+<h4><span class="section-number">23.12.2.3. </span>GeoDataFrame<a class="headerlink" href="#geodataframe" title="Link to this heading">#</a></h4>
+</section>
+<section id="geopackage">
+<h4><span class="section-number">23.12.2.4. </span>GeoPackage<a class="headerlink" href="#geopackage" title="Link to this heading">#</a></h4>
+</section>
+<section id="csv-to-vector">
+<h4><span class="section-number">23.12.2.5. </span>CSV to Vector<a class="headerlink" href="#csv-to-vector" title="Link to this heading">#</a></h4>
+</section>
+</section>
+</section>
+<section id="accessing-cloud-optimized-geotiffs">
+<h2><span class="section-number">23.13. </span>Accessing Cloud Optimized GeoTIFFs<a class="headerlink" href="#accessing-cloud-optimized-geotiffs" title="Link to this heading">#</a></h2>
+<section id="cloud-optimized-geotiffs-cog">
+<h3><span class="section-number">23.13.1. </span>Cloud Optimized GeoTIFFs (COG)<a class="headerlink" href="#cloud-optimized-geotiffs-cog" title="Link to this heading">#</a></h3>
+</section>
+<section id="spatiotemporal-asset-catalog-stac">
+<h3><span class="section-number">23.13.2. </span>SpatioTemporal Asset Catalog (STAC)<a class="headerlink" href="#spatiotemporal-asset-catalog-stac" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="exporting-earth-engine-data">
+<h2><span class="section-number">23.14. </span>Exporting Earth Engine Data<a class="headerlink" href="#exporting-earth-engine-data" title="Link to this heading">#</a></h2>
+<section id="exporting-images">
+<h3><span class="section-number">23.14.1. </span>Exporting Images<a class="headerlink" href="#exporting-images" title="Link to this heading">#</a></h3>
+</section>
+<section id="exporting-image-collections">
+<h3><span class="section-number">23.14.2. </span>Exporting Image Collections<a class="headerlink" href="#exporting-image-collections" title="Link to this heading">#</a></h3>
+</section>
+<section id="exporting-feature-collections">
+<h3><span class="section-number">23.14.3. </span>Exporting Feature Collections<a class="headerlink" href="#exporting-feature-collections" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="creating-timelapse-animations">
+<h2><span class="section-number">23.15. </span>Creating Timelapse Animations<a class="headerlink" href="#creating-timelapse-animations" title="Link to this heading">#</a></h2>
+<section id="landsat-timelapse">
+<h3><span class="section-number">23.15.1. </span>Landsat Timelapse<a class="headerlink" href="#landsat-timelapse" title="Link to this heading">#</a></h3>
+</section>
+<section id="sentinel-2-timelapse">
+<h3><span class="section-number">23.15.2. </span>Sentinel-2 Timelapse<a class="headerlink" href="#sentinel-2-timelapse" title="Link to this heading">#</a></h3>
+</section>
+<section id="modis-timelapse">
+<h3><span class="section-number">23.15.3. </span>MODIS Timelapse<a class="headerlink" href="#modis-timelapse" title="Link to this heading">#</a></h3>
+</section>
+<section id="goes-timelapse">
+<h3><span class="section-number">23.15.4. </span>GOES Timelapse<a class="headerlink" href="#goes-timelapse" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="charting-earth-engine-data">
+<h2><span class="section-number">23.16. </span>Charting Earth Engine Data<a class="headerlink" href="#charting-earth-engine-data" title="Link to this heading">#</a></h2>
+<section id="charting-features">
+<h3><span class="section-number">23.16.1. </span>Charting Features<a class="headerlink" href="#charting-features" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h4><span class="section-number">23.16.1.1. </span>Import libraries<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+</section>
+<section id="feature-by-feature">
+<h4><span class="section-number">23.16.1.2. </span>feature_by_feature<a class="headerlink" href="#feature-by-feature" title="Link to this heading">#</a></h4>
+</section>
+<section id="feature-by-property">
+<h4><span class="section-number">23.16.1.3. </span>feature.by_property<a class="headerlink" href="#feature-by-property" title="Link to this heading">#</a></h4>
+</section>
+<section id="feature-groups">
+<h4><span class="section-number">23.16.1.4. </span>feature_groups<a class="headerlink" href="#feature-groups" title="Link to this heading">#</a></h4>
+</section>
+<section id="feature-histogram">
+<h4><span class="section-number">23.16.1.5. </span>feature_histogram<a class="headerlink" href="#feature-histogram" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="charting-images">
+<h3><span class="section-number">23.16.2. </span>Charting Images<a class="headerlink" href="#charting-images" title="Link to this heading">#</a></h3>
+<section id="image-by-region">
+<h4><span class="section-number">23.16.2.1. </span>image_by_region<a class="headerlink" href="#image-by-region" title="Link to this heading">#</a></h4>
+</section>
+<section id="image-regions">
+<h4><span class="section-number">23.16.2.2. </span>image_regions<a class="headerlink" href="#image-regions" title="Link to this heading">#</a></h4>
+</section>
+<section id="image-by-class">
+<h4><span class="section-number">23.16.2.3. </span>image_by_class<a class="headerlink" href="#image-by-class" title="Link to this heading">#</a></h4>
+</section>
+<section id="image-histogram">
+<h4><span class="section-number">23.16.2.4. </span>image_histogram<a class="headerlink" href="#image-histogram" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="charting-image-collections">
+<h3><span class="section-number">23.16.3. </span>Charting Image Collections<a class="headerlink" href="#charting-image-collections" title="Link to this heading">#</a></h3>
+<section id="image-series">
+<h4><span class="section-number">23.16.3.1. </span>image_series<a class="headerlink" href="#image-series" title="Link to this heading">#</a></h4>
+</section>
+<section id="image-series-by-region">
+<h4><span class="section-number">23.16.3.2. </span>image_series_by_region<a class="headerlink" href="#image-series-by-region" title="Link to this heading">#</a></h4>
+</section>
+<section id="image-doy-series">
+<h4><span class="section-number">23.16.3.3. </span>image_doy_series<a class="headerlink" href="#image-doy-series" title="Link to this heading">#</a></h4>
+</section>
+<section id="image-doy-series-by-year">
+<h4><span class="section-number">23.16.3.4. </span>image_doy_series_by_year<a class="headerlink" href="#image-doy-series-by-year" title="Link to this heading">#</a></h4>
+</section>
+<section id="image-doy-series-by-region">
+<h4><span class="section-number">23.16.3.5. </span>image_doy_series_by_region<a class="headerlink" href="#image-doy-series-by-region" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="charting-array-and-list">
+<h3><span class="section-number">23.16.4. </span>Charting Array and List<a class="headerlink" href="#charting-array-and-list" title="Link to this heading">#</a></h3>
+<section id="scatter-plot">
+<h4><span class="section-number">23.16.4.1. </span>Scatter Plot<a class="headerlink" href="#scatter-plot" title="Link to this heading">#</a></h4>
+</section>
+<section id="transect-line-plot">
+<h4><span class="section-number">23.16.4.2. </span>Transect Line Plot<a class="headerlink" href="#transect-line-plot" title="Link to this heading">#</a></h4>
+</section>
+<section id="metadata-scatter-plot">
+<h4><span class="section-number">23.16.4.3. </span>Metadata Scatter Plot<a class="headerlink" href="#metadata-scatter-plot" title="Link to this heading">#</a></h4>
+</section>
+<section id="mapped-function-scatter-line-plot">
+<h4><span class="section-number">23.16.4.4. </span>Mapped Function Scatter &amp; Line Plot<a class="headerlink" href="#mapped-function-scatter-line-plot" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="charting-data-table">
+<h3><span class="section-number">23.16.5. </span>Charting Data Table<a class="headerlink" href="#charting-data-table" title="Link to this heading">#</a></h3>
+<section id="manual-datatable-chart">
+<h4><span class="section-number">23.16.5.1. </span>Manual DataTable chart<a class="headerlink" href="#manual-datatable-chart" title="Link to this heading">#</a></h4>
+</section>
+<section id="computed-datatable-chart">
+<h4><span class="section-number">23.16.5.2. </span>Computed DataTable chart<a class="headerlink" href="#computed-datatable-chart" title="Link to this heading">#</a></h4>
+</section>
+<section id="interval-chart">
+<h4><span class="section-number">23.16.5.3. </span>Interval chart<a class="headerlink" href="#interval-chart" title="Link to this heading">#</a></h4>
+</section>
+</section>
+</section>
+<section id="key-takeaways">
+<h2><span class="section-number">23.17. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
+</section>
+<section id="exercises">
+<h2><span class="section-number">23.18. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="exercise-1-visualizing-dem-data">
+<h3><span class="section-number">23.18.1. </span>Exercise 1: Visualizing DEM Data<a class="headerlink" href="#exercise-1-visualizing-dem-data" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-2-cloud-free-composite-with-sentinel-2-or-landsat">
+<h3><span class="section-number">23.18.2. </span>Exercise 2: Cloud-Free Composite with Sentinel-2 or Landsat<a class="headerlink" href="#exercise-2-cloud-free-composite-with-sentinel-2-or-landsat" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-3-visualizing-naip-imagery">
+<h3><span class="section-number">23.18.3. </span>Exercise 3: Visualizing NAIP Imagery<a class="headerlink" href="#exercise-3-visualizing-naip-imagery" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-4-visualizing-watershed-boundaries">
+<h3><span class="section-number">23.18.4. </span>Exercise 4: Visualizing Watershed Boundaries<a class="headerlink" href="#exercise-4-visualizing-watershed-boundaries" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-5-visualizing-land-cover-change">
+<h3><span class="section-number">23.18.5. </span>Exercise 5: Visualizing Land Cover Change<a class="headerlink" href="#exercise-5-visualizing-land-cover-change" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-6-creating-a-landsat-timelapse-animation">
+<h3><span class="section-number">23.18.6. </span>Exercise 6: Creating a Landsat Timelapse Animation<a class="headerlink" href="#exercise-6-creating-a-landsat-timelapse-animation" title="Link to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "giswqs/intro-gispro",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/geospatial"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="maplibre.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">22. </span>3D Mapping with MapLibre</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="hypercoast.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">24. </span>Hyperspectral Data Visualization with HyperCoast</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">23.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">23.2. Learning Objectives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">23.2.1. Prerequisites</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-google-earth-engine">23.3. Introduction to Google Earth Engine</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-earth-engine-overview">23.3.1. Google Earth Engine Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-geemap">23.3.2. Installing Geemap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">23.3.3. Import Libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticate-and-initialize-earth-engine">23.3.4. Authenticate and Initialize Earth Engine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-interactive-maps">23.3.5. Creating Interactive Maps</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-maps">23.3.5.1. Example Maps</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-basemaps">23.3.6. Adding Basemaps</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-multiple-basemaps">23.3.6.1. Adding Multiple Basemaps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-available-basemaps">23.3.6.2. Listing Available Basemaps</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-basemaps">23.3.7. Google Basemaps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-interactive-maps-and-tools">23.4. Introduction to Interactive Maps and Tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basemap-selector">23.4.1. Basemap Selector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layer-manager">23.4.2. Layer Manager</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspector-tool">23.4.3. Inspector Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layer-editor">23.4.4. Layer Editor</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-band-image">23.4.4.1. Single-Band image</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-band-image">23.4.4.2. Multi-Band image</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-collection">23.4.4.3. Feature Collection</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-control">23.4.5. Draw Control</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-earth-engine-data-catalog">23.5. The Earth Engine Data Catalog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-datasets-on-the-earth-engine-website">23.5.1. Searching Datasets on the Earth Engine Website</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-datasets-within-geemap">23.5.2. Searching Datasets Within Geemap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-datasets-module-in-geemap">23.5.3. Using the Datasets Module in Geemap</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-data-types">23.6. Earth Engine Data Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-raster-data">23.7. Earth Engine Raster Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image">23.7.1. Image</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-earth-engine-images">23.7.1.1. Loading Earth Engine Images</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-earth-engine-images">23.7.1.2. Visualizing Earth Engine Images</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imagecollection">23.7.2. ImageCollection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-image-collections">23.7.2.1. Loading Image Collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-image-collections">23.7.2.2. Filtering Image Collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-image-collections">23.7.2.3. Visualizing Image Collections</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-vector-data">23.8. Earth Engine Vector Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-feature-collections">23.8.1. Loading Feature Collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-feature-collections">23.8.2. Filtering Feature Collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-feature-collections">23.8.3. Visualizing Feature Collections</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-tools-for-visualizing-earth-engine-data">23.9. More Tools for Visualizing Earth Engine Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-plotting-tool">23.9.1. Using the Plotting Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legends">23.9.2. Legends</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-legends">23.9.2.1. Built-in Legends</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-legends">23.9.2.2. Custom Legends</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#color-bars">23.9.3. Color Bars</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-panel-maps">23.9.4. Split-panel Maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linked-maps">23.9.5. Linked Maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-inspector">23.9.6. Timeseries Inspector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-slider">23.9.7. Time Slider</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-of-vector-data">23.10. Processing of Vector Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-geojson">23.10.1. From GeoJSON</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-shapefile">23.10.2. From Shapefile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-geodataframe">23.10.3. From GeoDataFrame</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-geojson">23.10.4. To GeoJSON</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-shapefile">23.10.5. To Shapefile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-geodataframe">23.10.6. To GeoDataFrame</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-dataframe">23.10.7. To DataFrame</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-csv">23.10.8. To CSV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-of-raster-data">23.11. Processing of Raster Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-pixel-values">23.11.1. Extract Pixel Values</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-values-to-points">23.11.1.1. Extracting Values to Points</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-pixel-values-along-a-transect">23.11.1.2. Extracting Pixel Values Along a Transect</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics">23.11.2. Zonal Statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics-with-an-image-and-a-feature-collection">23.11.2.1. Zonal Statistics with an Image and a Feature Collection</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics-by-group">23.11.2.2. Zonal Statistics by Group</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics-with-two-images">23.11.2.3. Zonal Statistics with Two Images</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-algebra">23.11.3. Map Algebra</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-local-geospatial-data">23.12. Working with Local Geospatial Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raster-data">23.12.1. Raster Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-band-raster-data">23.12.1.1. Single-Band Raster Data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-band-raster-data">23.12.1.2. Multi-Band Raster Data</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-data">23.12.2. Vector Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geojson">23.12.2.1. GeoJSON</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#shapefile">23.12.2.2. Shapefile</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geodataframe">23.12.2.3. GeoDataFrame</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geopackage">23.12.2.4. GeoPackage</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-to-vector">23.12.2.5. CSV to Vector</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-cloud-optimized-geotiffs">23.13. Accessing Cloud Optimized GeoTIFFs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-optimized-geotiffs-cog">23.13.1. Cloud Optimized GeoTIFFs (COG)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatiotemporal-asset-catalog-stac">23.13.2. SpatioTemporal Asset Catalog (STAC)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-earth-engine-data">23.14. Exporting Earth Engine Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-images">23.14.1. Exporting Images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-image-collections">23.14.2. Exporting Image Collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-feature-collections">23.14.3. Exporting Feature Collections</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-timelapse-animations">23.15. Creating Timelapse Animations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-timelapse">23.15.1. Landsat Timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentinel-2-timelapse">23.15.2. Sentinel-2 Timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modis-timelapse">23.15.3. MODIS Timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goes-timelapse">23.15.4. GOES Timelapse</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#charting-earth-engine-data">23.16. Charting Earth Engine Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charting-features">23.16.1. Charting Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">23.16.1.1. Import libraries</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-by-feature">23.16.1.2. feature_by_feature</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-by-property">23.16.1.3. feature.by_property</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-groups">23.16.1.4. feature_groups</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-histogram">23.16.1.5. feature_histogram</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charting-images">23.16.2. Charting Images</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-by-region">23.16.2.1. image_by_region</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-regions">23.16.2.2. image_regions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-by-class">23.16.2.3. image_by_class</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-histogram">23.16.2.4. image_histogram</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charting-image-collections">23.16.3. Charting Image Collections</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-series">23.16.3.1. image_series</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-series-by-region">23.16.3.2. image_series_by_region</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-doy-series">23.16.3.3. image_doy_series</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-doy-series-by-year">23.16.3.4. image_doy_series_by_year</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#image-doy-series-by-region">23.16.3.5. image_doy_series_by_region</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charting-array-and-list">23.16.4. Charting Array and List</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">23.16.4.1. Scatter Plot</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transect-line-plot">23.16.4.2. Transect Line Plot</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metadata-scatter-plot">23.16.4.3. Metadata Scatter Plot</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mapped-function-scatter-line-plot">23.16.4.4. Mapped Function Scatter &amp; Line Plot</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charting-data-table">23.16.5. Charting Data Table</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-datatable-chart">23.16.5.1. Manual DataTable chart</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#computed-datatable-chart">23.16.5.2. Computed DataTable chart</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interval-chart">23.16.5.3. Interval chart</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">23.17. Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">23.18. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-visualizing-dem-data">23.18.1. Exercise 1: Visualizing DEM Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-cloud-free-composite-with-sentinel-2-or-landsat">23.18.2. Exercise 2: Cloud-Free Composite with Sentinel-2 or Landsat</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-visualizing-naip-imagery">23.18.3. Exercise 3: Visualizing NAIP Imagery</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-visualizing-watershed-boundaries">23.18.4. Exercise 4: Visualizing Watershed Boundaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-visualizing-land-cover-change">23.18.5. Exercise 5: Visualizing Land Cover Change</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-creating-a-landsat-timelapse-animation">23.18.6. Exercise 6: Creating a Landsat Timelapse Animation</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Qiusheng Wu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

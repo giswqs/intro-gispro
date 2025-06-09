@@ -1,0 +1,823 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Preface &#8212; Introduction to GIS Programming</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/preface';</script>
+    <link rel="canonical" href="https://gispro.gishub.org/book/preface.html" />
+    <link rel="icon" href="../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Overview of Software Tools" href="software/overview.html" />
+    <link rel="prev" title="Introduction to GIS Programming" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Introduction to GIS Programming - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Introduction to GIS Programming - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preface</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Preface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Setup</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="software/overview.html">1. Overview of Software Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software/conda.html">2. Introduction to Python Package Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software/vscode.html">3. Setting Up Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software/git.html">4. Version Control with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software/colab.html">5. Using Google Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software/jupyterlab.html">6. Working with JupyterLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software/docker.html">7. Using Docker</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Programming Fundamentals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="python/variables.html">8. Variables and Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/data-structures.html">9. Python Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/string-operations.html">10. String Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/looping.html">11. Loops and Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/functions-classes.html">12. Functions and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/files.html">13. Working with Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python/numpy-pandas.html">14. Data Analysis with NumPy and Pandas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Geospatial Programming with Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="geospatial/get-started.html">15. Introduction to Geospatial Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial/geopandas.html">16. Vector Data Analysis with GeoPandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial/rasterio.html">17. Working with Raster Data using Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial/xarray.html">18. Multi-dimensional Data Analysis with Xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial/rioxarray.html">19. Raster Analysis with Rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial/leafmap.html">20. Interactive Visualization with Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial/whitebox.html">21. Geoprocessing with WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial/maplibre.html">22. 3D Mapping with MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial/geemap.html">23. Cloud Computing with Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial/hypercoast.html">24. Hyperspectral Data Visualization with HyperCoast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial/duckdb.html">25. Spatial Database Analysis with DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial/gdal.html">26. GDAL and OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial/solara.html">27. Building Interactive Web Apps with Voila and Solara</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/giswqs/intro-gispro/main?urlpath=tree/book/preface.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/giswqs/intro-gispro/blob/main/book/preface.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/giswqs/intro-gispro" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/intro-gispro/edit/main/book/preface.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/intro-gispro/issues/new?title=Issue%20on%20page%20%2Fbook/preface.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/preface.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Preface</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-book-for">Who is This Book For?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-book-covers">What This Book Covers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-get-the-most-out-of-this-book">To Get the Most Out of This Book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conventions-used-in-this-book">Conventions Used in This Book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-code-examples">Downloading the Code Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-tutorials">Video Tutorials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-in-touch">Get in Touch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="preface">
+<h1>Preface<a class="headerlink" href="#preface" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Geographic Information Systems (GIS) and geospatial analysis have become fundamental tools across numerous disciplines, from environmental science and urban planning to business analytics and public health. As the volume and complexity of geospatial data continue to grow exponentially, the ability to programmatically process, analyze, and visualize this data has become an essential skill for researchers, analysts, and professionals working with spatial information.</p>
+<p>Python has emerged as the leading programming language for geospatial analysis, offering a rich ecosystem of libraries and tools that make complex spatial operations accessible to both beginners and experts. However, the path from Python novice to confident geospatial programmer can seem daunting, with numerous libraries to learn and concepts to master.</p>
+<p>This book bridges that gap by providing a structured, practical approach to learning geospatial programming with Python. Rather than overwhelming you with advanced techniques from the start, we focus on building a solid foundation of essential skills that will serve you throughout your geospatial programming journey. Each chapter builds upon the previous ones, ensuring you develop both theoretical understanding and practical expertise.</p>
+<p>The approach taken in this book is hands-on and example-driven. You’ll work with real geospatial datasets, solve practical problems, and build projects that demonstrate the power of Python for geospatial analysis and visualization. By the end of this book, you’ll have the confidence and skills to tackle your own geospatial programming challenges.</p>
+</section>
+<section id="who-is-this-book-for">
+<h2>Who is This Book For?<a class="headerlink" href="#who-is-this-book-for" title="Link to this heading">#</a></h2>
+<p>This book is designed for a diverse audience of learners who want to harness the power of Python for geospatial analysis and visualization:</p>
+<p><strong>Students and Researchers</strong> in geography, environmental science, urban planning, data science, and related fields who need to analyze spatial data as part of their studies or research. No prior programming experience is assumed, though basic familiarity with computers and data analysis concepts is helpful.</p>
+<p><strong>GIS Professionals</strong> who currently use desktop GIS software and want to expand their toolkit with programming skills. If you’ve worked with ArcGIS, QGIS, or similar tools and want to automate workflows or perform analyses that are challenging to do in traditional GIS software, this book will help you make that transition.</p>
+<p><strong>Data Scientists and Analysts</strong> who work with location-based data and want to add spatial analysis capabilities to their skillset. If you’re comfortable with Python basics but new to geospatial concepts, this book will introduce you to the spatial thinking and tools you need.</p>
+<p><strong>Software Developers</strong> interested in building applications that work with geospatial data. Whether you’re developing web mapping applications, mobile apps with location features, or data processing pipelines, this book provides the foundation you need.</p>
+<p><strong>Self-Learners and Career Changers</strong> who are interested in the growing field of geospatial data science. The book assumes no prior knowledge of either Python programming or GIS concepts, making it accessible to motivated beginners.</p>
+<p><strong>Professionals in Government and Industry</strong> who need to incorporate spatial analysis into their work, such as urban planners, environmental consultants, market researchers, logistics coordinators, or public health officials.</p>
+<p>The key requirement is curiosity and willingness to learn. While programming experience is helpful, it’s not necessary. We start with the fundamentals and build up systematically.</p>
+</section>
+<section id="what-this-book-covers">
+<h2>What This Book Covers<a class="headerlink" href="#what-this-book-covers" title="Link to this heading">#</a></h2>
+<p>This book is organized into three progressive sections that take you from software setup through Python fundamentals to advanced geospatial programming:</p>
+<p><strong>Software Setup</strong> prepares your development environment with everything you need for geospatial programming. You’ll learn to install and configure essential tools including Miniconda for package management, VS Code for development, Git for version control, and cloud-based alternatives like Google Colab and JupyterLab. This section ensures you have a solid foundation before diving into programming.</p>
+<p><strong>Python Programming Fundamentals</strong> builds your core programming skills through seven comprehensive chapters. Starting with Python basics, you’ll master variables and data types, data structures (lists, dictionaries, sets), string operations, control flow with loops and conditionals, functions and classes, file handling, and data analysis with NumPy and Pandas. These skills form the foundation for all geospatial programming tasks.</p>
+<p><strong>Geospatial Programming with Python</strong> comprises eleven specialized chapters that transform you into a confident geospatial programmer:</p>
+<ul class="simple">
+<li><p><strong>Introduction to Geospatial Python</strong> - Core concepts and the Python geospatial ecosystem</p></li>
+<li><p><strong>Vector Data Analysis with GeoPandas</strong> - Working with points, lines, and polygons</p></li>
+<li><p><strong>Raster Data with Rasterio</strong> - Processing satellite imagery and gridded datasets</p></li>
+<li><p><strong>Multi-dimensional Data with xarray</strong> - Handling complex scientific datasets</p></li>
+<li><p><strong>Raster Analysis with rioxarray</strong> - Advanced raster processing and analysis</p></li>
+<li><p><strong>Interactive Visualization with Leafmap</strong> - Creating dynamic, interactive maps</p></li>
+<li><p><strong>Geoprocessing with WhiteboxTools</strong> - Advanced spatial analysis operations</p></li>
+<li><p><strong>3D Mapping with MapLibre</strong> - Building three-dimensional visualizations</p></li>
+<li><p><strong>Cloud Computing with Geemap</strong> - Leveraging Google Earth Engine for large-scale analysis</p></li>
+<li><p><strong>Hyperspectral Data with HyperCoast</strong> - Working with hyperspectral data</p></li>
+<li><p><strong>Spatial Database Analysis with DuckDB</strong> - High-performance spatial data processing</p></li>
+<li><p><strong>GDAL and OGR</strong> - Working with geospatial data formats</p></li>
+<li><p><strong>Building Interactive Web Apps with Voila and Solara</strong> - Creating interactive dashboards for geospatial applications</p></li>
+</ul>
+<p>Each chapter follows a consistent structure:</p>
+<ul class="simple">
+<li><p>Clear concept explanations with real-world context</p></li>
+<li><p>Step-by-step code examples with detailed annotations</p></li>
+<li><p>Hands-on exercises using authentic geospatial datasets</p></li>
+<li><p>Common pitfalls and troubleshooting guidance</p></li>
+<li><p>References to additional resources and further reading</p></li>
+</ul>
+<p>The progression is carefully designed so that each chapter builds upon previous concepts while introducing new capabilities, ensuring you develop both breadth and depth in geospatial programming.</p>
+</section>
+<section id="to-get-the-most-out-of-this-book">
+<h2>To Get the Most Out of This Book<a class="headerlink" href="#to-get-the-most-out-of-this-book" title="Link to this heading">#</a></h2>
+<p>To maximize your learning experience with this book, consider the following recommendations:</p>
+<p><strong>Set Up a Proper Development Environment</strong>: Install Python and the required libraries as described in the first section of the book. A well-configured environment will save you time and frustration throughout your learning journey. Consider using conda or uv to manage your Python packages, as this simplifies installation of geospatial libraries.</p>
+<p><strong>Follow Along with Code Examples</strong>: This book is designed to be interactive. Don’t just read the code. Type it out, run it, and experiment with modifications. Understanding comes through practice, and each example builds skills you’ll need later.</p>
+<p><strong>Work Through the Exercises</strong>: Each chapter includes exercises designed to reinforce the concepts you’ve learned. These are not optional extras. They are an integral part of the learning process. Start with the guided exercises, then challenge yourself with your own projects.</p>
+<p><strong>Use Real Data</strong>: While the book provides datasets for examples and exercises, try applying the techniques to data from your own field or interests. This will help you understand how the concepts apply to real-world scenarios and build confidence in your abilities.</p>
+<p><strong>Build Projects</strong>: As you progress through the book, consider working on a personal project that interests you. This could be analyzing data from your research, creating maps for your community, or solving a problem you’ve encountered in your work.</p>
+<p><strong>Be Patient with Yourself</strong>: Programming can be frustrating, especially when you’re learning. Expect to encounter errors, spend time debugging, and occasionally feel stuck. This is normal and part of the learning process. Take breaks when needed, and remember that expertise develops gradually through consistent practice. If you get stuck, don’t hesitate to ask for help on the book’s GitHub repository.</p>
+<p><strong>Keep Practicing</strong>: The skills in this book require regular practice to maintain and develop. Set aside time regularly to work on geospatial programming projects, even if they’re small ones.</p>
+</section>
+<section id="conventions-used-in-this-book">
+<h2>Conventions Used in This Book<a class="headerlink" href="#conventions-used-in-this-book" title="Link to this heading">#</a></h2>
+<p>This book uses several conventions to help you navigate the content and understand the code examples:</p>
+<p><strong>Code Formatting</strong>: All Python code appears in monospaced font within code blocks. When code appears within regular text, it is formatted <code class="docutils literal notranslate"><span class="pre">like</span> <span class="pre">this</span></code>. File and directory names are also formatted in monospaced font.</p>
+<p><strong>Code Examples</strong>: Most code examples are complete and runnable. They include comments explaining the key concepts and techniques being demonstrated. Line numbers may be included for reference in the accompanying text.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is an example of a code block</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">leafmap</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">)</span>  <span class="c1"># add a basemap to the map</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Command Line Instructions</strong>: Commands to be entered at the command line or terminal are shown with a <code class="docutils literal notranslate"><span class="pre">$</span></code> prompt:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>leafmap
+$<span class="w"> </span>python<span class="w"> </span>script.py
+</pre></div>
+</div>
+</section>
+<section id="downloading-the-code-examples">
+<h2>Downloading the Code Examples<a class="headerlink" href="#downloading-the-code-examples" title="Link to this heading">#</a></h2>
+<p>All code examples, datasets, and supplementary materials for this book are freely available on GitHub:</p>
+<p><strong><a class="github reference external" href="https://github.com/giswqs/intro-gispro">giswqs/intro-gispro</a></strong></p>
+<p>To download the materials:</p>
+<ol class="arabic">
+<li><p><strong>Clone the repository</strong> (if you have Git installed):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/giswqs/intro-gispro.git
+</pre></div>
+</div>
+</li>
+<li><p><strong>Download as ZIP</strong> (if you prefer not to use Git):</p>
+<ul class="simple">
+<li><p>Visit the GitHub repository page</p></li>
+<li><p>Click the green <strong>Code</strong> button</p></li>
+<li><p>Select <strong>Download ZIP</strong></p></li>
+<li><p>Extract the files to your preferred location</p></li>
+</ul>
+</li>
+<li><p><strong>Browse individual files</strong> online through the GitHub interface if you only need specific examples</p></li>
+</ol>
+<p>The repository is regularly updated with corrections, improvements, and additional examples. Check back periodically for updates, or <strong>watch</strong> the repository on GitHub to be notified of changes.</p>
+<p>If you find errors in the code or have suggestions for improvements, please open an issue or submit a pull request on GitHub. Community contributions help make this resource better for everyone.</p>
+</section>
+<section id="video-tutorials">
+<h2>Video Tutorials<a class="headerlink" href="#video-tutorials" title="Link to this heading">#</a></h2>
+<p>Complementing the written content, this book is supported by a comprehensive series of video tutorials that walk through key concepts and provide additional examples:</p>
+<p><strong><a class="reference external" href="https://tinyurl.com/intro-gispro-videos">https://tinyurl.com/intro-gispro-videos</a></strong></p>
+<p>The videos are designed to complement, not replace, the written material. They’re particularly helpful for:</p>
+<ul class="simple">
+<li><p>Visual learners who benefit from seeing code being written and executed</p></li>
+<li><p>Understanding complex concepts through multiple explanations</p></li>
+<li><p>Learning about the development workflow and best practices</p></li>
+<li><p>Seeing how to approach problems and debug issues</p></li>
+</ul>
+<p>The playlist is organized to follow the book’s structure. You can watch them in order as you progress through the book, or jump to specific topics as needed.</p>
+<p>The videos were created in Fall 2024 when I was teaching the <a class="reference external" href="https://geog-312.gishub.org"><strong>Introduction to GIS Programming</strong></a> <a class="footnote-reference brackets" href="#geog312" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> course at the University of Tennessee. Although the course has concluded, the videos are still relevant and can be used as a reference for the book. More videos will be added in the future.</p>
+</section>
+<section id="get-in-touch">
+<h2>Get in Touch<a class="headerlink" href="#get-in-touch" title="Link to this heading">#</a></h2>
+<p>I welcome feedback, questions, and suggestions from readers. Your input helps improve the book and makes it more useful for the geospatial programming community.</p>
+<p><strong>For book-related questions and discussions:</strong></p>
+<ul class="simple">
+<li><p>GitHub Issues: <a class="github reference external" href="https://github.com/giswqs/intro-gispro/issues">giswqs/intro-gispro#issues</a></p></li>
+<li><p>GitHub Discussions: <a class="github reference external" href="https://github.com/giswqs/intro-gispro/discussions">giswqs/intro-gispro#discussions</a></p></li>
+</ul>
+<p><strong>Types of feedback that are particularly helpful:</strong></p>
+<ul class="simple">
+<li><p>Errors or unclear explanations in the text or code</p></li>
+<li><p>Suggestions for additional examples or use cases</p></li>
+<li><p>Ideas for new topics or chapters</p></li>
+<li><p>Reports of compatibility issues with different operating systems or library versions</p></li>
+<li><p>Success stories of how you’ve applied the techniques from the book</p></li>
+</ul>
+</section>
+<section id="acknowledgments">
+<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading">#</a></h2>
+<p>This book would not have been possible without the contributions and support of many individuals and the broader open-source geospatial community.</p>
+<p><strong>The Open-Source Community</strong>: This book builds upon the incredible work of countless open-source developers who have created and maintained the Python geospatial ecosystem. Special thanks to the developers and maintainers of NumPy, Pandas, GeoPandas, Rasterio, Xarray, Rioxarray Folium, ipyleaflet, maplibre, GDAL, and the many other libraries that make geospatial programming accessible.</p>
+<p><strong>Students and Colleagues</strong>: The questions, challenges, and insights from students in my geospatial programming courses at the University of Tennessee have shaped the approach and content of this book. Their feedback on what works and what doesn’t has been invaluable in creating materials that truly serve learners.</p>
+<p><strong>Research Collaborators</strong>: Colleagues and collaborators in the geospatial research community have provided real-world use cases, datasets, and problem scenarios that inform the practical examples throughout the book.</p>
+<p><strong>Family and Friends</strong>: Writing a technical book requires significant time and focus. I’m grateful for the patience and support of family and friends who understood the many evenings and weekends dedicated to this project.</p>
+<p><strong>The Broader GIS Community</strong>: The geospatial field is built on a foundation of sharing knowledge and tools. This book is part of that tradition, and I’m honored to contribute to the resources available for learning geospatial programming.</p>
+<p>This book was written using <a class="reference external" href="https://mystmd.org">MyST Markdown</a> <a class="footnote-reference brackets" href="#mystmd" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> and compiled using <a class="reference external" href="https://github.com/typst/typst">Typst</a> <a class="footnote-reference brackets" href="#typst" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> with the <a class="reference external" href="https://github.com/mayconfmelo/min-book">min-book</a> <a class="footnote-reference brackets" href="#min-book" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> template. Credits to developers and maintainers of the Typst and MyST Markdown projects. Special thanks to <a class="reference external" href="https://github.com/mayconfmelo">Maycon F. Melo</a> <a class="footnote-reference brackets" href="#mayconfmelo" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> for the min-book template and their help with customizing the template for this book.</p>
+<p>Any errors or omissions in this book remain my responsibility. I’m committed to addressing issues and improving the content based on reader feedback.</p>
+</section>
+<section id="about-the-author">
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Link to this heading">#</a></h2>
+<p>I am an Associate Professor and the Director of Graduate Studies in the Department of Geography &amp; Sustainability at the University of Tennessee, Knoxville. I also serve as an Amazon Scholar. My research focuses on geospatial data science and open-source software development, with an emphasis on leveraging big geospatial data and cloud computing to study environmental change, particularly surface water and wetland inundation dynamics. I am the creator of several widely used open-source Python packages, including geemap, leafmap, segment-geospatial, and geoai, which support advanced geospatial analysis and interactive visualization. My open-source work is available at <a class="github reference external" href="https://github.com/opengeos">opengeos</a>.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="geog312" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://geog-312.gishub.org">https://geog-312.gishub.org</a></p>
+</aside>
+<aside class="footnote brackets" id="mystmd" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://mystmd.org">https://mystmd.org</a></p>
+</aside>
+<aside class="footnote brackets" id="typst" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p><a class="github reference external" href="https://github.com/typst/typst">typst/typst</a></p>
+</aside>
+<aside class="footnote brackets" id="min-book" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p><a class="github reference external" href="https://github.com/mayconfmelo/min-book">mayconfmelo/min-book</a></p>
+</aside>
+<aside class="footnote brackets" id="mayconfmelo" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p><a class="github reference external" href="https://github.com/mayconfmelo">mayconfmelo</a></p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "giswqs/intro-gispro",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to GIS Programming</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="software/overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Overview of Software Tools</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-book-for">Who is This Book For?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-book-covers">What This Book Covers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-get-the-most-out-of-this-book">To Get the Most Out of This Book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conventions-used-in-this-book">Conventions Used in This Book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-code-examples">Downloading the Code Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-tutorials">Video Tutorials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-in-touch">Get in Touch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Qiusheng Wu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
