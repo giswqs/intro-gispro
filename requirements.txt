@@ -1,1 +1,4 @@
-geospatial
+pygis
+ghp-import
+jupyter-book
+jupytext

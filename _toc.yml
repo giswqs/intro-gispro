@@ -1,0 +1,53 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index
+
+parts:
+  - caption: Preface
+    numbered: false
+    maxdepth: 2
+    chapters:
+      - file: book/preface
+  - caption: Software Setup
+    numbered: true
+    maxdepth: 2
+    chapters:
+      - file: book/software/overview
+      - file: book/software/conda
+      - file: book/software/vscode
+      - file: book/software/git
+      - file: book/software/colab
+      - file: book/software/jupyterlab
+      - file: book/software/docker
+
+  - caption: Python Programming Fundamentals
+    numbered: true
+    maxdepth: 2
+    chapters:
+      - file: book/python/variables
+      - file: book/python/data-structures
+      - file: book/python/string-operations
+      - file: book/python/looping
+      - file: book/python/functions-classes
+      - file: book/python/files
+      - file: book/python/numpy-pandas
+
+  - caption: Geospatial Programming with Python
+    numbered: true
+    maxdepth: 2
+    chapters:
+      - file: book/geospatial/get-started
+      - file: book/geospatial/geopandas
+      - file: book/geospatial/rasterio
+      - file: book/geospatial/xarray
+      - file: book/geospatial/rioxarray
+      - file: book/geospatial/leafmap
+      - file: book/geospatial/whitebox
+      - file: book/geospatial/maplibre
+      - file: book/geospatial/geemap
+      - file: book/geospatial/hypercoast
+      - file: book/geospatial/duckdb
+      - file: book/geospatial/gdal
+      - file: book/geospatial/solara

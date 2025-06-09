@@ -1,0 +1,87 @@
+#######################################################################################
+# A default configuration that will be loaded for all jupyter books
+# See the documentation for help and more options:
+# https://jupyterbook.org/customize/config.html
+
+#######################################################################################
+# Book settings
+title: Introduction to GIS Programming # The title of the book. Will be placed in the left navbar.
+author: Qiusheng Wu # The author of the book
+copyright: "2025" # Copyright year to be placed in the footer
+logo: logo.png # A path to the book logo
+# Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
+exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
+# Auto-exclude files not in the toc
+only_build_toc_files: true
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: "off" # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  cache: "" # A path to the jupyter cache that will be used to store execution artifacts. Defaults to `_build/.jupyter_cache/`
+  exclude_patterns: [
+      "book/geospatial/maplibre.ipynb",
+      "book/geospatial/geemap.ipynb",
+      "book/geospatial/samgeo.ipynb",
+      "book/geospatial/hypercoast.ipynb",
+      "book/geospatial/duckdb.ipynb",
+      ".venv/*",
+    ] # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
+  timeout: 100 # The maximum time (in seconds) each notebook cell is allowed to run.
+  run_in_temp:
+    false # If `True`, then a temporary directory will be created and used as the command working directory (cwd),
+    # otherwise the notebook's parent directory will be the cwd.
+  allow_errors: false # If `False`, when a code cell raises an error the execution is stopped, otherwise all cells are always run.
+  stderr_output: show # One of 'show', 'remove', 'remove-warn', 'warn', 'error', 'severe'
+
+launch_buttons:
+  colab_url: "https://colab.research.google.com"
+  notebook_interface: "jupyterlab"
+  binderhub_url: "https://mybinder.org"
+  thebe: true
+  branch: main
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/giswqs/intro-gispro # Online location of your book
+  # path_to_book: docs # Optional path to your book, relative to the repository root
+  branch: main # Which branch of the repository should be used when creating links (optional)
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  favicon: "fav.ico"
+  baseurl: https://gispro.gishub.org # The base URL where your book will be hosted.
+  use_repository_button: true
+  use_issues_button: true
+  use_edit_page_button: true
+  use_download_button: true # google_analytics_id: G-XXXXXXX
+  thebe: true # Enable Thebe
+
+sphinx:
+  config:
+    html_extra_path: ["CNAME", "robots.txt"]
+    html_theme_options:
+      use_download_button: true
+      repository_url: https://github.com/giswqs/intro-gispro
+      repository_branch: main # Specify the correct branch for theme options
+      use_issues_button: true
+      use_repository_button: true
+      use_edit_page_button: true
+      launch_buttons:
+        {
+          binderhub_url: "https://mybinder.org",
+          colab_url: "https://colab.research.google.com",
+          thebe: true,
+        }
+    bibtex_reference_style: author_year
+    exclude_patterns: [".venv"]
+
+# Define the name of the latex output file for PDF builds
+# latex:
+#   latex_documents:
+#     targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - book/references.bib

@@ -1,18 +1,18 @@
-name: deploy
+name: build
 
 on:
-  # Trigger the workflow on push to main branch
-  push:
+  pull_request:
     branches:
       - main
 
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
-  build-book:
+  build-the-book:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.12"]
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -36,14 +36,16 @@ jobs:
       - name: Build the book
         run: |
           uv run jupyter-book build .
-      # Deploy the book's HTML to gh-pages branch
-      - name: Copy images to gh-pages branch
-        run: |
-          cp -r book/images _build/html/book/images
-          find . -type f -exec sed -i 's|book/geospatial/images|../images|g' {} +
-
-      - name: GitHub Pages action
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v3.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_build/html
+          publish-dir: "./_build/html"
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: true
+          enable-commit-comment: false
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
