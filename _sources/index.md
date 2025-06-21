@@ -34,16 +34,17 @@ Stay tuned for more information about the book and its release date.
   - Introduction to Geospatial Python
   - Vector Data Analysis with GeoPandas
   - Working with Raster Data using Rasterio
-  - Multi-dimensional Data with Xarray
+  - Multi-dimensional Data Analysis with Xarray
   - Raster Analysis with Rioxarray
   - Interactive Visualization with Leafmap
   - Geoprocessing with WhiteboxTools
   - 3D Mapping with MapLibre
-  - Cloud Computing with Geemap
+  - Cloud Computing with Earth Engine and Geemap
   - Hyperspectral Data Visualization with HyperCoast
-  - Spatial Database Analysis with DuckDB
-  - GDAL and OGR
-  - Building Interactive Web Apps with Voila and Solara
+  - High-Performance Geospatial Analytics with DuckDB
+  - Geospatial Data Processing with GDAL and OGR
+  - Building Interactive Dashboards with Voila and Solara
+  - Distributed Computing with Apache Sedona
 
 ## How to Run Code Examples
 
