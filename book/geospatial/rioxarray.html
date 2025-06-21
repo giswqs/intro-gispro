@@ -201,17 +201,18 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="get-started.html">15. Introduction to Geospatial Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geopandas.html">16. Vector Data Analysis with GeoPandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data using Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data Using Rasterio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xarray.html">18. Multi-dimensional Data Analysis with Xarray</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Raster Analysis with Rioxarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="leafmap.html">20. Interactive Visualization with Leafmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="whitebox.html">21. Geoprocessing with WhiteboxTools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maplibre.html">22. 3D Mapping with MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Earth Engine and Geemap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hypercoast.html">24. Hyperspectral Data Visualization with HyperCoast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. Spatial Database Analysis with DuckDB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. GDAL and OGR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Web Apps with Voila and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. High-Performance Geospatial Analytics with DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. Geospatial Data Processing with GDAL and OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Dashboards with Voilà and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sedona.html">28. Distributed Computing with Apache Sedona</a></li>
 </ul>
 
     </div>
@@ -493,35 +494,60 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">19.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">19.2. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-rioxarray">19.3. Installing Rioxarray</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-georeferenced-raster-data">19.4. Loading Georeferenced Raster Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-the-dataset">19.4.1. Inspecting the Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-crs-and-transform-information">19.4.2. Checking CRS and Transform Information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-rioxarray-environment">19.3. Setting Up Your Rioxarray Environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-required-libraries">19.3.1. Installing Required Libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-and-configuration">19.3.2. Importing Libraries and Configuration</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-geospatial-operations">19.5. Basic Geospatial Operations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reprojecting-a-dataset">19.5.1. Reprojecting a Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-a-raster">19.5.2. Clipping a Raster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-and-exploring-georeferenced-raster-data">19.4. Loading and Exploring Georeferenced Raster Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-raster-data-structure">19.4.1. Understanding Raster Data Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-a-real-satellite-image">19.4.2. Loading a Real Satellite Image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-dataset-structure">19.4.3. Exploring the Dataset Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-spatial-reference-information">19.4.4. Accessing Spatial Reference Information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-crs-when-missing">19.4.5. Setting CRS When Missing</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-spatial-dimensions">19.6. Working with Spatial Dimensions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling">19.6.1. Resampling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-spatial-subsets">19.6.2. Extracting Spatial Subsets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-geospatial-operations">19.5. Fundamental Geospatial Operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-system-transformations">19.5.1. Coordinate System Transformations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-subsetting-with-bounding-boxes">19.5.2. Spatial Subsetting with Bounding Boxes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-based-clipping">19.5.3. Vector-Based Clipping</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-georeferenced-data">19.7. Visualization of Georeferenced Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data">19.8. Saving Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-nodata-values">19.9. Handling NoData Values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reprojecting-to-multiple-crs">19.10. Reprojecting to Multiple CRS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-band-math">19.11. Basic Band Math</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">19.12. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">19.13. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-dataset">19.13.1. Sample Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-load-and-inspect-a-raster-dataset">19.13.2. Exercise 1: Load and Inspect a Raster Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-reproject-the-raster-to-a-new-crs">19.13.3. Exercise 2: Reproject the Raster to a New CRS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-clip-the-raster-using-a-bounding-box">19.13.4. Exercise 3: Clip the Raster Using a Bounding Box</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-mask-the-raster-using-a-vector-dataset">19.13.5. Exercise 4: Mask the Raster Using a Vector Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-resample-the-raster-to-a-different-resolution">19.13.6. Exercise 5: Resample the Raster to a Different Resolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-spatial-dimensions-and-resolution">19.6. Working with Spatial Dimensions and Resolution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-spatial-resolution">19.6.1. Understanding Spatial Resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling-to-different-resolutions">19.6.2. Resampling to Different Resolutions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-subsetting-by-coordinates">19.6.3. Spatial Subsetting by Coordinates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-geospatial-raster-data">19.7. Visualizing Geospatial Raster Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-true-color-composite-images">19.7.1. Creating True-Color Composite Images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-individual-bands">19.7.2. Visualizing Individual Bands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overlaying-vector-data-on-raster-images">19.7.3. Overlaying Vector Data on Raster Images</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage-and-file-management">19.8. Data Storage and File Management</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-processed-raster-data">19.8.1. Saving Processed Raster Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-nodata-values">19.8.2. Managing NoData Values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-system-comparisons">19.9. Coordinate System Comparisons</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#side-by-side-coordinate-system-visualization">19.9.1. Side-by-Side Coordinate System Visualization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-band-math">19.10. Introduction to Band Math</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-vegetation-indices">19.10.1. Computing Vegetation Indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-vegetation-analysis">19.10.2. Visualizing Vegetation Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-ndvi-results">19.10.3. Interpreting NDVI Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">19.11. Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">19.12. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-dataset">19.12.1. Sample Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-load-and-inspect-a-raster-dataset">19.12.2. Exercise 1: Load and Inspect a Raster Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-coordinate-system-transformation">19.12.3. Exercise 2: Coordinate System Transformation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-spatial-subsetting-with-bounding-boxes">19.12.4. Exercise 3: Spatial Subsetting with Bounding Boxes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-vector-based-masking">19.12.5. Exercise 4: Vector-Based Masking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-resolution-analysis-and-data-export">19.12.6. Exercise 5: Resolution Analysis and Data Export</a></li>
 </ul>
 </li>
 </ul>
@@ -543,73 +569,118 @@ document.write(`
 <section id="learning-objectives">
 <h2><span class="section-number">19.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 </section>
-<section id="installing-rioxarray">
-<h2><span class="section-number">19.3. </span>Installing Rioxarray<a class="headerlink" href="#installing-rioxarray" title="Link to this heading">#</a></h2>
+<section id="setting-up-your-rioxarray-environment">
+<h2><span class="section-number">19.3. </span>Setting Up Your Rioxarray Environment<a class="headerlink" href="#setting-up-your-rioxarray-environment" title="Link to this heading">#</a></h2>
+<section id="installing-required-libraries">
+<h3><span class="section-number">19.3.1. </span>Installing Required Libraries<a class="headerlink" href="#installing-required-libraries" title="Link to this heading">#</a></h3>
 </section>
-<section id="loading-georeferenced-raster-data">
-<h2><span class="section-number">19.4. </span>Loading Georeferenced Raster Data<a class="headerlink" href="#loading-georeferenced-raster-data" title="Link to this heading">#</a></h2>
-<section id="inspecting-the-dataset">
-<h3><span class="section-number">19.4.1. </span>Inspecting the Dataset<a class="headerlink" href="#inspecting-the-dataset" title="Link to this heading">#</a></h3>
-</section>
-<section id="checking-crs-and-transform-information">
-<h3><span class="section-number">19.4.2. </span>Checking CRS and Transform Information<a class="headerlink" href="#checking-crs-and-transform-information" title="Link to this heading">#</a></h3>
+<section id="importing-libraries-and-configuration">
+<h3><span class="section-number">19.3.2. </span>Importing Libraries and Configuration<a class="headerlink" href="#importing-libraries-and-configuration" title="Link to this heading">#</a></h3>
 </section>
 </section>
-<section id="basic-geospatial-operations">
-<h2><span class="section-number">19.5. </span>Basic Geospatial Operations<a class="headerlink" href="#basic-geospatial-operations" title="Link to this heading">#</a></h2>
-<section id="reprojecting-a-dataset">
-<h3><span class="section-number">19.5.1. </span>Reprojecting a Dataset<a class="headerlink" href="#reprojecting-a-dataset" title="Link to this heading">#</a></h3>
+<section id="loading-and-exploring-georeferenced-raster-data">
+<h2><span class="section-number">19.4. </span>Loading and Exploring Georeferenced Raster Data<a class="headerlink" href="#loading-and-exploring-georeferenced-raster-data" title="Link to this heading">#</a></h2>
+<section id="understanding-raster-data-structure">
+<h3><span class="section-number">19.4.1. </span>Understanding Raster Data Structure<a class="headerlink" href="#understanding-raster-data-structure" title="Link to this heading">#</a></h3>
 </section>
-<section id="clipping-a-raster">
-<h3><span class="section-number">19.5.2. </span>Clipping a Raster<a class="headerlink" href="#clipping-a-raster" title="Link to this heading">#</a></h3>
+<section id="loading-a-real-satellite-image">
+<h3><span class="section-number">19.4.2. </span>Loading a Real Satellite Image<a class="headerlink" href="#loading-a-real-satellite-image" title="Link to this heading">#</a></h3>
+</section>
+<section id="exploring-the-dataset-structure">
+<h3><span class="section-number">19.4.3. </span>Exploring the Dataset Structure<a class="headerlink" href="#exploring-the-dataset-structure" title="Link to this heading">#</a></h3>
+</section>
+<section id="accessing-spatial-reference-information">
+<h3><span class="section-number">19.4.4. </span>Accessing Spatial Reference Information<a class="headerlink" href="#accessing-spatial-reference-information" title="Link to this heading">#</a></h3>
+</section>
+<section id="setting-crs-when-missing">
+<h3><span class="section-number">19.4.5. </span>Setting CRS When Missing<a class="headerlink" href="#setting-crs-when-missing" title="Link to this heading">#</a></h3>
 </section>
 </section>
-<section id="working-with-spatial-dimensions">
-<h2><span class="section-number">19.6. </span>Working with Spatial Dimensions<a class="headerlink" href="#working-with-spatial-dimensions" title="Link to this heading">#</a></h2>
-<section id="resampling">
-<h3><span class="section-number">19.6.1. </span>Resampling<a class="headerlink" href="#resampling" title="Link to this heading">#</a></h3>
+<section id="fundamental-geospatial-operations">
+<h2><span class="section-number">19.5. </span>Fundamental Geospatial Operations<a class="headerlink" href="#fundamental-geospatial-operations" title="Link to this heading">#</a></h2>
+<section id="coordinate-system-transformations">
+<h3><span class="section-number">19.5.1. </span>Coordinate System Transformations<a class="headerlink" href="#coordinate-system-transformations" title="Link to this heading">#</a></h3>
 </section>
-<section id="extracting-spatial-subsets">
-<h3><span class="section-number">19.6.2. </span>Extracting Spatial Subsets<a class="headerlink" href="#extracting-spatial-subsets" title="Link to this heading">#</a></h3>
+<section id="spatial-subsetting-with-bounding-boxes">
+<h3><span class="section-number">19.5.2. </span>Spatial Subsetting with Bounding Boxes<a class="headerlink" href="#spatial-subsetting-with-bounding-boxes" title="Link to this heading">#</a></h3>
+</section>
+<section id="vector-based-clipping">
+<h3><span class="section-number">19.5.3. </span>Vector-Based Clipping<a class="headerlink" href="#vector-based-clipping" title="Link to this heading">#</a></h3>
 </section>
 </section>
-<section id="visualization-of-georeferenced-data">
-<h2><span class="section-number">19.7. </span>Visualization of Georeferenced Data<a class="headerlink" href="#visualization-of-georeferenced-data" title="Link to this heading">#</a></h2>
+<section id="working-with-spatial-dimensions-and-resolution">
+<h2><span class="section-number">19.6. </span>Working with Spatial Dimensions and Resolution<a class="headerlink" href="#working-with-spatial-dimensions-and-resolution" title="Link to this heading">#</a></h2>
+<section id="understanding-spatial-resolution">
+<h3><span class="section-number">19.6.1. </span>Understanding Spatial Resolution<a class="headerlink" href="#understanding-spatial-resolution" title="Link to this heading">#</a></h3>
 </section>
-<section id="saving-data">
-<h2><span class="section-number">19.8. </span>Saving Data<a class="headerlink" href="#saving-data" title="Link to this heading">#</a></h2>
+<section id="resampling-to-different-resolutions">
+<h3><span class="section-number">19.6.2. </span>Resampling to Different Resolutions<a class="headerlink" href="#resampling-to-different-resolutions" title="Link to this heading">#</a></h3>
 </section>
-<section id="handling-nodata-values">
-<h2><span class="section-number">19.9. </span>Handling NoData Values<a class="headerlink" href="#handling-nodata-values" title="Link to this heading">#</a></h2>
+<section id="spatial-subsetting-by-coordinates">
+<h3><span class="section-number">19.6.3. </span>Spatial Subsetting by Coordinates<a class="headerlink" href="#spatial-subsetting-by-coordinates" title="Link to this heading">#</a></h3>
 </section>
-<section id="reprojecting-to-multiple-crs">
-<h2><span class="section-number">19.10. </span>Reprojecting to Multiple CRS<a class="headerlink" href="#reprojecting-to-multiple-crs" title="Link to this heading">#</a></h2>
 </section>
-<section id="basic-band-math">
-<h2><span class="section-number">19.11. </span>Basic Band Math<a class="headerlink" href="#basic-band-math" title="Link to this heading">#</a></h2>
+<section id="visualizing-geospatial-raster-data">
+<h2><span class="section-number">19.7. </span>Visualizing Geospatial Raster Data<a class="headerlink" href="#visualizing-geospatial-raster-data" title="Link to this heading">#</a></h2>
+<section id="creating-true-color-composite-images">
+<h3><span class="section-number">19.7.1. </span>Creating True-Color Composite Images<a class="headerlink" href="#creating-true-color-composite-images" title="Link to this heading">#</a></h3>
+</section>
+<section id="visualizing-individual-bands">
+<h3><span class="section-number">19.7.2. </span>Visualizing Individual Bands<a class="headerlink" href="#visualizing-individual-bands" title="Link to this heading">#</a></h3>
+</section>
+<section id="overlaying-vector-data-on-raster-images">
+<h3><span class="section-number">19.7.3. </span>Overlaying Vector Data on Raster Images<a class="headerlink" href="#overlaying-vector-data-on-raster-images" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="data-storage-and-file-management">
+<h2><span class="section-number">19.8. </span>Data Storage and File Management<a class="headerlink" href="#data-storage-and-file-management" title="Link to this heading">#</a></h2>
+<section id="saving-processed-raster-data">
+<h3><span class="section-number">19.8.1. </span>Saving Processed Raster Data<a class="headerlink" href="#saving-processed-raster-data" title="Link to this heading">#</a></h3>
+</section>
+<section id="managing-nodata-values">
+<h3><span class="section-number">19.8.2. </span>Managing NoData Values<a class="headerlink" href="#managing-nodata-values" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="coordinate-system-comparisons">
+<h2><span class="section-number">19.9. </span>Coordinate System Comparisons<a class="headerlink" href="#coordinate-system-comparisons" title="Link to this heading">#</a></h2>
+<section id="side-by-side-coordinate-system-visualization">
+<h3><span class="section-number">19.9.1. </span>Side-by-Side Coordinate System Visualization<a class="headerlink" href="#side-by-side-coordinate-system-visualization" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="introduction-to-band-math">
+<h2><span class="section-number">19.10. </span>Introduction to Band Math<a class="headerlink" href="#introduction-to-band-math" title="Link to this heading">#</a></h2>
+<section id="computing-vegetation-indices">
+<h3><span class="section-number">19.10.1. </span>Computing Vegetation Indices<a class="headerlink" href="#computing-vegetation-indices" title="Link to this heading">#</a></h3>
+</section>
+<section id="visualizing-vegetation-analysis">
+<h3><span class="section-number">19.10.2. </span>Visualizing Vegetation Analysis<a class="headerlink" href="#visualizing-vegetation-analysis" title="Link to this heading">#</a></h3>
+</section>
+<section id="interpreting-ndvi-results">
+<h3><span class="section-number">19.10.3. </span>Interpreting NDVI Results<a class="headerlink" href="#interpreting-ndvi-results" title="Link to this heading">#</a></h3>
+</section>
 </section>
 <section id="key-takeaways">
-<h2><span class="section-number">19.12. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.11. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
 </section>
 <section id="exercises">
-<h2><span class="section-number">19.13. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.12. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <section id="sample-dataset">
-<h3><span class="section-number">19.13.1. </span>Sample Dataset<a class="headerlink" href="#sample-dataset" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.12.1. </span>Sample Dataset<a class="headerlink" href="#sample-dataset" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-1-load-and-inspect-a-raster-dataset">
-<h3><span class="section-number">19.13.2. </span>Exercise 1: Load and Inspect a Raster Dataset<a class="headerlink" href="#exercise-1-load-and-inspect-a-raster-dataset" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.12.2. </span>Exercise 1: Load and Inspect a Raster Dataset<a class="headerlink" href="#exercise-1-load-and-inspect-a-raster-dataset" title="Link to this heading">#</a></h3>
 </section>
-<section id="exercise-2-reproject-the-raster-to-a-new-crs">
-<h3><span class="section-number">19.13.3. </span>Exercise 2: Reproject the Raster to a New CRS<a class="headerlink" href="#exercise-2-reproject-the-raster-to-a-new-crs" title="Link to this heading">#</a></h3>
+<section id="exercise-2-coordinate-system-transformation">
+<h3><span class="section-number">19.12.3. </span>Exercise 2: Coordinate System Transformation<a class="headerlink" href="#exercise-2-coordinate-system-transformation" title="Link to this heading">#</a></h3>
 </section>
-<section id="exercise-3-clip-the-raster-using-a-bounding-box">
-<h3><span class="section-number">19.13.4. </span>Exercise 3: Clip the Raster Using a Bounding Box<a class="headerlink" href="#exercise-3-clip-the-raster-using-a-bounding-box" title="Link to this heading">#</a></h3>
+<section id="exercise-3-spatial-subsetting-with-bounding-boxes">
+<h3><span class="section-number">19.12.4. </span>Exercise 3: Spatial Subsetting with Bounding Boxes<a class="headerlink" href="#exercise-3-spatial-subsetting-with-bounding-boxes" title="Link to this heading">#</a></h3>
 </section>
-<section id="exercise-4-mask-the-raster-using-a-vector-dataset">
-<h3><span class="section-number">19.13.5. </span>Exercise 4: Mask the Raster Using a Vector Dataset<a class="headerlink" href="#exercise-4-mask-the-raster-using-a-vector-dataset" title="Link to this heading">#</a></h3>
+<section id="exercise-4-vector-based-masking">
+<h3><span class="section-number">19.12.5. </span>Exercise 4: Vector-Based Masking<a class="headerlink" href="#exercise-4-vector-based-masking" title="Link to this heading">#</a></h3>
 </section>
-<section id="exercise-5-resample-the-raster-to-a-different-resolution">
-<h3><span class="section-number">19.13.6. </span>Exercise 5: Resample the Raster to a Different Resolution<a class="headerlink" href="#exercise-5-resample-the-raster-to-a-different-resolution" title="Link to this heading">#</a></h3>
+<section id="exercise-5-resolution-analysis-and-data-export">
+<h3><span class="section-number">19.12.6. </span>Exercise 5: Resolution Analysis and Data Export<a class="headerlink" href="#exercise-5-resolution-analysis-and-data-export" title="Link to this heading">#</a></h3>
 </section>
 </section>
 </section>
@@ -680,35 +751,60 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">19.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">19.2. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-rioxarray">19.3. Installing Rioxarray</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-georeferenced-raster-data">19.4. Loading Georeferenced Raster Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-the-dataset">19.4.1. Inspecting the Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-crs-and-transform-information">19.4.2. Checking CRS and Transform Information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-rioxarray-environment">19.3. Setting Up Your Rioxarray Environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-required-libraries">19.3.1. Installing Required Libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries-and-configuration">19.3.2. Importing Libraries and Configuration</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-geospatial-operations">19.5. Basic Geospatial Operations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reprojecting-a-dataset">19.5.1. Reprojecting a Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-a-raster">19.5.2. Clipping a Raster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-and-exploring-georeferenced-raster-data">19.4. Loading and Exploring Georeferenced Raster Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-raster-data-structure">19.4.1. Understanding Raster Data Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-a-real-satellite-image">19.4.2. Loading a Real Satellite Image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-dataset-structure">19.4.3. Exploring the Dataset Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-spatial-reference-information">19.4.4. Accessing Spatial Reference Information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-crs-when-missing">19.4.5. Setting CRS When Missing</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-spatial-dimensions">19.6. Working with Spatial Dimensions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling">19.6.1. Resampling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-spatial-subsets">19.6.2. Extracting Spatial Subsets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-geospatial-operations">19.5. Fundamental Geospatial Operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-system-transformations">19.5.1. Coordinate System Transformations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-subsetting-with-bounding-boxes">19.5.2. Spatial Subsetting with Bounding Boxes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-based-clipping">19.5.3. Vector-Based Clipping</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-georeferenced-data">19.7. Visualization of Georeferenced Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data">19.8. Saving Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-nodata-values">19.9. Handling NoData Values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reprojecting-to-multiple-crs">19.10. Reprojecting to Multiple CRS</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-band-math">19.11. Basic Band Math</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">19.12. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">19.13. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-dataset">19.13.1. Sample Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-load-and-inspect-a-raster-dataset">19.13.2. Exercise 1: Load and Inspect a Raster Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-reproject-the-raster-to-a-new-crs">19.13.3. Exercise 2: Reproject the Raster to a New CRS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-clip-the-raster-using-a-bounding-box">19.13.4. Exercise 3: Clip the Raster Using a Bounding Box</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-mask-the-raster-using-a-vector-dataset">19.13.5. Exercise 4: Mask the Raster Using a Vector Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-resample-the-raster-to-a-different-resolution">19.13.6. Exercise 5: Resample the Raster to a Different Resolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-spatial-dimensions-and-resolution">19.6. Working with Spatial Dimensions and Resolution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-spatial-resolution">19.6.1. Understanding Spatial Resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling-to-different-resolutions">19.6.2. Resampling to Different Resolutions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-subsetting-by-coordinates">19.6.3. Spatial Subsetting by Coordinates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-geospatial-raster-data">19.7. Visualizing Geospatial Raster Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-true-color-composite-images">19.7.1. Creating True-Color Composite Images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-individual-bands">19.7.2. Visualizing Individual Bands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overlaying-vector-data-on-raster-images">19.7.3. Overlaying Vector Data on Raster Images</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage-and-file-management">19.8. Data Storage and File Management</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-processed-raster-data">19.8.1. Saving Processed Raster Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-nodata-values">19.8.2. Managing NoData Values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-system-comparisons">19.9. Coordinate System Comparisons</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#side-by-side-coordinate-system-visualization">19.9.1. Side-by-Side Coordinate System Visualization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-band-math">19.10. Introduction to Band Math</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-vegetation-indices">19.10.1. Computing Vegetation Indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-vegetation-analysis">19.10.2. Visualizing Vegetation Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-ndvi-results">19.10.3. Interpreting NDVI Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">19.11. Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">19.12. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-dataset">19.12.1. Sample Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-load-and-inspect-a-raster-dataset">19.12.2. Exercise 1: Load and Inspect a Raster Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-coordinate-system-transformation">19.12.3. Exercise 2: Coordinate System Transformation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-spatial-subsetting-with-bounding-boxes">19.12.4. Exercise 3: Spatial Subsetting with Bounding Boxes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-vector-based-masking">19.12.5. Exercise 4: Vector-Based Masking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-resolution-analysis-and-data-export">19.12.6. Exercise 5: Resolution Analysis and Data Export</a></li>
 </ul>
 </li>
 </ul>

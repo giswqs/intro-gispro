@@ -62,7 +62,7 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="23. Cloud Computing with Geemap" href="geemap.html" />
+    <link rel="next" title="23. Cloud Computing with Earth Engine and Geemap" href="geemap.html" />
     <link rel="prev" title="21. Geoprocessing with WhiteboxTools" href="whitebox.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -201,17 +201,18 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="get-started.html">15. Introduction to Geospatial Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geopandas.html">16. Vector Data Analysis with GeoPandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data using Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data Using Rasterio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xarray.html">18. Multi-dimensional Data Analysis with Xarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rioxarray.html">19. Raster Analysis with Rioxarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="leafmap.html">20. Interactive Visualization with Leafmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="whitebox.html">21. Geoprocessing with WhiteboxTools</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">22. 3D Mapping with MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Earth Engine and Geemap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hypercoast.html">24. Hyperspectral Data Visualization with HyperCoast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. Spatial Database Analysis with DuckDB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. GDAL and OGR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Web Apps with Voila and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. High-Performance Geospatial Analytics with DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. Geospatial Data Processing with GDAL and OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Dashboards with Voilà and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sedona.html">28. Distributed Computing with Apache Sedona</a></li>
 </ul>
 
     </div>
@@ -514,13 +515,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-basemaps">22.7.1. Adding Basemaps</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-xyz-tile-layer">22.7.2. Adding XYZ Tile Layer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-wms-layer">22.7.3. Adding WMS Layer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-raster-tiles">22.7.4. Adding Raster Tiles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-maptiler">22.8. Using MapTiler</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-vector-tile-source">22.8.1. Adding a vector tile source</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-maptiler">22.8. Using MapTiler</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-mapping">22.9. 3D Mapping</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-terrain">22.9.1. 3D Terrain</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-buildings">22.9.2. 3D Buildings</a></li>
@@ -529,17 +526,18 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-vector-data">22.10. Visualizing Vector Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-data">22.10.1. Point Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-marker-icon-image">22.10.2. Customizing Marker Icon Image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-data">22.10.3. Line Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polygon-data">22.10.4. Polygon Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-geometries">22.10.5. Multiple Geometries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marker-cluster">22.10.6. Marker Cluster</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-vector-data">22.10.7. Local Vector Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-building-color">22.10.8. Changing Building Color</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-new-layer-below-labels">22.10.9. Adding a New Layer Below Labels</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heat-map">22.10.10. Heat Map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-population-density">22.10.11. Visualizing Population Density</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-data">22.10.1. Point Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-marker-icon-image">22.10.1.1. Customizing Marker Icon Image</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-data">22.10.2. Line Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polygon-data">22.10.3. Polygon Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-geometries">22.10.4. Multiple Geometries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marker-cluster">22.10.5. Marker Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-vector-data">22.10.6. Local Vector Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-building-color">22.10.7. Changing Building Color</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-new-layer-below-labels">22.10.8. Adding a New Layer Below Labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-population-density">22.10.9. Visualizing Population Density</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-raster-data">22.11. Visualizing Raster Data</a><ul class="nav section-nav flex-column">
@@ -548,64 +546,38 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stac-layer">22.11.3. STAC Layer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interacting-with-the-map">22.12. Interacting with the Map</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#displaying-a-non-interactive-map">22.12.1. Displaying a Non-Interactive Map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disabling-scroll-zoom">22.12.2. Disabling Scroll Zoom</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-bounds">22.12.3. Fitting Bounds</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#restricting-map-panning-to-an-area">22.12.4. Restricting Map Panning to an Area</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flying-to">22.12.5. Flying To</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumping-to-a-series-of-locations">22.12.6. Jumping to a Series of Locations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-coordinates-of-the-mouse-pointer">22.12.7. Getting Coordinates of the Mouse Pointer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-custom-components">22.12. Adding Custom Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-image">22.12.1. Adding Image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-text">22.12.2. Adding Text</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-gif">22.12.3. Adding GIF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-html">22.12.4. Adding HTML</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-color-bar">22.12.5. Adding Color bar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-legend">22.12.6. Adding Legend</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-video">22.12.7. Adding Video</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-layer-styles">22.13. Customizing Layer Styles</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-layer-color">22.13.1. Changing Layer Color</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-case-of-labels">22.13.2. Changing Case of Labels</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-label-placement">22.13.3. Variable Label Placement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-pmtiles">22.13. Visualizing PMTiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-footprint-data">22.13.1. Building Footprint Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fields-of-the-world">22.13.2. Fields of The World</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pmtiles">22.13.3. 3D PMTiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">22.13.4. 3D Buildings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-buildings-transportation-and-other-themes">22.13.5. 2D Buildings, Transportation, and Other Themes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-custom-components">22.14. Adding Custom Components</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-image">22.14.1. Adding Image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-text">22.14.2. Adding Text</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-gif">22.14.3. Adding GIF</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-html">22.14.4. Adding HTML</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-color-bar">22.14.5. Adding Color bar</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-legend">22.14.6. Adding Legend</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-video">22.14.7. Adding Video</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-deckgl-layers">22.14. Adding DeckGL Layers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-deckgl-layer">22.14.1. Single DeckGL Layer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-deckgl-layers">22.14.2. Multiple DeckGL Layers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-pmtiles">22.15. Visualizing PMTiles</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protomaps-sample-data">22.15.1. Protomaps Sample Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-footprint-data">22.15.2. Building Footprint Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fields-of-the-world">22.15.3. Fields of The World</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pmtiles">22.15.4. 3D PMTiles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">22.15.5. 3D Buildings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-buildings-transportation-and-other-themes">22.15.6. 2D Buildings, Transportation, and Other Themes</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-deckgl-layers">22.16. Adding DeckGL Layers</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-deckgl-layer">22.16.1. Single DeckGL Layer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-deckgl-layers">22.16.2. Multiple DeckGL Layers</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-google-earth-engine-data-layers">22.17. Adding Google Earth Engine Data Layers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#animating-geospatial-data">22.18. Animating Geospatial Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animating-a-line">22.18.1. Animating a Line</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animating-the-map-camera-around-a-point">22.18.2. Animating the Map Camera Around a Point</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animating-a-point">22.18.3. Animating a Point</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animating-a-point-along-a-route">22.18.4. Animating a Point Along a Route</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-feature-in-real-time">22.18.5. Updating a Feature in Real-Time</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-to-html">22.19. Exporting to HTML</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">22.20. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">22.21. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-setting-up-maplibre-and-basic-map-creation">22.21.1. Exercise 1: Setting up MapLibre and Basic Map Creation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-customizing-the-map-view">22.21.2. Exercise 2: Customizing the Map View</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-adding-map-controls">22.21.3. Exercise 3: Adding Map Controls</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-overlaying-data-layers">22.21.4. Exercise 4: Overlaying Data Layers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-working-with-3d-buildings">22.21.5. Exercise 5: Working with 3D Buildings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-adding-map-elements">22.21.6. Exercise 6: Adding Map Elements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-to-html">22.15. Exporting to HTML</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">22.16. Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">22.17. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-setting-up-maplibre-and-basic-map-creation">22.17.1. Exercise 1: Setting up MapLibre and Basic Map Creation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-customizing-the-map-view">22.17.2. Exercise 2: Customizing the Map View</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-adding-map-controls">22.17.3. Exercise 3: Adding Map Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-overlaying-data-layers">22.17.4. Exercise 4: Overlaying Data Layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-working-with-3d-buildings">22.17.5. Exercise 5: Working with 3D Buildings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-adding-map-elements">22.17.6. Exercise 6: Adding Map Elements</a></li>
 </ul>
 </li>
 </ul>
@@ -677,15 +649,9 @@ document.write(`
 <section id="adding-wms-layer">
 <h3><span class="section-number">22.7.3. </span>Adding WMS Layer<a class="headerlink" href="#adding-wms-layer" title="Link to this heading">#</a></h3>
 </section>
-<section id="adding-raster-tiles">
-<h3><span class="section-number">22.7.4. </span>Adding Raster Tiles<a class="headerlink" href="#adding-raster-tiles" title="Link to this heading">#</a></h3>
-</section>
 </section>
 <section id="using-maptiler">
 <h2><span class="section-number">22.8. </span>Using MapTiler<a class="headerlink" href="#using-maptiler" title="Link to this heading">#</a></h2>
-<section id="adding-a-vector-tile-source">
-<h3><span class="section-number">22.8.1. </span>Adding a vector tile source<a class="headerlink" href="#adding-a-vector-tile-source" title="Link to this heading">#</a></h3>
-</section>
 </section>
 <section id="d-mapping">
 <h2><span class="section-number">22.9. </span>3D Mapping<a class="headerlink" href="#d-mapping" title="Link to this heading">#</a></h2>
@@ -706,36 +672,33 @@ document.write(`
 <h2><span class="section-number">22.10. </span>Visualizing Vector Data<a class="headerlink" href="#visualizing-vector-data" title="Link to this heading">#</a></h2>
 <section id="point-data">
 <h3><span class="section-number">22.10.1. </span>Point Data<a class="headerlink" href="#point-data" title="Link to this heading">#</a></h3>
-</section>
 <section id="customizing-marker-icon-image">
-<h3><span class="section-number">22.10.2. </span>Customizing Marker Icon Image<a class="headerlink" href="#customizing-marker-icon-image" title="Link to this heading">#</a></h3>
+<h4><span class="section-number">22.10.1.1. </span>Customizing Marker Icon Image<a class="headerlink" href="#customizing-marker-icon-image" title="Link to this heading">#</a></h4>
+</section>
 </section>
 <section id="line-data">
-<h3><span class="section-number">22.10.3. </span>Line Data<a class="headerlink" href="#line-data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.10.2. </span>Line Data<a class="headerlink" href="#line-data" title="Link to this heading">#</a></h3>
 </section>
 <section id="polygon-data">
-<h3><span class="section-number">22.10.4. </span>Polygon Data<a class="headerlink" href="#polygon-data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.10.3. </span>Polygon Data<a class="headerlink" href="#polygon-data" title="Link to this heading">#</a></h3>
 </section>
 <section id="multiple-geometries">
-<h3><span class="section-number">22.10.5. </span>Multiple Geometries<a class="headerlink" href="#multiple-geometries" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.10.4. </span>Multiple Geometries<a class="headerlink" href="#multiple-geometries" title="Link to this heading">#</a></h3>
 </section>
 <section id="marker-cluster">
-<h3><span class="section-number">22.10.6. </span>Marker Cluster<a class="headerlink" href="#marker-cluster" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.10.5. </span>Marker Cluster<a class="headerlink" href="#marker-cluster" title="Link to this heading">#</a></h3>
 </section>
 <section id="local-vector-data">
-<h3><span class="section-number">22.10.7. </span>Local Vector Data<a class="headerlink" href="#local-vector-data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.10.6. </span>Local Vector Data<a class="headerlink" href="#local-vector-data" title="Link to this heading">#</a></h3>
 </section>
 <section id="changing-building-color">
-<h3><span class="section-number">22.10.8. </span>Changing Building Color<a class="headerlink" href="#changing-building-color" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.10.7. </span>Changing Building Color<a class="headerlink" href="#changing-building-color" title="Link to this heading">#</a></h3>
 </section>
 <section id="adding-a-new-layer-below-labels">
-<h3><span class="section-number">22.10.9. </span>Adding a New Layer Below Labels<a class="headerlink" href="#adding-a-new-layer-below-labels" title="Link to this heading">#</a></h3>
-</section>
-<section id="heat-map">
-<h3><span class="section-number">22.10.10. </span>Heat Map<a class="headerlink" href="#heat-map" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.10.8. </span>Adding a New Layer Below Labels<a class="headerlink" href="#adding-a-new-layer-below-labels" title="Link to this heading">#</a></h3>
 </section>
 <section id="visualizing-population-density">
-<h3><span class="section-number">22.10.11. </span>Visualizing Population Density<a class="headerlink" href="#visualizing-population-density" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.10.9. </span>Visualizing Population Density<a class="headerlink" href="#visualizing-population-density" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="visualizing-raster-data">
@@ -750,142 +713,82 @@ document.write(`
 <h3><span class="section-number">22.11.3. </span>STAC Layer<a class="headerlink" href="#stac-layer" title="Link to this heading">#</a></h3>
 </section>
 </section>
-<section id="interacting-with-the-map">
-<h2><span class="section-number">22.12. </span>Interacting with the Map<a class="headerlink" href="#interacting-with-the-map" title="Link to this heading">#</a></h2>
-<section id="displaying-a-non-interactive-map">
-<h3><span class="section-number">22.12.1. </span>Displaying a Non-Interactive Map<a class="headerlink" href="#displaying-a-non-interactive-map" title="Link to this heading">#</a></h3>
-</section>
-<section id="disabling-scroll-zoom">
-<h3><span class="section-number">22.12.2. </span>Disabling Scroll Zoom<a class="headerlink" href="#disabling-scroll-zoom" title="Link to this heading">#</a></h3>
-</section>
-<section id="fitting-bounds">
-<h3><span class="section-number">22.12.3. </span>Fitting Bounds<a class="headerlink" href="#fitting-bounds" title="Link to this heading">#</a></h3>
-</section>
-<section id="restricting-map-panning-to-an-area">
-<h3><span class="section-number">22.12.4. </span>Restricting Map Panning to an Area<a class="headerlink" href="#restricting-map-panning-to-an-area" title="Link to this heading">#</a></h3>
-</section>
-<section id="flying-to">
-<h3><span class="section-number">22.12.5. </span>Flying To<a class="headerlink" href="#flying-to" title="Link to this heading">#</a></h3>
-</section>
-<section id="jumping-to-a-series-of-locations">
-<h3><span class="section-number">22.12.6. </span>Jumping to a Series of Locations<a class="headerlink" href="#jumping-to-a-series-of-locations" title="Link to this heading">#</a></h3>
-</section>
-<section id="getting-coordinates-of-the-mouse-pointer">
-<h3><span class="section-number">22.12.7. </span>Getting Coordinates of the Mouse Pointer<a class="headerlink" href="#getting-coordinates-of-the-mouse-pointer" title="Link to this heading">#</a></h3>
-</section>
-</section>
-<section id="customizing-layer-styles">
-<h2><span class="section-number">22.13. </span>Customizing Layer Styles<a class="headerlink" href="#customizing-layer-styles" title="Link to this heading">#</a></h2>
-<section id="changing-layer-color">
-<h3><span class="section-number">22.13.1. </span>Changing Layer Color<a class="headerlink" href="#changing-layer-color" title="Link to this heading">#</a></h3>
-</section>
-<section id="changing-case-of-labels">
-<h3><span class="section-number">22.13.2. </span>Changing Case of Labels<a class="headerlink" href="#changing-case-of-labels" title="Link to this heading">#</a></h3>
-</section>
-<section id="variable-label-placement">
-<h3><span class="section-number">22.13.3. </span>Variable Label Placement<a class="headerlink" href="#variable-label-placement" title="Link to this heading">#</a></h3>
-</section>
-</section>
 <section id="adding-custom-components">
-<h2><span class="section-number">22.14. </span>Adding Custom Components<a class="headerlink" href="#adding-custom-components" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.12. </span>Adding Custom Components<a class="headerlink" href="#adding-custom-components" title="Link to this heading">#</a></h2>
 <section id="adding-image">
-<h3><span class="section-number">22.14.1. </span>Adding Image<a class="headerlink" href="#adding-image" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.12.1. </span>Adding Image<a class="headerlink" href="#adding-image" title="Link to this heading">#</a></h3>
 </section>
 <section id="adding-text">
-<h3><span class="section-number">22.14.2. </span>Adding Text<a class="headerlink" href="#adding-text" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.12.2. </span>Adding Text<a class="headerlink" href="#adding-text" title="Link to this heading">#</a></h3>
 </section>
 <section id="adding-gif">
-<h3><span class="section-number">22.14.3. </span>Adding GIF<a class="headerlink" href="#adding-gif" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.12.3. </span>Adding GIF<a class="headerlink" href="#adding-gif" title="Link to this heading">#</a></h3>
 </section>
 <section id="adding-html">
-<h3><span class="section-number">22.14.4. </span>Adding HTML<a class="headerlink" href="#adding-html" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.12.4. </span>Adding HTML<a class="headerlink" href="#adding-html" title="Link to this heading">#</a></h3>
 </section>
 <section id="adding-color-bar">
-<h3><span class="section-number">22.14.5. </span>Adding Color bar<a class="headerlink" href="#adding-color-bar" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.12.5. </span>Adding Color bar<a class="headerlink" href="#adding-color-bar" title="Link to this heading">#</a></h3>
 </section>
 <section id="adding-legend">
-<h3><span class="section-number">22.14.6. </span>Adding Legend<a class="headerlink" href="#adding-legend" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.12.6. </span>Adding Legend<a class="headerlink" href="#adding-legend" title="Link to this heading">#</a></h3>
 </section>
 <section id="adding-video">
-<h3><span class="section-number">22.14.7. </span>Adding Video<a class="headerlink" href="#adding-video" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.12.7. </span>Adding Video<a class="headerlink" href="#adding-video" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="visualizing-pmtiles">
-<h2><span class="section-number">22.15. </span>Visualizing PMTiles<a class="headerlink" href="#visualizing-pmtiles" title="Link to this heading">#</a></h2>
-<section id="protomaps-sample-data">
-<h3><span class="section-number">22.15.1. </span>Protomaps Sample Data<a class="headerlink" href="#protomaps-sample-data" title="Link to this heading">#</a></h3>
-</section>
+<h2><span class="section-number">22.13. </span>Visualizing PMTiles<a class="headerlink" href="#visualizing-pmtiles" title="Link to this heading">#</a></h2>
 <section id="building-footprint-data">
-<h3><span class="section-number">22.15.2. </span>Building Footprint Data<a class="headerlink" href="#building-footprint-data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.13.1. </span>Building Footprint Data<a class="headerlink" href="#building-footprint-data" title="Link to this heading">#</a></h3>
 </section>
 <section id="fields-of-the-world">
-<h3><span class="section-number">22.15.3. </span>Fields of The World<a class="headerlink" href="#fields-of-the-world" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.13.2. </span>Fields of The World<a class="headerlink" href="#fields-of-the-world" title="Link to this heading">#</a></h3>
 </section>
 <section id="d-pmtiles">
-<h3><span class="section-number">22.15.4. </span>3D PMTiles<a class="headerlink" href="#d-pmtiles" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.13.3. </span>3D PMTiles<a class="headerlink" href="#d-pmtiles" title="Link to this heading">#</a></h3>
 </section>
 <section id="id1">
-<h3><span class="section-number">22.15.5. </span>3D Buildings<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.13.4. </span>3D Buildings<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 </section>
 <section id="d-buildings-transportation-and-other-themes">
-<h3><span class="section-number">22.15.6. </span>2D Buildings, Transportation, and Other Themes<a class="headerlink" href="#d-buildings-transportation-and-other-themes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.13.5. </span>2D Buildings, Transportation, and Other Themes<a class="headerlink" href="#d-buildings-transportation-and-other-themes" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="adding-deckgl-layers">
-<h2><span class="section-number">22.16. </span>Adding DeckGL Layers<a class="headerlink" href="#adding-deckgl-layers" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.14. </span>Adding DeckGL Layers<a class="headerlink" href="#adding-deckgl-layers" title="Link to this heading">#</a></h2>
 <section id="single-deckgl-layer">
-<h3><span class="section-number">22.16.1. </span>Single DeckGL Layer<a class="headerlink" href="#single-deckgl-layer" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.14.1. </span>Single DeckGL Layer<a class="headerlink" href="#single-deckgl-layer" title="Link to this heading">#</a></h3>
 </section>
 <section id="multiple-deckgl-layers">
-<h3><span class="section-number">22.16.2. </span>Multiple DeckGL Layers<a class="headerlink" href="#multiple-deckgl-layers" title="Link to this heading">#</a></h3>
-</section>
-</section>
-<section id="adding-google-earth-engine-data-layers">
-<h2><span class="section-number">22.17. </span>Adding Google Earth Engine Data Layers<a class="headerlink" href="#adding-google-earth-engine-data-layers" title="Link to this heading">#</a></h2>
-</section>
-<section id="animating-geospatial-data">
-<h2><span class="section-number">22.18. </span>Animating Geospatial Data<a class="headerlink" href="#animating-geospatial-data" title="Link to this heading">#</a></h2>
-<section id="animating-a-line">
-<h3><span class="section-number">22.18.1. </span>Animating a Line<a class="headerlink" href="#animating-a-line" title="Link to this heading">#</a></h3>
-</section>
-<section id="animating-the-map-camera-around-a-point">
-<h3><span class="section-number">22.18.2. </span>Animating the Map Camera Around a Point<a class="headerlink" href="#animating-the-map-camera-around-a-point" title="Link to this heading">#</a></h3>
-</section>
-<section id="animating-a-point">
-<h3><span class="section-number">22.18.3. </span>Animating a Point<a class="headerlink" href="#animating-a-point" title="Link to this heading">#</a></h3>
-</section>
-<section id="animating-a-point-along-a-route">
-<h3><span class="section-number">22.18.4. </span>Animating a Point Along a Route<a class="headerlink" href="#animating-a-point-along-a-route" title="Link to this heading">#</a></h3>
-</section>
-<section id="updating-a-feature-in-real-time">
-<h3><span class="section-number">22.18.5. </span>Updating a Feature in Real-Time<a class="headerlink" href="#updating-a-feature-in-real-time" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.14.2. </span>Multiple DeckGL Layers<a class="headerlink" href="#multiple-deckgl-layers" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="exporting-to-html">
-<h2><span class="section-number">22.19. </span>Exporting to HTML<a class="headerlink" href="#exporting-to-html" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.15. </span>Exporting to HTML<a class="headerlink" href="#exporting-to-html" title="Link to this heading">#</a></h2>
 </section>
 <section id="key-takeaways">
-<h2><span class="section-number">22.20. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.16. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
 </section>
 <section id="exercises">
-<h2><span class="section-number">22.21. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">22.17. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <section id="exercise-1-setting-up-maplibre-and-basic-map-creation">
-<h3><span class="section-number">22.21.1. </span>Exercise 1: Setting up MapLibre and Basic Map Creation<a class="headerlink" href="#exercise-1-setting-up-maplibre-and-basic-map-creation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.17.1. </span>Exercise 1: Setting up MapLibre and Basic Map Creation<a class="headerlink" href="#exercise-1-setting-up-maplibre-and-basic-map-creation" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-2-customizing-the-map-view">
-<h3><span class="section-number">22.21.2. </span>Exercise 2: Customizing the Map View<a class="headerlink" href="#exercise-2-customizing-the-map-view" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.17.2. </span>Exercise 2: Customizing the Map View<a class="headerlink" href="#exercise-2-customizing-the-map-view" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-3-adding-map-controls">
-<h3><span class="section-number">22.21.3. </span>Exercise 3: Adding Map Controls<a class="headerlink" href="#exercise-3-adding-map-controls" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.17.3. </span>Exercise 3: Adding Map Controls<a class="headerlink" href="#exercise-3-adding-map-controls" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-4-overlaying-data-layers">
-<h3><span class="section-number">22.21.4. </span>Exercise 4: Overlaying Data Layers<a class="headerlink" href="#exercise-4-overlaying-data-layers" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.17.4. </span>Exercise 4: Overlaying Data Layers<a class="headerlink" href="#exercise-4-overlaying-data-layers" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-5-working-with-3d-buildings">
-<h3><span class="section-number">22.21.5. </span>Exercise 5: Working with 3D Buildings<a class="headerlink" href="#exercise-5-working-with-3d-buildings" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.17.5. </span>Exercise 5: Working with 3D Buildings<a class="headerlink" href="#exercise-5-working-with-3d-buildings" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-6-adding-map-elements">
-<h3><span class="section-number">22.21.6. </span>Exercise 6: Adding Map Elements<a class="headerlink" href="#exercise-6-adding-map-elements" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">22.17.6. </span>Exercise 6: Adding Map Elements<a class="headerlink" href="#exercise-6-adding-map-elements" title="Link to this heading">#</a></h3>
 </section>
 </section>
 </section>
@@ -934,7 +837,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">23. </span>Cloud Computing with Geemap</p>
+        <p class="prev-next-title"><span class="section-number">23. </span>Cloud Computing with Earth Engine and Geemap</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -977,13 +880,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-basemaps">22.7.1. Adding Basemaps</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-xyz-tile-layer">22.7.2. Adding XYZ Tile Layer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-wms-layer">22.7.3. Adding WMS Layer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-raster-tiles">22.7.4. Adding Raster Tiles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-maptiler">22.8. Using MapTiler</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-vector-tile-source">22.8.1. Adding a vector tile source</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-maptiler">22.8. Using MapTiler</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-mapping">22.9. 3D Mapping</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-terrain">22.9.1. 3D Terrain</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-buildings">22.9.2. 3D Buildings</a></li>
@@ -992,17 +891,18 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-vector-data">22.10. Visualizing Vector Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-data">22.10.1. Point Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-marker-icon-image">22.10.2. Customizing Marker Icon Image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-data">22.10.3. Line Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polygon-data">22.10.4. Polygon Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-geometries">22.10.5. Multiple Geometries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marker-cluster">22.10.6. Marker Cluster</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-vector-data">22.10.7. Local Vector Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-building-color">22.10.8. Changing Building Color</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-new-layer-below-labels">22.10.9. Adding a New Layer Below Labels</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heat-map">22.10.10. Heat Map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-population-density">22.10.11. Visualizing Population Density</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-data">22.10.1. Point Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-marker-icon-image">22.10.1.1. Customizing Marker Icon Image</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-data">22.10.2. Line Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polygon-data">22.10.3. Polygon Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-geometries">22.10.4. Multiple Geometries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marker-cluster">22.10.5. Marker Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-vector-data">22.10.6. Local Vector Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-building-color">22.10.7. Changing Building Color</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-new-layer-below-labels">22.10.8. Adding a New Layer Below Labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-population-density">22.10.9. Visualizing Population Density</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-raster-data">22.11. Visualizing Raster Data</a><ul class="nav section-nav flex-column">
@@ -1011,64 +911,38 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stac-layer">22.11.3. STAC Layer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interacting-with-the-map">22.12. Interacting with the Map</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#displaying-a-non-interactive-map">22.12.1. Displaying a Non-Interactive Map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disabling-scroll-zoom">22.12.2. Disabling Scroll Zoom</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-bounds">22.12.3. Fitting Bounds</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#restricting-map-panning-to-an-area">22.12.4. Restricting Map Panning to an Area</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flying-to">22.12.5. Flying To</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumping-to-a-series-of-locations">22.12.6. Jumping to a Series of Locations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-coordinates-of-the-mouse-pointer">22.12.7. Getting Coordinates of the Mouse Pointer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-custom-components">22.12. Adding Custom Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-image">22.12.1. Adding Image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-text">22.12.2. Adding Text</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-gif">22.12.3. Adding GIF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-html">22.12.4. Adding HTML</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-color-bar">22.12.5. Adding Color bar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-legend">22.12.6. Adding Legend</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-video">22.12.7. Adding Video</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-layer-styles">22.13. Customizing Layer Styles</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-layer-color">22.13.1. Changing Layer Color</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-case-of-labels">22.13.2. Changing Case of Labels</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-label-placement">22.13.3. Variable Label Placement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-pmtiles">22.13. Visualizing PMTiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-footprint-data">22.13.1. Building Footprint Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fields-of-the-world">22.13.2. Fields of The World</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pmtiles">22.13.3. 3D PMTiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">22.13.4. 3D Buildings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-buildings-transportation-and-other-themes">22.13.5. 2D Buildings, Transportation, and Other Themes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-custom-components">22.14. Adding Custom Components</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-image">22.14.1. Adding Image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-text">22.14.2. Adding Text</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-gif">22.14.3. Adding GIF</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-html">22.14.4. Adding HTML</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-color-bar">22.14.5. Adding Color bar</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-legend">22.14.6. Adding Legend</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-video">22.14.7. Adding Video</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-deckgl-layers">22.14. Adding DeckGL Layers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-deckgl-layer">22.14.1. Single DeckGL Layer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-deckgl-layers">22.14.2. Multiple DeckGL Layers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-pmtiles">22.15. Visualizing PMTiles</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protomaps-sample-data">22.15.1. Protomaps Sample Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-footprint-data">22.15.2. Building Footprint Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fields-of-the-world">22.15.3. Fields of The World</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pmtiles">22.15.4. 3D PMTiles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">22.15.5. 3D Buildings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-buildings-transportation-and-other-themes">22.15.6. 2D Buildings, Transportation, and Other Themes</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-deckgl-layers">22.16. Adding DeckGL Layers</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-deckgl-layer">22.16.1. Single DeckGL Layer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-deckgl-layers">22.16.2. Multiple DeckGL Layers</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-google-earth-engine-data-layers">22.17. Adding Google Earth Engine Data Layers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#animating-geospatial-data">22.18. Animating Geospatial Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animating-a-line">22.18.1. Animating a Line</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animating-the-map-camera-around-a-point">22.18.2. Animating the Map Camera Around a Point</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animating-a-point">22.18.3. Animating a Point</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#animating-a-point-along-a-route">22.18.4. Animating a Point Along a Route</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-feature-in-real-time">22.18.5. Updating a Feature in Real-Time</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-to-html">22.19. Exporting to HTML</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">22.20. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">22.21. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-setting-up-maplibre-and-basic-map-creation">22.21.1. Exercise 1: Setting up MapLibre and Basic Map Creation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-customizing-the-map-view">22.21.2. Exercise 2: Customizing the Map View</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-adding-map-controls">22.21.3. Exercise 3: Adding Map Controls</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-overlaying-data-layers">22.21.4. Exercise 4: Overlaying Data Layers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-working-with-3d-buildings">22.21.5. Exercise 5: Working with 3D Buildings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-adding-map-elements">22.21.6. Exercise 6: Adding Map Elements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-to-html">22.15. Exporting to HTML</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">22.16. Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">22.17. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-setting-up-maplibre-and-basic-map-creation">22.17.1. Exercise 1: Setting up MapLibre and Basic Map Creation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-customizing-the-map-view">22.17.2. Exercise 2: Customizing the Map View</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-adding-map-controls">22.17.3. Exercise 3: Adding Map Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-overlaying-data-layers">22.17.4. Exercise 4: Overlaying Data Layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-working-with-3d-buildings">22.17.5. Exercise 5: Working with 3D Buildings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-adding-map-elements">22.17.6. Exercise 6: Adding Map Elements</a></li>
 </ul>
 </li>
 </ul>

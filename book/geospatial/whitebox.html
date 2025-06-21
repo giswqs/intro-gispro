@@ -201,17 +201,18 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="get-started.html">15. Introduction to Geospatial Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geopandas.html">16. Vector Data Analysis with GeoPandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data using Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data Using Rasterio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xarray.html">18. Multi-dimensional Data Analysis with Xarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rioxarray.html">19. Raster Analysis with Rioxarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="leafmap.html">20. Interactive Visualization with Leafmap</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">21. Geoprocessing with WhiteboxTools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maplibre.html">22. 3D Mapping with MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Earth Engine and Geemap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hypercoast.html">24. Hyperspectral Data Visualization with HyperCoast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. Spatial Database Analysis with DuckDB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. GDAL and OGR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Web Apps with Voila and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. High-Performance Geospatial Analytics with DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. Geospatial Data Processing with GDAL and OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Dashboards with Voilà and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sedona.html">28. Distributed Computing with Apache Sedona</a></li>
 </ul>
 
     </div>
@@ -500,7 +501,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-resources-for-whitebox">21.4. Useful Resources for Whitebox</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">21.5. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-whitebox">21.5. Installing Whitebox</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watershed-analysis">21.6. Watershed Analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-interactive-maps">21.6.1. Create Interactive Maps</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-watershed-data">21.6.2. Download Watershed Data</a></li>
@@ -508,21 +509,22 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-dem-metadata">21.6.4. Get DEM metadata</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-colorbar">21.6.5. Add colorbar</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-whiteboxtools">21.6.6. Initialize WhiteboxTools</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-working-directory">21.6.7. Set working directory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smooth-dem">21.6.8. Smooth DEM</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-hillshade">21.6.9. Create hillshade</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-no-flow-cells">21.6.10. Find no-flow cells</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fill-depressions">21.6.11. Fill depressions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-flow-direction">21.6.12. Delineate flow direction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-flow-accumulation">21.6.13. Calculate flow accumulation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-streams">21.6.14. Extract streams</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-distance-to-outlet">21.6.15. Calculate distance to outlet</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorize-streams">21.6.16. Vectorize streams</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-the-longest-flow-path">21.6.17. Delineate the longest flow path</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-pour-point">21.6.18. Generate a pour point</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snap-pour-point-to-stream">21.6.19. Snap pour point to stream</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-watershed">21.6.20. Delineate watershed</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-watershed-raster-to-vector">21.6.21. Convert watershed raster to vector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">21.6.7. Initialize WhiteboxTools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-working-directory">21.6.8. Set working directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smooth-dem">21.6.9. Smooth DEM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-hillshade">21.6.10. Create hillshade</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-no-flow-cells">21.6.11. Find no-flow cells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fill-depressions">21.6.12. Fill depressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-flow-direction">21.6.13. Delineate flow direction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-flow-accumulation">21.6.14. Calculate flow accumulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-streams">21.6.15. Extract streams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-distance-to-outlet">21.6.16. Calculate distance to outlet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorize-streams">21.6.17. Vectorize streams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-the-longest-flow-path">21.6.18. Delineate the longest flow path</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-pour-point">21.6.19. Generate a pour point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snap-pour-point-to-stream">21.6.20. Snap pour point to stream</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-watershed">21.6.21. Delineate watershed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-watershed-raster-to-vector">21.6.22. Convert watershed raster to vector</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lidar-data-analysis">21.7. LiDAR Data Analysis</a><ul class="nav section-nav flex-column">
@@ -543,7 +545,11 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">21.8. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">21.9. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">21.9. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-watershed-analysis-for-a-different-location">21.9.1. Exercise 1: Watershed Analysis for a Different Location</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-lidar-analysis-for-forest-structure-assessment">21.9.2. Exercise 2: LiDAR Analysis for Forest Structure Assessment</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -578,8 +584,8 @@ document.write(`
 <section id="useful-resources-for-whitebox">
 <h2><span class="section-number">21.4. </span>Useful Resources for Whitebox<a class="headerlink" href="#useful-resources-for-whitebox" title="Link to this heading">#</a></h2>
 </section>
-<section id="installation">
-<h2><span class="section-number">21.5. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<section id="installing-whitebox">
+<h2><span class="section-number">21.5. </span>Installing Whitebox<a class="headerlink" href="#installing-whitebox" title="Link to this heading">#</a></h2>
 </section>
 <section id="watershed-analysis">
 <h2><span class="section-number">21.6. </span>Watershed Analysis<a class="headerlink" href="#watershed-analysis" title="Link to this heading">#</a></h2>
@@ -601,50 +607,53 @@ document.write(`
 <section id="initialize-whiteboxtools">
 <h3><span class="section-number">21.6.6. </span>Initialize WhiteboxTools<a class="headerlink" href="#initialize-whiteboxtools" title="Link to this heading">#</a></h3>
 </section>
+<section id="id1">
+<h3><span class="section-number">21.6.7. </span>Initialize WhiteboxTools<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+</section>
 <section id="set-working-directory">
-<h3><span class="section-number">21.6.7. </span>Set working directory<a class="headerlink" href="#set-working-directory" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">21.6.8. </span>Set working directory<a class="headerlink" href="#set-working-directory" title="Link to this heading">#</a></h3>
 </section>
 <section id="smooth-dem">
-<h3><span class="section-number">21.6.8. </span>Smooth DEM<a class="headerlink" href="#smooth-dem" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">21.6.9. </span>Smooth DEM<a class="headerlink" href="#smooth-dem" title="Link to this heading">#</a></h3>
 </section>
 <section id="create-hillshade">
-<h3><span class="section-number">21.6.9. </span>Create hillshade<a class="headerlink" href="#create-hillshade" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">21.6.10. </span>Create hillshade<a class="headerlink" href="#create-hillshade" title="Link to this heading">#</a></h3>
 </section>
 <section id="find-no-flow-cells">
-<h3><span class="section-number">21.6.10. </span>Find no-flow cells<a class="headerlink" href="#find-no-flow-cells" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">21.6.11. </span>Find no-flow cells<a class="headerlink" href="#find-no-flow-cells" title="Link to this heading">#</a></h3>
 </section>
 <section id="fill-depressions">
-<h3><span class="section-number">21.6.11. </span>Fill depressions<a class="headerlink" href="#fill-depressions" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">21.6.12. </span>Fill depressions<a class="headerlink" href="#fill-depressions" title="Link to this heading">#</a></h3>
 </section>
 <section id="delineate-flow-direction">
-<h3><span class="section-number">21.6.12. </span>Delineate flow direction<a class="headerlink" href="#delineate-flow-direction" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">21.6.13. </span>Delineate flow direction<a class="headerlink" href="#delineate-flow-direction" title="Link to this heading">#</a></h3>
 </section>
 <section id="calculate-flow-accumulation">
-<h3><span class="section-number">21.6.13. </span>Calculate flow accumulation<a class="headerlink" href="#calculate-flow-accumulation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">21.6.14. </span>Calculate flow accumulation<a class="headerlink" href="#calculate-flow-accumulation" title="Link to this heading">#</a></h3>
 </section>
 <section id="extract-streams">
-<h3><span class="section-number">21.6.14. </span>Extract streams<a class="headerlink" href="#extract-streams" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">21.6.15. </span>Extract streams<a class="headerlink" href="#extract-streams" title="Link to this heading">#</a></h3>
 </section>
 <section id="calculate-distance-to-outlet">
-<h3><span class="section-number">21.6.15. </span>Calculate distance to outlet<a class="headerlink" href="#calculate-distance-to-outlet" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">21.6.16. </span>Calculate distance to outlet<a class="headerlink" href="#calculate-distance-to-outlet" title="Link to this heading">#</a></h3>
 </section>
 <section id="vectorize-streams">
-<h3><span class="section-number">21.6.16. </span>Vectorize streams<a class="headerlink" href="#vectorize-streams" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">21.6.17. </span>Vectorize streams<a class="headerlink" href="#vectorize-streams" title="Link to this heading">#</a></h3>
 </section>
 <section id="delineate-the-longest-flow-path">
-<h3><span class="section-number">21.6.17. </span>Delineate the longest flow path<a class="headerlink" href="#delineate-the-longest-flow-path" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">21.6.18. </span>Delineate the longest flow path<a class="headerlink" href="#delineate-the-longest-flow-path" title="Link to this heading">#</a></h3>
 </section>
 <section id="generate-a-pour-point">
-<h3><span class="section-number">21.6.18. </span>Generate a pour point<a class="headerlink" href="#generate-a-pour-point" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">21.6.19. </span>Generate a pour point<a class="headerlink" href="#generate-a-pour-point" title="Link to this heading">#</a></h3>
 </section>
 <section id="snap-pour-point-to-stream">
-<h3><span class="section-number">21.6.19. </span>Snap pour point to stream<a class="headerlink" href="#snap-pour-point-to-stream" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">21.6.20. </span>Snap pour point to stream<a class="headerlink" href="#snap-pour-point-to-stream" title="Link to this heading">#</a></h3>
 </section>
 <section id="delineate-watershed">
-<h3><span class="section-number">21.6.20. </span>Delineate watershed<a class="headerlink" href="#delineate-watershed" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">21.6.21. </span>Delineate watershed<a class="headerlink" href="#delineate-watershed" title="Link to this heading">#</a></h3>
 </section>
 <section id="convert-watershed-raster-to-vector">
-<h3><span class="section-number">21.6.21. </span>Convert watershed raster to vector<a class="headerlink" href="#convert-watershed-raster-to-vector" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">21.6.22. </span>Convert watershed raster to vector<a class="headerlink" href="#convert-watershed-raster-to-vector" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="lidar-data-analysis">
@@ -697,6 +706,12 @@ document.write(`
 </section>
 <section id="exercises">
 <h2><span class="section-number">21.9. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="exercise-1-watershed-analysis-for-a-different-location">
+<h3><span class="section-number">21.9.1. </span>Exercise 1: Watershed Analysis for a Different Location<a class="headerlink" href="#exercise-1-watershed-analysis-for-a-different-location" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-2-lidar-analysis-for-forest-structure-assessment">
+<h3><span class="section-number">21.9.2. </span>Exercise 2: LiDAR Analysis for Forest Structure Assessment<a class="headerlink" href="#exercise-2-lidar-analysis-for-forest-structure-assessment" title="Link to this heading">#</a></h3>
+</section>
 </section>
 </section>
 
@@ -773,7 +788,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-resources-for-whitebox">21.4. Useful Resources for Whitebox</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">21.5. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-whitebox">21.5. Installing Whitebox</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watershed-analysis">21.6. Watershed Analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-interactive-maps">21.6.1. Create Interactive Maps</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-watershed-data">21.6.2. Download Watershed Data</a></li>
@@ -781,21 +796,22 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-dem-metadata">21.6.4. Get DEM metadata</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-colorbar">21.6.5. Add colorbar</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-whiteboxtools">21.6.6. Initialize WhiteboxTools</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-working-directory">21.6.7. Set working directory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smooth-dem">21.6.8. Smooth DEM</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-hillshade">21.6.9. Create hillshade</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-no-flow-cells">21.6.10. Find no-flow cells</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fill-depressions">21.6.11. Fill depressions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-flow-direction">21.6.12. Delineate flow direction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-flow-accumulation">21.6.13. Calculate flow accumulation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-streams">21.6.14. Extract streams</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-distance-to-outlet">21.6.15. Calculate distance to outlet</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorize-streams">21.6.16. Vectorize streams</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-the-longest-flow-path">21.6.17. Delineate the longest flow path</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-pour-point">21.6.18. Generate a pour point</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snap-pour-point-to-stream">21.6.19. Snap pour point to stream</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-watershed">21.6.20. Delineate watershed</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-watershed-raster-to-vector">21.6.21. Convert watershed raster to vector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">21.6.7. Initialize WhiteboxTools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-working-directory">21.6.8. Set working directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smooth-dem">21.6.9. Smooth DEM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-hillshade">21.6.10. Create hillshade</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-no-flow-cells">21.6.11. Find no-flow cells</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fill-depressions">21.6.12. Fill depressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-flow-direction">21.6.13. Delineate flow direction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-flow-accumulation">21.6.14. Calculate flow accumulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-streams">21.6.15. Extract streams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-distance-to-outlet">21.6.16. Calculate distance to outlet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorize-streams">21.6.17. Vectorize streams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-the-longest-flow-path">21.6.18. Delineate the longest flow path</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-pour-point">21.6.19. Generate a pour point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snap-pour-point-to-stream">21.6.20. Snap pour point to stream</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-watershed">21.6.21. Delineate watershed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-watershed-raster-to-vector">21.6.22. Convert watershed raster to vector</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lidar-data-analysis">21.7. LiDAR Data Analysis</a><ul class="nav section-nav flex-column">
@@ -816,7 +832,11 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">21.8. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">21.9. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">21.9. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-watershed-analysis-for-a-different-location">21.9.1. Exercise 1: Watershed Analysis for a Different Location</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-lidar-analysis-for-forest-structure-assessment">21.9.2. Exercise 2: LiDAR Analysis for Forest Structure Assessment</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

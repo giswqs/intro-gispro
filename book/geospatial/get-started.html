@@ -201,17 +201,18 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">15. Introduction to Geospatial Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geopandas.html">16. Vector Data Analysis with GeoPandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data using Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data Using Rasterio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xarray.html">18. Multi-dimensional Data Analysis with Xarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rioxarray.html">19. Raster Analysis with Rioxarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="leafmap.html">20. Interactive Visualization with Leafmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="whitebox.html">21. Geoprocessing with WhiteboxTools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maplibre.html">22. 3D Mapping with MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Earth Engine and Geemap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hypercoast.html">24. Hyperspectral Data Visualization with HyperCoast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. Spatial Database Analysis with DuckDB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. GDAL and OGR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Web Apps with Voila and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. High-Performance Geospatial Analytics with DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. Geospatial Data Processing with GDAL and OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Dashboards with Voilà and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sedona.html">28. Distributed Computing with Apache Sedona</a></li>
 </ul>
 
     </div>
@@ -492,28 +493,37 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">15.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-python-environment">15.2. Setting Up Your Python Environment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uv">15.2.1. uv</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-uv">15.2.1.1. Install uv</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-geospatial">15.2.1.2. Install geospatial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-geospatial-python-ecosystem">15.2. The Geospatial Python Ecosystem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundation-libraries">15.2.1. Foundation Libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures-and-analysis">15.2.2. Data Structures and Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-visualization">15.2.3. Interactive Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specialized-analysis">15.2.4. Specialized Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-development">15.2.5. Application Development</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pixi">15.2.2. pixi</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-pixi">15.2.2.1. Install pixi</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-gdal">15.2.2.2. Install gdal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-library-relationships">15.3. Understanding Library Relationships</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-environment">15.4. Setting Up Your Environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-using-uv-recommended-for-beginners">15.4.1. Option 1: Using uv (Recommended for Beginners)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-using-pixi-for-complex-dependencies">15.4.2. Option 2: Using pixi (For Complex Dependencies)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-using-conda-mamba-traditional-approach">15.4.3. Option 3: Using conda/mamba (Traditional Approach)</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda">15.2.3. conda</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-miniconda">15.2.3.1. Install Miniconda</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-conda-environment">15.2.3.2. Create a New Conda Environment</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-geospatial-libraries">15.2.3.3. Install Geospatial Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-and-first-steps">15.5. Verification and First Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-your-first-interactive-map">15.5.1. Create Your First Interactive Map</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-path-and-chapter-overview">15.6. Learning Path and Chapter Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundation-start-here">15.6.1. Foundation (Start Here)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-and-interaction">15.6.2. Visualization and Interaction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">15.6.3. Specialized Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundation-and-integration">15.6.4. Foundation and Integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.6.5. Application Development</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifying-your-installation">15.3. Verifying Your Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">15.4. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">15.5. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts-to-remember">15.7. Key Concepts to Remember</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help-and-resources">15.8. Getting Help and Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">15.9. Next Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">15.10. Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -530,47 +540,74 @@ document.write(`
 <section id="introduction">
 <h2><span class="section-number">15.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 </section>
-<section id="setting-up-your-python-environment">
-<h2><span class="section-number">15.2. </span>Setting Up Your Python Environment<a class="headerlink" href="#setting-up-your-python-environment" title="Link to this heading">#</a></h2>
-<section id="uv">
-<h3><span class="section-number">15.2.1. </span>uv<a class="headerlink" href="#uv" title="Link to this heading">#</a></h3>
-<section id="install-uv">
-<h4><span class="section-number">15.2.1.1. </span>Install uv<a class="headerlink" href="#install-uv" title="Link to this heading">#</a></h4>
+<section id="the-geospatial-python-ecosystem">
+<h2><span class="section-number">15.2. </span>The Geospatial Python Ecosystem<a class="headerlink" href="#the-geospatial-python-ecosystem" title="Link to this heading">#</a></h2>
+<section id="foundation-libraries">
+<h3><span class="section-number">15.2.1. </span>Foundation Libraries<a class="headerlink" href="#foundation-libraries" title="Link to this heading">#</a></h3>
 </section>
-<section id="install-geospatial">
-<h4><span class="section-number">15.2.1.2. </span>Install geospatial<a class="headerlink" href="#install-geospatial" title="Link to this heading">#</a></h4>
+<section id="data-structures-and-analysis">
+<h3><span class="section-number">15.2.2. </span>Data Structures and Analysis<a class="headerlink" href="#data-structures-and-analysis" title="Link to this heading">#</a></h3>
 </section>
+<section id="interactive-visualization">
+<h3><span class="section-number">15.2.3. </span>Interactive Visualization<a class="headerlink" href="#interactive-visualization" title="Link to this heading">#</a></h3>
 </section>
-<section id="pixi">
-<h3><span class="section-number">15.2.2. </span>pixi<a class="headerlink" href="#pixi" title="Link to this heading">#</a></h3>
-<section id="install-pixi">
-<h4><span class="section-number">15.2.2.1. </span>Install pixi<a class="headerlink" href="#install-pixi" title="Link to this heading">#</a></h4>
+<section id="specialized-analysis">
+<h3><span class="section-number">15.2.4. </span>Specialized Analysis<a class="headerlink" href="#specialized-analysis" title="Link to this heading">#</a></h3>
 </section>
-<section id="install-gdal">
-<h4><span class="section-number">15.2.2.2. </span>Install gdal<a class="headerlink" href="#install-gdal" title="Link to this heading">#</a></h4>
+<section id="application-development">
+<h3><span class="section-number">15.2.5. </span>Application Development<a class="headerlink" href="#application-development" title="Link to this heading">#</a></h3>
 </section>
 </section>
-<section id="conda">
-<h3><span class="section-number">15.2.3. </span>conda<a class="headerlink" href="#conda" title="Link to this heading">#</a></h3>
-<section id="install-miniconda">
-<h4><span class="section-number">15.2.3.1. </span>Install Miniconda<a class="headerlink" href="#install-miniconda" title="Link to this heading">#</a></h4>
+<section id="understanding-library-relationships">
+<h2><span class="section-number">15.3. </span>Understanding Library Relationships<a class="headerlink" href="#understanding-library-relationships" title="Link to this heading">#</a></h2>
 </section>
-<section id="create-a-new-conda-environment">
-<h4><span class="section-number">15.2.3.2. </span>Create a New Conda Environment<a class="headerlink" href="#create-a-new-conda-environment" title="Link to this heading">#</a></h4>
+<section id="setting-up-your-environment">
+<h2><span class="section-number">15.4. </span>Setting Up Your Environment<a class="headerlink" href="#setting-up-your-environment" title="Link to this heading">#</a></h2>
+<section id="option-1-using-uv-recommended-for-beginners">
+<h3><span class="section-number">15.4.1. </span>Option 1: Using uv (Recommended for Beginners)<a class="headerlink" href="#option-1-using-uv-recommended-for-beginners" title="Link to this heading">#</a></h3>
 </section>
-<section id="install-geospatial-libraries">
-<h4><span class="section-number">15.2.3.3. </span>Install Geospatial Libraries<a class="headerlink" href="#install-geospatial-libraries" title="Link to this heading">#</a></h4>
+<section id="option-2-using-pixi-for-complex-dependencies">
+<h3><span class="section-number">15.4.2. </span>Option 2: Using pixi (For Complex Dependencies)<a class="headerlink" href="#option-2-using-pixi-for-complex-dependencies" title="Link to this heading">#</a></h3>
+</section>
+<section id="option-3-using-conda-mamba-traditional-approach">
+<h3><span class="section-number">15.4.3. </span>Option 3: Using conda/mamba (Traditional Approach)<a class="headerlink" href="#option-3-using-conda-mamba-traditional-approach" title="Link to this heading">#</a></h3>
 </section>
 </section>
+<section id="verification-and-first-steps">
+<h2><span class="section-number">15.5. </span>Verification and First Steps<a class="headerlink" href="#verification-and-first-steps" title="Link to this heading">#</a></h2>
+<section id="create-your-first-interactive-map">
+<h3><span class="section-number">15.5.1. </span>Create Your First Interactive Map<a class="headerlink" href="#create-your-first-interactive-map" title="Link to this heading">#</a></h3>
 </section>
-<section id="verifying-your-installation">
-<h2><span class="section-number">15.3. </span>Verifying Your Installation<a class="headerlink" href="#verifying-your-installation" title="Link to this heading">#</a></h2>
 </section>
-<section id="key-takeaways">
-<h2><span class="section-number">15.4. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
+<section id="learning-path-and-chapter-overview">
+<h2><span class="section-number">15.6. </span>Learning Path and Chapter Overview<a class="headerlink" href="#learning-path-and-chapter-overview" title="Link to this heading">#</a></h2>
+<section id="foundation-start-here">
+<h3><span class="section-number">15.6.1. </span>Foundation (Start Here)<a class="headerlink" href="#foundation-start-here" title="Link to this heading">#</a></h3>
+</section>
+<section id="visualization-and-interaction">
+<h3><span class="section-number">15.6.2. </span>Visualization and Interaction<a class="headerlink" href="#visualization-and-interaction" title="Link to this heading">#</a></h3>
+</section>
+<section id="id1">
+<h3><span class="section-number">15.6.3. </span>Specialized Analysis<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+</section>
+<section id="foundation-and-integration">
+<h3><span class="section-number">15.6.4. </span>Foundation and Integration<a class="headerlink" href="#foundation-and-integration" title="Link to this heading">#</a></h3>
+</section>
+<section id="id2">
+<h3><span class="section-number">15.6.5. </span>Application Development<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="key-concepts-to-remember">
+<h2><span class="section-number">15.7. </span>Key Concepts to Remember<a class="headerlink" href="#key-concepts-to-remember" title="Link to this heading">#</a></h2>
+</section>
+<section id="getting-help-and-resources">
+<h2><span class="section-number">15.8. </span>Getting Help and Resources<a class="headerlink" href="#getting-help-and-resources" title="Link to this heading">#</a></h2>
+</section>
+<section id="next-steps">
+<h2><span class="section-number">15.9. </span>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
 </section>
 <section id="exercises">
-<h2><span class="section-number">15.5. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.10. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -639,28 +676,37 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">15.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-python-environment">15.2. Setting Up Your Python Environment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uv">15.2.1. uv</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-uv">15.2.1.1. Install uv</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-geospatial">15.2.1.2. Install geospatial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-geospatial-python-ecosystem">15.2. The Geospatial Python Ecosystem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundation-libraries">15.2.1. Foundation Libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structures-and-analysis">15.2.2. Data Structures and Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-visualization">15.2.3. Interactive Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specialized-analysis">15.2.4. Specialized Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-development">15.2.5. Application Development</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pixi">15.2.2. pixi</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-pixi">15.2.2.1. Install pixi</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-gdal">15.2.2.2. Install gdal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-library-relationships">15.3. Understanding Library Relationships</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-environment">15.4. Setting Up Your Environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-using-uv-recommended-for-beginners">15.4.1. Option 1: Using uv (Recommended for Beginners)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-using-pixi-for-complex-dependencies">15.4.2. Option 2: Using pixi (For Complex Dependencies)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-using-conda-mamba-traditional-approach">15.4.3. Option 3: Using conda/mamba (Traditional Approach)</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda">15.2.3. conda</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-miniconda">15.2.3.1. Install Miniconda</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-conda-environment">15.2.3.2. Create a New Conda Environment</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-geospatial-libraries">15.2.3.3. Install Geospatial Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-and-first-steps">15.5. Verification and First Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-your-first-interactive-map">15.5.1. Create Your First Interactive Map</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-path-and-chapter-overview">15.6. Learning Path and Chapter Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundation-start-here">15.6.1. Foundation (Start Here)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-and-interaction">15.6.2. Visualization and Interaction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">15.6.3. Specialized Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundation-and-integration">15.6.4. Foundation and Integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.6.5. Application Development</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifying-your-installation">15.3. Verifying Your Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">15.4. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">15.5. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts-to-remember">15.7. Key Concepts to Remember</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help-and-resources">15.8. Getting Help and Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">15.9. Next Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">15.10. Exercises</a></li>
 </ul>
   </nav></div>
 

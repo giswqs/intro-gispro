@@ -201,17 +201,18 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="get-started.html">15. Introduction to Geospatial Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geopandas.html">16. Vector Data Analysis with GeoPandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data using Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data Using Rasterio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xarray.html">18. Multi-dimensional Data Analysis with Xarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rioxarray.html">19. Raster Analysis with Rioxarray</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">20. Interactive Visualization with Leafmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="whitebox.html">21. Geoprocessing with WhiteboxTools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maplibre.html">22. 3D Mapping with MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Earth Engine and Geemap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hypercoast.html">24. Hyperspectral Data Visualization with HyperCoast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. Spatial Database Analysis with DuckDB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. GDAL and OGR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Web Apps with Voila and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. High-Performance Geospatial Analytics with DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. Geospatial Data Processing with GDAL and OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Dashboards with Voilà and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sedona.html">28. Distributed Computing with Apache Sedona</a></li>
 </ul>
 
     </div>
@@ -493,32 +494,55 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">20.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">20.2. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-leafmap">20.3. Installing leafmap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-interactive-maps">20.4. Creating interactive maps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-the-map">20.4.1. Customizing the Map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-or-removing-controls">20.4.2. Adding or Removing Controls</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-layers">20.4.3. Working with Layers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clearing-controls-and-layers">20.4.4. Clearing Controls and Layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-setting-up-leafmap">20.3. Installing and Setting Up Leafmap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-methods">20.3.1. Installation Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-leafmap-s-backend-architecture">20.3.2. Understanding Leafmap’s Backend Architecture</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-interactive-maps">20.4. Creating Interactive Maps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-interactive-map">20.4.1. Your First Interactive Map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-map-properties">20.4.2. Customizing Map Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-center-location-and-zoom-level">20.4.2.1. Setting Center Location and Zoom Level</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-map-controls">20.4.3. Managing Map Controls</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-default-controls">20.4.3.1. Understanding Default Controls</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-control-visibility">20.4.3.2. Customizing Control Visibility</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-search-functionality">20.4.3.3. Adding Search Functionality</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-map-layers">20.4.4. Working with Map Layers</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-and-inspecting-layers">20.4.4.1. Accessing and Inspecting Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#layer-management-operations">20.4.4.2. Layer Management Operations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#clearing-map-content">20.4.4.3. Clearing Map Content</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-basemaps">20.5. Changing Basemaps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-an-xyz-tile-layer">20.5.1. Adding an XYZ Tile Layer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-wms-tile-layer">20.5.2. Adding a WMS Tile Layer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-legend-to-a-map">20.5.3. Adding a Legend to a Map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-colorbar-to-visualize-data">20.5.4. Adding a Colorbar to Visualize Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-basemaps-and-their-role">20.5.1. Understanding Basemaps and Their Role</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-predefined-basemaps">20.5.2. Adding Predefined Basemaps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-basemap-selection">20.5.3. Interactive Basemap Selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-custom-xyz-tile-layers">20.5.4. Adding Custom XYZ Tile Layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-web-map-service-wms-layers">20.5.5. Adding Web Map Service (WMS) Layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-legends-for-data-context">20.5.6. Adding Legends for Data Context</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-colorbars-for-continuous-data">20.5.7. Adding Colorbars for Continuous Data</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-vector-data">20.6. Visualizing Vector Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-marker">20.6.1. Adding a Marker</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-multiple-markers">20.6.2. Adding Multiple Markers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-marker-clusters">20.6.3. Adding Marker Clusters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-markers">20.6.4. Customizing Markers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-polylines">20.6.5. Visualizing Polylines</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-polyline-styles">20.6.5.1. Customizing Polyline Styles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-point-data-markers">20.6.1. Working with Point Data: Markers</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-individual-markers">20.6.1.1. Adding Individual Markers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-multiple-markers-efficiently">20.6.1.2. Adding Multiple Markers Efficiently</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-large-point-datasets-with-clustering">20.6.1.3. Managing Large Point Datasets with Clustering</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-marker-customization">20.6.1.4. Advanced Marker Customization</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-polygons">20.6.6. Visualizing Polygons</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-geopandas-geodataframes">20.6.7. Visualizing GeoPandas GeoDataFrames</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-polylines">20.6.2. Visualizing Polylines</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-polyline-styles">20.6.2.1. Customizing Polyline Styles</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-polygons">20.6.3. Visualizing Polygons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-geopandas-geodataframes">20.6.4. Visualizing GeoPandas GeoDataFrames</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-choropleth-maps">20.7. Creating Choropleth Maps</a></li>
@@ -551,28 +575,36 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-spatiotemporal-asset-catalog-stac-data">20.10.3. Visualizing SpatioTemporal Asset Catalog (STAC) Data</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-stac-bands">20.10.3.1. Exploring STAC Bands</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-stac-layers-to-the-map">20.10.3.2. Adding STAC Layers to the Map</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-custom-stac-catalog">20.10.3.3. Using a Custom STAC Catalog</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-s3-integration">20.10.4. AWS S3 Integration</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-datasets-in-an-s3-bucket">20.10.4.1. Accessing Datasets in an S3 Bucket</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-a-raster-dataset-from-s3">20.10.4.2. Visualizing a Raster Dataset from S3</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">20.11. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">20.12. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-an-interactive-map">20.12.1. Exercise 1: Creating an Interactive Map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-adding-xyz-and-wms-tile-layers">20.12.2. Exercise 2: Adding XYZ and WMS Tile Layers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-adding-map-legends">20.12.3. Exercise 3: Adding Map Legends</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-creating-marker-clusters">20.12.4. Exercise 4: Creating Marker Clusters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-visualizing-vector-data">20.12.5. Exercise 5: Visualizing Vector Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-visualizing-geoparquet-data">20.12.6. Exercise 6: Visualizing GeoParquet Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-visualizing-pmtiles">20.12.7. Exercise 7: Visualizing PMTiles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-visualizing-cloud-optimized-geotiffs-cogs">20.12.8. Exercise 8: Visualizing Cloud Optimized GeoTIFFs (COGs)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-visualizing-local-raster-data">20.12.9. Exercise 9: Visualizing Local Raster Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-creating-a-split-map">20.12.10. Exercise 10: Creating a Split Map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-and-visualizing-maxar-open-data">20.11. Accessing and Visualizing Maxar Open Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discovering-available-disaster-events">20.11.1. Discovering Available Disaster Events</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-a-disaster-event">20.11.2. Selecting a Disaster Event</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-image-footprints">20.11.3. Visualizing Image Footprints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-analysis-before-and-after-the-earthquake">20.11.4. Temporal Analysis: Before and After the Earthquake</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-pre-event-and-post-event-coverage">20.11.5. Comparing Pre-Event and Post-Event Coverage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-a-region-of-interest">20.11.6. Selecting a Region of Interest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-within-the-region-of-interest">20.11.7. Searching Within the Region of Interest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-images-for-visualization">20.11.8. Preparing Images for Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-web-optimized-tile-services">20.11.9. Creating Web-Optimized Tile Services</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-split-map-comparison">20.11.10. Creating a Split-Map Comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-images-for-offline-analysis">20.11.11. Downloading Images for Offline Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">20.12. Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">20.13. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-an-interactive-map">20.13.1. Exercise 1: Creating an Interactive Map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-adding-xyz-and-wms-tile-layers">20.13.2. Exercise 2: Adding XYZ and WMS Tile Layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-adding-map-legends">20.13.3. Exercise 3: Adding Map Legends</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-creating-marker-clusters">20.13.4. Exercise 4: Creating Marker Clusters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-visualizing-vector-data">20.13.5. Exercise 5: Visualizing Vector Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-visualizing-geoparquet-data">20.13.6. Exercise 6: Visualizing GeoParquet Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-visualizing-pmtiles">20.13.7. Exercise 7: Visualizing PMTiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-visualizing-cloud-optimized-geotiffs-cogs">20.13.8. Exercise 8: Visualizing Cloud Optimized GeoTIFFs (COGs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-visualizing-local-raster-data">20.13.9. Exercise 9: Visualizing Local Raster Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-creating-a-split-map">20.13.10. Exercise 10: Creating a Split Map</a></li>
 </ul>
 </li>
 </ul>
@@ -594,64 +626,103 @@ document.write(`
 <section id="learning-objectives">
 <h2><span class="section-number">20.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 </section>
-<section id="installing-leafmap">
-<h2><span class="section-number">20.3. </span>Installing leafmap<a class="headerlink" href="#installing-leafmap" title="Link to this heading">#</a></h2>
+<section id="installing-and-setting-up-leafmap">
+<h2><span class="section-number">20.3. </span>Installing and Setting Up Leafmap<a class="headerlink" href="#installing-and-setting-up-leafmap" title="Link to this heading">#</a></h2>
+<section id="installation-methods">
+<h3><span class="section-number">20.3.1. </span>Installation Methods<a class="headerlink" href="#installation-methods" title="Link to this heading">#</a></h3>
+</section>
+<section id="understanding-leafmap-s-backend-architecture">
+<h3><span class="section-number">20.3.2. </span>Understanding Leafmap’s Backend Architecture<a class="headerlink" href="#understanding-leafmap-s-backend-architecture" title="Link to this heading">#</a></h3>
+</section>
 </section>
 <section id="creating-interactive-maps">
-<h2><span class="section-number">20.4. </span>Creating interactive maps<a class="headerlink" href="#creating-interactive-maps" title="Link to this heading">#</a></h2>
-<section id="customizing-the-map">
-<h3><span class="section-number">20.4.1. </span>Customizing the Map<a class="headerlink" href="#customizing-the-map" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">20.4. </span>Creating Interactive Maps<a class="headerlink" href="#creating-interactive-maps" title="Link to this heading">#</a></h2>
+<section id="your-first-interactive-map">
+<h3><span class="section-number">20.4.1. </span>Your First Interactive Map<a class="headerlink" href="#your-first-interactive-map" title="Link to this heading">#</a></h3>
 </section>
-<section id="adding-or-removing-controls">
-<h3><span class="section-number">20.4.2. </span>Adding or Removing Controls<a class="headerlink" href="#adding-or-removing-controls" title="Link to this heading">#</a></h3>
+<section id="customizing-map-properties">
+<h3><span class="section-number">20.4.2. </span>Customizing Map Properties<a class="headerlink" href="#customizing-map-properties" title="Link to this heading">#</a></h3>
+<section id="setting-center-location-and-zoom-level">
+<h4><span class="section-number">20.4.2.1. </span>Setting Center Location and Zoom Level<a class="headerlink" href="#setting-center-location-and-zoom-level" title="Link to this heading">#</a></h4>
 </section>
-<section id="working-with-layers">
-<h3><span class="section-number">20.4.3. </span>Working with Layers<a class="headerlink" href="#working-with-layers" title="Link to this heading">#</a></h3>
 </section>
-<section id="clearing-controls-and-layers">
-<h3><span class="section-number">20.4.4. </span>Clearing Controls and Layers<a class="headerlink" href="#clearing-controls-and-layers" title="Link to this heading">#</a></h3>
+<section id="managing-map-controls">
+<h3><span class="section-number">20.4.3. </span>Managing Map Controls<a class="headerlink" href="#managing-map-controls" title="Link to this heading">#</a></h3>
+<section id="understanding-default-controls">
+<h4><span class="section-number">20.4.3.1. </span>Understanding Default Controls<a class="headerlink" href="#understanding-default-controls" title="Link to this heading">#</a></h4>
+</section>
+<section id="customizing-control-visibility">
+<h4><span class="section-number">20.4.3.2. </span>Customizing Control Visibility<a class="headerlink" href="#customizing-control-visibility" title="Link to this heading">#</a></h4>
+</section>
+<section id="adding-search-functionality">
+<h4><span class="section-number">20.4.3.3. </span>Adding Search Functionality<a class="headerlink" href="#adding-search-functionality" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="working-with-map-layers">
+<h3><span class="section-number">20.4.4. </span>Working with Map Layers<a class="headerlink" href="#working-with-map-layers" title="Link to this heading">#</a></h3>
+<section id="accessing-and-inspecting-layers">
+<h4><span class="section-number">20.4.4.1. </span>Accessing and Inspecting Layers<a class="headerlink" href="#accessing-and-inspecting-layers" title="Link to this heading">#</a></h4>
+</section>
+<section id="layer-management-operations">
+<h4><span class="section-number">20.4.4.2. </span>Layer Management Operations<a class="headerlink" href="#layer-management-operations" title="Link to this heading">#</a></h4>
+</section>
+<section id="clearing-map-content">
+<h4><span class="section-number">20.4.4.3. </span>Clearing Map Content<a class="headerlink" href="#clearing-map-content" title="Link to this heading">#</a></h4>
+</section>
 </section>
 </section>
 <section id="changing-basemaps">
 <h2><span class="section-number">20.5. </span>Changing Basemaps<a class="headerlink" href="#changing-basemaps" title="Link to this heading">#</a></h2>
-<section id="adding-an-xyz-tile-layer">
-<h3><span class="section-number">20.5.1. </span>Adding an XYZ Tile Layer<a class="headerlink" href="#adding-an-xyz-tile-layer" title="Link to this heading">#</a></h3>
+<section id="understanding-basemaps-and-their-role">
+<h3><span class="section-number">20.5.1. </span>Understanding Basemaps and Their Role<a class="headerlink" href="#understanding-basemaps-and-their-role" title="Link to this heading">#</a></h3>
 </section>
-<section id="adding-a-wms-tile-layer">
-<h3><span class="section-number">20.5.2. </span>Adding a WMS Tile Layer<a class="headerlink" href="#adding-a-wms-tile-layer" title="Link to this heading">#</a></h3>
+<section id="adding-predefined-basemaps">
+<h3><span class="section-number">20.5.2. </span>Adding Predefined Basemaps<a class="headerlink" href="#adding-predefined-basemaps" title="Link to this heading">#</a></h3>
 </section>
-<section id="adding-a-legend-to-a-map">
-<h3><span class="section-number">20.5.3. </span>Adding a Legend to a Map<a class="headerlink" href="#adding-a-legend-to-a-map" title="Link to this heading">#</a></h3>
+<section id="interactive-basemap-selection">
+<h3><span class="section-number">20.5.3. </span>Interactive Basemap Selection<a class="headerlink" href="#interactive-basemap-selection" title="Link to this heading">#</a></h3>
 </section>
-<section id="adding-a-colorbar-to-visualize-data">
-<h3><span class="section-number">20.5.4. </span>Adding a Colorbar to Visualize Data<a class="headerlink" href="#adding-a-colorbar-to-visualize-data" title="Link to this heading">#</a></h3>
+<section id="adding-custom-xyz-tile-layers">
+<h3><span class="section-number">20.5.4. </span>Adding Custom XYZ Tile Layers<a class="headerlink" href="#adding-custom-xyz-tile-layers" title="Link to this heading">#</a></h3>
+</section>
+<section id="adding-web-map-service-wms-layers">
+<h3><span class="section-number">20.5.5. </span>Adding Web Map Service (WMS) Layers<a class="headerlink" href="#adding-web-map-service-wms-layers" title="Link to this heading">#</a></h3>
+</section>
+<section id="adding-legends-for-data-context">
+<h3><span class="section-number">20.5.6. </span>Adding Legends for Data Context<a class="headerlink" href="#adding-legends-for-data-context" title="Link to this heading">#</a></h3>
+</section>
+<section id="adding-colorbars-for-continuous-data">
+<h3><span class="section-number">20.5.7. </span>Adding Colorbars for Continuous Data<a class="headerlink" href="#adding-colorbars-for-continuous-data" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="visualizing-vector-data">
 <h2><span class="section-number">20.6. </span>Visualizing Vector Data<a class="headerlink" href="#visualizing-vector-data" title="Link to this heading">#</a></h2>
-<section id="adding-a-marker">
-<h3><span class="section-number">20.6.1. </span>Adding a Marker<a class="headerlink" href="#adding-a-marker" title="Link to this heading">#</a></h3>
+<section id="working-with-point-data-markers">
+<h3><span class="section-number">20.6.1. </span>Working with Point Data: Markers<a class="headerlink" href="#working-with-point-data-markers" title="Link to this heading">#</a></h3>
+<section id="adding-individual-markers">
+<h4><span class="section-number">20.6.1.1. </span>Adding Individual Markers<a class="headerlink" href="#adding-individual-markers" title="Link to this heading">#</a></h4>
 </section>
-<section id="adding-multiple-markers">
-<h3><span class="section-number">20.6.2. </span>Adding Multiple Markers<a class="headerlink" href="#adding-multiple-markers" title="Link to this heading">#</a></h3>
+<section id="adding-multiple-markers-efficiently">
+<h4><span class="section-number">20.6.1.2. </span>Adding Multiple Markers Efficiently<a class="headerlink" href="#adding-multiple-markers-efficiently" title="Link to this heading">#</a></h4>
 </section>
-<section id="adding-marker-clusters">
-<h3><span class="section-number">20.6.3. </span>Adding Marker Clusters<a class="headerlink" href="#adding-marker-clusters" title="Link to this heading">#</a></h3>
+<section id="managing-large-point-datasets-with-clustering">
+<h4><span class="section-number">20.6.1.3. </span>Managing Large Point Datasets with Clustering<a class="headerlink" href="#managing-large-point-datasets-with-clustering" title="Link to this heading">#</a></h4>
 </section>
-<section id="customizing-markers">
-<h3><span class="section-number">20.6.4. </span>Customizing Markers<a class="headerlink" href="#customizing-markers" title="Link to this heading">#</a></h3>
+<section id="advanced-marker-customization">
+<h4><span class="section-number">20.6.1.4. </span>Advanced Marker Customization<a class="headerlink" href="#advanced-marker-customization" title="Link to this heading">#</a></h4>
+</section>
 </section>
 <section id="visualizing-polylines">
-<h3><span class="section-number">20.6.5. </span>Visualizing Polylines<a class="headerlink" href="#visualizing-polylines" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">20.6.2. </span>Visualizing Polylines<a class="headerlink" href="#visualizing-polylines" title="Link to this heading">#</a></h3>
 <section id="customizing-polyline-styles">
-<h4><span class="section-number">20.6.5.1. </span>Customizing Polyline Styles<a class="headerlink" href="#customizing-polyline-styles" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">20.6.2.1. </span>Customizing Polyline Styles<a class="headerlink" href="#customizing-polyline-styles" title="Link to this heading">#</a></h4>
 </section>
 </section>
 <section id="visualizing-polygons">
-<h3><span class="section-number">20.6.6. </span>Visualizing Polygons<a class="headerlink" href="#visualizing-polygons" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">20.6.3. </span>Visualizing Polygons<a class="headerlink" href="#visualizing-polygons" title="Link to this heading">#</a></h3>
 </section>
 <section id="visualizing-geopandas-geodataframes">
-<h3><span class="section-number">20.6.7. </span>Visualizing GeoPandas GeoDataFrames<a class="headerlink" href="#visualizing-geopandas-geodataframes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">20.6.4. </span>Visualizing GeoPandas GeoDataFrames<a class="headerlink" href="#visualizing-geopandas-geodataframes" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="creating-choropleth-maps">
@@ -718,54 +789,78 @@ document.write(`
 <section id="adding-stac-layers-to-the-map">
 <h4><span class="section-number">20.10.3.2. </span>Adding STAC Layers to the Map<a class="headerlink" href="#adding-stac-layers-to-the-map" title="Link to this heading">#</a></h4>
 </section>
-<section id="using-a-custom-stac-catalog">
-<h4><span class="section-number">20.10.3.3. </span>Using a Custom STAC Catalog<a class="headerlink" href="#using-a-custom-stac-catalog" title="Link to this heading">#</a></h4>
 </section>
 </section>
-<section id="aws-s3-integration">
-<h3><span class="section-number">20.10.4. </span>AWS S3 Integration<a class="headerlink" href="#aws-s3-integration" title="Link to this heading">#</a></h3>
-<section id="accessing-datasets-in-an-s3-bucket">
-<h4><span class="section-number">20.10.4.1. </span>Accessing Datasets in an S3 Bucket<a class="headerlink" href="#accessing-datasets-in-an-s3-bucket" title="Link to this heading">#</a></h4>
+<section id="accessing-and-visualizing-maxar-open-data">
+<h2><span class="section-number">20.11. </span>Accessing and Visualizing Maxar Open Data<a class="headerlink" href="#accessing-and-visualizing-maxar-open-data" title="Link to this heading">#</a></h2>
+<section id="discovering-available-disaster-events">
+<h3><span class="section-number">20.11.1. </span>Discovering Available Disaster Events<a class="headerlink" href="#discovering-available-disaster-events" title="Link to this heading">#</a></h3>
 </section>
-<section id="visualizing-a-raster-dataset-from-s3">
-<h4><span class="section-number">20.10.4.2. </span>Visualizing a Raster Dataset from S3<a class="headerlink" href="#visualizing-a-raster-dataset-from-s3" title="Link to this heading">#</a></h4>
+<section id="selecting-a-disaster-event">
+<h3><span class="section-number">20.11.2. </span>Selecting a Disaster Event<a class="headerlink" href="#selecting-a-disaster-event" title="Link to this heading">#</a></h3>
 </section>
+<section id="visualizing-image-footprints">
+<h3><span class="section-number">20.11.3. </span>Visualizing Image Footprints<a class="headerlink" href="#visualizing-image-footprints" title="Link to this heading">#</a></h3>
+</section>
+<section id="temporal-analysis-before-and-after-the-earthquake">
+<h3><span class="section-number">20.11.4. </span>Temporal Analysis: Before and After the Earthquake<a class="headerlink" href="#temporal-analysis-before-and-after-the-earthquake" title="Link to this heading">#</a></h3>
+</section>
+<section id="comparing-pre-event-and-post-event-coverage">
+<h3><span class="section-number">20.11.5. </span>Comparing Pre-Event and Post-Event Coverage<a class="headerlink" href="#comparing-pre-event-and-post-event-coverage" title="Link to this heading">#</a></h3>
+</section>
+<section id="selecting-a-region-of-interest">
+<h3><span class="section-number">20.11.6. </span>Selecting a Region of Interest<a class="headerlink" href="#selecting-a-region-of-interest" title="Link to this heading">#</a></h3>
+</section>
+<section id="searching-within-the-region-of-interest">
+<h3><span class="section-number">20.11.7. </span>Searching Within the Region of Interest<a class="headerlink" href="#searching-within-the-region-of-interest" title="Link to this heading">#</a></h3>
+</section>
+<section id="preparing-images-for-visualization">
+<h3><span class="section-number">20.11.8. </span>Preparing Images for Visualization<a class="headerlink" href="#preparing-images-for-visualization" title="Link to this heading">#</a></h3>
+</section>
+<section id="creating-web-optimized-tile-services">
+<h3><span class="section-number">20.11.9. </span>Creating Web-Optimized Tile Services<a class="headerlink" href="#creating-web-optimized-tile-services" title="Link to this heading">#</a></h3>
+</section>
+<section id="creating-a-split-map-comparison">
+<h3><span class="section-number">20.11.10. </span>Creating a Split-Map Comparison<a class="headerlink" href="#creating-a-split-map-comparison" title="Link to this heading">#</a></h3>
+</section>
+<section id="downloading-images-for-offline-analysis">
+<h3><span class="section-number">20.11.11. </span>Downloading Images for Offline Analysis<a class="headerlink" href="#downloading-images-for-offline-analysis" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="key-takeaways">
-<h2><span class="section-number">20.11. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.12. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
 </section>
 <section id="exercises">
-<h2><span class="section-number">20.12. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.13. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <section id="exercise-1-creating-an-interactive-map">
-<h3><span class="section-number">20.12.1. </span>Exercise 1: Creating an Interactive Map<a class="headerlink" href="#exercise-1-creating-an-interactive-map" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">20.13.1. </span>Exercise 1: Creating an Interactive Map<a class="headerlink" href="#exercise-1-creating-an-interactive-map" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-2-adding-xyz-and-wms-tile-layers">
-<h3><span class="section-number">20.12.2. </span>Exercise 2: Adding XYZ and WMS Tile Layers<a class="headerlink" href="#exercise-2-adding-xyz-and-wms-tile-layers" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">20.13.2. </span>Exercise 2: Adding XYZ and WMS Tile Layers<a class="headerlink" href="#exercise-2-adding-xyz-and-wms-tile-layers" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-3-adding-map-legends">
-<h3><span class="section-number">20.12.3. </span>Exercise 3: Adding Map Legends<a class="headerlink" href="#exercise-3-adding-map-legends" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">20.13.3. </span>Exercise 3: Adding Map Legends<a class="headerlink" href="#exercise-3-adding-map-legends" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-4-creating-marker-clusters">
-<h3><span class="section-number">20.12.4. </span>Exercise 4: Creating Marker Clusters<a class="headerlink" href="#exercise-4-creating-marker-clusters" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">20.13.4. </span>Exercise 4: Creating Marker Clusters<a class="headerlink" href="#exercise-4-creating-marker-clusters" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-5-visualizing-vector-data">
-<h3><span class="section-number">20.12.5. </span>Exercise 5: Visualizing Vector Data<a class="headerlink" href="#exercise-5-visualizing-vector-data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">20.13.5. </span>Exercise 5: Visualizing Vector Data<a class="headerlink" href="#exercise-5-visualizing-vector-data" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-6-visualizing-geoparquet-data">
-<h3><span class="section-number">20.12.6. </span>Exercise 6: Visualizing GeoParquet Data<a class="headerlink" href="#exercise-6-visualizing-geoparquet-data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">20.13.6. </span>Exercise 6: Visualizing GeoParquet Data<a class="headerlink" href="#exercise-6-visualizing-geoparquet-data" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-7-visualizing-pmtiles">
-<h3><span class="section-number">20.12.7. </span>Exercise 7: Visualizing PMTiles<a class="headerlink" href="#exercise-7-visualizing-pmtiles" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">20.13.7. </span>Exercise 7: Visualizing PMTiles<a class="headerlink" href="#exercise-7-visualizing-pmtiles" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-8-visualizing-cloud-optimized-geotiffs-cogs">
-<h3><span class="section-number">20.12.8. </span>Exercise 8: Visualizing Cloud Optimized GeoTIFFs (COGs)<a class="headerlink" href="#exercise-8-visualizing-cloud-optimized-geotiffs-cogs" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">20.13.8. </span>Exercise 8: Visualizing Cloud Optimized GeoTIFFs (COGs)<a class="headerlink" href="#exercise-8-visualizing-cloud-optimized-geotiffs-cogs" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-9-visualizing-local-raster-data">
-<h3><span class="section-number">20.12.9. </span>Exercise 9: Visualizing Local Raster Data<a class="headerlink" href="#exercise-9-visualizing-local-raster-data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">20.13.9. </span>Exercise 9: Visualizing Local Raster Data<a class="headerlink" href="#exercise-9-visualizing-local-raster-data" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-10-creating-a-split-map">
-<h3><span class="section-number">20.12.10. </span>Exercise 10: Creating a Split Map<a class="headerlink" href="#exercise-10-creating-a-split-map" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">20.13.10. </span>Exercise 10: Creating a Split Map<a class="headerlink" href="#exercise-10-creating-a-split-map" title="Link to this heading">#</a></h3>
 </section>
 </section>
 </section>
@@ -836,32 +931,55 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">20.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">20.2. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-leafmap">20.3. Installing leafmap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-interactive-maps">20.4. Creating interactive maps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-the-map">20.4.1. Customizing the Map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-or-removing-controls">20.4.2. Adding or Removing Controls</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-layers">20.4.3. Working with Layers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clearing-controls-and-layers">20.4.4. Clearing Controls and Layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-setting-up-leafmap">20.3. Installing and Setting Up Leafmap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-methods">20.3.1. Installation Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-leafmap-s-backend-architecture">20.3.2. Understanding Leafmap’s Backend Architecture</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-interactive-maps">20.4. Creating Interactive Maps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-interactive-map">20.4.1. Your First Interactive Map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-map-properties">20.4.2. Customizing Map Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-center-location-and-zoom-level">20.4.2.1. Setting Center Location and Zoom Level</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-map-controls">20.4.3. Managing Map Controls</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-default-controls">20.4.3.1. Understanding Default Controls</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-control-visibility">20.4.3.2. Customizing Control Visibility</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-search-functionality">20.4.3.3. Adding Search Functionality</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-map-layers">20.4.4. Working with Map Layers</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-and-inspecting-layers">20.4.4.1. Accessing and Inspecting Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#layer-management-operations">20.4.4.2. Layer Management Operations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#clearing-map-content">20.4.4.3. Clearing Map Content</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-basemaps">20.5. Changing Basemaps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-an-xyz-tile-layer">20.5.1. Adding an XYZ Tile Layer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-wms-tile-layer">20.5.2. Adding a WMS Tile Layer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-legend-to-a-map">20.5.3. Adding a Legend to a Map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-colorbar-to-visualize-data">20.5.4. Adding a Colorbar to Visualize Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-basemaps-and-their-role">20.5.1. Understanding Basemaps and Their Role</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-predefined-basemaps">20.5.2. Adding Predefined Basemaps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-basemap-selection">20.5.3. Interactive Basemap Selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-custom-xyz-tile-layers">20.5.4. Adding Custom XYZ Tile Layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-web-map-service-wms-layers">20.5.5. Adding Web Map Service (WMS) Layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-legends-for-data-context">20.5.6. Adding Legends for Data Context</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-colorbars-for-continuous-data">20.5.7. Adding Colorbars for Continuous Data</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-vector-data">20.6. Visualizing Vector Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-marker">20.6.1. Adding a Marker</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-multiple-markers">20.6.2. Adding Multiple Markers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-marker-clusters">20.6.3. Adding Marker Clusters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-markers">20.6.4. Customizing Markers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-polylines">20.6.5. Visualizing Polylines</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-polyline-styles">20.6.5.1. Customizing Polyline Styles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-point-data-markers">20.6.1. Working with Point Data: Markers</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-individual-markers">20.6.1.1. Adding Individual Markers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-multiple-markers-efficiently">20.6.1.2. Adding Multiple Markers Efficiently</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-large-point-datasets-with-clustering">20.6.1.3. Managing Large Point Datasets with Clustering</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-marker-customization">20.6.1.4. Advanced Marker Customization</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-polygons">20.6.6. Visualizing Polygons</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-geopandas-geodataframes">20.6.7. Visualizing GeoPandas GeoDataFrames</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-polylines">20.6.2. Visualizing Polylines</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-polyline-styles">20.6.2.1. Customizing Polyline Styles</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-polygons">20.6.3. Visualizing Polygons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-geopandas-geodataframes">20.6.4. Visualizing GeoPandas GeoDataFrames</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-choropleth-maps">20.7. Creating Choropleth Maps</a></li>
@@ -894,28 +1012,36 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-spatiotemporal-asset-catalog-stac-data">20.10.3. Visualizing SpatioTemporal Asset Catalog (STAC) Data</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-stac-bands">20.10.3.1. Exploring STAC Bands</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-stac-layers-to-the-map">20.10.3.2. Adding STAC Layers to the Map</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-custom-stac-catalog">20.10.3.3. Using a Custom STAC Catalog</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-s3-integration">20.10.4. AWS S3 Integration</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-datasets-in-an-s3-bucket">20.10.4.1. Accessing Datasets in an S3 Bucket</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-a-raster-dataset-from-s3">20.10.4.2. Visualizing a Raster Dataset from S3</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">20.11. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">20.12. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-an-interactive-map">20.12.1. Exercise 1: Creating an Interactive Map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-adding-xyz-and-wms-tile-layers">20.12.2. Exercise 2: Adding XYZ and WMS Tile Layers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-adding-map-legends">20.12.3. Exercise 3: Adding Map Legends</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-creating-marker-clusters">20.12.4. Exercise 4: Creating Marker Clusters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-visualizing-vector-data">20.12.5. Exercise 5: Visualizing Vector Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-visualizing-geoparquet-data">20.12.6. Exercise 6: Visualizing GeoParquet Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-visualizing-pmtiles">20.12.7. Exercise 7: Visualizing PMTiles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-visualizing-cloud-optimized-geotiffs-cogs">20.12.8. Exercise 8: Visualizing Cloud Optimized GeoTIFFs (COGs)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-visualizing-local-raster-data">20.12.9. Exercise 9: Visualizing Local Raster Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-creating-a-split-map">20.12.10. Exercise 10: Creating a Split Map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-and-visualizing-maxar-open-data">20.11. Accessing and Visualizing Maxar Open Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discovering-available-disaster-events">20.11.1. Discovering Available Disaster Events</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-a-disaster-event">20.11.2. Selecting a Disaster Event</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-image-footprints">20.11.3. Visualizing Image Footprints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-analysis-before-and-after-the-earthquake">20.11.4. Temporal Analysis: Before and After the Earthquake</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-pre-event-and-post-event-coverage">20.11.5. Comparing Pre-Event and Post-Event Coverage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-a-region-of-interest">20.11.6. Selecting a Region of Interest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-within-the-region-of-interest">20.11.7. Searching Within the Region of Interest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-images-for-visualization">20.11.8. Preparing Images for Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-web-optimized-tile-services">20.11.9. Creating Web-Optimized Tile Services</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-split-map-comparison">20.11.10. Creating a Split-Map Comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-images-for-offline-analysis">20.11.11. Downloading Images for Offline Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">20.12. Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">20.13. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-an-interactive-map">20.13.1. Exercise 1: Creating an Interactive Map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-adding-xyz-and-wms-tile-layers">20.13.2. Exercise 2: Adding XYZ and WMS Tile Layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-adding-map-legends">20.13.3. Exercise 3: Adding Map Legends</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-creating-marker-clusters">20.13.4. Exercise 4: Creating Marker Clusters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-visualizing-vector-data">20.13.5. Exercise 5: Visualizing Vector Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-visualizing-geoparquet-data">20.13.6. Exercise 6: Visualizing GeoParquet Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-visualizing-pmtiles">20.13.7. Exercise 7: Visualizing PMTiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-visualizing-cloud-optimized-geotiffs-cogs">20.13.8. Exercise 8: Visualizing Cloud Optimized GeoTIFFs (COGs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-visualizing-local-raster-data">20.13.9. Exercise 9: Visualizing Local Raster Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-creating-a-split-map">20.13.10. Exercise 10: Creating a Split Map</a></li>
 </ul>
 </li>
 </ul>

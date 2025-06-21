@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>17. Working with Raster Data using Rasterio &#8212; Introduction to GIS Programming</title>
+    <title>17. Working with Raster Data Using Rasterio &#8212; Introduction to GIS Programming</title>
   
   
   
@@ -201,17 +201,18 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="get-started.html">15. Introduction to Geospatial Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geopandas.html">16. Vector Data Analysis with GeoPandas</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">17. Working with Raster Data using Rasterio</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">17. Working with Raster Data Using Rasterio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xarray.html">18. Multi-dimensional Data Analysis with Xarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rioxarray.html">19. Raster Analysis with Rioxarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="leafmap.html">20. Interactive Visualization with Leafmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="whitebox.html">21. Geoprocessing with WhiteboxTools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maplibre.html">22. 3D Mapping with MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Earth Engine and Geemap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hypercoast.html">24. Hyperspectral Data Visualization with HyperCoast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. Spatial Database Analysis with DuckDB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. GDAL and OGR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Web Apps with Voila and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. High-Performance Geospatial Analytics with DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. Geospatial Data Processing with GDAL and OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Dashboards with Voilà and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sedona.html">28. Distributed Computing with Apache Sedona</a></li>
 </ul>
 
     </div>
@@ -481,7 +482,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Working with Raster Data using Rasterio</h1>
+    <h1>Working with Raster Data Using Rasterio</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -491,56 +492,56 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">17.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">17.1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-raster-data">17.1.1. What is Raster Data?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-rasterio">17.1.2. Why Use Rasterio?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">17.2. Learning Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-rasterio">17.3. Installing Rasterio</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-raster-data">17.4. Reading Raster Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-basic-raster-information">17.5. Getting Basic Raster Information</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-metadata-and-file-information">17.5.1. Accessing Metadata and File Information</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-reference-system-crs">17.5.2. Coordinate Reference System (CRS)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-resolution">17.5.3. Spatial Resolution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensions-width-and-height">17.5.4. Dimensions: Width and Height</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bounds">17.5.5. Bounds</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">17.5.6. Data Types</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#affine-transform">17.5.7. Affine Transform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-raster-data">17.4. Reading Raster Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-raster-files">17.4.1. Opening Raster Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-raster-metadata">17.4.2. Understanding Raster Metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-file-information">17.4.2.1. Basic File Information</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-properties">17.4.2.2. Spatial Properties</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-properties">17.4.2.3. Data Properties</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-raster-data">17.6. Plotting Raster Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-raster-plot">17.6.1. Basic Raster Plot</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-specific-band">17.6.2. Plotting a Specific Band</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-plots">17.6.3. Customizing Plots</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-vector-layer-on-top-of-a-raster-image">17.6.4. Plotting a Vector Layer on Top of a Raster Image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-colormap-and-colorbar">17.6.5. Custom Colormap and Colorbar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-affine-transform">17.4.3. The Affine Transform</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-and-manipulating-raster-bands">17.7. Accessing and Manipulating Raster Bands</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-multiple-bands">17.7.1. Reading Multiple Bands</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-multiple-bands">17.7.2. Visualizing Multiple Bands</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking-and-plotting-bands">17.7.3. Stacking and Plotting Bands</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-band-math-ndvi-calculation">17.7.4. Basic Band Math (NDVI Calculation)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-raster-data">17.5. Visualizing Raster Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-raster-visualization">17.5.1. Basic Raster Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-color-maps">17.5.2. Understanding Color Maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-colorbars">17.5.3. Adding Colorbars</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-multiple-bands">17.5.4. Visualizing Multiple Bands</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-band-visualization">17.5.4.1. Single Band Visualization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rgb-composite">17.5.4.2. RGB Composite</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-multi-panel-plot">17.5.4.3. Creating a Multi-Panel Plot</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-raster-data">17.8. Writing Raster Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-raster-data">17.9. Clipping Raster Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-with-vector-data">17.9.1. Clipping with Vector Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overlaying-vector-data">17.5.5. Overlaying Vector Data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reprojecting-raster-data">17.10. Reprojecting Raster Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-raster-data-from-scratch">17.11. Creating Raster Data from Scratch</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-contour-plot">17.11.1. 2D Contour Plot</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-surface-plot-with-matplotlib">17.11.2. 3D Surface Plot with Matplotlib</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-surface-plot-with-plotly">17.11.3. 3D Surface Plot with Plotly</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-synthetic-raster-data-to-a-file">17.11.4. Writing Synthetic Raster Data to a File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-and-manipulating-raster-bands">17.6. Accessing and Manipulating Raster Bands</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking-multiple-bands">17.6.1. Stacking Multiple Bands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-band-math-ndvi-calculation">17.6.2. Basic Band Math (NDVI Calculation)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">17.12. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">17.13. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-datasets">17.13.1. Sample datasets</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-reading-and-exploring-raster-data">17.13.2. Exercise 1: Reading and Exploring Raster Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualizing-and-manipulating-raster-bands">17.13.3. Exercise 2: Visualizing and Manipulating Raster Bands</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-raster-clipping-with-array-indexing">17.13.4. Exercise 3: Raster Clipping with Array Indexing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-calculating-ndwi-band-math">17.13.5. Exercise 4: Calculating NDWI (Band Math)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-reprojecting-raster-data">17.13.6. Exercise 5: Reprojecting Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-raster-data">17.7. Writing Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-raster-data">17.8. Clipping Raster Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-with-a-bounding-box">17.8.1. Clipping with a Bounding Box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-with-a-vector-dataset">17.8.2. Clipping with a Vector Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">17.9. Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">17.10. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-datasets">17.10.1. Sample Datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-reading-and-exploring-raster-data">17.10.2. Exercise 1: Reading and Exploring Raster Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-working-with-raster-bands">17.10.3. Exercise 2: Working with Raster Bands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-basic-raster-operations">17.10.4. Exercise 3: Basic Raster Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-writing-and-saving-raster-data">17.10.5. Exercise 4: Writing and Saving Raster Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-clipping-and-subsetting">17.10.6. Exercise 5: Clipping and Subsetting</a></li>
 </ul>
 </li>
 </ul>
@@ -555,9 +556,15 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="working-with-raster-data-using-rasterio">
-<h1><span class="section-number">17. </span>Working with Raster Data using Rasterio<a class="headerlink" href="#working-with-raster-data-using-rasterio" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">17. </span>Working with Raster Data Using Rasterio<a class="headerlink" href="#working-with-raster-data-using-rasterio" title="Link to this heading">#</a></h1>
 <section id="introduction">
 <h2><span class="section-number">17.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<section id="what-is-raster-data">
+<h3><span class="section-number">17.1.1. </span>What is Raster Data?<a class="headerlink" href="#what-is-raster-data" title="Link to this heading">#</a></h3>
+</section>
+<section id="why-use-rasterio">
+<h3><span class="section-number">17.1.2. </span>Why Use Rasterio?<a class="headerlink" href="#why-use-rasterio" title="Link to this heading">#</a></h3>
+</section>
 </section>
 <section id="learning-objectives">
 <h2><span class="section-number">17.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
@@ -567,113 +574,95 @@ document.write(`
 </section>
 <section id="reading-raster-data">
 <h2><span class="section-number">17.4. </span>Reading Raster Data<a class="headerlink" href="#reading-raster-data" title="Link to this heading">#</a></h2>
+<section id="opening-raster-files">
+<h3><span class="section-number">17.4.1. </span>Opening Raster Files<a class="headerlink" href="#opening-raster-files" title="Link to this heading">#</a></h3>
 </section>
-<section id="getting-basic-raster-information">
-<h2><span class="section-number">17.5. </span>Getting Basic Raster Information<a class="headerlink" href="#getting-basic-raster-information" title="Link to this heading">#</a></h2>
-<section id="accessing-metadata-and-file-information">
-<h3><span class="section-number">17.5.1. </span>Accessing Metadata and File Information<a class="headerlink" href="#accessing-metadata-and-file-information" title="Link to this heading">#</a></h3>
+<section id="understanding-raster-metadata">
+<h3><span class="section-number">17.4.2. </span>Understanding Raster Metadata<a class="headerlink" href="#understanding-raster-metadata" title="Link to this heading">#</a></h3>
+<section id="basic-file-information">
+<h4><span class="section-number">17.4.2.1. </span>Basic File Information<a class="headerlink" href="#basic-file-information" title="Link to this heading">#</a></h4>
 </section>
-<section id="coordinate-reference-system-crs">
-<h3><span class="section-number">17.5.2. </span>Coordinate Reference System (CRS)<a class="headerlink" href="#coordinate-reference-system-crs" title="Link to this heading">#</a></h3>
+<section id="spatial-properties">
+<h4><span class="section-number">17.4.2.2. </span>Spatial Properties<a class="headerlink" href="#spatial-properties" title="Link to this heading">#</a></h4>
 </section>
-<section id="spatial-resolution">
-<h3><span class="section-number">17.5.3. </span>Spatial Resolution<a class="headerlink" href="#spatial-resolution" title="Link to this heading">#</a></h3>
-</section>
-<section id="dimensions-width-and-height">
-<h3><span class="section-number">17.5.4. </span>Dimensions: Width and Height<a class="headerlink" href="#dimensions-width-and-height" title="Link to this heading">#</a></h3>
-</section>
-<section id="bounds">
-<h3><span class="section-number">17.5.5. </span>Bounds<a class="headerlink" href="#bounds" title="Link to this heading">#</a></h3>
-</section>
-<section id="data-types">
-<h3><span class="section-number">17.5.6. </span>Data Types<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h3>
-</section>
-<section id="affine-transform">
-<h3><span class="section-number">17.5.7. </span>Affine Transform<a class="headerlink" href="#affine-transform" title="Link to this heading">#</a></h3>
+<section id="data-properties">
+<h4><span class="section-number">17.4.2.3. </span>Data Properties<a class="headerlink" href="#data-properties" title="Link to this heading">#</a></h4>
 </section>
 </section>
-<section id="plotting-raster-data">
-<h2><span class="section-number">17.6. </span>Plotting Raster Data<a class="headerlink" href="#plotting-raster-data" title="Link to this heading">#</a></h2>
-<section id="basic-raster-plot">
-<h3><span class="section-number">17.6.1. </span>Basic Raster Plot<a class="headerlink" href="#basic-raster-plot" title="Link to this heading">#</a></h3>
+<section id="the-affine-transform">
+<h3><span class="section-number">17.4.3. </span>The Affine Transform<a class="headerlink" href="#the-affine-transform" title="Link to this heading">#</a></h3>
 </section>
-<section id="plotting-a-specific-band">
-<h3><span class="section-number">17.6.2. </span>Plotting a Specific Band<a class="headerlink" href="#plotting-a-specific-band" title="Link to this heading">#</a></h3>
 </section>
-<section id="customizing-plots">
-<h3><span class="section-number">17.6.3. </span>Customizing Plots<a class="headerlink" href="#customizing-plots" title="Link to this heading">#</a></h3>
+<section id="visualizing-raster-data">
+<h2><span class="section-number">17.5. </span>Visualizing Raster Data<a class="headerlink" href="#visualizing-raster-data" title="Link to this heading">#</a></h2>
+<section id="basic-raster-visualization">
+<h3><span class="section-number">17.5.1. </span>Basic Raster Visualization<a class="headerlink" href="#basic-raster-visualization" title="Link to this heading">#</a></h3>
 </section>
-<section id="plotting-a-vector-layer-on-top-of-a-raster-image">
-<h3><span class="section-number">17.6.4. </span>Plotting a Vector Layer on Top of a Raster Image<a class="headerlink" href="#plotting-a-vector-layer-on-top-of-a-raster-image" title="Link to this heading">#</a></h3>
+<section id="understanding-color-maps">
+<h3><span class="section-number">17.5.2. </span>Understanding Color Maps<a class="headerlink" href="#understanding-color-maps" title="Link to this heading">#</a></h3>
 </section>
-<section id="custom-colormap-and-colorbar">
-<h3><span class="section-number">17.6.5. </span>Custom Colormap and Colorbar<a class="headerlink" href="#custom-colormap-and-colorbar" title="Link to this heading">#</a></h3>
+<section id="adding-colorbars">
+<h3><span class="section-number">17.5.3. </span>Adding Colorbars<a class="headerlink" href="#adding-colorbars" title="Link to this heading">#</a></h3>
+</section>
+<section id="visualizing-multiple-bands">
+<h3><span class="section-number">17.5.4. </span>Visualizing Multiple Bands<a class="headerlink" href="#visualizing-multiple-bands" title="Link to this heading">#</a></h3>
+<section id="single-band-visualization">
+<h4><span class="section-number">17.5.4.1. </span>Single Band Visualization<a class="headerlink" href="#single-band-visualization" title="Link to this heading">#</a></h4>
+</section>
+<section id="rgb-composite">
+<h4><span class="section-number">17.5.4.2. </span>RGB Composite<a class="headerlink" href="#rgb-composite" title="Link to this heading">#</a></h4>
+</section>
+<section id="creating-a-multi-panel-plot">
+<h4><span class="section-number">17.5.4.3. </span>Creating a Multi-Panel Plot<a class="headerlink" href="#creating-a-multi-panel-plot" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="overlaying-vector-data">
+<h3><span class="section-number">17.5.5. </span>Overlaying Vector Data<a class="headerlink" href="#overlaying-vector-data" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="accessing-and-manipulating-raster-bands">
-<h2><span class="section-number">17.7. </span>Accessing and Manipulating Raster Bands<a class="headerlink" href="#accessing-and-manipulating-raster-bands" title="Link to this heading">#</a></h2>
-<section id="reading-multiple-bands">
-<h3><span class="section-number">17.7.1. </span>Reading Multiple Bands<a class="headerlink" href="#reading-multiple-bands" title="Link to this heading">#</a></h3>
-</section>
-<section id="visualizing-multiple-bands">
-<h3><span class="section-number">17.7.2. </span>Visualizing Multiple Bands<a class="headerlink" href="#visualizing-multiple-bands" title="Link to this heading">#</a></h3>
-</section>
-<section id="stacking-and-plotting-bands">
-<h3><span class="section-number">17.7.3. </span>Stacking and Plotting Bands<a class="headerlink" href="#stacking-and-plotting-bands" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">17.6. </span>Accessing and Manipulating Raster Bands<a class="headerlink" href="#accessing-and-manipulating-raster-bands" title="Link to this heading">#</a></h2>
+<section id="stacking-multiple-bands">
+<h3><span class="section-number">17.6.1. </span>Stacking Multiple Bands<a class="headerlink" href="#stacking-multiple-bands" title="Link to this heading">#</a></h3>
 </section>
 <section id="basic-band-math-ndvi-calculation">
-<h3><span class="section-number">17.7.4. </span>Basic Band Math (NDVI Calculation)<a class="headerlink" href="#basic-band-math-ndvi-calculation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.6.2. </span>Basic Band Math (NDVI Calculation)<a class="headerlink" href="#basic-band-math-ndvi-calculation" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="writing-raster-data">
-<h2><span class="section-number">17.8. </span>Writing Raster Data<a class="headerlink" href="#writing-raster-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.7. </span>Writing Raster Data<a class="headerlink" href="#writing-raster-data" title="Link to this heading">#</a></h2>
 </section>
 <section id="clipping-raster-data">
-<h2><span class="section-number">17.9. </span>Clipping Raster Data<a class="headerlink" href="#clipping-raster-data" title="Link to this heading">#</a></h2>
-<section id="clipping-with-vector-data">
-<h3><span class="section-number">17.9.1. </span>Clipping with Vector Data<a class="headerlink" href="#clipping-with-vector-data" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">17.8. </span>Clipping Raster Data<a class="headerlink" href="#clipping-raster-data" title="Link to this heading">#</a></h2>
+<section id="clipping-with-a-bounding-box">
+<h3><span class="section-number">17.8.1. </span>Clipping with a Bounding Box<a class="headerlink" href="#clipping-with-a-bounding-box" title="Link to this heading">#</a></h3>
 </section>
-</section>
-<section id="reprojecting-raster-data">
-<h2><span class="section-number">17.10. </span>Reprojecting Raster Data<a class="headerlink" href="#reprojecting-raster-data" title="Link to this heading">#</a></h2>
-</section>
-<section id="creating-raster-data-from-scratch">
-<h2><span class="section-number">17.11. </span>Creating Raster Data from Scratch<a class="headerlink" href="#creating-raster-data-from-scratch" title="Link to this heading">#</a></h2>
-<section id="d-contour-plot">
-<h3><span class="section-number">17.11.1. </span>2D Contour Plot<a class="headerlink" href="#d-contour-plot" title="Link to this heading">#</a></h3>
-</section>
-<section id="d-surface-plot-with-matplotlib">
-<h3><span class="section-number">17.11.2. </span>3D Surface Plot with Matplotlib<a class="headerlink" href="#d-surface-plot-with-matplotlib" title="Link to this heading">#</a></h3>
-</section>
-<section id="d-surface-plot-with-plotly">
-<h3><span class="section-number">17.11.3. </span>3D Surface Plot with Plotly<a class="headerlink" href="#d-surface-plot-with-plotly" title="Link to this heading">#</a></h3>
-</section>
-<section id="writing-synthetic-raster-data-to-a-file">
-<h3><span class="section-number">17.11.4. </span>Writing Synthetic Raster Data to a File<a class="headerlink" href="#writing-synthetic-raster-data-to-a-file" title="Link to this heading">#</a></h3>
+<section id="clipping-with-a-vector-dataset">
+<h3><span class="section-number">17.8.2. </span>Clipping with a Vector Dataset<a class="headerlink" href="#clipping-with-a-vector-dataset" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="key-takeaways">
-<h2><span class="section-number">17.12. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.9. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
 </section>
 <section id="exercises">
-<h2><span class="section-number">17.13. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.10. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <section id="sample-datasets">
-<h3><span class="section-number">17.13.1. </span>Sample datasets<a class="headerlink" href="#sample-datasets" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.10.1. </span>Sample Datasets<a class="headerlink" href="#sample-datasets" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-1-reading-and-exploring-raster-data">
-<h3><span class="section-number">17.13.2. </span>Exercise 1: Reading and Exploring Raster Data<a class="headerlink" href="#exercise-1-reading-and-exploring-raster-data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.10.2. </span>Exercise 1: Reading and Exploring Raster Data<a class="headerlink" href="#exercise-1-reading-and-exploring-raster-data" title="Link to this heading">#</a></h3>
 </section>
-<section id="exercise-2-visualizing-and-manipulating-raster-bands">
-<h3><span class="section-number">17.13.3. </span>Exercise 2: Visualizing and Manipulating Raster Bands<a class="headerlink" href="#exercise-2-visualizing-and-manipulating-raster-bands" title="Link to this heading">#</a></h3>
+<section id="exercise-2-working-with-raster-bands">
+<h3><span class="section-number">17.10.3. </span>Exercise 2: Working with Raster Bands<a class="headerlink" href="#exercise-2-working-with-raster-bands" title="Link to this heading">#</a></h3>
 </section>
-<section id="exercise-3-raster-clipping-with-array-indexing">
-<h3><span class="section-number">17.13.4. </span>Exercise 3: Raster Clipping with Array Indexing<a class="headerlink" href="#exercise-3-raster-clipping-with-array-indexing" title="Link to this heading">#</a></h3>
+<section id="exercise-3-basic-raster-operations">
+<h3><span class="section-number">17.10.4. </span>Exercise 3: Basic Raster Operations<a class="headerlink" href="#exercise-3-basic-raster-operations" title="Link to this heading">#</a></h3>
 </section>
-<section id="exercise-4-calculating-ndwi-band-math">
-<h3><span class="section-number">17.13.5. </span>Exercise 4: Calculating NDWI (Band Math)<a class="headerlink" href="#exercise-4-calculating-ndwi-band-math" title="Link to this heading">#</a></h3>
+<section id="exercise-4-writing-and-saving-raster-data">
+<h3><span class="section-number">17.10.5. </span>Exercise 4: Writing and Saving Raster Data<a class="headerlink" href="#exercise-4-writing-and-saving-raster-data" title="Link to this heading">#</a></h3>
 </section>
-<section id="exercise-5-reprojecting-raster-data">
-<h3><span class="section-number">17.13.6. </span>Exercise 5: Reprojecting Raster Data<a class="headerlink" href="#exercise-5-reprojecting-raster-data" title="Link to this heading">#</a></h3>
+<section id="exercise-5-clipping-and-subsetting">
+<h3><span class="section-number">17.10.6. </span>Exercise 5: Clipping and Subsetting<a class="headerlink" href="#exercise-5-clipping-and-subsetting" title="Link to this heading">#</a></h3>
 </section>
 </section>
 </section>
@@ -742,56 +731,56 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">17.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">17.1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-raster-data">17.1.1. What is Raster Data?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-rasterio">17.1.2. Why Use Rasterio?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">17.2. Learning Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-rasterio">17.3. Installing Rasterio</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-raster-data">17.4. Reading Raster Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-basic-raster-information">17.5. Getting Basic Raster Information</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-metadata-and-file-information">17.5.1. Accessing Metadata and File Information</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-reference-system-crs">17.5.2. Coordinate Reference System (CRS)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-resolution">17.5.3. Spatial Resolution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensions-width-and-height">17.5.4. Dimensions: Width and Height</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bounds">17.5.5. Bounds</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">17.5.6. Data Types</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#affine-transform">17.5.7. Affine Transform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-raster-data">17.4. Reading Raster Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-raster-files">17.4.1. Opening Raster Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-raster-metadata">17.4.2. Understanding Raster Metadata</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-file-information">17.4.2.1. Basic File Information</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-properties">17.4.2.2. Spatial Properties</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-properties">17.4.2.3. Data Properties</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-raster-data">17.6. Plotting Raster Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-raster-plot">17.6.1. Basic Raster Plot</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-specific-band">17.6.2. Plotting a Specific Band</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#customizing-plots">17.6.3. Customizing Plots</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-vector-layer-on-top-of-a-raster-image">17.6.4. Plotting a Vector Layer on Top of a Raster Image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-colormap-and-colorbar">17.6.5. Custom Colormap and Colorbar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-affine-transform">17.4.3. The Affine Transform</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-and-manipulating-raster-bands">17.7. Accessing and Manipulating Raster Bands</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-multiple-bands">17.7.1. Reading Multiple Bands</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-multiple-bands">17.7.2. Visualizing Multiple Bands</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking-and-plotting-bands">17.7.3. Stacking and Plotting Bands</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-band-math-ndvi-calculation">17.7.4. Basic Band Math (NDVI Calculation)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-raster-data">17.5. Visualizing Raster Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-raster-visualization">17.5.1. Basic Raster Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-color-maps">17.5.2. Understanding Color Maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-colorbars">17.5.3. Adding Colorbars</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-multiple-bands">17.5.4. Visualizing Multiple Bands</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-band-visualization">17.5.4.1. Single Band Visualization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rgb-composite">17.5.4.2. RGB Composite</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-multi-panel-plot">17.5.4.3. Creating a Multi-Panel Plot</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-raster-data">17.8. Writing Raster Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-raster-data">17.9. Clipping Raster Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-with-vector-data">17.9.1. Clipping with Vector Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overlaying-vector-data">17.5.5. Overlaying Vector Data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reprojecting-raster-data">17.10. Reprojecting Raster Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-raster-data-from-scratch">17.11. Creating Raster Data from Scratch</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-contour-plot">17.11.1. 2D Contour Plot</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-surface-plot-with-matplotlib">17.11.2. 3D Surface Plot with Matplotlib</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-surface-plot-with-plotly">17.11.3. 3D Surface Plot with Plotly</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-synthetic-raster-data-to-a-file">17.11.4. Writing Synthetic Raster Data to a File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-and-manipulating-raster-bands">17.6. Accessing and Manipulating Raster Bands</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking-multiple-bands">17.6.1. Stacking Multiple Bands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-band-math-ndvi-calculation">17.6.2. Basic Band Math (NDVI Calculation)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">17.12. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">17.13. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-datasets">17.13.1. Sample datasets</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-reading-and-exploring-raster-data">17.13.2. Exercise 1: Reading and Exploring Raster Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualizing-and-manipulating-raster-bands">17.13.3. Exercise 2: Visualizing and Manipulating Raster Bands</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-raster-clipping-with-array-indexing">17.13.4. Exercise 3: Raster Clipping with Array Indexing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-calculating-ndwi-band-math">17.13.5. Exercise 4: Calculating NDWI (Band Math)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-reprojecting-raster-data">17.13.6. Exercise 5: Reprojecting Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-raster-data">17.7. Writing Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-raster-data">17.8. Clipping Raster Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-with-a-bounding-box">17.8.1. Clipping with a Bounding Box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-with-a-vector-dataset">17.8.2. Clipping with a Vector Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">17.9. Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">17.10. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-datasets">17.10.1. Sample Datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-reading-and-exploring-raster-data">17.10.2. Exercise 1: Reading and Exploring Raster Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-working-with-raster-bands">17.10.3. Exercise 2: Working with Raster Bands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-basic-raster-operations">17.10.4. Exercise 3: Basic Raster Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-writing-and-saving-raster-data">17.10.5. Exercise 4: Writing and Saving Raster Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-clipping-and-subsetting">17.10.6. Exercise 5: Clipping and Subsetting</a></li>
 </ul>
 </li>
 </ul>

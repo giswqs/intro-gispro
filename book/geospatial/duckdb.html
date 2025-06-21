@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>25. Spatial Database Analysis with DuckDB &#8212; Introduction to GIS Programming</title>
+    <title>25. High-Performance Geospatial Analytics with DuckDB &#8212; Introduction to GIS Programming</title>
   
   
   
@@ -62,7 +62,7 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="26. GDAL and OGR" href="gdal.html" />
+    <link rel="next" title="26. Geospatial Data Processing with GDAL and OGR" href="gdal.html" />
     <link rel="prev" title="24. Hyperspectral Data Visualization with HyperCoast" href="hypercoast.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -201,17 +201,18 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="get-started.html">15. Introduction to Geospatial Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geopandas.html">16. Vector Data Analysis with GeoPandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data using Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data Using Rasterio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xarray.html">18. Multi-dimensional Data Analysis with Xarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rioxarray.html">19. Raster Analysis with Rioxarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="leafmap.html">20. Interactive Visualization with Leafmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="whitebox.html">21. Geoprocessing with WhiteboxTools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maplibre.html">22. 3D Mapping with MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Earth Engine and Geemap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hypercoast.html">24. Hyperspectral Data Visualization with HyperCoast</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">25. Spatial Database Analysis with DuckDB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. GDAL and OGR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Web Apps with Voila and Solara</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">25. High-Performance Geospatial Analytics with DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. Geospatial Data Processing with GDAL and OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Dashboards with Voilà and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sedona.html">28. Distributed Computing with Apache Sedona</a></li>
 </ul>
 
     </div>
@@ -481,7 +482,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Spatial Database Analysis with DuckDB</h1>
+    <h1>High-Performance Geospatial Analytics with DuckDB</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -491,20 +492,138 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">25.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">25.1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-makes-duckdb-special-for-geospatial-work">25.1.1. What Makes DuckDB Special for Geospatial Work?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">25.2. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-sample-datasets">25.3. Downloading Sample Datasets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-duckdb">25.4. Installing DuckDB</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-extensions">25.5. Installing Extensions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-csv-files">25.6. Working with CSV Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-json-files">25.7. Working with JSON Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-pandas-dataframes">25.8. Working with Pandas DataFrames</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-parquet-files">25.9. Working with Parquet Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-geojson-files">25.10. Working with GeoJSON Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-shapefiles">25.11. Working with Shapefiles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-geoparquet-files">25.12. Working with GeoParquet Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">25.13. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">25.14. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-and-setup">25.3. Installation and Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-required-packages">25.3.1. Installing Required Packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#library-import-and-configuration">25.3.2. Library Import and Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-duckdb-connections">25.3.3. Understanding DuckDB Connections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-loading-extensions">25.3.4. Installing and Loading Extensions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sql-basics-for-spatial-analysis">25.4. SQL Basics for Spatial Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-sql-for-geospatial-work">25.4.1. Understanding SQL for Geospatial Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-datasets">25.4.2. Sample Datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-data-directly-from-urls">25.4.3. Reading Data Directly from URLs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-persistent-tables">25.4.4. Creating Persistent Tables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-your-data">25.4.5. Viewing Your Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#essential-sql-commands">25.4.6. Essential SQL Commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-data">25.4.6.1. Selecting Data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-specific-columns">25.4.6.2. Choosing Specific Columns</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-unique-values">25.4.6.3. Finding Unique Values</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-and-aggregation">25.4.6.4. Counting and Aggregation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-and-sorting-data">25.4.7. Filtering and Sorting Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-with-where-clauses">25.4.7.1. Filtering with WHERE Clauses</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-your-results">25.4.7.2. Sorting Your Results</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-and-aggregating-data">25.4.7.3. Grouping and Aggregating Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-api-integration">25.5. Python API Integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-result-formats">25.5.1. Understanding Result Formats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seamless-dataframe-integration">25.5.2. Seamless DataFrame Integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#result-conversion-and-export">25.5.3. Result Conversion and Export</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persistent-storage">25.5.4. Persistent Storage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-import">25.6. Data Import</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-data-formats-in-geospatial-work">25.6.1. Understanding Data Formats in Geospatial Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-sample-data">25.6.2. Downloading Sample Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-csv-files">25.6.3. Working with CSV Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#json-files">25.6.4. JSON Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes">25.6.5. DataFrames</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parquet-files">25.6.6. Parquet Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-data-formats">25.6.7. Spatial Data Formats</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-export">25.7. Data Export</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-spatial-data-setup">25.7.1. Sample Spatial Data Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-to-dataframes">25.7.2. Export to DataFrames</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-to-files">25.7.3. Export to Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-to-json">25.7.4. Export to JSON</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-to-excel">25.7.5. Export to Excel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-to-parquet">25.7.6. Export to Parquet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-spatial-formats">25.7.7. Export Spatial Formats</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-geometries">25.8. Working with Geometries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-spatial-data-types">25.8.1. Understanding Spatial Data Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-data-setup">25.8.2. Sample Data Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-understanding-geometries">25.8.3. Creating and Understanding Geometries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-points">25.8.4. Working with Points</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-linestrings">25.8.5. Working with LineStrings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-polygons">25.8.6. Working with Polygons</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-relationships">25.9. Spatial Relationships</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-spatial-predicates">25.9.1. Understanding Spatial Predicates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-real-spatial-data">25.9.2. Working with Real Spatial Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-spatial-equality">25.9.3. Testing Spatial Equality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-in-polygon-analysis">25.9.4. Point-in-Polygon Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proximity-analysis-with-distance">25.9.5. Proximity Analysis with Distance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-joins">25.10. Spatial Joins</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-spatial-vs-regular-joins">25.10.1. Understanding Spatial vs. Regular Joins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-our-data">25.10.2. Exploring Our Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-spatial-join">25.10.3. Your First Spatial Join</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-spatial-analysis">25.10.4. Advanced Spatial Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-based-analysis">25.10.5. Distance-Based Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-multi-table-joins">25.10.6. Advanced Multi-Table Joins</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#large-scale-data-analysis">25.11. Large-Scale Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-the-national-wetlands-inventory">25.11.1. Analyzing the National Wetlands Inventory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-up-nationwide-wetland-analysis">25.11.2. Scaling Up: Nationwide Wetland Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#count-the-total-number-of-wetlands">25.11.2.1. Count the Total Number of Wetlands</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#count-wetlands-by-state">25.11.2.2. Count Wetlands by State</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-wetland-counts-by-state">25.11.3. Mapping Wetland Counts by State</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wetland-distribution-charts">25.11.4. Wetland Distribution Charts</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pie-chart-of-wetlands-by-state">25.11.4.1. Pie Chart of Wetlands by State</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart-of-wetlands-by-state">25.11.4.2. Bar Chart of Wetlands by State</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wetland-area-analysis">25.11.5. Wetland Area Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#total-wetland-area-in-the-u-s">25.11.5.1. Total Wetland Area in the U.S.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wetland-area-by-state">25.11.5.2. Wetland Area by State</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pie-chart-of-wetland-area-by-state">25.11.5.3. Pie Chart of Wetland Area by State</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart-of-wetland-area-by-state">25.11.5.4. Bar Chart of Wetland Area by State</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">25.12. Key Takeaways</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-concepts-you-ve-learned">25.12.1. Fundamental Concepts You’ve Learned</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-approach-is-powerful">25.12.2. Why This Approach is Powerful</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-your-spatial-analysis-skills">25.12.3. Building Your Spatial Analysis Skills</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">25.13. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-tables">25.13.1. Exercise 1: Creating Tables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-column-filtering">25.13.2. Exercise 2: Column Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-row-filtering">25.13.3. Exercise 3: Row Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-sorting-results">25.13.4. Exercise 4: Sorting Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-unique-values">25.13.5. Exercise 5: Unique Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-counting-rows">25.13.6. Exercise 6: Counting Rows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-aggregating-data">25.13.7. Exercise 7: Aggregating Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-joining-tables">25.13.8. Exercise 8: Joining Tables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-string-manipulation">25.13.9. Exercise 9: String Manipulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-filtering-with-multiple-conditions">25.13.10. Exercise 10: Filtering with Multiple Conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-11-basic-setup-and-data-loading">25.13.11. Exercise 11: Basic Setup and Data Loading</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-12-spatial-relationships-analysis">25.13.12. Exercise 12: Spatial Relationships Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-13-advanced-spatial-joins">25.13.13. Exercise 13: Advanced Spatial Joins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-14-data-import-and-export">25.13.14. Exercise 14: Data Import and Export</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-15-large-scale-analysis">25.13.15. Exercise 15: Large-Scale Analysis</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -516,49 +635,301 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="spatial-database-analysis-with-duckdb">
-<h1><span class="section-number">25. </span>Spatial Database Analysis with DuckDB<a class="headerlink" href="#spatial-database-analysis-with-duckdb" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="high-performance-geospatial-analytics-with-duckdb">
+<h1><span class="section-number">25. </span>High-Performance Geospatial Analytics with DuckDB<a class="headerlink" href="#high-performance-geospatial-analytics-with-duckdb" title="Link to this heading">#</a></h1>
 <section id="introduction">
 <h2><span class="section-number">25.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<section id="what-makes-duckdb-special-for-geospatial-work">
+<h3><span class="section-number">25.1.1. </span>What Makes DuckDB Special for Geospatial Work?<a class="headerlink" href="#what-makes-duckdb-special-for-geospatial-work" title="Link to this heading">#</a></h3>
+</section>
 </section>
 <section id="learning-objectives">
 <h2><span class="section-number">25.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 </section>
-<section id="downloading-sample-datasets">
-<h2><span class="section-number">25.3. </span>Downloading Sample Datasets<a class="headerlink" href="#downloading-sample-datasets" title="Link to this heading">#</a></h2>
+<section id="installation-and-setup">
+<h2><span class="section-number">25.3. </span>Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Link to this heading">#</a></h2>
+<section id="installing-required-packages">
+<h3><span class="section-number">25.3.1. </span>Installing Required Packages<a class="headerlink" href="#installing-required-packages" title="Link to this heading">#</a></h3>
 </section>
-<section id="installing-duckdb">
-<h2><span class="section-number">25.4. </span>Installing DuckDB<a class="headerlink" href="#installing-duckdb" title="Link to this heading">#</a></h2>
+<section id="library-import-and-configuration">
+<h3><span class="section-number">25.3.2. </span>Library Import and Configuration<a class="headerlink" href="#library-import-and-configuration" title="Link to this heading">#</a></h3>
 </section>
-<section id="installing-extensions">
-<h2><span class="section-number">25.5. </span>Installing Extensions<a class="headerlink" href="#installing-extensions" title="Link to this heading">#</a></h2>
+<section id="understanding-duckdb-connections">
+<h3><span class="section-number">25.3.3. </span>Understanding DuckDB Connections<a class="headerlink" href="#understanding-duckdb-connections" title="Link to this heading">#</a></h3>
+</section>
+<section id="installing-and-loading-extensions">
+<h3><span class="section-number">25.3.4. </span>Installing and Loading Extensions<a class="headerlink" href="#installing-and-loading-extensions" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="sql-basics-for-spatial-analysis">
+<h2><span class="section-number">25.4. </span>SQL Basics for Spatial Analysis<a class="headerlink" href="#sql-basics-for-spatial-analysis" title="Link to this heading">#</a></h2>
+<section id="understanding-sql-for-geospatial-work">
+<h3><span class="section-number">25.4.1. </span>Understanding SQL for Geospatial Work<a class="headerlink" href="#understanding-sql-for-geospatial-work" title="Link to this heading">#</a></h3>
+</section>
+<section id="sample-datasets">
+<h3><span class="section-number">25.4.2. </span>Sample Datasets<a class="headerlink" href="#sample-datasets" title="Link to this heading">#</a></h3>
+</section>
+<section id="reading-data-directly-from-urls">
+<h3><span class="section-number">25.4.3. </span>Reading Data Directly from URLs<a class="headerlink" href="#reading-data-directly-from-urls" title="Link to this heading">#</a></h3>
+</section>
+<section id="creating-persistent-tables">
+<h3><span class="section-number">25.4.4. </span>Creating Persistent Tables<a class="headerlink" href="#creating-persistent-tables" title="Link to this heading">#</a></h3>
+</section>
+<section id="viewing-your-data">
+<h3><span class="section-number">25.4.5. </span>Viewing Your Data<a class="headerlink" href="#viewing-your-data" title="Link to this heading">#</a></h3>
+</section>
+<section id="essential-sql-commands">
+<h3><span class="section-number">25.4.6. </span>Essential SQL Commands<a class="headerlink" href="#essential-sql-commands" title="Link to this heading">#</a></h3>
+<section id="selecting-data">
+<h4><span class="section-number">25.4.6.1. </span>Selecting Data<a class="headerlink" href="#selecting-data" title="Link to this heading">#</a></h4>
+</section>
+<section id="choosing-specific-columns">
+<h4><span class="section-number">25.4.6.2. </span>Choosing Specific Columns<a class="headerlink" href="#choosing-specific-columns" title="Link to this heading">#</a></h4>
+</section>
+<section id="finding-unique-values">
+<h4><span class="section-number">25.4.6.3. </span>Finding Unique Values<a class="headerlink" href="#finding-unique-values" title="Link to this heading">#</a></h4>
+</section>
+<section id="counting-and-aggregation">
+<h4><span class="section-number">25.4.6.4. </span>Counting and Aggregation<a class="headerlink" href="#counting-and-aggregation" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="filtering-and-sorting-data">
+<h3><span class="section-number">25.4.7. </span>Filtering and Sorting Data<a class="headerlink" href="#filtering-and-sorting-data" title="Link to this heading">#</a></h3>
+<section id="filtering-with-where-clauses">
+<h4><span class="section-number">25.4.7.1. </span>Filtering with WHERE Clauses<a class="headerlink" href="#filtering-with-where-clauses" title="Link to this heading">#</a></h4>
+</section>
+<section id="sorting-your-results">
+<h4><span class="section-number">25.4.7.2. </span>Sorting Your Results<a class="headerlink" href="#sorting-your-results" title="Link to this heading">#</a></h4>
+</section>
+<section id="grouping-and-aggregating-data">
+<h4><span class="section-number">25.4.7.3. </span>Grouping and Aggregating Data<a class="headerlink" href="#grouping-and-aggregating-data" title="Link to this heading">#</a></h4>
+</section>
+</section>
+</section>
+<section id="python-api-integration">
+<h2><span class="section-number">25.5. </span>Python API Integration<a class="headerlink" href="#python-api-integration" title="Link to this heading">#</a></h2>
+<section id="understanding-result-formats">
+<h3><span class="section-number">25.5.1. </span>Understanding Result Formats<a class="headerlink" href="#understanding-result-formats" title="Link to this heading">#</a></h3>
+</section>
+<section id="seamless-dataframe-integration">
+<h3><span class="section-number">25.5.2. </span>Seamless DataFrame Integration<a class="headerlink" href="#seamless-dataframe-integration" title="Link to this heading">#</a></h3>
+</section>
+<section id="result-conversion-and-export">
+<h3><span class="section-number">25.5.3. </span>Result Conversion and Export<a class="headerlink" href="#result-conversion-and-export" title="Link to this heading">#</a></h3>
+</section>
+<section id="persistent-storage">
+<h3><span class="section-number">25.5.4. </span>Persistent Storage<a class="headerlink" href="#persistent-storage" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="data-import">
+<h2><span class="section-number">25.6. </span>Data Import<a class="headerlink" href="#data-import" title="Link to this heading">#</a></h2>
+<section id="understanding-data-formats-in-geospatial-work">
+<h3><span class="section-number">25.6.1. </span>Understanding Data Formats in Geospatial Work<a class="headerlink" href="#understanding-data-formats-in-geospatial-work" title="Link to this heading">#</a></h3>
+</section>
+<section id="downloading-sample-data">
+<h3><span class="section-number">25.6.2. </span>Downloading Sample Data<a class="headerlink" href="#downloading-sample-data" title="Link to this heading">#</a></h3>
 </section>
 <section id="working-with-csv-files">
-<h2><span class="section-number">25.6. </span>Working with CSV Files<a class="headerlink" href="#working-with-csv-files" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">25.6.3. </span>Working with CSV Files<a class="headerlink" href="#working-with-csv-files" title="Link to this heading">#</a></h3>
 </section>
-<section id="working-with-json-files">
-<h2><span class="section-number">25.7. </span>Working with JSON Files<a class="headerlink" href="#working-with-json-files" title="Link to this heading">#</a></h2>
+<section id="json-files">
+<h3><span class="section-number">25.6.4. </span>JSON Files<a class="headerlink" href="#json-files" title="Link to this heading">#</a></h3>
 </section>
-<section id="working-with-pandas-dataframes">
-<h2><span class="section-number">25.8. </span>Working with Pandas DataFrames<a class="headerlink" href="#working-with-pandas-dataframes" title="Link to this heading">#</a></h2>
+<section id="dataframes">
+<h3><span class="section-number">25.6.5. </span>DataFrames<a class="headerlink" href="#dataframes" title="Link to this heading">#</a></h3>
 </section>
-<section id="working-with-parquet-files">
-<h2><span class="section-number">25.9. </span>Working with Parquet Files<a class="headerlink" href="#working-with-parquet-files" title="Link to this heading">#</a></h2>
+<section id="parquet-files">
+<h3><span class="section-number">25.6.6. </span>Parquet Files<a class="headerlink" href="#parquet-files" title="Link to this heading">#</a></h3>
 </section>
-<section id="working-with-geojson-files">
-<h2><span class="section-number">25.10. </span>Working with GeoJSON Files<a class="headerlink" href="#working-with-geojson-files" title="Link to this heading">#</a></h2>
+<section id="spatial-data-formats">
+<h3><span class="section-number">25.6.7. </span>Spatial Data Formats<a class="headerlink" href="#spatial-data-formats" title="Link to this heading">#</a></h3>
 </section>
-<section id="working-with-shapefiles">
-<h2><span class="section-number">25.11. </span>Working with Shapefiles<a class="headerlink" href="#working-with-shapefiles" title="Link to this heading">#</a></h2>
 </section>
-<section id="working-with-geoparquet-files">
-<h2><span class="section-number">25.12. </span>Working with GeoParquet Files<a class="headerlink" href="#working-with-geoparquet-files" title="Link to this heading">#</a></h2>
+<section id="data-export">
+<h2><span class="section-number">25.7. </span>Data Export<a class="headerlink" href="#data-export" title="Link to this heading">#</a></h2>
+<section id="sample-spatial-data-setup">
+<h3><span class="section-number">25.7.1. </span>Sample Spatial Data Setup<a class="headerlink" href="#sample-spatial-data-setup" title="Link to this heading">#</a></h3>
+</section>
+<section id="export-to-dataframes">
+<h3><span class="section-number">25.7.2. </span>Export to DataFrames<a class="headerlink" href="#export-to-dataframes" title="Link to this heading">#</a></h3>
+</section>
+<section id="export-to-files">
+<h3><span class="section-number">25.7.3. </span>Export to Files<a class="headerlink" href="#export-to-files" title="Link to this heading">#</a></h3>
+</section>
+<section id="export-to-json">
+<h3><span class="section-number">25.7.4. </span>Export to JSON<a class="headerlink" href="#export-to-json" title="Link to this heading">#</a></h3>
+</section>
+<section id="export-to-excel">
+<h3><span class="section-number">25.7.5. </span>Export to Excel<a class="headerlink" href="#export-to-excel" title="Link to this heading">#</a></h3>
+</section>
+<section id="export-to-parquet">
+<h3><span class="section-number">25.7.6. </span>Export to Parquet<a class="headerlink" href="#export-to-parquet" title="Link to this heading">#</a></h3>
+</section>
+<section id="export-spatial-formats">
+<h3><span class="section-number">25.7.7. </span>Export Spatial Formats<a class="headerlink" href="#export-spatial-formats" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="working-with-geometries">
+<h2><span class="section-number">25.8. </span>Working with Geometries<a class="headerlink" href="#working-with-geometries" title="Link to this heading">#</a></h2>
+<section id="understanding-spatial-data-types">
+<h3><span class="section-number">25.8.1. </span>Understanding Spatial Data Types<a class="headerlink" href="#understanding-spatial-data-types" title="Link to this heading">#</a></h3>
+</section>
+<section id="sample-data-setup">
+<h3><span class="section-number">25.8.2. </span>Sample Data Setup<a class="headerlink" href="#sample-data-setup" title="Link to this heading">#</a></h3>
+</section>
+<section id="creating-and-understanding-geometries">
+<h3><span class="section-number">25.8.3. </span>Creating and Understanding Geometries<a class="headerlink" href="#creating-and-understanding-geometries" title="Link to this heading">#</a></h3>
+</section>
+<section id="working-with-points">
+<h3><span class="section-number">25.8.4. </span>Working with Points<a class="headerlink" href="#working-with-points" title="Link to this heading">#</a></h3>
+</section>
+<section id="working-with-linestrings">
+<h3><span class="section-number">25.8.5. </span>Working with LineStrings<a class="headerlink" href="#working-with-linestrings" title="Link to this heading">#</a></h3>
+</section>
+<section id="working-with-polygons">
+<h3><span class="section-number">25.8.6. </span>Working with Polygons<a class="headerlink" href="#working-with-polygons" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="spatial-relationships">
+<h2><span class="section-number">25.9. </span>Spatial Relationships<a class="headerlink" href="#spatial-relationships" title="Link to this heading">#</a></h2>
+<section id="understanding-spatial-predicates">
+<h3><span class="section-number">25.9.1. </span>Understanding Spatial Predicates<a class="headerlink" href="#understanding-spatial-predicates" title="Link to this heading">#</a></h3>
+</section>
+<section id="working-with-real-spatial-data">
+<h3><span class="section-number">25.9.2. </span>Working with Real Spatial Data<a class="headerlink" href="#working-with-real-spatial-data" title="Link to this heading">#</a></h3>
+</section>
+<section id="testing-spatial-equality">
+<h3><span class="section-number">25.9.3. </span>Testing Spatial Equality<a class="headerlink" href="#testing-spatial-equality" title="Link to this heading">#</a></h3>
+</section>
+<section id="point-in-polygon-analysis">
+<h3><span class="section-number">25.9.4. </span>Point-in-Polygon Analysis<a class="headerlink" href="#point-in-polygon-analysis" title="Link to this heading">#</a></h3>
+</section>
+<section id="proximity-analysis-with-distance">
+<h3><span class="section-number">25.9.5. </span>Proximity Analysis with Distance<a class="headerlink" href="#proximity-analysis-with-distance" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="spatial-joins">
+<h2><span class="section-number">25.10. </span>Spatial Joins<a class="headerlink" href="#spatial-joins" title="Link to this heading">#</a></h2>
+<section id="understanding-spatial-vs-regular-joins">
+<h3><span class="section-number">25.10.1. </span>Understanding Spatial vs. Regular Joins<a class="headerlink" href="#understanding-spatial-vs-regular-joins" title="Link to this heading">#</a></h3>
+</section>
+<section id="exploring-our-data">
+<h3><span class="section-number">25.10.2. </span>Exploring Our Data<a class="headerlink" href="#exploring-our-data" title="Link to this heading">#</a></h3>
+</section>
+<section id="your-first-spatial-join">
+<h3><span class="section-number">25.10.3. </span>Your First Spatial Join<a class="headerlink" href="#your-first-spatial-join" title="Link to this heading">#</a></h3>
+</section>
+<section id="advanced-spatial-analysis">
+<h3><span class="section-number">25.10.4. </span>Advanced Spatial Analysis<a class="headerlink" href="#advanced-spatial-analysis" title="Link to this heading">#</a></h3>
+</section>
+<section id="distance-based-analysis">
+<h3><span class="section-number">25.10.5. </span>Distance-Based Analysis<a class="headerlink" href="#distance-based-analysis" title="Link to this heading">#</a></h3>
+</section>
+<section id="advanced-multi-table-joins">
+<h3><span class="section-number">25.10.6. </span>Advanced Multi-Table Joins<a class="headerlink" href="#advanced-multi-table-joins" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="large-scale-data-analysis">
+<h2><span class="section-number">25.11. </span>Large-Scale Data Analysis<a class="headerlink" href="#large-scale-data-analysis" title="Link to this heading">#</a></h2>
+<section id="analyzing-the-national-wetlands-inventory">
+<h3><span class="section-number">25.11.1. </span>Analyzing the National Wetlands Inventory<a class="headerlink" href="#analyzing-the-national-wetlands-inventory" title="Link to this heading">#</a></h3>
+</section>
+<section id="scaling-up-nationwide-wetland-analysis">
+<h3><span class="section-number">25.11.2. </span>Scaling Up: Nationwide Wetland Analysis<a class="headerlink" href="#scaling-up-nationwide-wetland-analysis" title="Link to this heading">#</a></h3>
+<section id="count-the-total-number-of-wetlands">
+<h4><span class="section-number">25.11.2.1. </span>Count the Total Number of Wetlands<a class="headerlink" href="#count-the-total-number-of-wetlands" title="Link to this heading">#</a></h4>
+</section>
+<section id="count-wetlands-by-state">
+<h4><span class="section-number">25.11.2.2. </span>Count Wetlands by State<a class="headerlink" href="#count-wetlands-by-state" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="mapping-wetland-counts-by-state">
+<h3><span class="section-number">25.11.3. </span>Mapping Wetland Counts by State<a class="headerlink" href="#mapping-wetland-counts-by-state" title="Link to this heading">#</a></h3>
+</section>
+<section id="wetland-distribution-charts">
+<h3><span class="section-number">25.11.4. </span>Wetland Distribution Charts<a class="headerlink" href="#wetland-distribution-charts" title="Link to this heading">#</a></h3>
+<section id="pie-chart-of-wetlands-by-state">
+<h4><span class="section-number">25.11.4.1. </span>Pie Chart of Wetlands by State<a class="headerlink" href="#pie-chart-of-wetlands-by-state" title="Link to this heading">#</a></h4>
+</section>
+<section id="bar-chart-of-wetlands-by-state">
+<h4><span class="section-number">25.11.4.2. </span>Bar Chart of Wetlands by State<a class="headerlink" href="#bar-chart-of-wetlands-by-state" title="Link to this heading">#</a></h4>
+</section>
+</section>
+<section id="wetland-area-analysis">
+<h3><span class="section-number">25.11.5. </span>Wetland Area Analysis<a class="headerlink" href="#wetland-area-analysis" title="Link to this heading">#</a></h3>
+<section id="total-wetland-area-in-the-u-s">
+<h4><span class="section-number">25.11.5.1. </span>Total Wetland Area in the U.S.<a class="headerlink" href="#total-wetland-area-in-the-u-s" title="Link to this heading">#</a></h4>
+</section>
+<section id="wetland-area-by-state">
+<h4><span class="section-number">25.11.5.2. </span>Wetland Area by State<a class="headerlink" href="#wetland-area-by-state" title="Link to this heading">#</a></h4>
+</section>
+<section id="pie-chart-of-wetland-area-by-state">
+<h4><span class="section-number">25.11.5.3. </span>Pie Chart of Wetland Area by State<a class="headerlink" href="#pie-chart-of-wetland-area-by-state" title="Link to this heading">#</a></h4>
+</section>
+<section id="bar-chart-of-wetland-area-by-state">
+<h4><span class="section-number">25.11.5.4. </span>Bar Chart of Wetland Area by State<a class="headerlink" href="#bar-chart-of-wetland-area-by-state" title="Link to this heading">#</a></h4>
+</section>
+</section>
 </section>
 <section id="key-takeaways">
-<h2><span class="section-number">25.13. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">25.12. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
+<section id="fundamental-concepts-you-ve-learned">
+<h3><span class="section-number">25.12.1. </span>Fundamental Concepts You’ve Learned<a class="headerlink" href="#fundamental-concepts-you-ve-learned" title="Link to this heading">#</a></h3>
+</section>
+<section id="why-this-approach-is-powerful">
+<h3><span class="section-number">25.12.2. </span>Why This Approach is Powerful<a class="headerlink" href="#why-this-approach-is-powerful" title="Link to this heading">#</a></h3>
+</section>
+<section id="building-your-spatial-analysis-skills">
+<h3><span class="section-number">25.12.3. </span>Building Your Spatial Analysis Skills<a class="headerlink" href="#building-your-spatial-analysis-skills" title="Link to this heading">#</a></h3>
+</section>
 </section>
 <section id="exercises">
-<h2><span class="section-number">25.14. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">25.13. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="exercise-1-creating-tables">
+<h3><span class="section-number">25.13.1. </span>Exercise 1: Creating Tables<a class="headerlink" href="#exercise-1-creating-tables" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-2-column-filtering">
+<h3><span class="section-number">25.13.2. </span>Exercise 2: Column Filtering<a class="headerlink" href="#exercise-2-column-filtering" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-3-row-filtering">
+<h3><span class="section-number">25.13.3. </span>Exercise 3: Row Filtering<a class="headerlink" href="#exercise-3-row-filtering" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-4-sorting-results">
+<h3><span class="section-number">25.13.4. </span>Exercise 4: Sorting Results<a class="headerlink" href="#exercise-4-sorting-results" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-5-unique-values">
+<h3><span class="section-number">25.13.5. </span>Exercise 5: Unique Values<a class="headerlink" href="#exercise-5-unique-values" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-6-counting-rows">
+<h3><span class="section-number">25.13.6. </span>Exercise 6: Counting Rows<a class="headerlink" href="#exercise-6-counting-rows" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-7-aggregating-data">
+<h3><span class="section-number">25.13.7. </span>Exercise 7: Aggregating Data<a class="headerlink" href="#exercise-7-aggregating-data" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-8-joining-tables">
+<h3><span class="section-number">25.13.8. </span>Exercise 8: Joining Tables<a class="headerlink" href="#exercise-8-joining-tables" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-9-string-manipulation">
+<h3><span class="section-number">25.13.9. </span>Exercise 9: String Manipulation<a class="headerlink" href="#exercise-9-string-manipulation" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-10-filtering-with-multiple-conditions">
+<h3><span class="section-number">25.13.10. </span>Exercise 10: Filtering with Multiple Conditions<a class="headerlink" href="#exercise-10-filtering-with-multiple-conditions" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-11-basic-setup-and-data-loading">
+<h3><span class="section-number">25.13.11. </span>Exercise 11: Basic Setup and Data Loading<a class="headerlink" href="#exercise-11-basic-setup-and-data-loading" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-12-spatial-relationships-analysis">
+<h3><span class="section-number">25.13.12. </span>Exercise 12: Spatial Relationships Analysis<a class="headerlink" href="#exercise-12-spatial-relationships-analysis" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-13-advanced-spatial-joins">
+<h3><span class="section-number">25.13.13. </span>Exercise 13: Advanced Spatial Joins<a class="headerlink" href="#exercise-13-advanced-spatial-joins" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-14-data-import-and-export">
+<h3><span class="section-number">25.13.14. </span>Exercise 14: Data Import and Export<a class="headerlink" href="#exercise-14-data-import-and-export" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-15-large-scale-analysis">
+<h3><span class="section-number">25.13.15. </span>Exercise 15: Large-Scale Analysis<a class="headerlink" href="#exercise-15-large-scale-analysis" title="Link to this heading">#</a></h3>
+</section>
 </section>
 </section>
 
@@ -606,7 +977,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">26. </span>GDAL and OGR</p>
+        <p class="prev-next-title"><span class="section-number">26. </span>Geospatial Data Processing with GDAL and OGR</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -626,20 +997,138 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">25.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">25.1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-makes-duckdb-special-for-geospatial-work">25.1.1. What Makes DuckDB Special for Geospatial Work?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">25.2. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-sample-datasets">25.3. Downloading Sample Datasets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-duckdb">25.4. Installing DuckDB</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-extensions">25.5. Installing Extensions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-csv-files">25.6. Working with CSV Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-json-files">25.7. Working with JSON Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-pandas-dataframes">25.8. Working with Pandas DataFrames</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-parquet-files">25.9. Working with Parquet Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-geojson-files">25.10. Working with GeoJSON Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-shapefiles">25.11. Working with Shapefiles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-geoparquet-files">25.12. Working with GeoParquet Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">25.13. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">25.14. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-and-setup">25.3. Installation and Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-required-packages">25.3.1. Installing Required Packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#library-import-and-configuration">25.3.2. Library Import and Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-duckdb-connections">25.3.3. Understanding DuckDB Connections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-loading-extensions">25.3.4. Installing and Loading Extensions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sql-basics-for-spatial-analysis">25.4. SQL Basics for Spatial Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-sql-for-geospatial-work">25.4.1. Understanding SQL for Geospatial Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-datasets">25.4.2. Sample Datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-data-directly-from-urls">25.4.3. Reading Data Directly from URLs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-persistent-tables">25.4.4. Creating Persistent Tables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-your-data">25.4.5. Viewing Your Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#essential-sql-commands">25.4.6. Essential SQL Commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-data">25.4.6.1. Selecting Data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-specific-columns">25.4.6.2. Choosing Specific Columns</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-unique-values">25.4.6.3. Finding Unique Values</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-and-aggregation">25.4.6.4. Counting and Aggregation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-and-sorting-data">25.4.7. Filtering and Sorting Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-with-where-clauses">25.4.7.1. Filtering with WHERE Clauses</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-your-results">25.4.7.2. Sorting Your Results</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-and-aggregating-data">25.4.7.3. Grouping and Aggregating Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-api-integration">25.5. Python API Integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-result-formats">25.5.1. Understanding Result Formats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seamless-dataframe-integration">25.5.2. Seamless DataFrame Integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#result-conversion-and-export">25.5.3. Result Conversion and Export</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persistent-storage">25.5.4. Persistent Storage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-import">25.6. Data Import</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-data-formats-in-geospatial-work">25.6.1. Understanding Data Formats in Geospatial Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-sample-data">25.6.2. Downloading Sample Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-csv-files">25.6.3. Working with CSV Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#json-files">25.6.4. JSON Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes">25.6.5. DataFrames</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parquet-files">25.6.6. Parquet Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-data-formats">25.6.7. Spatial Data Formats</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-export">25.7. Data Export</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-spatial-data-setup">25.7.1. Sample Spatial Data Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-to-dataframes">25.7.2. Export to DataFrames</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-to-files">25.7.3. Export to Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-to-json">25.7.4. Export to JSON</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-to-excel">25.7.5. Export to Excel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-to-parquet">25.7.6. Export to Parquet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-spatial-formats">25.7.7. Export Spatial Formats</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-geometries">25.8. Working with Geometries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-spatial-data-types">25.8.1. Understanding Spatial Data Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-data-setup">25.8.2. Sample Data Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-understanding-geometries">25.8.3. Creating and Understanding Geometries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-points">25.8.4. Working with Points</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-linestrings">25.8.5. Working with LineStrings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-polygons">25.8.6. Working with Polygons</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-relationships">25.9. Spatial Relationships</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-spatial-predicates">25.9.1. Understanding Spatial Predicates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-real-spatial-data">25.9.2. Working with Real Spatial Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-spatial-equality">25.9.3. Testing Spatial Equality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-in-polygon-analysis">25.9.4. Point-in-Polygon Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proximity-analysis-with-distance">25.9.5. Proximity Analysis with Distance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-joins">25.10. Spatial Joins</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-spatial-vs-regular-joins">25.10.1. Understanding Spatial vs. Regular Joins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-our-data">25.10.2. Exploring Our Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-first-spatial-join">25.10.3. Your First Spatial Join</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-spatial-analysis">25.10.4. Advanced Spatial Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-based-analysis">25.10.5. Distance-Based Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-multi-table-joins">25.10.6. Advanced Multi-Table Joins</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#large-scale-data-analysis">25.11. Large-Scale Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-the-national-wetlands-inventory">25.11.1. Analyzing the National Wetlands Inventory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-up-nationwide-wetland-analysis">25.11.2. Scaling Up: Nationwide Wetland Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#count-the-total-number-of-wetlands">25.11.2.1. Count the Total Number of Wetlands</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#count-wetlands-by-state">25.11.2.2. Count Wetlands by State</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-wetland-counts-by-state">25.11.3. Mapping Wetland Counts by State</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wetland-distribution-charts">25.11.4. Wetland Distribution Charts</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pie-chart-of-wetlands-by-state">25.11.4.1. Pie Chart of Wetlands by State</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart-of-wetlands-by-state">25.11.4.2. Bar Chart of Wetlands by State</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wetland-area-analysis">25.11.5. Wetland Area Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#total-wetland-area-in-the-u-s">25.11.5.1. Total Wetland Area in the U.S.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wetland-area-by-state">25.11.5.2. Wetland Area by State</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pie-chart-of-wetland-area-by-state">25.11.5.3. Pie Chart of Wetland Area by State</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-chart-of-wetland-area-by-state">25.11.5.4. Bar Chart of Wetland Area by State</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">25.12. Key Takeaways</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-concepts-you-ve-learned">25.12.1. Fundamental Concepts You’ve Learned</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-approach-is-powerful">25.12.2. Why This Approach is Powerful</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-your-spatial-analysis-skills">25.12.3. Building Your Spatial Analysis Skills</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">25.13. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-tables">25.13.1. Exercise 1: Creating Tables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-column-filtering">25.13.2. Exercise 2: Column Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-row-filtering">25.13.3. Exercise 3: Row Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-sorting-results">25.13.4. Exercise 4: Sorting Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-unique-values">25.13.5. Exercise 5: Unique Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-counting-rows">25.13.6. Exercise 6: Counting Rows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-aggregating-data">25.13.7. Exercise 7: Aggregating Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-joining-tables">25.13.8. Exercise 8: Joining Tables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-string-manipulation">25.13.9. Exercise 9: String Manipulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-filtering-with-multiple-conditions">25.13.10. Exercise 10: Filtering with Multiple Conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-11-basic-setup-and-data-loading">25.13.11. Exercise 11: Basic Setup and Data Loading</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-12-spatial-relationships-analysis">25.13.12. Exercise 12: Spatial Relationships Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-13-advanced-spatial-joins">25.13.13. Exercise 13: Advanced Spatial Joins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-14-data-import-and-export">25.13.14. Exercise 14: Data Import and Export</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-15-large-scale-analysis">25.13.15. Exercise 15: Large-Scale Analysis</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>26. GDAL and OGR &#8212; Introduction to GIS Programming</title>
+    <title>26. Geospatial Data Processing with GDAL and OGR &#8212; Introduction to GIS Programming</title>
   
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="27. Building Interactive Web Apps with Voila and Solara" href="solara.html" />
-    <link rel="prev" title="25. Spatial Database Analysis with DuckDB" href="duckdb.html" />
+    <link rel="next" title="27. Building Interactive Dashboards with Voilà and Solara" href="solara.html" />
+    <link rel="prev" title="25. High-Performance Geospatial Analytics with DuckDB" href="duckdb.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -201,17 +201,18 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="get-started.html">15. Introduction to Geospatial Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geopandas.html">16. Vector Data Analysis with GeoPandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data using Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data Using Rasterio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xarray.html">18. Multi-dimensional Data Analysis with Xarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rioxarray.html">19. Raster Analysis with Rioxarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="leafmap.html">20. Interactive Visualization with Leafmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="whitebox.html">21. Geoprocessing with WhiteboxTools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maplibre.html">22. 3D Mapping with MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Earth Engine and Geemap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hypercoast.html">24. Hyperspectral Data Visualization with HyperCoast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. Spatial Database Analysis with DuckDB</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">26. GDAL and OGR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Web Apps with Voila and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. High-Performance Geospatial Analytics with DuckDB</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">26. Geospatial Data Processing with GDAL and OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Dashboards with Voilà and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sedona.html">28. Distributed Computing with Apache Sedona</a></li>
 </ul>
 
     </div>
@@ -481,7 +482,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>GDAL and OGR</h1>
+    <h1>Geospatial Data Processing with GDAL and OGR</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -491,33 +492,87 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">26.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">26.1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-gdal-directly">26.1.1. When to Use GDAL Directly</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">26.2. Learning Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-and-setup">26.3. Installation and Setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-gdal-architecture">26.4. Understanding GDAL Architecture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-raster-data">26.5. Working with Raster Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-raster-files">26.5.1. Reading Raster Files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-raster-properties">26.5.2. Inspecting Raster Properties</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-processing-raster-data">26.5.3. Reading and Processing Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-datasets">26.4. Sample Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-your-data">26.5. Understanding Your Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-raster-data">26.5.1. Examining Raster Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-vector-data">26.5.2. Examining Vector Data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-vector-data">26.6. Working with Vector Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-reading-vector-data">26.6.1. Creating and Reading Vector Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-vector-data">26.6.2. Inspecting Vector Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-vector-features">26.6.3. Reading Vector Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-transformation">26.6. Coordinate Transformation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reprojecting-raster-data">26.6.1. Reprojecting Raster Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reprojecting-vector-data">26.6.2. Reprojecting Vector Data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-transformations">26.7. Coordinate Transformations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-format-conversion">26.8. Data Format Conversion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-real-datasets">26.9. Working with Real Datasets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gdal-command-line-utilities">26.10. GDAL Command-Line Utilities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-other-libraries">26.11. Integration with Other Libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-tips-and-best-practices">26.12. Performance Tips and Best Practices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">26.13. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">26.14. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-raster-data-analysis">26.14.1. Exercise 1: Raster Data Analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-vector-data-processing-and-transformation">26.14.2. Exercise 2: Vector Data Processing and Transformation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-command-line-integration-and-batch-processing">26.14.3. Exercise 3: Command-Line Integration and Batch Processing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-conversion">26.7. Format Conversion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-raster-formats">26.7.1. Converting Raster Formats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-vector-formats">26.7.2. Converting Vector Formats</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-and-masking">26.8. Clipping and Masking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-raster-with-vector-boundaries">26.8.1. Clipping Raster with Vector Boundaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-vector-data">26.8.2. Clipping Vector Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raster-analysis-and-calculations">26.9. Raster Analysis and Calculations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-individual-bands">26.9.1. Working with Individual Bands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-band-mathematics">26.9.2. Performing Band Mathematics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-between-raster-and-vector">26.10. Converting Between Raster and Vector</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorization">26.10.1. Vectorization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rasterization">26.10.2. Rasterization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-processing">26.11. Geometry Processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplifying-complex-geometries">26.11.1. Simplifying Complex Geometries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dissolving-features-by-attributes">26.11.2. Dissolving Features by Attributes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploding-multi-part-geometries">26.11.3. Exploding Multi-part Geometries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-fields-and-layers">26.12. Managing Fields and Layers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-specific-fields">26.12.1. Selecting Specific Fields</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renaming-layers">26.12.2. Renaming Layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-new-fields">26.12.3. Adding New Fields</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tiling-and-data-management">26.13. Tiling and Data Management</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-raster-tiles">26.13.1. Creating Raster Tiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-raster-data">26.13.2. Merging Raster Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-multiple-vector-files">26.13.3. Working with Multiple Vector Files</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-raster-processing">26.14. Advanced Raster Processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling-and-resolution-management">26.14.1. Resampling and Resolution Management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-band-composites">26.14.2. Creating Band Composites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-missing-data">26.14.3. Handling Missing Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-optimized-geotiff">26.14.4. Cloud Optimized GeoTIFF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terrain-analysis">26.15. Terrain Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-slope">26.15.1. Computing Slope</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-aspect">26.15.2. Computing Aspect</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-hillshade-visualizations">26.15.3. Creating Hillshade Visualizations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-color-relief-maps">26.15.4. Creating Color Relief Maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-hillshade-and-color-relief">26.15.5. Combining Hillshade and Color Relief</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-contour-lines">26.15.6. Generating Contour Lines</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">26.16. Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">26.17. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-data-inspection-and-understanding">26.17.1. Exercise 1: Data Inspection and Understanding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-coordinate-transformation-practice">26.17.2. Exercise 2: Coordinate Transformation Practice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-format-conversion-and-optimization">26.17.3. Exercise 3: Format Conversion and Optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-spatial-clipping-and-analysis">26.17.4. Exercise 4: Spatial Clipping and Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-raster-band-mathematics">26.17.5. Exercise 5: Raster Band Mathematics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-terrain-analysis-workflow">26.17.6. Exercise 6: Terrain Analysis Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-raster-vector-conversion">26.17.7. Exercise 7: Raster-Vector Conversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-geometry-processing-and-data-management">26.17.8. Exercise 8: Geometry Processing and Data Management</a></li>
 </ul>
 </li>
 </ul>
@@ -531,10 +586,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="gdal-and-ogr">
-<h1><span class="section-number">26. </span>GDAL and OGR<a class="headerlink" href="#gdal-and-ogr" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="geospatial-data-processing-with-gdal-and-ogr">
+<h1><span class="section-number">26. </span>Geospatial Data Processing with GDAL and OGR<a class="headerlink" href="#geospatial-data-processing-with-gdal-and-ogr" title="Link to this heading">#</a></h1>
 <section id="introduction">
 <h2><span class="section-number">26.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<section id="when-to-use-gdal-directly">
+<h3><span class="section-number">26.1.1. </span>When to Use GDAL Directly<a class="headerlink" href="#when-to-use-gdal-directly" title="Link to this heading">#</a></h3>
+</section>
 </section>
 <section id="learning-objectives">
 <h2><span class="section-number">26.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
@@ -542,64 +600,163 @@ document.write(`
 <section id="installation-and-setup">
 <h2><span class="section-number">26.3. </span>Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Link to this heading">#</a></h2>
 </section>
-<section id="understanding-gdal-architecture">
-<h2><span class="section-number">26.4. </span>Understanding GDAL Architecture<a class="headerlink" href="#understanding-gdal-architecture" title="Link to this heading">#</a></h2>
+<section id="sample-datasets">
+<h2><span class="section-number">26.4. </span>Sample Datasets<a class="headerlink" href="#sample-datasets" title="Link to this heading">#</a></h2>
 </section>
-<section id="working-with-raster-data">
-<h2><span class="section-number">26.5. </span>Working with Raster Data<a class="headerlink" href="#working-with-raster-data" title="Link to this heading">#</a></h2>
-<section id="reading-raster-files">
-<h3><span class="section-number">26.5.1. </span>Reading Raster Files<a class="headerlink" href="#reading-raster-files" title="Link to this heading">#</a></h3>
+<section id="understanding-your-data">
+<h2><span class="section-number">26.5. </span>Understanding Your Data<a class="headerlink" href="#understanding-your-data" title="Link to this heading">#</a></h2>
+<section id="examining-raster-data">
+<h3><span class="section-number">26.5.1. </span>Examining Raster Data<a class="headerlink" href="#examining-raster-data" title="Link to this heading">#</a></h3>
 </section>
-<section id="inspecting-raster-properties">
-<h3><span class="section-number">26.5.2. </span>Inspecting Raster Properties<a class="headerlink" href="#inspecting-raster-properties" title="Link to this heading">#</a></h3>
-</section>
-<section id="reading-and-processing-raster-data">
-<h3><span class="section-number">26.5.3. </span>Reading and Processing Raster Data<a class="headerlink" href="#reading-and-processing-raster-data" title="Link to this heading">#</a></h3>
+<section id="examining-vector-data">
+<h3><span class="section-number">26.5.2. </span>Examining Vector Data<a class="headerlink" href="#examining-vector-data" title="Link to this heading">#</a></h3>
 </section>
 </section>
-<section id="working-with-vector-data">
-<h2><span class="section-number">26.6. </span>Working with Vector Data<a class="headerlink" href="#working-with-vector-data" title="Link to this heading">#</a></h2>
-<section id="creating-and-reading-vector-data">
-<h3><span class="section-number">26.6.1. </span>Creating and Reading Vector Data<a class="headerlink" href="#creating-and-reading-vector-data" title="Link to this heading">#</a></h3>
+<section id="coordinate-transformation">
+<h2><span class="section-number">26.6. </span>Coordinate Transformation<a class="headerlink" href="#coordinate-transformation" title="Link to this heading">#</a></h2>
+<section id="reprojecting-raster-data">
+<h3><span class="section-number">26.6.1. </span>Reprojecting Raster Data<a class="headerlink" href="#reprojecting-raster-data" title="Link to this heading">#</a></h3>
 </section>
-<section id="inspecting-vector-data">
-<h3><span class="section-number">26.6.2. </span>Inspecting Vector Data<a class="headerlink" href="#inspecting-vector-data" title="Link to this heading">#</a></h3>
-</section>
-<section id="reading-vector-features">
-<h3><span class="section-number">26.6.3. </span>Reading Vector Features<a class="headerlink" href="#reading-vector-features" title="Link to this heading">#</a></h3>
+<section id="reprojecting-vector-data">
+<h3><span class="section-number">26.6.2. </span>Reprojecting Vector Data<a class="headerlink" href="#reprojecting-vector-data" title="Link to this heading">#</a></h3>
 </section>
 </section>
-<section id="coordinate-transformations">
-<h2><span class="section-number">26.7. </span>Coordinate Transformations<a class="headerlink" href="#coordinate-transformations" title="Link to this heading">#</a></h2>
+<section id="format-conversion">
+<h2><span class="section-number">26.7. </span>Format Conversion<a class="headerlink" href="#format-conversion" title="Link to this heading">#</a></h2>
+<section id="converting-raster-formats">
+<h3><span class="section-number">26.7.1. </span>Converting Raster Formats<a class="headerlink" href="#converting-raster-formats" title="Link to this heading">#</a></h3>
 </section>
-<section id="data-format-conversion">
-<h2><span class="section-number">26.8. </span>Data Format Conversion<a class="headerlink" href="#data-format-conversion" title="Link to this heading">#</a></h2>
+<section id="converting-vector-formats">
+<h3><span class="section-number">26.7.2. </span>Converting Vector Formats<a class="headerlink" href="#converting-vector-formats" title="Link to this heading">#</a></h3>
 </section>
-<section id="working-with-real-datasets">
-<h2><span class="section-number">26.9. </span>Working with Real Datasets<a class="headerlink" href="#working-with-real-datasets" title="Link to this heading">#</a></h2>
 </section>
-<section id="gdal-command-line-utilities">
-<h2><span class="section-number">26.10. </span>GDAL Command-Line Utilities<a class="headerlink" href="#gdal-command-line-utilities" title="Link to this heading">#</a></h2>
+<section id="clipping-and-masking">
+<h2><span class="section-number">26.8. </span>Clipping and Masking<a class="headerlink" href="#clipping-and-masking" title="Link to this heading">#</a></h2>
+<section id="clipping-raster-with-vector-boundaries">
+<h3><span class="section-number">26.8.1. </span>Clipping Raster with Vector Boundaries<a class="headerlink" href="#clipping-raster-with-vector-boundaries" title="Link to this heading">#</a></h3>
 </section>
-<section id="integration-with-other-libraries">
-<h2><span class="section-number">26.11. </span>Integration with Other Libraries<a class="headerlink" href="#integration-with-other-libraries" title="Link to this heading">#</a></h2>
+<section id="clipping-vector-data">
+<h3><span class="section-number">26.8.2. </span>Clipping Vector Data<a class="headerlink" href="#clipping-vector-data" title="Link to this heading">#</a></h3>
 </section>
-<section id="performance-tips-and-best-practices">
-<h2><span class="section-number">26.12. </span>Performance Tips and Best Practices<a class="headerlink" href="#performance-tips-and-best-practices" title="Link to this heading">#</a></h2>
+</section>
+<section id="raster-analysis-and-calculations">
+<h2><span class="section-number">26.9. </span>Raster Analysis and Calculations<a class="headerlink" href="#raster-analysis-and-calculations" title="Link to this heading">#</a></h2>
+<section id="working-with-individual-bands">
+<h3><span class="section-number">26.9.1. </span>Working with Individual Bands<a class="headerlink" href="#working-with-individual-bands" title="Link to this heading">#</a></h3>
+</section>
+<section id="performing-band-mathematics">
+<h3><span class="section-number">26.9.2. </span>Performing Band Mathematics<a class="headerlink" href="#performing-band-mathematics" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="converting-between-raster-and-vector">
+<h2><span class="section-number">26.10. </span>Converting Between Raster and Vector<a class="headerlink" href="#converting-between-raster-and-vector" title="Link to this heading">#</a></h2>
+<section id="vectorization">
+<h3><span class="section-number">26.10.1. </span>Vectorization<a class="headerlink" href="#vectorization" title="Link to this heading">#</a></h3>
+</section>
+<section id="rasterization">
+<h3><span class="section-number">26.10.2. </span>Rasterization<a class="headerlink" href="#rasterization" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="geometry-processing">
+<h2><span class="section-number">26.11. </span>Geometry Processing<a class="headerlink" href="#geometry-processing" title="Link to this heading">#</a></h2>
+<section id="simplifying-complex-geometries">
+<h3><span class="section-number">26.11.1. </span>Simplifying Complex Geometries<a class="headerlink" href="#simplifying-complex-geometries" title="Link to this heading">#</a></h3>
+</section>
+<section id="dissolving-features-by-attributes">
+<h3><span class="section-number">26.11.2. </span>Dissolving Features by Attributes<a class="headerlink" href="#dissolving-features-by-attributes" title="Link to this heading">#</a></h3>
+</section>
+<section id="exploding-multi-part-geometries">
+<h3><span class="section-number">26.11.3. </span>Exploding Multi-part Geometries<a class="headerlink" href="#exploding-multi-part-geometries" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="managing-fields-and-layers">
+<h2><span class="section-number">26.12. </span>Managing Fields and Layers<a class="headerlink" href="#managing-fields-and-layers" title="Link to this heading">#</a></h2>
+<section id="selecting-specific-fields">
+<h3><span class="section-number">26.12.1. </span>Selecting Specific Fields<a class="headerlink" href="#selecting-specific-fields" title="Link to this heading">#</a></h3>
+</section>
+<section id="renaming-layers">
+<h3><span class="section-number">26.12.2. </span>Renaming Layers<a class="headerlink" href="#renaming-layers" title="Link to this heading">#</a></h3>
+</section>
+<section id="adding-new-fields">
+<h3><span class="section-number">26.12.3. </span>Adding New Fields<a class="headerlink" href="#adding-new-fields" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="tiling-and-data-management">
+<h2><span class="section-number">26.13. </span>Tiling and Data Management<a class="headerlink" href="#tiling-and-data-management" title="Link to this heading">#</a></h2>
+<section id="creating-raster-tiles">
+<h3><span class="section-number">26.13.1. </span>Creating Raster Tiles<a class="headerlink" href="#creating-raster-tiles" title="Link to this heading">#</a></h3>
+</section>
+<section id="merging-raster-data">
+<h3><span class="section-number">26.13.2. </span>Merging Raster Data<a class="headerlink" href="#merging-raster-data" title="Link to this heading">#</a></h3>
+</section>
+<section id="working-with-multiple-vector-files">
+<h3><span class="section-number">26.13.3. </span>Working with Multiple Vector Files<a class="headerlink" href="#working-with-multiple-vector-files" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="advanced-raster-processing">
+<h2><span class="section-number">26.14. </span>Advanced Raster Processing<a class="headerlink" href="#advanced-raster-processing" title="Link to this heading">#</a></h2>
+<section id="resampling-and-resolution-management">
+<h3><span class="section-number">26.14.1. </span>Resampling and Resolution Management<a class="headerlink" href="#resampling-and-resolution-management" title="Link to this heading">#</a></h3>
+</section>
+<section id="creating-band-composites">
+<h3><span class="section-number">26.14.2. </span>Creating Band Composites<a class="headerlink" href="#creating-band-composites" title="Link to this heading">#</a></h3>
+</section>
+<section id="handling-missing-data">
+<h3><span class="section-number">26.14.3. </span>Handling Missing Data<a class="headerlink" href="#handling-missing-data" title="Link to this heading">#</a></h3>
+</section>
+<section id="cloud-optimized-geotiff">
+<h3><span class="section-number">26.14.4. </span>Cloud Optimized GeoTIFF<a class="headerlink" href="#cloud-optimized-geotiff" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="terrain-analysis">
+<h2><span class="section-number">26.15. </span>Terrain Analysis<a class="headerlink" href="#terrain-analysis" title="Link to this heading">#</a></h2>
+<section id="computing-slope">
+<h3><span class="section-number">26.15.1. </span>Computing Slope<a class="headerlink" href="#computing-slope" title="Link to this heading">#</a></h3>
+</section>
+<section id="computing-aspect">
+<h3><span class="section-number">26.15.2. </span>Computing Aspect<a class="headerlink" href="#computing-aspect" title="Link to this heading">#</a></h3>
+</section>
+<section id="creating-hillshade-visualizations">
+<h3><span class="section-number">26.15.3. </span>Creating Hillshade Visualizations<a class="headerlink" href="#creating-hillshade-visualizations" title="Link to this heading">#</a></h3>
+</section>
+<section id="creating-color-relief-maps">
+<h3><span class="section-number">26.15.4. </span>Creating Color Relief Maps<a class="headerlink" href="#creating-color-relief-maps" title="Link to this heading">#</a></h3>
+</section>
+<section id="combining-hillshade-and-color-relief">
+<h3><span class="section-number">26.15.5. </span>Combining Hillshade and Color Relief<a class="headerlink" href="#combining-hillshade-and-color-relief" title="Link to this heading">#</a></h3>
+</section>
+<section id="generating-contour-lines">
+<h3><span class="section-number">26.15.6. </span>Generating Contour Lines<a class="headerlink" href="#generating-contour-lines" title="Link to this heading">#</a></h3>
+</section>
 </section>
 <section id="key-takeaways">
-<h2><span class="section-number">26.13. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">26.16. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
 </section>
 <section id="exercises">
-<h2><span class="section-number">26.14. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
-<section id="exercise-1-raster-data-analysis">
-<h3><span class="section-number">26.14.1. </span>Exercise 1: Raster Data Analysis<a class="headerlink" href="#exercise-1-raster-data-analysis" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">26.17. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="exercise-1-data-inspection-and-understanding">
+<h3><span class="section-number">26.17.1. </span>Exercise 1: Data Inspection and Understanding<a class="headerlink" href="#exercise-1-data-inspection-and-understanding" title="Link to this heading">#</a></h3>
 </section>
-<section id="exercise-2-vector-data-processing-and-transformation">
-<h3><span class="section-number">26.14.2. </span>Exercise 2: Vector Data Processing and Transformation<a class="headerlink" href="#exercise-2-vector-data-processing-and-transformation" title="Link to this heading">#</a></h3>
+<section id="exercise-2-coordinate-transformation-practice">
+<h3><span class="section-number">26.17.2. </span>Exercise 2: Coordinate Transformation Practice<a class="headerlink" href="#exercise-2-coordinate-transformation-practice" title="Link to this heading">#</a></h3>
 </section>
-<section id="exercise-3-command-line-integration-and-batch-processing">
-<h3><span class="section-number">26.14.3. </span>Exercise 3: Command-Line Integration and Batch Processing<a class="headerlink" href="#exercise-3-command-line-integration-and-batch-processing" title="Link to this heading">#</a></h3>
+<section id="exercise-3-format-conversion-and-optimization">
+<h3><span class="section-number">26.17.3. </span>Exercise 3: Format Conversion and Optimization<a class="headerlink" href="#exercise-3-format-conversion-and-optimization" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-4-spatial-clipping-and-analysis">
+<h3><span class="section-number">26.17.4. </span>Exercise 4: Spatial Clipping and Analysis<a class="headerlink" href="#exercise-4-spatial-clipping-and-analysis" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-5-raster-band-mathematics">
+<h3><span class="section-number">26.17.5. </span>Exercise 5: Raster Band Mathematics<a class="headerlink" href="#exercise-5-raster-band-mathematics" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-6-terrain-analysis-workflow">
+<h3><span class="section-number">26.17.6. </span>Exercise 6: Terrain Analysis Workflow<a class="headerlink" href="#exercise-6-terrain-analysis-workflow" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-7-raster-vector-conversion">
+<h3><span class="section-number">26.17.7. </span>Exercise 7: Raster-Vector Conversion<a class="headerlink" href="#exercise-7-raster-vector-conversion" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-8-geometry-processing-and-data-management">
+<h3><span class="section-number">26.17.8. </span>Exercise 8: Geometry Processing and Data Management<a class="headerlink" href="#exercise-8-geometry-processing-and-data-management" title="Link to this heading">#</a></h3>
 </section>
 </section>
 </section>
@@ -640,7 +797,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">25. </span>Spatial Database Analysis with DuckDB</p>
+        <p class="prev-next-title"><span class="section-number">25. </span>High-Performance Geospatial Analytics with DuckDB</p>
       </div>
     </a>
     <a class="right-next"
@@ -648,7 +805,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">27. </span>Building Interactive Web Apps with Voila and Solara</p>
+        <p class="prev-next-title"><span class="section-number">27. </span>Building Interactive Dashboards with Voilà and Solara</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -668,33 +825,87 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">26.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">26.1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-gdal-directly">26.1.1. When to Use GDAL Directly</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">26.2. Learning Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-and-setup">26.3. Installation and Setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-gdal-architecture">26.4. Understanding GDAL Architecture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-raster-data">26.5. Working with Raster Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-raster-files">26.5.1. Reading Raster Files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-raster-properties">26.5.2. Inspecting Raster Properties</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-processing-raster-data">26.5.3. Reading and Processing Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-datasets">26.4. Sample Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-your-data">26.5. Understanding Your Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-raster-data">26.5.1. Examining Raster Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-vector-data">26.5.2. Examining Vector Data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-vector-data">26.6. Working with Vector Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-reading-vector-data">26.6.1. Creating and Reading Vector Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-vector-data">26.6.2. Inspecting Vector Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-vector-features">26.6.3. Reading Vector Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-transformation">26.6. Coordinate Transformation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reprojecting-raster-data">26.6.1. Reprojecting Raster Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reprojecting-vector-data">26.6.2. Reprojecting Vector Data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-transformations">26.7. Coordinate Transformations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-format-conversion">26.8. Data Format Conversion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-real-datasets">26.9. Working with Real Datasets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gdal-command-line-utilities">26.10. GDAL Command-Line Utilities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-other-libraries">26.11. Integration with Other Libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-tips-and-best-practices">26.12. Performance Tips and Best Practices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">26.13. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">26.14. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-raster-data-analysis">26.14.1. Exercise 1: Raster Data Analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-vector-data-processing-and-transformation">26.14.2. Exercise 2: Vector Data Processing and Transformation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-command-line-integration-and-batch-processing">26.14.3. Exercise 3: Command-Line Integration and Batch Processing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-conversion">26.7. Format Conversion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-raster-formats">26.7.1. Converting Raster Formats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-vector-formats">26.7.2. Converting Vector Formats</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-and-masking">26.8. Clipping and Masking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-raster-with-vector-boundaries">26.8.1. Clipping Raster with Vector Boundaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-vector-data">26.8.2. Clipping Vector Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raster-analysis-and-calculations">26.9. Raster Analysis and Calculations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-individual-bands">26.9.1. Working with Individual Bands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-band-mathematics">26.9.2. Performing Band Mathematics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-between-raster-and-vector">26.10. Converting Between Raster and Vector</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorization">26.10.1. Vectorization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rasterization">26.10.2. Rasterization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-processing">26.11. Geometry Processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplifying-complex-geometries">26.11.1. Simplifying Complex Geometries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dissolving-features-by-attributes">26.11.2. Dissolving Features by Attributes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploding-multi-part-geometries">26.11.3. Exploding Multi-part Geometries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-fields-and-layers">26.12. Managing Fields and Layers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-specific-fields">26.12.1. Selecting Specific Fields</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renaming-layers">26.12.2. Renaming Layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-new-fields">26.12.3. Adding New Fields</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tiling-and-data-management">26.13. Tiling and Data Management</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-raster-tiles">26.13.1. Creating Raster Tiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-raster-data">26.13.2. Merging Raster Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-multiple-vector-files">26.13.3. Working with Multiple Vector Files</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-raster-processing">26.14. Advanced Raster Processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling-and-resolution-management">26.14.1. Resampling and Resolution Management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-band-composites">26.14.2. Creating Band Composites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-missing-data">26.14.3. Handling Missing Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-optimized-geotiff">26.14.4. Cloud Optimized GeoTIFF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terrain-analysis">26.15. Terrain Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-slope">26.15.1. Computing Slope</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-aspect">26.15.2. Computing Aspect</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-hillshade-visualizations">26.15.3. Creating Hillshade Visualizations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-color-relief-maps">26.15.4. Creating Color Relief Maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-hillshade-and-color-relief">26.15.5. Combining Hillshade and Color Relief</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-contour-lines">26.15.6. Generating Contour Lines</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">26.16. Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">26.17. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-data-inspection-and-understanding">26.17.1. Exercise 1: Data Inspection and Understanding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-coordinate-transformation-practice">26.17.2. Exercise 2: Coordinate Transformation Practice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-format-conversion-and-optimization">26.17.3. Exercise 3: Format Conversion and Optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-spatial-clipping-and-analysis">26.17.4. Exercise 4: Spatial Clipping and Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-raster-band-mathematics">26.17.5. Exercise 5: Raster Band Mathematics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-terrain-analysis-workflow">26.17.6. Exercise 6: Terrain Analysis Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-raster-vector-conversion">26.17.7. Exercise 7: Raster-Vector Conversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-geometry-processing-and-data-management">26.17.8. Exercise 8: Geometry Processing and Data Management</a></li>
 </ul>
 </li>
 </ul>

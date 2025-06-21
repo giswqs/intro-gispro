@@ -62,8 +62,8 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="25. Spatial Database Analysis with DuckDB" href="duckdb.html" />
-    <link rel="prev" title="23. Cloud Computing with Geemap" href="geemap.html" />
+    <link rel="next" title="25. High-Performance Geospatial Analytics with DuckDB" href="duckdb.html" />
+    <link rel="prev" title="23. Cloud Computing with Earth Engine and Geemap" href="geemap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -201,17 +201,18 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="get-started.html">15. Introduction to Geospatial Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geopandas.html">16. Vector Data Analysis with GeoPandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data using Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">17. Working with Raster Data Using Rasterio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xarray.html">18. Multi-dimensional Data Analysis with Xarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rioxarray.html">19. Raster Analysis with Rioxarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="leafmap.html">20. Interactive Visualization with Leafmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="whitebox.html">21. Geoprocessing with WhiteboxTools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maplibre.html">22. 3D Mapping with MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">23. Cloud Computing with Earth Engine and Geemap</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">24. Hyperspectral Data Visualization with HyperCoast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. Spatial Database Analysis with DuckDB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. GDAL and OGR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Web Apps with Voila and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">25. High-Performance Geospatial Analytics with DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdal.html">26. Geospatial Data Processing with GDAL and OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solara.html">27. Building Interactive Dashboards with Voilà and Solara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sedona.html">28. Distributed Computing with Apache Sedona</a></li>
 </ul>
 
     </div>
@@ -494,7 +495,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">24.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">24.2. Learning Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">24.3. Environment Setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-hyperspectral-data">24.4. Finding Hyperspectral Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-hyperspectral-data">24.4. Finding Hyperspectral Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programmatic-search">24.4.1. Programmatic Search</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-search">24.4.2. Interactive Search</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-hyperspectral-data">24.5. Downloading Hyperspectral Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-hyperspectral-data">24.6. Reading Hyperspectral Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-hyperspectral-data">24.7. Visualizing Hyperspectral Data</a></li>
@@ -502,7 +507,14 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-slicing">24.9. Interactive Slicing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-thresholding">24.10. Interactive Thresholding</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">24.11. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">24.12. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">24.12. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-data-discovery-and-acquisition">24.12.1. Exercise 1: Data Discovery and Acquisition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-spectral-profile-analysis">24.12.2. Exercise 2: Spectral Profile Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-band-combination-exploration">24.12.3. Exercise 3: Band Combination Exploration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-interactive-visualization">24.12.4. Exercise 4: Interactive Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-3d-cube-analysis">24.12.5. Exercise 5: 3D Cube Analysis</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -527,6 +539,12 @@ document.write(`
 </section>
 <section id="finding-hyperspectral-data">
 <h2><span class="section-number">24.4. </span>Finding Hyperspectral Data<a class="headerlink" href="#finding-hyperspectral-data" title="Link to this heading">#</a></h2>
+<section id="programmatic-search">
+<h3><span class="section-number">24.4.1. </span>Programmatic Search<a class="headerlink" href="#programmatic-search" title="Link to this heading">#</a></h3>
+</section>
+<section id="interactive-search">
+<h3><span class="section-number">24.4.2. </span>Interactive Search<a class="headerlink" href="#interactive-search" title="Link to this heading">#</a></h3>
+</section>
 </section>
 <section id="downloading-hyperspectral-data">
 <h2><span class="section-number">24.5. </span>Downloading Hyperspectral Data<a class="headerlink" href="#downloading-hyperspectral-data" title="Link to this heading">#</a></h2>
@@ -551,6 +569,21 @@ document.write(`
 </section>
 <section id="exercises">
 <h2><span class="section-number">24.12. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="exercise-1-data-discovery-and-acquisition">
+<h3><span class="section-number">24.12.1. </span>Exercise 1: Data Discovery and Acquisition<a class="headerlink" href="#exercise-1-data-discovery-and-acquisition" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-2-spectral-profile-analysis">
+<h3><span class="section-number">24.12.2. </span>Exercise 2: Spectral Profile Analysis<a class="headerlink" href="#exercise-2-spectral-profile-analysis" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-3-band-combination-exploration">
+<h3><span class="section-number">24.12.3. </span>Exercise 3: Band Combination Exploration<a class="headerlink" href="#exercise-3-band-combination-exploration" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-4-interactive-visualization">
+<h3><span class="section-number">24.12.4. </span>Exercise 4: Interactive Visualization<a class="headerlink" href="#exercise-4-interactive-visualization" title="Link to this heading">#</a></h3>
+</section>
+<section id="exercise-5-3d-cube-analysis">
+<h3><span class="section-number">24.12.5. </span>Exercise 5: 3D Cube Analysis<a class="headerlink" href="#exercise-5-3d-cube-analysis" title="Link to this heading">#</a></h3>
+</section>
 </section>
 </section>
 
@@ -590,7 +623,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">23. </span>Cloud Computing with Geemap</p>
+        <p class="prev-next-title"><span class="section-number">23. </span>Cloud Computing with Earth Engine and Geemap</p>
       </div>
     </a>
     <a class="right-next"
@@ -598,7 +631,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">25. </span>Spatial Database Analysis with DuckDB</p>
+        <p class="prev-next-title"><span class="section-number">25. </span>High-Performance Geospatial Analytics with DuckDB</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -621,7 +654,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">24.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">24.2. Learning Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">24.3. Environment Setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-hyperspectral-data">24.4. Finding Hyperspectral Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-hyperspectral-data">24.4. Finding Hyperspectral Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programmatic-search">24.4.1. Programmatic Search</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-search">24.4.2. Interactive Search</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-hyperspectral-data">24.5. Downloading Hyperspectral Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-hyperspectral-data">24.6. Reading Hyperspectral Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-hyperspectral-data">24.7. Visualizing Hyperspectral Data</a></li>
@@ -629,7 +666,14 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-slicing">24.9. Interactive Slicing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-thresholding">24.10. Interactive Thresholding</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">24.11. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">24.12. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">24.12. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-data-discovery-and-acquisition">24.12.1. Exercise 1: Data Discovery and Acquisition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-spectral-profile-analysis">24.12.2. Exercise 2: Spectral Profile Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-band-combination-exploration">24.12.3. Exercise 3: Band Combination Exploration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-interactive-visualization">24.12.4. Exercise 4: Interactive Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-3d-cube-analysis">24.12.5. Exercise 5: 3D Cube Analysis</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
