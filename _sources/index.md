@@ -61,7 +61,7 @@ A docker image with Apache Sedona:
 
 ```bash
 docker pull giswqs/pygis:sedona
-docker run -it -p 8888:8888 -v $(pwd):/app/workspace giswqs/pygis:sedona
+docker run -it -p 8888:8888 -p 4040:4040 -p 8080:8080 -p 8081:8081 -p 7077:7077 -p 8085:8085 -v $(pwd):/app/workspace giswqs/pygis:sedona
 ```
 
 ## Acknowledgments
