@@ -48,16 +48,16 @@ Stay tuned for more information about the book and its release date.
 
 ## How to Run Code Examples
 
-The code examples can be run using Docker. There are two Docker images available:
+The code examples can be run using Docker. There are two Docker [images](https://hub.docker.com/r/giswqs/pygis/tags) available:
 
-A lightweight docker image without Apache Sedona:
+A lightweight docker image without Apache Sedona (866 MB):
 
 ```bash
 docker pull giswqs/pygis:book
 docker run -it -p 8888:8888 -v $(pwd):/app/workspace giswqs/pygis:book
 ```
 
-A docker image with Apache Sedona:
+A docker image with Apache Sedona (3.0 GB):
 
 ```bash
 docker pull giswqs/pygis:sedona

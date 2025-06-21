@@ -48,7 +48,7 @@ Stay tuned for more information about the book and its release date.
 
 ## How to Run Code Examples
 
-The code examples can be run using Docker. There are two Docker images available:
+The code examples can be run using Docker. There are two Docker [images](https://hub.docker.com/r/giswqs/pygis/tags) available:
 
 A lightweight docker image without Apache Sedona:
 
