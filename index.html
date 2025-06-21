@@ -499,9 +499,15 @@ document.write(`
 </section>
 <section id="how-to-run-code-examples">
 <h2>How to Run Code Examples<a class="headerlink" href="#how-to-run-code-examples" title="Link to this heading">#</a></h2>
-<p>The code examples can be run using Docker.</p>
+<p>The code examples can be run using Docker. There are two Docker <a class="reference external" href="https://hub.docker.com/r/giswqs/pygis/tags">images</a> available:</p>
+<p>A lightweight docker image without Apache Sedona:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>giswqs/pygis:book
 docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/app/workspace<span class="w"> </span>giswqs/pygis:book
+</pre></div>
+</div>
+<p>A docker image with Apache Sedona:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>giswqs/pygis:sedona
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/app/workspace<span class="w"> </span>giswqs/pygis:sedona
 </pre></div>
 </div>
 </section>
