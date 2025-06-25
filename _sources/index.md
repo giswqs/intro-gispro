@@ -7,7 +7,7 @@
 
 This repository contains the code examples for the book - **Introduction to GIS Programming: A Practical Python Guide to Open Source Geospatial Tools**.
 
-To purchase a PDF version of the book, please visit <https://leanpub.com/gispro>.
+To purchase a PDF version (553 pages) of the book, please visit <https://leanpub.com/gispro>.
 
 The color print version of the book will soon be available on Amazon. Stay tuned!
 
