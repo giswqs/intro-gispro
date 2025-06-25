@@ -69,6 +69,20 @@ To download a PDF version of the Table of Contents, please visit <https://gispro
 
 ## How to Run Code Examples
 
+### Using MyBinder
+
+The code examples can be run using MyBinder.
+
+[![image](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/giswqs/intro-gispro/HEAD)
+
+### Using Google Colab
+
+The code examples can be run using Google Colab.
+
+[![image](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/intro-gispro/blob/main)
+
+### Using Docker
+
 The code examples can be run using Docker. There are two Docker [images](https://hub.docker.com/r/giswqs/pygis/tags) available:
 
 A lightweight docker image without Apache Sedona:
