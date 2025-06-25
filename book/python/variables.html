@@ -542,21 +542,21 @@ document.write(`
 <h2><span class="section-number">8.3. </span>Variables in Python<a class="headerlink" href="#variables-in-python" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>num_points = 120
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num_points</span> <span class="o">=</span> <span class="mi">120</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(num_points)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">num_points</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>num_points
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num_points</span>
 </pre></div>
 </div>
 </div>
@@ -565,16 +565,16 @@ document.write(`
 <h3><span class="section-number">8.3.1. </span>Variable Assignment<a class="headerlink" href="#variable-assignment" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Start with a number
-location_data = 42.3601
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start with a number</span>
+<span class="n">location_data</span> <span class="o">=</span> <span class="mf">42.3601</span>
 
-# Change to text
-location_data = &quot;Boston&quot;
+<span class="c1"># Change to text</span>
+<span class="n">location_data</span> <span class="o">=</span> <span class="s2">&quot;Boston&quot;</span>
 
-# Change to a list of coordinates
-location_data = [42.3601, -71.0589]
+<span class="c1"># Change to a list of coordinates</span>
+<span class="n">location_data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">42.3601</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.0589</span><span class="p">]</span>
 
-print(location_data)
+<span class="nb">print</span><span class="p">(</span><span class="n">location_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -587,13 +587,13 @@ print(location_data)
 <h3><span class="section-number">8.4.1. </span>Good Naming Examples for Geospatial Data<a class="headerlink" href="#good-naming-examples-for-geospatial-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Good variable names for geospatial data
-latitude = 42.3601
-longitude = -71.0589
-elevation = 147.2
-city_name = &quot;Boston&quot;
-population = 685094
-coordinate_system = &quot;WGS 84&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Good variable names for geospatial data</span>
+<span class="n">latitude</span> <span class="o">=</span> <span class="mf">42.3601</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="o">-</span><span class="mf">71.0589</span>
+<span class="n">elevation</span> <span class="o">=</span> <span class="mf">147.2</span>
+<span class="n">city_name</span> <span class="o">=</span> <span class="s2">&quot;Boston&quot;</span>
+<span class="n">population</span> <span class="o">=</span> <span class="mi">685094</span>
+<span class="n">coordinate_system</span> <span class="o">=</span> <span class="s2">&quot;WGS 84&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -603,11 +603,11 @@ coordinate_system = &quot;WGS 84&quot;
 <h3><span class="section-number">8.4.2. </span>Poor Naming Examples to Avoid<a class="headerlink" href="#poor-naming-examples-to-avoid" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Poor variable names - avoid these
-x = 42.3601  # Too generic
-data = &quot;Boston&quot;  # Too vague
-temp = 25.6  # Ambiguous - temperature or temporary?
-l = [42.36, -71.06]  # Single letter variables are hard to understand
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Poor variable names - avoid these</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">42.3601</span>  <span class="c1"># Too generic</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;Boston&quot;</span>  <span class="c1"># Too vague</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="mf">25.6</span>  <span class="c1"># Ambiguous - temperature or temporary?</span>
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mf">42.36</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.06</span><span class="p">]</span>  <span class="c1"># Single letter variables are hard to understand</span>
 </pre></div>
 </div>
 </div>
@@ -618,51 +618,51 @@ l = [42.36, -71.06]  # Single letter variables are hard to understand
 <h2><span class="section-number">8.5. </span>Data Types<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>num_features = 500  # Represents the number of features in a geospatial dataset
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num_features</span> <span class="o">=</span> <span class="mi">500</span>  <span class="c1"># Represents the number of features in a geospatial dataset</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>latitude = 35.6895  # Represents the latitude of a point on Earth&#39;s surface
-longitude = 139.6917  # Represents the longitude of a point on Earth&#39;s surface
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">latitude</span> <span class="o">=</span> <span class="mf">35.6895</span>  <span class="c1"># Represents the latitude of a point on Earth&#39;s surface</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="mf">139.6917</span>  <span class="c1"># Represents the longitude of a point on Earth&#39;s surface</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>coordinate_system = &quot;WGS 84&quot;  # Represents a commonly used coordinate system
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">coordinate_system</span> <span class="o">=</span> <span class="s2">&quot;WGS 84&quot;</span>  <span class="c1"># Represents a commonly used coordinate system</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>is_georeferenced = True  # Represents whether a dataset is georeferenced or not
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">is_georeferenced</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Represents whether a dataset is georeferenced or not</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>coordinates = [
-    35.6895,
-    139.6917,
-]  # A list representing latitude and longitude of a point
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">coordinates</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mf">35.6895</span><span class="p">,</span>
+    <span class="mf">139.6917</span><span class="p">,</span>
+<span class="p">]</span>  <span class="c1"># A list representing latitude and longitude of a point</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>feature_attributes = {
-    &quot;name&quot;: &quot;Mount Fuji&quot;,
-    &quot;height_meters&quot;: 3776,
-    &quot;type&quot;: &quot;Stratovolcano&quot;,
-    &quot;location&quot;: [35.3606, 138.7274],
-}
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">feature_attributes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mount Fuji&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;height_meters&quot;</span><span class="p">:</span> <span class="mi">3776</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Stratovolcano&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;location&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.3606</span><span class="p">,</span> <span class="mf">138.7274</span><span class="p">],</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -672,28 +672,28 @@ longitude = 139.6917  # Represents the longitude of a point on Earth&#39;s surfa
 <h2><span class="section-number">8.6. </span>Escape Characters<a class="headerlink" href="#escape-characters" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;Hello World!\nThis is a Python script.&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!</span><span class="se">\n</span><span class="s2">This is a Python script.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;This is the first line.\n\tThis is the second line. It is indented.&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the first line.</span><span class="se">\n\t</span><span class="s2">This is the second line. It is indented.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;What&#39;s your name?&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name?&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;What&#39;s your name?&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name?&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -703,8 +703,8 @@ longitude = 139.6917  # Represents the longitude of a point on Earth&#39;s surfa
 <h2><span class="section-number">8.7. </span>Comments in Python<a class="headerlink" href="#comments-in-python" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># This is a comment
-num_points = 120  # This is an inline comment
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a comment</span>
+<span class="n">num_points</span> <span class="o">=</span> <span class="mi">120</span>  <span class="c1"># This is an inline comment</span>
 </pre></div>
 </div>
 </div>
@@ -714,38 +714,38 @@ num_points = 120  # This is an inline comment
 <h2><span class="section-number">8.8. </span>Working with Variables and Data Types<a class="headerlink" href="#working-with-variables-and-data-types" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>num_features += 20
-print(&quot;Updated number of features:&quot;, num_features)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num_features</span> <span class="o">+=</span> <span class="mi">20</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Updated number of features:&quot;</span><span class="p">,</span> <span class="n">num_features</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import math
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 
-latitude = 35.6895
-latitude_radians = math.radians(latitude)
-print(&quot;Latitude in radians:&quot;, latitude_radians)
+<span class="n">latitude</span> <span class="o">=</span> <span class="mf">35.6895</span>
+<span class="n">latitude_radians</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Latitude in radians:&quot;</span><span class="p">,</span> <span class="n">latitude_radians</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>coordinates = [35.6895, 139.6917]
-coordinates.append(34.0522)  # Adding latitude of Los Angeles
-coordinates.append(-118.2437)  # Adding longitude of Los Angeles
-print(&quot;Updated coordinates:&quot;, coordinates)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">coordinates</span> <span class="o">=</span> <span class="p">[</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">]</span>
+<span class="n">coordinates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">34.0522</span><span class="p">)</span>  <span class="c1"># Adding latitude of Los Angeles</span>
+<span class="n">coordinates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mf">118.2437</span><span class="p">)</span>  <span class="c1"># Adding longitude of Los Angeles</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Updated coordinates:&quot;</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mount_fuji_name = feature_attributes[&quot;name&quot;]
-mount_fuji_height = feature_attributes[&quot;height_meters&quot;]
-print(f&quot;{mount_fuji_name} is {mount_fuji_height} meters high.&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mount_fuji_name</span> <span class="o">=</span> <span class="n">feature_attributes</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+<span class="n">mount_fuji_height</span> <span class="o">=</span> <span class="n">feature_attributes</span><span class="p">[</span><span class="s2">&quot;height_meters&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mount_fuji_name</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">mount_fuji_height</span><span class="si">}</span><span class="s2"> meters high.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -757,19 +757,19 @@ print(f&quot;{mount_fuji_name} is {mount_fuji_height} meters high.&quot;)
 <h3><span class="section-number">8.9.1. </span>Changing Case<a class="headerlink" href="#changing-case" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>city_name = &quot;San Francisco&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">city_name</span> <span class="o">=</span> <span class="s2">&quot;San Francisco&quot;</span>
 
-# Convert to lowercase
-city_lowercase = city_name.lower()
-print(&quot;Lowercase:&quot;, city_lowercase)
+<span class="c1"># Convert to lowercase</span>
+<span class="n">city_lowercase</span> <span class="o">=</span> <span class="n">city_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lowercase:&quot;</span><span class="p">,</span> <span class="n">city_lowercase</span><span class="p">)</span>
 
-# Convert to uppercase
-city_uppercase = city_name.upper()
-print(&quot;Uppercase:&quot;, city_uppercase)
+<span class="c1"># Convert to uppercase</span>
+<span class="n">city_uppercase</span> <span class="o">=</span> <span class="n">city_name</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Uppercase:&quot;</span><span class="p">,</span> <span class="n">city_uppercase</span><span class="p">)</span>
 
-# Convert to title case (first letter of each word capitalized)
-city_title = city_name.title()
-print(&quot;Title case:&quot;, city_title)
+<span class="c1"># Convert to title case (first letter of each word capitalized)</span>
+<span class="n">city_title</span> <span class="o">=</span> <span class="n">city_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Title case:&quot;</span><span class="p">,</span> <span class="n">city_title</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -779,10 +779,10 @@ print(&quot;Title case:&quot;, city_title)
 <h3><span class="section-number">8.9.2. </span>Replacing Text<a class="headerlink" href="#replacing-text" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>original_city = &quot;San Francisco&quot;
-new_city = original_city.replace(&quot;San&quot;, &quot;Los&quot;)
-print(&quot;Original:&quot;, original_city)
-print(&quot;Modified:&quot;, new_city)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">original_city</span> <span class="o">=</span> <span class="s2">&quot;San Francisco&quot;</span>
+<span class="n">new_city</span> <span class="o">=</span> <span class="n">original_city</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;San&quot;</span><span class="p">,</span> <span class="s2">&quot;Los&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original:&quot;</span><span class="p">,</span> <span class="n">original_city</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Modified:&quot;</span><span class="p">,</span> <span class="n">new_city</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -792,11 +792,11 @@ print(&quot;Modified:&quot;, new_city)
 <h3><span class="section-number">8.9.3. </span>Other Useful String Methods<a class="headerlink" href="#other-useful-string-methods" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>location_data = &quot;  Mount Everest  &quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">location_data</span> <span class="o">=</span> <span class="s2">&quot;  Mount Everest  &quot;</span>
 
-# Remove whitespace from beginning and end
-clean_location = location_data.strip()
-print(&quot;Cleaned:&quot;, clean_location)
+<span class="c1"># Remove whitespace from beginning and end</span>
+<span class="n">clean_location</span> <span class="o">=</span> <span class="n">location_data</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cleaned:&quot;</span><span class="p">,</span> <span class="n">clean_location</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

@@ -585,16 +585,16 @@ document.write(`
 <h2><span class="section-number">16.4. </span>Installing GeoPandas<a class="headerlink" href="#installing-geopandas" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># %pip install geopandas pygis
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install geopandas pygis</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import pandas as pd
-import geopandas as gpd
-import matplotlib.pyplot as plt
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
@@ -606,19 +606,19 @@ import matplotlib.pyplot as plt
 <h3><span class="section-number">16.5.1. </span>Creating Points from Coordinate Data<a class="headerlink" href="#creating-points-from-coordinate-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Creating a GeoDataFrame from coordinate data
-data = {
-    &quot;City&quot;: [&quot;Tokyo&quot;, &quot;New York&quot;, &quot;London&quot;, &quot;Paris&quot;],
-    &quot;Latitude&quot;: [35.6895, 40.7128, 51.5074, 48.8566],
-    &quot;Longitude&quot;: [139.6917, -74.0060, -0.1278, 2.3522],
-}
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a GeoDataFrame from coordinate data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;City&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;New York&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span> <span class="s2">&quot;Paris&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Latitude&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">40.7128</span><span class="p">,</span> <span class="mf">51.5074</span><span class="p">,</span> <span class="mf">48.8566</span><span class="p">],</span>
+    <span class="s2">&quot;Longitude&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">139.6917</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.0060</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">,</span> <span class="mf">2.3522</span><span class="p">],</span>
+<span class="p">}</span>
 
-# First create a regular pandas DataFrame
-df = pd.DataFrame(data)
+<span class="c1"># First create a regular pandas DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-# Convert to GeoDataFrame by creating Point geometries from coordinates
-gdf = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.Longitude, df.Latitude))
-gdf
+<span class="c1"># Convert to GeoDataFrame by creating Point geometries from coordinates</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Longitude</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">Latitude</span><span class="p">))</span>
+<span class="n">gdf</span>
 </pre></div>
 </div>
 </div>
@@ -634,9 +634,9 @@ gdf
 <h3><span class="section-number">16.6.2. </span>Reading a GeoJSON File<a class="headerlink" href="#reading-a-geojson-file" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://github.com/opengeos/datasets/releases/download/vector/nybb.geojson&quot;
-gdf = gpd.read_file(url)
-gdf.head()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/vector/nybb.geojson&quot;</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -646,22 +646,22 @@ gdf.head()
 <h3><span class="section-number">16.6.3. </span>Writing Geospatial Data<a class="headerlink" href="#writing-geospatial-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>output_file = &quot;nyc_boroughs.geojson&quot;
-gdf.to_file(output_file, driver=&quot;GeoJSON&quot;)
-print(f&quot;GeoDataFrame has been written to {output_file}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">output_file</span> <span class="o">=</span> <span class="s2">&quot;nyc_boroughs.geojson&quot;</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;GeoDataFrame has been written to </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Save as Shapefile (traditional GIS format)
-output_file = &quot;nyc_boroughs.shp&quot;
-gdf.to_file(output_file)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save as Shapefile (traditional GIS format)</span>
+<span class="n">output_file</span> <span class="o">=</span> <span class="s2">&quot;nyc_boroughs.shp&quot;</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span>
 
-# Save as GeoPackage (modern, single-file format)
-output_file = &quot;nyc_boroughs.gpkg&quot;
-gdf.to_file(output_file, driver=&quot;GPKG&quot;)
+<span class="c1"># Save as GeoPackage (modern, single-file format)</span>
+<span class="n">output_file</span> <span class="o">=</span> <span class="s2">&quot;nyc_boroughs.gpkg&quot;</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GPKG&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -677,7 +677,7 @@ gdf.to_file(output_file, driver=&quot;GPKG&quot;)
 <h3><span class="section-number">16.7.2. </span>Checking and Understanding CRS<a class="headerlink" href="#checking-and-understanding-crs" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(f&quot;Current CRS: {gdf.crs}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current CRS: </span><span class="si">{</span><span class="n">gdf</span><span class="o">.</span><span class="n">crs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -687,10 +687,10 @@ gdf.to_file(output_file, driver=&quot;GPKG&quot;)
 <h3><span class="section-number">16.7.3. </span>Reprojecting to Different Coordinate Systems<a class="headerlink" href="#reprojecting-to-different-coordinate-systems" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Reproject to WGS84 (latitude/longitude) for global compatibility
-gdf_4326 = gdf.to_crs(epsg=4326)
-print(f&quot;Reprojected CRS: {gdf_4326.crs}&quot;)
-gdf_4326.head()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reproject to WGS84 (latitude/longitude) for global compatibility</span>
+<span class="n">gdf_4326</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">4326</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reprojected CRS: </span><span class="si">{</span><span class="n">gdf_4326</span><span class="o">.</span><span class="n">crs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">gdf_4326</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -703,12 +703,12 @@ gdf_4326.head()
 <h3><span class="section-number">16.8.1. </span>Preparing Data for Accurate Measurements<a class="headerlink" href="#preparing-data-for-accurate-measurements" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Reproject to Web Mercator for accurate area calculations in square meters
-gdf = gdf.to_crs(&quot;EPSG:3857&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reproject to Web Mercator for accurate area calculations in square meters</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
 
-# Set BoroName as index for easier data access
-gdf = gdf.set_index(&quot;BoroName&quot;)
-print(f&quot;Now using CRS: {gdf.crs}&quot;)
+<span class="c1"># Set BoroName as index for easier data access</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;BoroName&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Now using CRS: </span><span class="si">{</span><span class="n">gdf</span><span class="o">.</span><span class="n">crs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -718,14 +718,14 @@ print(f&quot;Now using CRS: {gdf.crs}&quot;)
 <h3><span class="section-number">16.8.2. </span>Calculating Areas<a class="headerlink" href="#calculating-areas" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate area in square meters
-gdf[&quot;area&quot;] = gdf.area
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate area in square meters</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">area</span>
 
-# Convert to more readable units (square kilometers)
-gdf[&quot;area_km2&quot;] = gdf[&quot;area&quot;] / 1_000_000
+<span class="c1"># Convert to more readable units (square kilometers)</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;area_km2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1_000_000</span>
 
-# Display results sorted by area
-gdf[[&quot;area&quot;, &quot;area_km2&quot;]].sort_values(&quot;area_km2&quot;, ascending=False)
+<span class="c1"># Display results sorted by area</span>
+<span class="n">gdf</span><span class="p">[[</span><span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="s2">&quot;area_km2&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;area_km2&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -735,14 +735,14 @@ gdf[[&quot;area&quot;, &quot;area_km2&quot;]].sort_values(&quot;area_km2&quot;, 
 <h3><span class="section-number">16.8.3. </span>Extracting Geometric Features<a class="headerlink" href="#extracting-geometric-features" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Extract boundary lines from polygons
-gdf[&quot;boundary&quot;] = gdf.boundary
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract boundary lines from polygons</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;boundary&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">boundary</span>
 
-# Calculate centroids (geometric centers)
-gdf[&quot;centroid&quot;] = gdf.centroid
+<span class="c1"># Calculate centroids (geometric centers)</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;centroid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">centroid</span>
 
-# Display the geometric features
-gdf[[&quot;boundary&quot;, &quot;centroid&quot;]].head()
+<span class="c1"># Display the geometric features</span>
+<span class="n">gdf</span><span class="p">[[</span><span class="s2">&quot;boundary&quot;</span><span class="p">,</span> <span class="s2">&quot;centroid&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -752,16 +752,16 @@ gdf[[&quot;boundary&quot;, &quot;centroid&quot;]].head()
 <h3><span class="section-number">16.8.4. </span>Distance Calculations<a class="headerlink" href="#distance-calculations" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Use Manhattan&#39;s centroid as the reference point
-manhattan_centroid = gdf.loc[&quot;Manhattan&quot;, &quot;centroid&quot;]
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use Manhattan&#39;s centroid as the reference point</span>
+<span class="n">manhattan_centroid</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Manhattan&quot;</span><span class="p">,</span> <span class="s2">&quot;centroid&quot;</span><span class="p">]</span>
 
-# Calculate distance from each borough centroid to Manhattan
-gdf[&quot;distance_to_manhattan&quot;] = gdf[&quot;centroid&quot;].distance(manhattan_centroid)
+<span class="c1"># Calculate distance from each borough centroid to Manhattan</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;distance_to_manhattan&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;centroid&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">manhattan_centroid</span><span class="p">)</span>
 
-# Convert to kilometers and display results
-gdf[&quot;distance_to_manhattan_km&quot;] = gdf[&quot;distance_to_manhattan&quot;] / 1000
+<span class="c1"># Convert to kilometers and display results</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;distance_to_manhattan_km&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;distance_to_manhattan&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span>
 
-gdf[[&quot;distance_to_manhattan_km&quot;]].sort_values(&quot;distance_to_manhattan_km&quot;)
+<span class="n">gdf</span><span class="p">[[</span><span class="s2">&quot;distance_to_manhattan_km&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;distance_to_manhattan_km&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -771,14 +771,14 @@ gdf[[&quot;distance_to_manhattan_km&quot;]].sort_values(&quot;distance_to_manhat
 <h3><span class="section-number">16.8.5. </span>Statistical Analysis of Spatial Data<a class="headerlink" href="#statistical-analysis-of-spatial-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate summary statistics
-mean_distance = gdf[&quot;distance_to_manhattan_km&quot;].mean()
-max_distance = gdf[&quot;distance_to_manhattan_km&quot;].max()
-total_area = gdf[&quot;area_km2&quot;].sum()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate summary statistics</span>
+<span class="n">mean_distance</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;distance_to_manhattan_km&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">max_distance</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;distance_to_manhattan_km&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">total_area</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;area_km2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
-print(f&quot;Mean distance to Manhattan: {mean_distance:.2f} km&quot;)
-print(f&quot;Maximum distance to Manhattan: {max_distance:.2f} km&quot;)
-print(f&quot;Total NYC area: {total_area:.2f} km²&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean distance to Manhattan: </span><span class="si">{</span><span class="n">mean_distance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Maximum distance to Manhattan: </span><span class="si">{</span><span class="n">max_distance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total NYC area: </span><span class="si">{</span><span class="n">total_area</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> km²&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -791,10 +791,10 @@ print(f&quot;Total NYC area: {total_area:.2f} km²&quot;)
 <h3><span class="section-number">16.9.1. </span>Setting Up Plotting Environment<a class="headerlink" href="#setting-up-plotting-environment" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-# Set high resolution for better quality plots
-plt.rcParams[&quot;figure.dpi&quot;] = 150
+<span class="c1"># Set high resolution for better quality plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.dpi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">150</span>
 </pre></div>
 </div>
 </div>
@@ -804,22 +804,22 @@ plt.rcParams[&quot;figure.dpi&quot;] = 150
 <h3><span class="section-number">16.9.2. </span>Thematic Mapping<a class="headerlink" href="#thematic-mapping" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a choropleth map showing borough areas
-fig, ax = plt.subplots(figsize=(10, 6))
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a choropleth map showing borough areas</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
-gdf.plot(
-    column=&quot;area_km2&quot;,
-    ax=ax,
-    legend=True,
-    cmap=&quot;YlOrRd&quot;,  # Yellow-Orange-Red colormap
-    edgecolor=&quot;black&quot;,
-    linewidth=0.5,
-)
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">column</span><span class="o">=</span><span class="s2">&quot;area_km2&quot;</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlOrRd&quot;</span><span class="p">,</span>  <span class="c1"># Yellow-Orange-Red colormap</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="p">)</span>
 
-plt.title(&quot;NYC Boroughs by Area (km²)&quot;, fontsize=16, fontweight=&quot;bold&quot;)
-plt.axis(&quot;off&quot;)  # Remove coordinate axes for cleaner appearance
-plt.tight_layout()
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;NYC Boroughs by Area (km²)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>  <span class="c1"># Remove coordinate axes for cleaner appearance</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -829,38 +829,38 @@ plt.show()
 <h3><span class="section-number">16.9.3. </span>Multi-Layer Visualization<a class="headerlink" href="#multi-layer-visualization" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a comprehensive map with multiple layers
-fig, ax = plt.subplots(figsize=(10, 6))
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a comprehensive map with multiple layers</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
-# Plot borough boundaries as base layer
-gdf[&quot;geometry&quot;].plot(
-    ax=ax, color=&quot;lightblue&quot;, edgecolor=&quot;navy&quot;, linewidth=1.5, alpha=0.7
-)
+<span class="c1"># Plot borough boundaries as base layer</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;navy&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span>
+<span class="p">)</span>
 
-# Add centroids as point layer
-gdf[&quot;centroid&quot;].plot(
-    ax=ax, color=&quot;red&quot;, markersize=80, edgecolor=&quot;darkred&quot;, linewidth=1
-)
+<span class="c1"># Add centroids as point layer</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;centroid&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;darkred&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
 
-# Add borough labels
-for idx, row in gdf.iterrows():
-    # Get centroid coordinates for label placement
-    x = row.centroid.x
-    y = row.centroid.y
-    ax.annotate(
-        idx,
-        (x, y),
-        xytext=(5, 5),
-        textcoords=&quot;offset points&quot;,
-        fontsize=10,
-        fontweight=&quot;bold&quot;,
-        bbox=dict(boxstyle=&quot;round,pad=0.3&quot;, facecolor=&quot;white&quot;, alpha=0.8),
-    )
+<span class="c1"># Add borough labels</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">gdf</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="c1"># Get centroid coordinates for label placement</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">y</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+        <span class="n">idx</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>
+        <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+        <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span>
+        <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span>
+        <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s2">&quot;round,pad=0.3&quot;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">),</span>
+    <span class="p">)</span>
 
-plt.title(&quot;NYC Borough Boundaries and Centroids&quot;, fontsize=16, fontweight=&quot;bold&quot;)
-plt.axis(&quot;off&quot;)
-plt.tight_layout()
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;NYC Borough Boundaries and Centroids&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -870,15 +870,15 @@ plt.show()
 <h3><span class="section-number">16.9.4. </span>Interactive Visualization<a class="headerlink" href="#interactive-visualization" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create an interactive map using Folium integration
-m = gdf.explore(
-    column=&quot;area_km2&quot;,
-    cmap=&quot;YlOrRd&quot;,
-    tooltip=[&quot;area_km2&quot;, &quot;distance_to_manhattan_km&quot;],
-    popup=True,
-    legend=True,
-)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an interactive map using Folium integration</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">explore</span><span class="p">(</span>
+    <span class="n">column</span><span class="o">=</span><span class="s2">&quot;area_km2&quot;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlOrRd&quot;</span><span class="p">,</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;area_km2&quot;</span><span class="p">,</span> <span class="s2">&quot;distance_to_manhattan_km&quot;</span><span class="p">],</span>
+    <span class="n">popup</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -891,44 +891,44 @@ m
 <h3><span class="section-number">16.10.1. </span>Buffer Analysis<a class="headerlink" href="#buffer-analysis" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create 3-kilometer buffer zones around each borough
-buffer_distance = 3000  # meters
-gdf[&quot;buffered&quot;] = gdf.buffer(buffer_distance)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create 3-kilometer buffer zones around each borough</span>
+<span class="n">buffer_distance</span> <span class="o">=</span> <span class="mi">3000</span>  <span class="c1"># meters</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;buffered&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">buffer_distance</span><span class="p">)</span>
 
-print(f&quot;Created {buffer_distance/1000} km buffer zones around each borough&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Created </span><span class="si">{</span><span class="n">buffer_distance</span><span class="o">/</span><span class="mi">1000</span><span class="si">}</span><span class="s2"> km buffer zones around each borough&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Visualize original vs buffered geometries
-fig, ax = plt.subplots(figsize=(10, 6))
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize original vs buffered geometries</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
-# Plot buffered areas first (background)
-gdf[&quot;buffered&quot;].plot(
-    ax=ax,
-    alpha=0.3,
-    color=&quot;orange&quot;,
-    edgecolor=&quot;red&quot;,
-    linewidth=1,
-    label=&quot;3km Buffer Zone&quot;,
-)
+<span class="c1"># Plot buffered areas first (background)</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;buffered&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;3km Buffer Zone&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 
-# Plot original geometries on top
-gdf[&quot;geometry&quot;].plot(
-    ax=ax,
-    color=&quot;lightblue&quot;,
-    edgecolor=&quot;navy&quot;,
-    linewidth=1.5,
-    label=&quot;Original Boundaries&quot;,
-)
+<span class="c1"># Plot original geometries on top</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;navy&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Original Boundaries&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 
-plt.title(&quot;NYC Boroughs: Original vs 3km Buffer Zones&quot;, fontsize=16, fontweight=&quot;bold&quot;)
-plt.legend(loc=&quot;upper right&quot;)
-plt.axis(&quot;off&quot;)
-plt.tight_layout()
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;NYC Boroughs: Original vs 3km Buffer Zones&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -938,46 +938,46 @@ plt.show()
 <h3><span class="section-number">16.10.2. </span>Convex Hull Analysis<a class="headerlink" href="#convex-hull-analysis" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate convex hulls for each borough
-gdf[&quot;convex_hull&quot;] = gdf.convex_hull
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate convex hulls for each borough</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;convex_hull&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">convex_hull</span>
 
-# Compare areas between original shapes and convex hulls
-gdf[&quot;convex_hull_area&quot;] = gdf[&quot;convex_hull&quot;].area / 1_000_000  # Convert to km²
-gdf[&quot;area_ratio&quot;] = gdf[&quot;convex_hull_area&quot;] / gdf[&quot;area_km2&quot;]
+<span class="c1"># Compare areas between original shapes and convex hulls</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;convex_hull_area&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;convex_hull&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">area</span> <span class="o">/</span> <span class="mi">1_000_000</span>  <span class="c1"># Convert to km²</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;area_ratio&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;convex_hull_area&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;area_km2&quot;</span><span class="p">]</span>
 
-print(&quot;Convex Hull Analysis:&quot;)
-print(gdf[[&quot;area_km2&quot;, &quot;convex_hull_area&quot;, &quot;area_ratio&quot;]].round(2))
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Convex Hull Analysis:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">[[</span><span class="s2">&quot;area_km2&quot;</span><span class="p">,</span> <span class="s2">&quot;convex_hull_area&quot;</span><span class="p">,</span> <span class="s2">&quot;area_ratio&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create comparison visualization
-fig, ax = plt.subplots(figsize=(10, 6))
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create comparison visualization</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
-# Plot original geometries
-gdf[&quot;geometry&quot;].plot(
-    ax=ax, color=&quot;lightblue&quot;, edgecolor=&quot;navy&quot;, linewidth=2, label=&quot;Original Shape&quot;
-)
+<span class="c1"># Plot original geometries</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;navy&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Original Shape&quot;</span>
+<span class="p">)</span>
 
-# Plot convex hulls as outlines
-gdf[&quot;convex_hull&quot;].plot(
-    ax=ax,
-    facecolor=&quot;none&quot;,
-    edgecolor=&quot;red&quot;,
-    linewidth=2,
-    linestyle=&quot;--&quot;,
-    label=&quot;Convex Hull&quot;,
-)
+<span class="c1"># Plot convex hulls as outlines</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;convex_hull&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Convex Hull&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 
-plt.title(
-    &quot;NYC Boroughs: Original Shapes vs Convex Hulls&quot;, fontsize=16, fontweight=&quot;bold&quot;
-)
-plt.legend(loc=&quot;upper right&quot;)
-plt.axis(&quot;off&quot;)
-plt.tight_layout()
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
+    <span class="s2">&quot;NYC Boroughs: Original Shapes vs Convex Hulls&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -990,15 +990,15 @@ plt.show()
 <h3><span class="section-number">16.11.1. </span>Intersection Analysis<a class="headerlink" href="#intersection-analysis" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Test which buffered boroughs intersect with Manhattan&#39;s original boundary
-manhattan_geom = gdf.loc[&quot;Manhattan&quot;, &quot;geometry&quot;]
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test which buffered boroughs intersect with Manhattan&#39;s original boundary</span>
+<span class="n">manhattan_geom</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Manhattan&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]</span>
 
-gdf[&quot;intersects_manhattan&quot;] = gdf[&quot;buffered&quot;].intersects(manhattan_geom)
-gdf[&quot;touches_manhattan&quot;] = gdf[&quot;geometry&quot;].touches(manhattan_geom)
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;intersects_manhattan&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;buffered&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">manhattan_geom</span><span class="p">)</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;touches_manhattan&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">touches</span><span class="p">(</span><span class="n">manhattan_geom</span><span class="p">)</span>
 
-# Display results
-intersection_results = gdf[[&quot;intersects_manhattan&quot;, &quot;touches_manhattan&quot;]]
-intersection_results
+<span class="c1"># Display results</span>
+<span class="n">intersection_results</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[[</span><span class="s2">&quot;intersects_manhattan&quot;</span><span class="p">,</span> <span class="s2">&quot;touches_manhattan&quot;</span><span class="p">]]</span>
+<span class="n">intersection_results</span>
 </pre></div>
 </div>
 </div>
@@ -1008,16 +1008,16 @@ intersection_results
 <h3><span class="section-number">16.11.2. </span>Containment and Spatial Validation<a class="headerlink" href="#containment-and-spatial-validation" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Verify that centroids fall within their respective borough boundaries
-gdf[&quot;centroid_within_borough&quot;] = gdf[&quot;centroid&quot;].within(gdf[&quot;geometry&quot;])
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verify that centroids fall within their respective borough boundaries</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;centroid_within_borough&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;centroid&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">within</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">])</span>
 
-# Check for any anomalies
-anomalies = gdf[~gdf[&quot;centroid_within_borough&quot;]]
-if len(anomalies) &gt; 0:
-    print(&quot;Warning: Some centroids fall outside their borough boundaries&quot;)
-    print(anomalies.index.tolist())
-else:
-    print(&quot;✓ All centroids correctly fall within their borough boundaries&quot;)
+<span class="c1"># Check for any anomalies</span>
+<span class="n">anomalies</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="o">~</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;centroid_within_borough&quot;</span><span class="p">]]</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">anomalies</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Some centroids fall outside their borough boundaries&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">anomalies</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✓ All centroids correctly fall within their borough boundaries&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

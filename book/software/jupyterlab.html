@@ -543,34 +543,22 @@ document.write(`
 <h2><span class="section-number">6.3. </span>Installing and Setting Up JupyterLab<a class="headerlink" href="#installing-and-setting-up-jupyterlab" title="Link to this heading">#</a></h2>
 <section id="using-conda">
 <h3><span class="section-number">6.3.1. </span>Using conda<a class="headerlink" href="#using-conda" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda create -n geo python=3.12
-conda activate geo
-conda install -c conda-forge jupyterlab leafmap
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>geo<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12
+conda<span class="w"> </span>activate<span class="w"> </span>geo
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>jupyterlab<span class="w"> </span>leafmap
 </pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="using-pip">
 <h3><span class="section-number">6.3.2. </span>Using pip<a class="headerlink" href="#using-pip" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install jupyterlab leafmap
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab<span class="w"> </span>leafmap
 </pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="verifying-your-installation">
 <h3><span class="section-number">6.3.3. </span>Verifying Your Installation<a class="headerlink" href="#verifying-your-installation" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>jupyter lab --version
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>lab<span class="w"> </span>--version
 </pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -578,23 +566,15 @@ conda install -c conda-forge jupyterlab leafmap
 <h2><span class="section-number">6.4. </span>Getting Started with JupyterLab<a class="headerlink" href="#getting-started-with-jupyterlab" title="Link to this heading">#</a></h2>
 <section id="launching-jupyterlab">
 <h3><span class="section-number">6.4.1. </span>Launching JupyterLab<a class="headerlink" href="#launching-jupyterlab" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>jupyter lab
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>lab
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Launch on a specific port (useful if the default port is busy)
-jupyter lab --port=8889
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch on a specific port (useful if the default port is busy)</span>
+jupyter<span class="w"> </span>lab<span class="w"> </span>--port<span class="o">=</span><span class="m">8889</span>
 
-# Launch without automatically opening browser (useful for remote servers)
-jupyter lab --no-browser --port=8888
+<span class="c1"># Launch without automatically opening browser (useful for remote servers)</span>
+jupyter<span class="w"> </span>lab<span class="w"> </span>--no-browser<span class="w"> </span>--port<span class="o">=</span><span class="m">8888</span>
 </pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="understanding-the-jupyterlab-interface">

@@ -551,14 +551,14 @@ document.write(`
 <h3><span class="section-number">11.3.1. </span>Basic For Loop Syntax<a class="headerlink" href="#basic-for-loop-syntax" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>coordinates = [
-    (35.6895, 139.6917),
-    (34.0522, -118.2437),
-    (51.5074, -0.1278),
-]  # List of tuples representing coordinates
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">coordinates</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">),</span>
+    <span class="p">(</span><span class="mf">34.0522</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">),</span>
+    <span class="p">(</span><span class="mf">51.5074</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">),</span>
+<span class="p">]</span>  <span class="c1"># List of tuples representing coordinates</span>
 
-for lat, lon in coordinates:
-    print(f&quot;Latitude: {lat}, Longitude: {lon}&quot;)
+<span class="k">for</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="ow">in</span> <span class="n">coordinates</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Latitude: </span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">, Longitude: </span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -568,16 +568,16 @@ for lat, lon in coordinates:
 <h3><span class="section-number">11.3.2. </span>Processing Multiple Data Points<a class="headerlink" href="#processing-multiple-data-points" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def calculate_distance(lat1, lon1, lat2, lon2):
-    # Placeholder for distance calculation logic
-    return ((lat2 - lat1) ** 2 + (lon2 - lon1) ** 2) ** 0.5
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_distance</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">):</span>
+    <span class="c1"># Placeholder for distance calculation logic</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">lat2</span> <span class="o">-</span> <span class="n">lat1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
 
 
-reference_point = (0, 0)  # Reference point (latitude, longitude)
+<span class="n">reference_point</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Reference point (latitude, longitude)</span>
 
-for lat, lon in coordinates:
-    distance = calculate_distance(reference_point[0], reference_point[1], lat, lon)
-    print(f&quot;Distance from {reference_point} to ({lat}, {lon}): {distance:.2f}&quot;)
+<span class="k">for</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="ow">in</span> <span class="n">coordinates</span><span class="p">:</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">calculate_distance</span><span class="p">(</span><span class="n">reference_point</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">reference_point</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance from </span><span class="si">{</span><span class="n">reference_point</span><span class="si">}</span><span class="s2"> to (</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">distance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -587,12 +587,12 @@ for lat, lon in coordinates:
 <h3><span class="section-number">11.3.3. </span>Iterating Through Geographic Collections<a class="headerlink" href="#iterating-through-geographic-collections" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Working with a list of place names
-cities = [&quot;New York&quot;, &quot;Los Angeles&quot;, &quot;Chicago&quot;, &quot;Houston&quot;, &quot;Phoenix&quot;]
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Working with a list of place names</span>
+<span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;New York&quot;</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;Chicago&quot;</span><span class="p">,</span> <span class="s2">&quot;Houston&quot;</span><span class="p">,</span> <span class="s2">&quot;Phoenix&quot;</span><span class="p">]</span>
 
-print(&quot;Major US Cities:&quot;)
-for i, city in enumerate(cities):
-    print(f&quot;{i+1}. {city}&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Major US Cities:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">city</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cities</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -605,11 +605,11 @@ for i, city in enumerate(cities):
 <h3><span class="section-number">11.4.1. </span>Basic While Loop Structure<a class="headerlink" href="#basic-while-loop-structure" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>counter = 0
-while counter &lt; len(coordinates):
-    lat, lon = coordinates[counter]
-    print(f&quot;Processing coordinate: ({lat}, {lon})&quot;)
-    counter += 1
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">counter</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">coordinates</span><span class="p">):</span>
+    <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing coordinate: (</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -619,30 +619,30 @@ while counter &lt; len(coordinates):
 <h3><span class="section-number">11.4.2. </span>Practical While Loop Example<a class="headerlink" href="#practical-while-loop-example" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Simulate searching for a coordinate within a certain range
-import random
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulate searching for a coordinate within a certain range</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 
-target_latitude = 40.0
-tolerance = 0.1
-attempts = 0
-max_attempts = 10
+<span class="n">target_latitude</span> <span class="o">=</span> <span class="mf">40.0</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">attempts</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">max_attempts</span> <span class="o">=</span> <span class="mi">10</span>
 
-print(f&quot;Searching for coordinates near latitude {target_latitude}&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Searching for coordinates near latitude </span><span class="si">{</span><span class="n">target_latitude</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-while attempts &lt; max_attempts:
-    # Simulate getting a new coordinate
-    random_lat = random.uniform(39.5, 40.5)
-    random_lon = random.uniform(-74.5, -73.5)
-    attempts += 1
+<span class="k">while</span> <span class="n">attempts</span> <span class="o">&lt;</span> <span class="n">max_attempts</span><span class="p">:</span>
+    <span class="c1"># Simulate getting a new coordinate</span>
+    <span class="n">random_lat</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">39.5</span><span class="p">,</span> <span class="mf">40.5</span><span class="p">)</span>
+    <span class="n">random_lon</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">74.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.5</span><span class="p">)</span>
+    <span class="n">attempts</span> <span class="o">+=</span> <span class="mi">1</span>
 
-    print(f&quot;Attempt {attempts}: Found coordinate ({random_lat:.4f}, {random_lon:.4f})&quot;)
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Attempt </span><span class="si">{</span><span class="n">attempts</span><span class="si">}</span><span class="s2">: Found coordinate (</span><span class="si">{</span><span class="n">random_lat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">random_lon</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 
-    # Check if we&#39;re close enough to the target
-    if abs(random_lat - target_latitude) &lt;= tolerance:
-        print(f&quot;✓ Found coordinate within tolerance after {attempts} attempts!&quot;)
-        break
-else:
-    print(f&quot;✗ Could not find suitable coordinate within {max_attempts} attempts&quot;)
+    <span class="c1"># Check if we&#39;re close enough to the target</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">random_lat</span> <span class="o">-</span> <span class="n">target_latitude</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">tolerance</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✓ Found coordinate within tolerance after </span><span class="si">{</span><span class="n">attempts</span><span class="si">}</span><span class="s2"> attempts!&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✗ Could not find suitable coordinate within </span><span class="si">{</span><span class="n">max_attempts</span><span class="si">}</span><span class="s2"> attempts&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -655,13 +655,13 @@ else:
 <h3><span class="section-number">11.5.1. </span>The if Statement<a class="headerlink" href="#the-if-statement" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for lat, lon in coordinates:
-    if lat &gt; 0:
-        print(f&quot;{lat} is in the Northern Hemisphere&quot;)
-    elif lat &lt; 0:
-        print(f&quot;{lat} is in the Southern Hemisphere&quot;)
-    else:
-        print(f&quot;{lat} is near the equator&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="ow">in</span> <span class="n">coordinates</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">lat</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2"> is in the Northern Hemisphere&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">lat</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2"> is in the Southern Hemisphere&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2"> is near the equator&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -671,20 +671,20 @@ else:
 <h3><span class="section-number">11.5.2. </span>Multiple Conditions and Complex Logic<a class="headerlink" href="#multiple-conditions-and-complex-logic" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for lat, lon in coordinates:
-    if lat &gt; 0:
-        hemisphere = &quot;Northern&quot;
-    else:
-        hemisphere = &quot;Southern&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="ow">in</span> <span class="n">coordinates</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">lat</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">hemisphere</span> <span class="o">=</span> <span class="s2">&quot;Northern&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">hemisphere</span> <span class="o">=</span> <span class="s2">&quot;Southern&quot;</span>
 
-    if lon &gt; 0:
-        direction = &quot;Eastern&quot;
-    else:
-        direction = &quot;Western&quot;
+    <span class="k">if</span> <span class="n">lon</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">direction</span> <span class="o">=</span> <span class="s2">&quot;Eastern&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">direction</span> <span class="o">=</span> <span class="s2">&quot;Western&quot;</span>
 
-    print(
-        f&quot;The coordinate ({lat}, {lon}) is in the {hemisphere} Hemisphere and {direction} Hemisphere.&quot;
-    )
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;The coordinate (</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">) is in the </span><span class="si">{</span><span class="n">hemisphere</span><span class="si">}</span><span class="s2"> Hemisphere and </span><span class="si">{</span><span class="n">direction</span><span class="si">}</span><span class="s2"> Hemisphere.&quot;</span>
+    <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -694,18 +694,18 @@ else:
 <h3><span class="section-number">11.5.3. </span>Logical Operators for Complex Conditions<a class="headerlink" href="#logical-operators-for-complex-conditions" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Classify coordinates by quadrant
-for lat, lon in coordinates:
-    if lat &gt; 0 and lon &gt; 0:
-        quadrant = &quot;Northeast&quot;
-    elif lat &gt; 0 and lon &lt; 0:
-        quadrant = &quot;Northwest&quot;
-    elif lat &lt; 0 and lon &gt; 0:
-        quadrant = &quot;Southeast&quot;
-    else:  # lat &lt; 0 and lon &lt; 0
-        quadrant = &quot;Southwest&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Classify coordinates by quadrant</span>
+<span class="k">for</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="ow">in</span> <span class="n">coordinates</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">lat</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">lon</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">quadrant</span> <span class="o">=</span> <span class="s2">&quot;Northeast&quot;</span>
+    <span class="k">elif</span> <span class="n">lat</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">lon</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">quadrant</span> <span class="o">=</span> <span class="s2">&quot;Northwest&quot;</span>
+    <span class="k">elif</span> <span class="n">lat</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">lon</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">quadrant</span> <span class="o">=</span> <span class="s2">&quot;Southeast&quot;</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># lat &lt; 0 and lon &lt; 0</span>
+        <span class="n">quadrant</span> <span class="o">=</span> <span class="s2">&quot;Southwest&quot;</span>
 
-    print(f&quot;Coordinate ({lat}, {lon}) is in the {quadrant} quadrant&quot;)
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Coordinate (</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">) is in the </span><span class="si">{</span><span class="n">quadrant</span><span class="si">}</span><span class="s2"> quadrant&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -716,11 +716,11 @@ for lat, lon in coordinates:
 <h2><span class="section-number">11.6. </span>Combining Loops and Control Statements<a class="headerlink" href="#combining-loops-and-control-statements" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>filtered_coordinates = []
-for lat, lon in coordinates:
-    if lon &gt; 0:
-        filtered_coordinates.append((lat, lon))
-print(f&quot;Filtered coordinates (only with positive longitude): {filtered_coordinates}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_coordinates</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="ow">in</span> <span class="n">coordinates</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">lon</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">filtered_coordinates</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Filtered coordinates (only with positive longitude): </span><span class="si">{</span><span class="n">filtered_coordinates</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -729,11 +729,11 @@ print(f&quot;Filtered coordinates (only with positive longitude): {filtered_coor
 <h3><span class="section-number">11.6.1. </span>Counting and Analyzing Data<a class="headerlink" href="#counting-and-analyzing-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>southern_count = 0
-for lat, lon in coordinates:
-    if lat &lt; 0:
-        southern_count += 1
-print(f&quot;Number of coordinates in the Southern Hemisphere: {southern_count}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">southern_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="ow">in</span> <span class="n">coordinates</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">lat</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">southern_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of coordinates in the Southern Hemisphere: </span><span class="si">{</span><span class="n">southern_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -743,52 +743,52 @@ print(f&quot;Number of coordinates in the Southern Hemisphere: {southern_count}&
 <h3><span class="section-number">11.6.2. </span>Building Summary Statistics<a class="headerlink" href="#building-summary-statistics" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Analyze a set of coordinates
-analysis_coordinates = [
-    (40.7128, -74.0060),  # New York
-    (-33.8688, 151.2093),  # Sydney
-    (51.5074, -0.1278),  # London
-    (-1.2921, 36.8219),  # Nairobi
-    (35.6762, 139.6503),  # Tokyo
-]
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Analyze a set of coordinates</span>
+<span class="n">analysis_coordinates</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="mf">40.7128</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.0060</span><span class="p">),</span>  <span class="c1"># New York</span>
+    <span class="p">(</span><span class="o">-</span><span class="mf">33.8688</span><span class="p">,</span> <span class="mf">151.2093</span><span class="p">),</span>  <span class="c1"># Sydney</span>
+    <span class="p">(</span><span class="mf">51.5074</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">),</span>  <span class="c1"># London</span>
+    <span class="p">(</span><span class="o">-</span><span class="mf">1.2921</span><span class="p">,</span> <span class="mf">36.8219</span><span class="p">),</span>  <span class="c1"># Nairobi</span>
+    <span class="p">(</span><span class="mf">35.6762</span><span class="p">,</span> <span class="mf">139.6503</span><span class="p">),</span>  <span class="c1"># Tokyo</span>
+<span class="p">]</span>
 
-# Initialize counters
-northern_count = 0
-southern_count = 0
-eastern_count = 0
-western_count = 0
-valid_coordinates = []
+<span class="c1"># Initialize counters</span>
+<span class="n">northern_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">southern_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">eastern_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">western_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">valid_coordinates</span> <span class="o">=</span> <span class="p">[]</span>
 
-print(&quot;Coordinate Analysis:&quot;)
-print(&quot;-&quot; * 40)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Coordinate Analysis:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
 
-for lat, lon in analysis_coordinates:
-    # Validate coordinates (basic check)
-    if -90 &lt;= lat &lt;= 90 and -180 &lt;= lon &lt;= 180:
-        valid_coordinates.append((lat, lon))
+<span class="k">for</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="ow">in</span> <span class="n">analysis_coordinates</span><span class="p">:</span>
+    <span class="c1"># Validate coordinates (basic check)</span>
+    <span class="k">if</span> <span class="o">-</span><span class="mi">90</span> <span class="o">&lt;=</span> <span class="n">lat</span> <span class="o">&lt;=</span> <span class="mi">90</span> <span class="ow">and</span> <span class="o">-</span><span class="mi">180</span> <span class="o">&lt;=</span> <span class="n">lon</span> <span class="o">&lt;=</span> <span class="mi">180</span><span class="p">:</span>
+        <span class="n">valid_coordinates</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">))</span>
 
-        # Count by hemisphere
-        if lat &gt;= 0:
-            northern_count += 1
-        else:
-            southern_count += 1
+        <span class="c1"># Count by hemisphere</span>
+        <span class="k">if</span> <span class="n">lat</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">northern_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">southern_count</span> <span class="o">+=</span> <span class="mi">1</span>
 
-        # Count by longitude
-        if lon &gt;= 0:
-            eastern_count += 1
-        else:
-            western_count += 1
+        <span class="c1"># Count by longitude</span>
+        <span class="k">if</span> <span class="n">lon</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">eastern_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">western_count</span> <span class="o">+=</span> <span class="mi">1</span>
 
-        print(f&quot;Valid: ({lat:7.4f}, {lon:8.4f})&quot;)
-    else:
-        print(f&quot;Invalid: ({lat}, {lon}) - coordinates out of range&quot;)
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Valid: (</span><span class="si">{</span><span class="n">lat</span><span class="si">:</span><span class="s2">7.4f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">lon</span><span class="si">:</span><span class="s2">8.4f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid: (</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">) - coordinates out of range&quot;</span><span class="p">)</span>
 
-print(f&quot;\nSummary:&quot;)
-print(f&quot;Valid coordinates: {len(valid_coordinates)}&quot;)
-print(f&quot;Northern Hemisphere: {northern_count}&quot;)
-print(f&quot;Southern Hemisphere: {southern_count}&quot;)
-print(f&quot;Eastern Longitude: {eastern_count}&quot;)
-print(f&quot;Western Longitude: {western_count}&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Summary:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Valid coordinates: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">valid_coordinates</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Northern Hemisphere: </span><span class="si">{</span><span class="n">northern_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Southern Hemisphere: </span><span class="si">{</span><span class="n">southern_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Eastern Longitude: </span><span class="si">{</span><span class="n">eastern_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Western Longitude: </span><span class="si">{</span><span class="n">western_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

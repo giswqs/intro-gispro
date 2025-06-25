@@ -632,21 +632,21 @@ document.write(`
 <h3><span class="section-number">20.3.1. </span>Installation Methods<a class="headerlink" href="#installation-methods" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># %conda install -c conda-forge leafmap
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># %conda install -c conda-forge leafmap</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># %pip install -U leafmap
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install -U leafmap</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import leafmap
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">leafmap</span>
 </pre></div>
 </div>
 </div>
@@ -656,8 +656,8 @@ document.write(`
 <h3><span class="section-number">20.3.2. </span>Understanding Leafmap’s Backend Architecture<a class="headerlink" href="#understanding-leafmap-s-backend-architecture" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># import leafmap.foliumap as leafmap  # For folium backend
-# import leafmap.maplibregl as leafmap  # For MapLibre backend
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import leafmap.foliumap as leafmap  # For folium backend</span>
+<span class="c1"># import leafmap.maplibregl as leafmap  # For MapLibre backend</span>
 </pre></div>
 </div>
 </div>
@@ -670,8 +670,8 @@ document.write(`
 <h3><span class="section-number">20.4.1. </span>Your First Interactive Map<a class="headerlink" href="#your-first-interactive-map" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -683,9 +683,9 @@ m
 <h4><span class="section-number">20.4.2.1. </span>Setting Center Location and Zoom Level<a class="headerlink" href="#setting-center-location-and-zoom-level" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Center the map on the continental United States
-m = leafmap.Map(center=(40, -100), zoom=4, height=&quot;600px&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Center the map on the continental United States</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">),</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;600px&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -701,18 +701,18 @@ m
 <h4><span class="section-number">20.4.3.2. </span>Customizing Control Visibility<a class="headerlink" href="#customizing-control-visibility" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a minimal map with most controls disabled
-m = leafmap.Map(
-    center=(40, -100),
-    zoom=4,
-    zoom_control=False,  # Remove zoom buttons
-    draw_control=False,  # Remove drawing tools
-    scale_control=False,  # Remove scale indicator
-    fullscreen_control=False,  # Remove fullscreen button
-    attribution_control=False,  # Remove attribution text
-    toolbar_control=False,  # Remove Leafmap toolbar
-)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a minimal map with most controls disabled</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
+    <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">zoom_control</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Remove zoom buttons</span>
+    <span class="n">draw_control</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Remove drawing tools</span>
+    <span class="n">scale_control</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Remove scale indicator</span>
+    <span class="n">fullscreen_control</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Remove fullscreen button</span>
+    <span class="n">attribution_control</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Remove attribution text</span>
+    <span class="n">toolbar_control</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Remove Leafmap toolbar</span>
+<span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -722,13 +722,13 @@ m
 <h4><span class="section-number">20.4.3.3. </span>Adding Search Functionality<a class="headerlink" href="#adding-search-functionality" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a new map for demonstration
-m = leafmap.Map(center=(40, -100), zoom=4, draw_control=False, height=&quot;500px&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new map for demonstration</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">),</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">draw_control</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;500px&quot;</span><span class="p">)</span>
 
-# Add search control using OpenStreetMap&#39;s Nominatim service
-url = &quot;https://nominatim.openstreetmap.org/search?format=json&amp;q={s}&quot;
-m.add_search_control(url, zoom=10, position=&quot;topleft&quot;)
-m
+<span class="c1"># Add search control using OpenStreetMap&#39;s Nominatim service</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://nominatim.openstreetmap.org/search?format=json&amp;q=</span><span class="si">{s}</span><span class="s2">&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_search_control</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;topleft&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -741,10 +741,10 @@ m
 <h4><span class="section-number">20.4.4.1. </span>Accessing and Inspecting Layers<a class="headerlink" href="#accessing-and-inspecting-layers" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a simple map and examine its layers
-m = leafmap.Map()
-print(f&quot;Number of layers: {len(m.layers)}&quot;)
-print(f&quot;Layer types: {[type(layer).__name__ for layer in m.layers]}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a simple map and examine its layers</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of layers: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Layer types: </span><span class="si">{</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">layer</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">m</span><span class="o">.</span><span class="n">layers</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -754,12 +754,12 @@ print(f&quot;Layer types: {[type(layer).__name__ for layer in m.layers]}&quot;)
 <h4><span class="section-number">20.4.4.2. </span>Layer Management Operations<a class="headerlink" href="#layer-management-operations" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Remove the last layer (be careful with this operation)
-if len(m.layers) &gt; 1:  # Keep at least one layer
-    m.remove(m.layers[-1])
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove the last layer (be careful with this operation)</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Keep at least one layer</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 
-# Check the remaining layers
-print(f&quot;Remaining layers: {len(m.layers)}&quot;)
+<span class="c1"># Check the remaining layers</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Remaining layers: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -769,17 +769,17 @@ print(f&quot;Remaining layers: {len(m.layers)}&quot;)
 <h4><span class="section-number">20.4.4.3. </span>Clearing Map Content<a class="headerlink" href="#clearing-map-content" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a map with default content
-m = leafmap.Map()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a map with default content</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 
-# Remove all interactive controls
-m.clear_controls()
+<span class="c1"># Remove all interactive controls</span>
+<span class="n">m</span><span class="o">.</span><span class="n">clear_controls</span><span class="p">()</span>
 
-# Remove all layers (this will result in a blank map)
-m.clear_layers()
+<span class="c1"># Remove all layers (this will result in a blank map)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">clear_layers</span><span class="p">()</span>
 
-# Display the minimal map
-m
+<span class="c1"># Display the minimal map</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -796,9 +796,9 @@ m
 <h3><span class="section-number">20.5.2. </span>Adding Predefined Basemaps<a class="headerlink" href="#adding-predefined-basemaps" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-m.add_basemap(&quot;OpenTopoMap&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -808,9 +808,9 @@ m
 <h3><span class="section-number">20.5.3. </span>Interactive Basemap Selection<a class="headerlink" href="#interactive-basemap-selection" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-m.add_basemap_gui()
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap_gui</span><span class="p">()</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -820,13 +820,13 @@ m
 <h3><span class="section-number">20.5.4. </span>Adding Custom XYZ Tile Layers<a class="headerlink" href="#adding-custom-xyz-tile-layers" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-m.add_tile_layer(
-    url=&quot;https://mt1.google.com/vt/lyrs=y&amp;x={x}&amp;y={y}&amp;z={z}&quot;,
-    name=&quot;Google Satellite&quot;,
-    attribution=&quot;Google&quot;,
-)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_tile_layer</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://mt1.google.com/vt/lyrs=y&amp;x=</span><span class="si">{x}</span><span class="s2">&amp;y=</span><span class="si">{y}</span><span class="s2">&amp;z=</span><span class="si">{z}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Google Satellite&quot;</span><span class="p">,</span>
+    <span class="n">attribution</span><span class="o">=</span><span class="s2">&quot;Google&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -836,17 +836,17 @@ m
 <h3><span class="section-number">20.5.5. </span>Adding Web Map Service (WMS) Layers<a class="headerlink" href="#adding-web-map-service-wms-layers" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[40, -100], zoom=4)
-url = &quot;https://imagery.nationalmap.gov/arcgis/services/USGSNAIPPlus/ImageServer/WMSServer?&quot;
-m.add_wms_layer(
-    url=url,
-    layers=&quot;USGSNAIPPlus&quot;,
-    name=&quot;NAIP&quot;,
-    attribution=&quot;USGS&quot;,
-    format=&quot;image/png&quot;,
-    shown=True,
-)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://imagery.nationalmap.gov/arcgis/services/USGSNAIPPlus/ImageServer/WMSServer?&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_wms_layer</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+    <span class="n">layers</span><span class="o">=</span><span class="s2">&quot;USGSNAIPPlus&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;NAIP&quot;</span><span class="p">,</span>
+    <span class="n">attribution</span><span class="o">=</span><span class="s2">&quot;USGS&quot;</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/png&quot;</span><span class="p">,</span>
+    <span class="n">shown</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -856,19 +856,19 @@ m
 <h3><span class="section-number">20.5.6. </span>Adding Legends for Data Context<a class="headerlink" href="#adding-legends-for-data-context" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[40, -100], zoom=4)
-m.add_basemap(&quot;Esri.WorldImagery&quot;)
-url = &quot;https://www.mrlc.gov/geoserver/mrlc_display/NLCD_2021_Land_Cover_L48/wms?&quot;
-m.add_wms_layer(
-    url=url,
-    layers=&quot;NLCD_2021_Land_Cover_L48&quot;,
-    name=&quot;NLCD 2021&quot;,
-    attribution=&quot;MRLC&quot;,
-    format=&quot;image/png&quot;,
-    shown=True,
-)
-m.add_legend(title=&quot;NLCD Land Cover Type&quot;, builtin_legend=&quot;NLCD&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.mrlc.gov/geoserver/mrlc_display/NLCD_2021_Land_Cover_L48/wms?&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_wms_layer</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+    <span class="n">layers</span><span class="o">=</span><span class="s2">&quot;NLCD_2021_Land_Cover_L48&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;NLCD 2021&quot;</span><span class="p">,</span>
+    <span class="n">attribution</span><span class="o">=</span><span class="s2">&quot;MRLC&quot;</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/png&quot;</span><span class="p">,</span>
+    <span class="n">shown</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;NLCD Land Cover Type&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s2">&quot;NLCD&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -878,30 +878,30 @@ m
 <h3><span class="section-number">20.5.7. </span>Adding Colorbars for Continuous Data<a class="headerlink" href="#adding-colorbars-for-continuous-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-m.add_basemap(&quot;OpenTopoMap&quot;)
-m.add_colormap(
-    cmap=&quot;terrain&quot;,
-    label=&quot;Elevation (meters)&quot;,
-    orientation=&quot;horizontal&quot;,
-    vmin=0,
-    vmax=4000,
-)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_colormap</span><span class="p">(</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Elevation (meters)&quot;</span><span class="p">,</span>
+    <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span><span class="p">,</span>
+    <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">vmax</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import leafmap.colormaps as cm
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">leafmap.colormaps</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cm</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cm.plot_colormaps(width=8, height=0.3)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span><span class="o">.</span><span class="n">plot_colormaps</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -916,10 +916,10 @@ m
 <h4><span class="section-number">20.6.1.1. </span>Adding Individual Markers<a class="headerlink" href="#adding-individual-markers" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-location = [40, -100]  # [latitude, longitude]
-m.add_marker(location, draggable=True)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">location</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">]</span>  <span class="c1"># [latitude, longitude]</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_marker</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">draggable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -929,15 +929,15 @@ m
 <h4><span class="section-number">20.6.1.2. </span>Adding Multiple Markers Efficiently<a class="headerlink" href="#adding-multiple-markers-efficiently" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-# Coordinates for three different cities
-locations = [
-    [40, -100],  # Central US
-    [45, -110],  # Northwestern US
-    [50, -120],  # Southwestern Canada
-]
-m.add_markers(markers=locations)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="c1"># Coordinates for three different cities</span>
+<span class="n">locations</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span>  <span class="c1"># Central US</span>
+    <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="o">-</span><span class="mi">110</span><span class="p">],</span>  <span class="c1"># Northwestern US</span>
+    <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">],</span>  <span class="c1"># Southwestern Canada</span>
+<span class="p">]</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_markers</span><span class="p">(</span><span class="n">markers</span><span class="o">=</span><span class="n">locations</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -947,10 +947,10 @@ m
 <h4><span class="section-number">20.6.1.3. </span>Managing Large Point Datasets with Clustering<a class="headerlink" href="#managing-large-point-datasets-with-clustering" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-url = &quot;https://github.com/opengeos/datasets/releases/download/world/world_cities.csv&quot;
-m.add_marker_cluster(url, x=&quot;longitude&quot;, y=&quot;latitude&quot;, layer_name=&quot;World cities&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/world/world_cities.csv&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_marker_cluster</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;World cities&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -960,20 +960,20 @@ m
 <h4><span class="section-number">20.6.1.4. </span>Advanced Marker Customization<a class="headerlink" href="#advanced-marker-customization" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[40, -100], zoom=4)
-cities = &quot;https://github.com/opengeos/datasets/releases/download/us/cities.csv&quot;
-regions = &quot;https://github.com/opengeos/datasets/releases/download/us/us_regions.geojson&quot;
-m.add_geojson(regions, layer_name=&quot;US Regions&quot;)
-m.add_points_from_xy(
-    cities,
-    x=&quot;longitude&quot;,
-    y=&quot;latitude&quot;,
-    color_column=&quot;region&quot;,
-    icon_names=[&quot;gear&quot;, &quot;map&quot;, &quot;leaf&quot;, &quot;globe&quot;],
-    spin=True,
-    add_legend=True,
-)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">cities</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/us/cities.csv&quot;</span>
+<span class="n">regions</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/us/us_regions.geojson&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span><span class="n">regions</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;US Regions&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_points_from_xy</span><span class="p">(</span>
+    <span class="n">cities</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">,</span>
+    <span class="n">color_column</span><span class="o">=</span><span class="s2">&quot;region&quot;</span><span class="p">,</span>
+    <span class="n">icon_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;gear&quot;</span><span class="p">,</span> <span class="s2">&quot;map&quot;</span><span class="p">,</span> <span class="s2">&quot;leaf&quot;</span><span class="p">,</span> <span class="s2">&quot;globe&quot;</span><span class="p">],</span>
+    <span class="n">spin</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">add_legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -984,10 +984,10 @@ m
 <h3><span class="section-number">20.6.2. </span>Visualizing Polylines<a class="headerlink" href="#visualizing-polylines" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[20, 0], zoom=2)
-data = &quot;https://github.com/opengeos/datasets/releases/download/vector/cables.geojson&quot;
-m.add_vector(data, layer_name=&quot;Cable lines&quot;, info_mode=&quot;on_hover&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/vector/cables.geojson&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_vector</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Cable lines&quot;</span><span class="p">,</span> <span class="n">info_mode</span><span class="o">=</span><span class="s2">&quot;on_hover&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -996,12 +996,12 @@ m
 <h4><span class="section-number">20.6.2.1. </span>Customizing Polyline Styles<a class="headerlink" href="#customizing-polyline-styles" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[20, 0], zoom=2)
-m.add_basemap(&quot;CartoDB.DarkMatter&quot;)
-data = &quot;https://github.com/opengeos/datasets/releases/download/vector/cables.geojson&quot;
-callback = lambda feat: {&quot;color&quot;: feat[&quot;properties&quot;][&quot;color&quot;], &quot;weight&quot;: 2}
-m.add_vector(data, layer_name=&quot;Cable lines&quot;, style_callback=callback)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;CartoDB.DarkMatter&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/vector/cables.geojson&quot;</span>
+<span class="n">callback</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">feat</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="n">feat</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">][</span><span class="s2">&quot;color&quot;</span><span class="p">],</span> <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_vector</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Cable lines&quot;</span><span class="p">,</span> <span class="n">style_callback</span><span class="o">=</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1012,10 +1012,10 @@ m
 <h3><span class="section-number">20.6.3. </span>Visualizing Polygons<a class="headerlink" href="#visualizing-polygons" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-url = &quot;https://github.com/opengeos/datasets/releases/download/places/nyc_buildings.geojson&quot;
-m.add_vector(url, layer_name=&quot;NYC Buildings&quot;, zoom_to_layer=True)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/places/nyc_buildings.geojson&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_vector</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;NYC Buildings&quot;</span><span class="p">,</span> <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1025,27 +1025,27 @@ m
 <h3><span class="section-number">20.6.4. </span>Visualizing GeoPandas GeoDataFrames<a class="headerlink" href="#visualizing-geopandas-geodataframes" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://github.com/opengeos/datasets/releases/download/places/las_vegas_buildings.geojson&quot;
-gdf = leafmap.read_vector(url)
-gdf.head()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/places/las_vegas_buildings.geojson&quot;</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">read_vector</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdf.explore()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">explore</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-m.add_basemap(&quot;Esri.WorldImagery&quot;)
-style = {&quot;color&quot;: &quot;red&quot;, &quot;fillColor&quot;: &quot;red&quot;, &quot;fillOpacity&quot;: 0.1, &quot;weight&quot;: 2}
-m.add_gdf(gdf, style=style, layer_name=&quot;Las Vegas Buildings&quot;, zoom_to_layer=True)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">)</span>
+<span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;fillColor&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;fillOpacity&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_gdf</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Las Vegas Buildings&quot;</span><span class="p">,</span> <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1056,27 +1056,27 @@ m
 <h2><span class="section-number">20.7. </span>Creating Choropleth Maps<a class="headerlink" href="#creating-choropleth-maps" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-data = &quot;https://raw.githubusercontent.com/opengeos/leafmap/master/docs/data/countries.geojson&quot;
-m.add_data(
-    data, column=&quot;POP_EST&quot;, scheme=&quot;Quantiles&quot;, cmap=&quot;Blues&quot;, legend_title=&quot;Population&quot;
-)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/opengeos/leafmap/master/docs/data/countries.geojson&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;POP_EST&quot;</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;Quantiles&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">legend_title</span><span class="o">=</span><span class="s2">&quot;Population&quot;</span>
+<span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-m.add_data(
-    data,
-    column=&quot;POP_EST&quot;,
-    scheme=&quot;EqualInterval&quot;,
-    cmap=&quot;Blues&quot;,
-    legend_title=&quot;Population&quot;,
-)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">column</span><span class="o">=</span><span class="s2">&quot;POP_EST&quot;</span><span class="p">,</span>
+    <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;EqualInterval&quot;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span>
+    <span class="n">legend_title</span><span class="o">=</span><span class="s2">&quot;Population&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1088,25 +1088,25 @@ m
 <h3><span class="section-number">20.8.1. </span>Loading and Visualizing Point Data<a class="headerlink" href="#loading-and-visualizing-point-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://opengeos.org/data/duckdb/cities.parquet&quot;
-gdf = leafmap.read_vector(url)
-gdf.head()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://opengeos.org/data/duckdb/cities.parquet&quot;</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">read_vector</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdf.explore()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">explore</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-m.add_points_from_xy(gdf, x=&quot;longitude&quot;, y=&quot;latitude&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_points_from_xy</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;latitude&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1116,26 +1116,26 @@ m
 <h3><span class="section-number">20.8.2. </span>Visualizing Polygon Data<a class="headerlink" href="#visualizing-polygon-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://data.source.coop/giswqs/nwi/wetlands/DC_Wetlands.parquet&quot;
-gdf = leafmap.read_vector(url)
-gdf.head()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://data.source.coop/giswqs/nwi/wetlands/DC_Wetlands.parquet&quot;</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">read_vector</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdf.explore()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">explore</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-m.add_basemap(&quot;Esri.WorldImagery&quot;, show=False)
-m.add_nwi(gdf, col_name=&quot;WETLAND_TYPE&quot;, zoom_to_layer=True)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_nwi</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">col_name</span><span class="o">=</span><span class="s2">&quot;WETLAND_TYPE&quot;</span><span class="p">,</span> <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1148,10 +1148,10 @@ m
 <h3><span class="section-number">20.9.1. </span>Retrieving Metadata from PMTiles<a class="headerlink" href="#retrieving-metadata-from-pmtiles" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://opengeos.org/data/pmtiles/protomaps_firenze.pmtiles&quot;
-metadata = leafmap.pmtiles_metadata(url)
-print(f&quot;layer names: {metadata[&#39;layer_names&#39;]}&quot;)
-print(f&quot;bounds: {metadata[&#39;bounds&#39;]}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://opengeos.org/data/pmtiles/protomaps_firenze.pmtiles&quot;</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">pmtiles_metadata</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;layer names: </span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;layer_names&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;bounds: </span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;bounds&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1161,40 +1161,40 @@ print(f&quot;bounds: {metadata[&#39;bounds&#39;]}&quot;)
 <h3><span class="section-number">20.9.2. </span>Visualizing PMTiles Data<a class="headerlink" href="#visualizing-pmtiles-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 
-style = {
-    &quot;version&quot;: 8,
-    &quot;sources&quot;: {
-        &quot;example_source&quot;: {
-            &quot;type&quot;: &quot;vector&quot;,
-            &quot;url&quot;: &quot;pmtiles://&quot; + url,
-            &quot;attribution&quot;: &quot;PMTiles&quot;,
-        }
-    },
-    &quot;layers&quot;: [
-        {
-            &quot;id&quot;: &quot;buildings&quot;,
-            &quot;source&quot;: &quot;example_source&quot;,
-            &quot;source-layer&quot;: &quot;landuse&quot;,
-            &quot;type&quot;: &quot;fill&quot;,
-            &quot;paint&quot;: {&quot;fill-color&quot;: &quot;steelblue&quot;},
-        },
-        {
-            &quot;id&quot;: &quot;roads&quot;,
-            &quot;source&quot;: &quot;example_source&quot;,
-            &quot;source-layer&quot;: &quot;roads&quot;,
-            &quot;type&quot;: &quot;line&quot;,
-            &quot;paint&quot;: {&quot;line-color&quot;: &quot;black&quot;},
-        },
-    ],
-}
+<span class="n">style</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s2">&quot;sources&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;example_source&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;pmtiles://&quot;</span> <span class="o">+</span> <span class="n">url</span><span class="p">,</span>
+            <span class="s2">&quot;attribution&quot;</span><span class="p">:</span> <span class="s2">&quot;PMTiles&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;layers&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;buildings&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;example_source&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source-layer&quot;</span><span class="p">:</span> <span class="s2">&quot;landuse&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fill&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;paint&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;fill-color&quot;</span><span class="p">:</span> <span class="s2">&quot;steelblue&quot;</span><span class="p">},</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;roads&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;example_source&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source-layer&quot;</span><span class="p">:</span> <span class="s2">&quot;roads&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;line&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;paint&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;line-color&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+<span class="p">}</span>
 
-# style = leafmap.pmtiles_style(url)  # Use default style
-m.add_pmtiles(
-    url, name=&quot;PMTiles&quot;, style=style, overlay=True, show=True, zoom_to_layer=True
-)
-m
+<span class="c1"># style = leafmap.pmtiles_style(url)  # Use default style</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_pmtiles</span><span class="p">(</span>
+    <span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PMTiles&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">overlay</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1204,44 +1204,44 @@ m
 <h3><span class="section-number">20.9.3. </span>Visualizing Open Buildings Data with PMTiles<a class="headerlink" href="#visualizing-open-buildings-data-with-pmtiles" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://data.source.coop/vida/google-microsoft-open-buildings/pmtiles/go_ms_building_footprints.pmtiles&quot;
-metadata = leafmap.pmtiles_metadata(url)
-print(f&quot;layer names: {metadata[&#39;layer_names&#39;]}&quot;)
-print(f&quot;bounds: {metadata[&#39;bounds&#39;]}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://data.source.coop/vida/google-microsoft-open-buildings/pmtiles/go_ms_building_footprints.pmtiles&quot;</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">pmtiles_metadata</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;layer names: </span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;layer_names&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;bounds: </span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;bounds&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[20, 0], zoom=2)
-m.add_basemap(&quot;CartoDB.DarkMatter&quot;)
-m.add_basemap(&quot;Esri.WorldImagery&quot;, show=False)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;CartoDB.DarkMatter&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-style = {
-    &quot;version&quot;: 8,
-    &quot;sources&quot;: {
-        &quot;example_source&quot;: {
-            &quot;type&quot;: &quot;vector&quot;,
-            &quot;url&quot;: &quot;pmtiles://&quot; + url,
-            &quot;attribution&quot;: &quot;PMTiles&quot;,
-        }
-    },
-    &quot;layers&quot;: [
-        {
-            &quot;id&quot;: &quot;buildings&quot;,
-            &quot;source&quot;: &quot;example_source&quot;,
-            &quot;source-layer&quot;: &quot;building_footprints&quot;,
-            &quot;type&quot;: &quot;fill&quot;,
-            &quot;paint&quot;: {&quot;fill-color&quot;: &quot;#3388ff&quot;, &quot;fill-opacity&quot;: 0.5},
-        },
-    ],
-}
+<span class="n">style</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s2">&quot;sources&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;example_source&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;pmtiles://&quot;</span> <span class="o">+</span> <span class="n">url</span><span class="p">,</span>
+            <span class="s2">&quot;attribution&quot;</span><span class="p">:</span> <span class="s2">&quot;PMTiles&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;layers&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;buildings&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;example_source&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source-layer&quot;</span><span class="p">:</span> <span class="s2">&quot;building_footprints&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fill&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;paint&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;fill-color&quot;</span><span class="p">:</span> <span class="s2">&quot;#3388ff&quot;</span><span class="p">,</span> <span class="s2">&quot;fill-opacity&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+<span class="p">}</span>
 
-m.add_pmtiles(
-    url, name=&quot;Buildings&quot;, style=style, overlay=True, show=True, zoom_to_layer=False
-)
-m
+<span class="n">m</span><span class="o">.</span><span class="n">add_pmtiles</span><span class="p">(</span>
+    <span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Buildings&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">overlay</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1251,55 +1251,55 @@ m
 <h3><span class="section-number">20.9.4. </span>Visualizing Overture Maps Data<a class="headerlink" href="#visualizing-overture-maps-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>release = leafmap.get_overture_latest_release()
-release
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">release</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">get_overture_latest_release</span><span class="p">()</span>
+<span class="n">release</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>theme = &quot;buildings&quot;
-url = f&quot;https://overturemaps-tiles-us-west-2-beta.s3.amazonaws.com/{release}/{theme}.pmtiles&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">theme</span> <span class="o">=</span> <span class="s2">&quot;buildings&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://overturemaps-tiles-us-west-2-beta.s3.amazonaws.com/</span><span class="si">{</span><span class="n">release</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">theme</span><span class="si">}</span><span class="s2">.pmtiles&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>style = {
-    &quot;version&quot;: 8,
-    &quot;sources&quot;: {
-        &quot;example_source&quot;: {
-            &quot;type&quot;: &quot;vector&quot;,
-            &quot;url&quot;: &quot;pmtiles://&quot; + url,
-            &quot;attribution&quot;: &quot;PMTiles&quot;,
-        }
-    },
-    &quot;layers&quot;: [
-        {
-            &quot;id&quot;: &quot;Building&quot;,
-            &quot;source&quot;: &quot;example_source&quot;,
-            &quot;source-layer&quot;: &quot;building&quot;,
-            &quot;type&quot;: &quot;fill&quot;,
-            &quot;paint&quot;: {
-                &quot;fill-color&quot;: &quot;#ffff00&quot;,
-                &quot;fill-opacity&quot;: 0.7,
-                &quot;fill-outline-color&quot;: &quot;#ff0000&quot;,
-            },
-        },
-    ],
-}
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">style</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s2">&quot;sources&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;example_source&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;pmtiles://&quot;</span> <span class="o">+</span> <span class="n">url</span><span class="p">,</span>
+            <span class="s2">&quot;attribution&quot;</span><span class="p">:</span> <span class="s2">&quot;PMTiles&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;layers&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Building&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;example_source&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source-layer&quot;</span><span class="p">:</span> <span class="s2">&quot;building&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fill&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;paint&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;fill-color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ffff00&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;fill-opacity&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+                <span class="s2">&quot;fill-outline-color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ff0000&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[47.65350739, -117.59664999], zoom=16)
-m.add_basemap(&quot;Satellite&quot;)
-m.add_pmtiles(url, style=style, layer_name=&quot;Buildings&quot;, zoom_to_layer=False)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">47.65350739</span><span class="p">,</span> <span class="o">-</span><span class="mf">117.59664999</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Satellite&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_pmtiles</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Buildings&quot;</span><span class="p">,</span> <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1314,32 +1314,32 @@ m
 <h4><span class="section-number">20.10.1.1. </span>Adding a Cloud Optimized GeoTIFF (COG)<a class="headerlink" href="#adding-a-cloud-optimized-geotiff-cog" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[39.494897, -108.507278], zoom=10)
-url = &quot;https://opendata.digitalglobe.com/events/california-fire-2020/pre-event/2018-02-16/pine-gulch-fire20/1030010076004E00.tif&quot;
-m.add_cog_layer(url, name=&quot;Fire (pre-event)&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">39.494897</span><span class="p">,</span> <span class="o">-</span><span class="mf">108.507278</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://opendata.digitalglobe.com/events/california-fire-2020/pre-event/2018-02-16/pine-gulch-fire20/1030010076004E00.tif&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_cog_layer</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fire (pre-event)&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.cog_info(url)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">cog_info</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.cog_bands(url)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">cog_bands</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>stats = leafmap.cog_stats(url)
-# stats
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">cog_stats</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="c1"># stats</span>
 </pre></div>
 </div>
 </div>
@@ -1349,9 +1349,9 @@ m
 <h4><span class="section-number">20.10.1.2. </span>Adding Multiple COGs<a class="headerlink" href="#adding-multiple-cogs" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url2 = &quot;https://opendata.digitalglobe.com/events/california-fire-2020/post-event/2020-08-14/pine-gulch-fire20/10300100AAC8DD00.tif&quot;
-m.add_cog_layer(url2, name=&quot;Fire (post-event)&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url2</span> <span class="o">=</span> <span class="s2">&quot;https://opendata.digitalglobe.com/events/california-fire-2020/post-event/2020-08-14/pine-gulch-fire20/10300100AAC8DD00.tif&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_cog_layer</span><span class="p">(</span><span class="n">url2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fire (post-event)&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1361,29 +1361,29 @@ m
 <h4><span class="section-number">20.10.1.3. </span>Creating a Split Map for Comparison<a class="headerlink" href="#creating-a-split-map-for-comparison" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[39.494897, -108.507278], zoom=10)
-m.split_map(
-    left_layer=url, right_layer=url2, left_label=&quot;Pre-event&quot;, right_label=&quot;Post-event&quot;
-)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">39.494897</span><span class="p">,</span> <span class="o">-</span><span class="mf">108.507278</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">split_map</span><span class="p">(</span>
+    <span class="n">left_layer</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">right_layer</span><span class="o">=</span><span class="n">url2</span><span class="p">,</span> <span class="n">left_label</span><span class="o">=</span><span class="s2">&quot;Pre-event&quot;</span><span class="p">,</span> <span class="n">right_label</span><span class="o">=</span><span class="s2">&quot;Post-event&quot;</span>
+<span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[47.653149, -117.59825], zoom=16)
-m.add_basemap(&quot;Satellite&quot;)
-image1 = &quot;https://github.com/opengeos/datasets/releases/download/places/wa_building_image.tif&quot;
-image2 = &quot;https://github.com/opengeos/datasets/releases/download/places/wa_building_masks.tif&quot;
-m.split_map(
-    image2,
-    image1,
-    left_label=&quot;Building Masks&quot;,
-    right_label=&quot;Aerial Imagery&quot;,
-    left_args={&quot;colormap_name&quot;: &quot;tab20&quot;, &quot;nodata&quot;: 0, &quot;opacity&quot;: 0.7},
-)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">47.653149</span><span class="p">,</span> <span class="o">-</span><span class="mf">117.59825</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Satellite&quot;</span><span class="p">)</span>
+<span class="n">image1</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/places/wa_building_image.tif&quot;</span>
+<span class="n">image2</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/places/wa_building_masks.tif&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">split_map</span><span class="p">(</span>
+    <span class="n">image2</span><span class="p">,</span>
+    <span class="n">image1</span><span class="p">,</span>
+    <span class="n">left_label</span><span class="o">=</span><span class="s2">&quot;Building Masks&quot;</span><span class="p">,</span>
+    <span class="n">right_label</span><span class="o">=</span><span class="s2">&quot;Aerial Imagery&quot;</span><span class="p">,</span>
+    <span class="n">left_args</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;colormap_name&quot;</span><span class="p">:</span> <span class="s2">&quot;tab20&quot;</span><span class="p">,</span> <span class="s2">&quot;nodata&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1393,35 +1393,35 @@ m
 <h4><span class="section-number">20.10.1.4. </span>Using a Custom Colormap<a class="headerlink" href="#using-a-custom-colormap" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://github.com/opengeos/datasets/releases/download/raster/nlcd_2021_land_cover_30m.tif&quot;
-colormap = {
-    &quot;11&quot;: &quot;#466b9f&quot;,
-    &quot;12&quot;: &quot;#d1def8&quot;,
-    &quot;21&quot;: &quot;#dec5c5&quot;,
-    &quot;22&quot;: &quot;#d99282&quot;,
-    &quot;23&quot;: &quot;#eb0000&quot;,
-    &quot;24&quot;: &quot;#ab0000&quot;,
-    &quot;31&quot;: &quot;#b3ac9f&quot;,
-    &quot;41&quot;: &quot;#68ab5f&quot;,
-    &quot;42&quot;: &quot;#1c5f2c&quot;,
-    &quot;43&quot;: &quot;#b5c58f&quot;,
-    &quot;51&quot;: &quot;#af963c&quot;,
-    &quot;52&quot;: &quot;#ccb879&quot;,
-    &quot;71&quot;: &quot;#dfdfc2&quot;,
-    &quot;72&quot;: &quot;#d1d182&quot;,
-    &quot;73&quot;: &quot;#a3cc51&quot;,
-    &quot;74&quot;: &quot;#82ba9e&quot;,
-    &quot;81&quot;: &quot;#dcd939&quot;,
-    &quot;82&quot;: &quot;#ab6c28&quot;,
-    &quot;90&quot;: &quot;#b8d9eb&quot;,
-    &quot;95&quot;: &quot;#6c9fb8&quot;,
-}
-m = leafmap.Map(center=[40, -100], zoom=4, height=&quot;650px&quot;)
-m.add_basemap(&quot;Esri.WorldImagery&quot;)
-m.add_cog_layer(url, colormap=colormap, name=&quot;NLCD Land Cover&quot;, nodata=0)
-m.add_legend(title=&quot;NLCD Land Cover Type&quot;, builtin_legend=&quot;NLCD&quot;)
-m.add_layer_manager()
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/raster/nlcd_2021_land_cover_30m.tif&quot;</span>
+<span class="n">colormap</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;11&quot;</span><span class="p">:</span> <span class="s2">&quot;#466b9f&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;12&quot;</span><span class="p">:</span> <span class="s2">&quot;#d1def8&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;21&quot;</span><span class="p">:</span> <span class="s2">&quot;#dec5c5&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;22&quot;</span><span class="p">:</span> <span class="s2">&quot;#d99282&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;23&quot;</span><span class="p">:</span> <span class="s2">&quot;#eb0000&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;24&quot;</span><span class="p">:</span> <span class="s2">&quot;#ab0000&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;31&quot;</span><span class="p">:</span> <span class="s2">&quot;#b3ac9f&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;41&quot;</span><span class="p">:</span> <span class="s2">&quot;#68ab5f&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;42&quot;</span><span class="p">:</span> <span class="s2">&quot;#1c5f2c&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;43&quot;</span><span class="p">:</span> <span class="s2">&quot;#b5c58f&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;51&quot;</span><span class="p">:</span> <span class="s2">&quot;#af963c&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;52&quot;</span><span class="p">:</span> <span class="s2">&quot;#ccb879&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;71&quot;</span><span class="p">:</span> <span class="s2">&quot;#dfdfc2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;72&quot;</span><span class="p">:</span> <span class="s2">&quot;#d1d182&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;73&quot;</span><span class="p">:</span> <span class="s2">&quot;#a3cc51&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;74&quot;</span><span class="p">:</span> <span class="s2">&quot;#82ba9e&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;81&quot;</span><span class="p">:</span> <span class="s2">&quot;#dcd939&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;82&quot;</span><span class="p">:</span> <span class="s2">&quot;#ab6c28&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;90&quot;</span><span class="p">:</span> <span class="s2">&quot;#b8d9eb&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;95&quot;</span><span class="p">:</span> <span class="s2">&quot;#6c9fb8&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;650px&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_cog_layer</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="n">colormap</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;NLCD Land Cover&quot;</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;NLCD Land Cover Type&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s2">&quot;NLCD&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer_manager</span><span class="p">()</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1434,32 +1434,32 @@ m
 <h4><span class="section-number">20.10.2.1. </span>Downloading and Visualizing a Local Raster<a class="headerlink" href="#downloading-and-visualizing-a-local-raster" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dem_url = &quot;https://github.com/opengeos/datasets/releases/download/raster/dem_90m.tif&quot;
-filename = &quot;dem_90m.tif&quot;
-leafmap.download_file(dem_url, filename, quiet=True)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dem_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/raster/dem_90m.tif&quot;</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;dem_90m.tif&quot;</span>
+<span class="n">leafmap</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">dem_url</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-m.add_raster(filename, colormap=&quot;terrain&quot;, layer_name=&quot;DEM&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;DEM&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.image_min_max(filename)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">image_min_max</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.add_colormap(cmap=&quot;terrain&quot;, vmin=15, vmax=4338, label=&quot;Elevation (m)&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_colormap</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">4338</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Elevation (m)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1469,25 +1469,25 @@ m
 <h4><span class="section-number">20.10.2.2. </span>Visualizing a Multi-Band Raster<a class="headerlink" href="#visualizing-a-multi-band-raster" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import leafmap
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">leafmap</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>landsat_url = &quot;https://github.com/opengeos/datasets/releases/download/raster/cog.tif&quot;
-filename = &quot;cog.tif&quot;
-leafmap.download_file(landsat_url, filename, quiet=True)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">landsat_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/raster/cog.tif&quot;</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;cog.tif&quot;</span>
+<span class="n">leafmap</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">landsat_url</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-m.add_raster(filename, indexes=[4, 3, 2], layer_name=&quot;RGB&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">indexes</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1497,10 +1497,10 @@ m
 <h4><span class="section-number">20.10.2.3. </span>Inspecting Pixel Values<a class="headerlink" href="#inspecting-pixel-values" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[53.407089, 6.875480], zoom=13)
-m.add_raster(filename, indexes=[4, 3, 2], layer_name=&quot;RGB&quot;)
-m.add(&quot;inspector&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">53.407089</span><span class="p">,</span> <span class="mf">6.875480</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">indexes</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;inspector&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1513,8 +1513,8 @@ m
 <h4><span class="section-number">20.10.3.1. </span>Exploring STAC Bands<a class="headerlink" href="#exploring-stac-bands" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://canada-spot-ortho.s3.amazonaws.com/canada_spot_orthoimages/canada_spot5_orthoimages/S5_2007/S5_11055_6057_20070622/S5_11055_6057_20070622.json&quot;
-leafmap.stac_bands(url)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://canada-spot-ortho.s3.amazonaws.com/canada_spot_orthoimages/canada_spot5_orthoimages/S5_2007/S5_11055_6057_20070622/S5_11055_6057_20070622.json&quot;</span>
+<span class="n">leafmap</span><span class="o">.</span><span class="n">stac_bands</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1524,10 +1524,10 @@ leafmap.stac_bands(url)
 <h4><span class="section-number">20.10.3.2. </span>Adding STAC Layers to the Map<a class="headerlink" href="#adding-stac-layers-to-the-map" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[60.95410, -110.90184], zoom=10)
-m.add_stac_layer(url, bands=[&quot;pan&quot;], name=&quot;Panchromatic&quot;)
-m.add_stac_layer(url, bands=[&quot;B3&quot;, &quot;B2&quot;, &quot;B1&quot;], name=&quot;False color&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">60.95410</span><span class="p">,</span> <span class="o">-</span><span class="mf">110.90184</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_stac_layer</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pan&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Panchromatic&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_stac_layer</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;B3&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="s2">&quot;B1&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;False color&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1541,7 +1541,7 @@ m
 <h3><span class="section-number">20.11.1. </span>Discovering Available Disaster Events<a class="headerlink" href="#discovering-available-disaster-events" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.maxar_collections()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">maxar_collections</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1551,18 +1551,18 @@ m
 <h3><span class="section-number">20.11.2. </span>Selecting a Disaster Event<a class="headerlink" href="#selecting-a-disaster-event" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>collection = &quot;Kahramanmaras-turkey-earthquake-23&quot;
-url = leafmap.maxar_collection_url(collection, dtype=&quot;geojson&quot;)
-url
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span> <span class="o">=</span> <span class="s2">&quot;Kahramanmaras-turkey-earthquake-23&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">maxar_collection_url</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;geojson&quot;</span><span class="p">)</span>
+<span class="n">url</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdf = leafmap.read_vector(url)
-print(f&quot;Total number of images: {len(gdf)}&quot;)
-gdf.head()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">read_vector</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total number of images: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1572,9 +1572,9 @@ gdf.head()
 <h3><span class="section-number">20.11.3. </span>Visualizing Image Footprints<a class="headerlink" href="#visualizing-image-footprints" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-m.add_gdf(gdf, layer_name=&quot;Footprints&quot;, zoom_to_layer=True)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_gdf</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Footprints&quot;</span><span class="p">,</span> <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1584,18 +1584,18 @@ m
 <h3><span class="section-number">20.11.4. </span>Temporal Analysis: Before and After the Earthquake<a class="headerlink" href="#temporal-analysis-before-and-after-the-earthquake" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pre_gdf = leafmap.maxar_search(collection, end_date=&quot;2023-02-06&quot;)
-print(f&quot;Total number of pre-event images: {len(pre_gdf)}&quot;)
-pre_gdf.head()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pre_gdf</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">maxar_search</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;2023-02-06&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total number of pre-event images: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">pre_gdf</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">pre_gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>post_gdf = leafmap.maxar_search(collection, start_date=&quot;2023-02-06&quot;)
-print(f&quot;Total number of post-event images: {len(post_gdf)}&quot;)
-post_gdf.head()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">post_gdf</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">maxar_search</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2023-02-06&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total number of post-event images: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">post_gdf</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">post_gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1605,17 +1605,17 @@ post_gdf.head()
 <h3><span class="section-number">20.11.5. </span>Comparing Pre-Event and Post-Event Coverage<a class="headerlink" href="#comparing-pre-event-and-post-event-coverage" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-pre_style = {&quot;color&quot;: &quot;red&quot;, &quot;fillColor&quot;: &quot;red&quot;, &quot;opacity&quot;: 1, &quot;fillOpacity&quot;: 0.5}
-m.add_gdf(
-    pre_gdf,
-    layer_name=&quot;Pre-event&quot;,
-    style=pre_style,
-    info_mode=&quot;on_click&quot;,
-    zoom_to_layer=True,
-)
-m.add_gdf(post_gdf, layer_name=&quot;Post-event&quot;, info_mode=&quot;on_click&quot;, zoom_to_layer=True)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">pre_style</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;fillColor&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;fillOpacity&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_gdf</span><span class="p">(</span>
+    <span class="n">pre_gdf</span><span class="p">,</span>
+    <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Pre-event&quot;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="n">pre_style</span><span class="p">,</span>
+    <span class="n">info_mode</span><span class="o">=</span><span class="s2">&quot;on_click&quot;</span><span class="p">,</span>
+    <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_gdf</span><span class="p">(</span><span class="n">post_gdf</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Post-event&quot;</span><span class="p">,</span> <span class="n">info_mode</span><span class="o">=</span><span class="s2">&quot;on_click&quot;</span><span class="p">,</span> <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1625,9 +1625,9 @@ m
 <h3><span class="section-number">20.11.6. </span>Selecting a Region of Interest<a class="headerlink" href="#selecting-a-region-of-interest" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>bbox = m.user_roi_bounds()
-if bbox is None:
-    bbox = [36.8715, 37.5497, 36.9814, 37.6019]
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bbox</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">user_roi_bounds</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">bbox</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">bbox</span> <span class="o">=</span> <span class="p">[</span><span class="mf">36.8715</span><span class="p">,</span> <span class="mf">37.5497</span><span class="p">,</span> <span class="mf">36.9814</span><span class="p">,</span> <span class="mf">37.6019</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1637,16 +1637,16 @@ if bbox is None:
 <h3><span class="section-number">20.11.7. </span>Searching Within the Region of Interest<a class="headerlink" href="#searching-within-the-region-of-interest" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pre_event = leafmap.maxar_search(collection, bbox=bbox, end_date=&quot;2023-02-06&quot;)
-pre_event.head()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pre_event</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">maxar_search</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;2023-02-06&quot;</span><span class="p">)</span>
+<span class="n">pre_event</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>post_event = leafmap.maxar_search(collection, bbox=bbox, start_date=&quot;2023-02-06&quot;)
-post_event.head()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">post_event</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">maxar_search</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2023-02-06&quot;</span><span class="p">)</span>
+<span class="n">post_event</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1656,16 +1656,16 @@ post_event.head()
 <h3><span class="section-number">20.11.8. </span>Preparing Images for Visualization<a class="headerlink" href="#preparing-images-for-visualization" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pre_tile = pre_event[&quot;catalog_id&quot;].values[0]
-pre_tile
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pre_tile</span> <span class="o">=</span> <span class="n">pre_event</span><span class="p">[</span><span class="s2">&quot;catalog_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pre_tile</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>post_tile = post_event[&quot;catalog_id&quot;].values[0]
-post_tile
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">post_tile</span> <span class="o">=</span> <span class="n">post_event</span><span class="p">[</span><span class="s2">&quot;catalog_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">post_tile</span>
 </pre></div>
 </div>
 </div>
@@ -1675,16 +1675,16 @@ post_tile
 <h3><span class="section-number">20.11.9. </span>Creating Web-Optimized Tile Services<a class="headerlink" href="#creating-web-optimized-tile-services" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pre_stac = leafmap.maxar_tile_url(collection, pre_tile, dtype=&quot;json&quot;)
-pre_stac
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pre_stac</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">maxar_tile_url</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">pre_tile</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+<span class="n">pre_stac</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>post_stac = leafmap.maxar_tile_url(collection, post_tile, dtype=&quot;json&quot;)
-post_stac
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">post_stac</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">maxar_tile_url</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">post_tile</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;json&quot;</span><span class="p">)</span>
+<span class="n">post_stac</span>
 </pre></div>
 </div>
 </div>
@@ -1694,15 +1694,15 @@ post_stac
 <h3><span class="section-number">20.11.10. </span>Creating a Split-Map Comparison<a class="headerlink" href="#creating-a-split-map-comparison" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-m.split_map(
-    left_layer=pre_stac,
-    right_layer=post_stac,
-    left_label=&quot;Pre-event&quot;,
-    right_label=&quot;Post-event&quot;,
-)
-m.set_center(36.9265, 37.5762, 16)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">split_map</span><span class="p">(</span>
+    <span class="n">left_layer</span><span class="o">=</span><span class="n">pre_stac</span><span class="p">,</span>
+    <span class="n">right_layer</span><span class="o">=</span><span class="n">post_stac</span><span class="p">,</span>
+    <span class="n">left_label</span><span class="o">=</span><span class="s2">&quot;Pre-event&quot;</span><span class="p">,</span>
+    <span class="n">right_label</span><span class="o">=</span><span class="s2">&quot;Post-event&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">set_center</span><span class="p">(</span><span class="mf">36.9265</span><span class="p">,</span> <span class="mf">37.5762</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1712,22 +1712,22 @@ m
 <h3><span class="section-number">20.11.11. </span>Downloading Images for Offline Analysis<a class="headerlink" href="#downloading-images-for-offline-analysis" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pre_images = pre_event[&quot;visual&quot;].tolist()
-post_images = post_event[&quot;visual&quot;].tolist()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pre_images</span> <span class="o">=</span> <span class="n">pre_event</span><span class="p">[</span><span class="s2">&quot;visual&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">post_images</span> <span class="o">=</span> <span class="n">post_event</span><span class="p">[</span><span class="s2">&quot;visual&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.maxar_download(pre_images)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">maxar_download</span><span class="p">(</span><span class="n">pre_images</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># leafmap.maxar_download(post_images)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># leafmap.maxar_download(post_images)</span>
 </pre></div>
 </div>
 </div>

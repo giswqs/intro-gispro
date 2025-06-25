@@ -608,14 +608,14 @@ document.write(`
 <h2><span class="section-number">26.4. </span>Sample Datasets<a class="headerlink" href="#sample-datasets" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wget https://github.com/opengeos/datasets/releases/download/gdal/gdal_sample_data.zip
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://github.com/opengeos/datasets/releases/download/gdal/gdal_sample_data.zip
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>unzip gdal_sample_data.zip
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>unzip<span class="w"> </span>gdal_sample_data.zip
 </pre></div>
 </div>
 </div>
@@ -627,7 +627,7 @@ document.write(`
 <h3><span class="section-number">26.5.1. </span>Examining Raster Data<a class="headerlink" href="#examining-raster-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdalinfo dem.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalinfo<span class="w"> </span>dem.tif
 </pre></div>
 </div>
 </div>
@@ -637,14 +637,14 @@ document.write(`
 <h3><span class="section-number">26.5.2. </span>Examining Vector Data<a class="headerlink" href="#examining-vector-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogrinfo buildings.geojson
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogrinfo<span class="w"> </span>buildings.geojson
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogrinfo buildings.geojson -al -so
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogrinfo<span class="w"> </span>buildings.geojson<span class="w"> </span>-al<span class="w"> </span>-so
 </pre></div>
 </div>
 </div>
@@ -657,7 +657,7 @@ document.write(`
 <h3><span class="section-number">26.6.1. </span>Reprojecting Raster Data<a class="headerlink" href="#reprojecting-raster-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdalwarp -t_srs EPSG:4326 dem.tif dem_4326.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>-t_srs<span class="w"> </span>EPSG:4326<span class="w"> </span>dem.tif<span class="w"> </span>dem_4326.tif
 </pre></div>
 </div>
 </div>
@@ -667,7 +667,7 @@ document.write(`
 <h3><span class="section-number">26.6.2. </span>Reprojecting Vector Data<a class="headerlink" href="#reprojecting-vector-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -t_srs EPSG:3857 buildings_3857.gpkg buildings.geojson
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-t_srs<span class="w"> </span>EPSG:3857<span class="w"> </span>buildings_3857.gpkg<span class="w"> </span>buildings.geojson
 </pre></div>
 </div>
 </div>
@@ -680,7 +680,7 @@ document.write(`
 <h3><span class="section-number">26.7.1. </span>Converting Raster Formats<a class="headerlink" href="#converting-raster-formats" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_translate dem.tif dem.img
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_translate<span class="w"> </span>dem.tif<span class="w"> </span>dem.img
 </pre></div>
 </div>
 </div>
@@ -690,14 +690,14 @@ document.write(`
 <h3><span class="section-number">26.7.2. </span>Converting Vector Formats<a class="headerlink" href="#converting-vector-formats" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr buildings.gpkg buildings.geojson
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>buildings.gpkg<span class="w"> </span>buildings.geojson
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr las_vegas_bbox.fgb las_vegas_bbox.geojson
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>las_vegas_bbox.fgb<span class="w"> </span>las_vegas_bbox.geojson
 </pre></div>
 </div>
 </div>
@@ -710,7 +710,7 @@ document.write(`
 <h3><span class="section-number">26.8.1. </span>Clipping Raster with Vector Boundaries<a class="headerlink" href="#clipping-raster-with-vector-boundaries" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdalwarp -cutline las_vegas_bbox.geojson -crop_to_cutline landsat.tif las_vegas.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>-cutline<span class="w"> </span>las_vegas_bbox.geojson<span class="w"> </span>-crop_to_cutline<span class="w"> </span>landsat.tif<span class="w"> </span>las_vegas.tif
 </pre></div>
 </div>
 </div>
@@ -720,21 +720,21 @@ document.write(`
 <h3><span class="section-number">26.8.2. </span>Clipping Vector Data<a class="headerlink" href="#clipping-vector-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -clipsrc las_vegas_bbox.geojson las_vegas_roads_clipped.geojson las_vegas_roads.geojson
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-clipsrc<span class="w"> </span>las_vegas_bbox.geojson<span class="w"> </span>las_vegas_roads_clipped.geojson<span class="w"> </span>las_vegas_roads.geojson
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogrinfo las_vegas_bbox_4326.geojson -al -so
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogrinfo<span class="w"> </span>las_vegas_bbox_4326.geojson<span class="w"> </span>-al<span class="w"> </span>-so
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -clipsrc -115.387634 35.943333 -114.883495 36.359161 las_vegas_roads_clipped.geojson las_vegas_roads.geojson
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-clipsrc<span class="w"> </span>-115.387634<span class="w"> </span><span class="m">35</span>.943333<span class="w"> </span>-114.883495<span class="w"> </span><span class="m">36</span>.359161<span class="w"> </span>las_vegas_roads_clipped.geojson<span class="w"> </span>las_vegas_roads.geojson
 </pre></div>
 </div>
 </div>
@@ -747,9 +747,9 @@ document.write(`
 <h3><span class="section-number">26.9.1. </span>Working with Individual Bands<a class="headerlink" href="#working-with-individual-bands" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_translate -b 5 landsat.tif nir.tif
-gdal_translate -b 4 landsat.tif red.tif
-gdal_translate -b 3 landsat.tif green.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_translate<span class="w"> </span>-b<span class="w"> </span><span class="m">5</span><span class="w"> </span>landsat.tif<span class="w"> </span>nir.tif
+gdal_translate<span class="w"> </span>-b<span class="w"> </span><span class="m">4</span><span class="w"> </span>landsat.tif<span class="w"> </span>red.tif
+gdal_translate<span class="w"> </span>-b<span class="w"> </span><span class="m">3</span><span class="w"> </span>landsat.tif<span class="w"> </span>green.tif
 </pre></div>
 </div>
 </div>
@@ -759,47 +759,47 @@ gdal_translate -b 3 landsat.tif green.tif
 <h3><span class="section-number">26.9.2. </span>Performing Band Mathematics<a class="headerlink" href="#performing-band-mathematics" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_calc.py \
-  -A nir.tif \
-  -B red.tif \
-  --outfile=ndvi.tif \
-  --calc=&quot;(A.astype(float) - B) / (A + B + 1e-6)&quot; \
-  --type=Float32 \
-  --NoDataValue=-9999
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-A<span class="w"> </span>nir.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-B<span class="w"> </span>red.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--outfile<span class="o">=</span>ndvi.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--calc<span class="o">=</span><span class="s2">&quot;(A.astype(float) - B) / (A + B + 1e-6)&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--type<span class="o">=</span>Float32<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--NoDataValue<span class="o">=</span>-9999
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_calc.py \
-  -A ndvi.tif \
-  --outfile=ndvi_clipped.tif \
-  --calc=&quot;(A &lt; -1)*-1 + (A &gt; 1)*1 + ((A &gt;= -1) * (A &lt;= 1))*A&quot; \
-  --type=Float32 \
-  --NoDataValue=-9999 \
-  --overwrite
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-A<span class="w"> </span>ndvi.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--outfile<span class="o">=</span>ndvi_clipped.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--calc<span class="o">=</span><span class="s2">&quot;(A &lt; -1)*-1 + (A &gt; 1)*1 + ((A &gt;= -1) * (A &lt;= 1))*A&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--type<span class="o">=</span>Float32<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--NoDataValue<span class="o">=</span>-9999<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--overwrite
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_calc.py -A ndvi_clipped.tif --outfile=vegetation.tif --calc=&quot;A&gt;0.3&quot;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>ndvi_clipped.tif<span class="w"> </span>--outfile<span class="o">=</span>vegetation.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A&gt;0.3&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_translate -a_nodata 0 vegetation.tif vegetation_bin.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_translate<span class="w"> </span>-a_nodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>vegetation.tif<span class="w"> </span>vegetation_bin.tif
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_edit.py -a_nodata 0 vegetation.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_edit.py<span class="w"> </span>-a_nodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>vegetation.tif
 </pre></div>
 </div>
 </div>
@@ -812,7 +812,7 @@ gdal_translate -b 3 landsat.tif green.tif
 <h3><span class="section-number">26.10.1. </span>Vectorization<a class="headerlink" href="#vectorization" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_polygonize.py building_masks.tif building_masks.gpkg
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_polygonize.py<span class="w"> </span>building_masks.tif<span class="w"> </span>building_masks.gpkg
 </pre></div>
 </div>
 </div>
@@ -822,14 +822,14 @@ gdal_translate -b 3 landsat.tif green.tif
 <h3><span class="section-number">26.10.2. </span>Rasterization<a class="headerlink" href="#rasterization" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_rasterize -a uid -tr 0.6 0.6 -l buildings buildings_3857.gpkg buildings.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_rasterize<span class="w"> </span>-a<span class="w"> </span>uid<span class="w"> </span>-tr<span class="w"> </span><span class="m">0</span>.6<span class="w"> </span><span class="m">0</span>.6<span class="w"> </span>-l<span class="w"> </span>buildings<span class="w"> </span>buildings_3857.gpkg<span class="w"> </span>buildings.tif
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_rasterize -burn 1 -tr 0.6 0.6 -l buildings buildings_3857.gpkg buildings2.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_rasterize<span class="w"> </span>-burn<span class="w"> </span><span class="m">1</span><span class="w"> </span>-tr<span class="w"> </span><span class="m">0</span>.6<span class="w"> </span><span class="m">0</span>.6<span class="w"> </span>-l<span class="w"> </span>buildings<span class="w"> </span>buildings_3857.gpkg<span class="w"> </span>buildings2.tif
 </pre></div>
 </div>
 </div>
@@ -842,7 +842,7 @@ gdal_translate -b 3 landsat.tif green.tif
 <h3><span class="section-number">26.11.1. </span>Simplifying Complex Geometries<a class="headerlink" href="#simplifying-complex-geometries" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -f GPKG -t_srs EPSG:26911 -simplify 1 simplified.gpkg building_masks.gpkg
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-f<span class="w"> </span>GPKG<span class="w"> </span>-t_srs<span class="w"> </span>EPSG:26911<span class="w"> </span>-simplify<span class="w"> </span><span class="m">1</span><span class="w"> </span>simplified.gpkg<span class="w"> </span>building_masks.gpkg
 </pre></div>
 </div>
 </div>
@@ -852,14 +852,14 @@ gdal_translate -b 3 landsat.tif green.tif
 <h3><span class="section-number">26.11.2. </span>Dissolving Features by Attributes<a class="headerlink" href="#dissolving-features-by-attributes" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogrinfo -al -so us_states.geojson
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogrinfo<span class="w"> </span>-al<span class="w"> </span>-so<span class="w"> </span>us_states.geojson
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -dialect sqlite -sql &quot;SELECT ST_Union(geometry), country FROM us_states GROUP BY country&quot; us_states_dissolved.gpkg us_states.geojson
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-dialect<span class="w"> </span>sqlite<span class="w"> </span>-sql<span class="w"> </span><span class="s2">&quot;SELECT ST_Union(geometry), country FROM us_states GROUP BY country&quot;</span><span class="w"> </span>us_states_dissolved.gpkg<span class="w"> </span>us_states.geojson
 </pre></div>
 </div>
 </div>
@@ -869,7 +869,7 @@ gdal_translate -b 3 landsat.tif green.tif
 <h3><span class="section-number">26.11.3. </span>Exploding Multi-part Geometries<a class="headerlink" href="#exploding-multi-part-geometries" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -explodecollections hawaii_parts.geojson hawaii.geojson
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-explodecollections<span class="w"> </span>hawaii_parts.geojson<span class="w"> </span>hawaii.geojson
 </pre></div>
 </div>
 </div>
@@ -882,7 +882,7 @@ gdal_translate -b 3 landsat.tif green.tif
 <h3><span class="section-number">26.12.1. </span>Selecting Specific Fields<a class="headerlink" href="#selecting-specific-fields" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -select id,name us_states_select.geojson us_states.geojson
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-select<span class="w"> </span>id,name<span class="w"> </span>us_states_select.geojson<span class="w"> </span>us_states.geojson
 </pre></div>
 </div>
 </div>
@@ -892,7 +892,7 @@ gdal_translate -b 3 landsat.tif green.tif
 <h3><span class="section-number">26.12.2. </span>Renaming Layers<a class="headerlink" href="#renaming-layers" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -nln states us_states_rename.gpkg us_states_select.geojson
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-nln<span class="w"> </span>states<span class="w"> </span>us_states_rename.gpkg<span class="w"> </span>us_states_select.geojson
 </pre></div>
 </div>
 </div>
@@ -902,7 +902,7 @@ gdal_translate -b 3 landsat.tif green.tif
 <h3><span class="section-number">26.12.3. </span>Adding New Fields<a class="headerlink" href="#adding-new-fields" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogrinfo us_states_rename.gpkg -sql &quot;ALTER TABLE states ADD COLUMN area DOUBLE&quot;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogrinfo<span class="w"> </span>us_states_rename.gpkg<span class="w"> </span>-sql<span class="w"> </span><span class="s2">&quot;ALTER TABLE states ADD COLUMN area DOUBLE&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -915,14 +915,14 @@ gdal_translate -b 3 landsat.tif green.tif
 <h3><span class="section-number">26.13.1. </span>Creating Raster Tiles<a class="headerlink" href="#creating-raster-tiles" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir -p tiles
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>tiles
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_retile.py -targetDir tiles -ps 512 512 -co &quot;TILED=YES&quot; landsat.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_retile.py<span class="w"> </span>-targetDir<span class="w"> </span>tiles<span class="w"> </span>-ps<span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="m">512</span><span class="w"> </span>-co<span class="w"> </span><span class="s2">&quot;TILED=YES&quot;</span><span class="w"> </span>landsat.tif
 </pre></div>
 </div>
 </div>
@@ -932,14 +932,14 @@ gdal_translate -b 3 landsat.tif green.tif
 <h3><span class="section-number">26.13.2. </span>Merging Raster Data<a class="headerlink" href="#merging-raster-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_merge.py -o landsat_merged.tif -of GTiff tiles/*.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_merge.py<span class="w"> </span>-o<span class="w"> </span>landsat_merged.tif<span class="w"> </span>-of<span class="w"> </span>GTiff<span class="w"> </span>tiles/*.tif
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdalwarp -of GTiff tiles/*.tif landsat_merged2.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>-of<span class="w"> </span>GTiff<span class="w"> </span>tiles/*.tif<span class="w"> </span>landsat_merged2.tif
 </pre></div>
 </div>
 </div>
@@ -949,31 +949,31 @@ gdal_translate -b 3 landsat.tif green.tif
 <h3><span class="section-number">26.13.3. </span>Working with Multiple Vector Files<a class="headerlink" href="#working-with-multiple-vector-files" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir -p states
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>states
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogrinfo -ro -al -geom=NO us_states.geojson | grep &quot;id (&quot; | awk &#39;{print $4}&#39; | while read id; do
-    ogr2ogr -f GeoJSON &quot;states/${id}.geojson&quot; us_states.geojson -where &quot;id = &#39;${id}&#39;&quot;
-done
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogrinfo<span class="w"> </span>-ro<span class="w"> </span>-al<span class="w"> </span>-geom<span class="o">=</span>NO<span class="w"> </span>us_states.geojson<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;id (&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $4}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>id<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>ogr2ogr<span class="w"> </span>-f<span class="w"> </span>GeoJSON<span class="w"> </span><span class="s2">&quot;states/</span><span class="si">${</span><span class="nv">id</span><span class="si">}</span><span class="s2">.geojson&quot;</span><span class="w"> </span>us_states.geojson<span class="w"> </span>-where<span class="w"> </span><span class="s2">&quot;id = &#39;</span><span class="si">${</span><span class="nv">id</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+<span class="k">done</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -f &quot;ESRI Shapefile&quot; us_states_merged.shp us_states.geojson
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;ESRI Shapefile&quot;</span><span class="w"> </span>us_states_merged.shp<span class="w"> </span>us_states.geojson
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -f &quot;ESRI Shapefile&quot; -update -append \
-  us_states_merged.shp hawaii.geojson -nln us_states_merged
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ogr2ogr<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;ESRI Shapefile&quot;</span><span class="w"> </span>-update<span class="w"> </span>-append<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>us_states_merged.shp<span class="w"> </span>hawaii.geojson<span class="w"> </span>-nln<span class="w"> </span>us_states_merged
 </pre></div>
 </div>
 </div>
@@ -986,7 +986,7 @@ done
 <h3><span class="section-number">26.14.1. </span>Resampling and Resolution Management<a class="headerlink" href="#resampling-and-resolution-management" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdalwarp -tr 100 100 -r average dem.tif dem_100m.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalwarp<span class="w"> </span>-tr<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="m">100</span><span class="w"> </span>-r<span class="w"> </span>average<span class="w"> </span>dem.tif<span class="w"> </span>dem_100m.tif
 </pre></div>
 </div>
 </div>
@@ -996,15 +996,15 @@ done
 <h3><span class="section-number">26.14.2. </span>Creating Band Composites<a class="headerlink" href="#creating-band-composites" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_merge.py -separate -o composite.tif nir.tif red.tif green.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_merge.py<span class="w"> </span>-separate<span class="w"> </span>-o<span class="w"> </span>composite.tif<span class="w"> </span>nir.tif<span class="w"> </span>red.tif<span class="w"> </span>green.tif
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdalbuildvrt -separate stack.vrt nir.tif red.tif green.tif
-gdal_translate stack.vrt composite.tif -co COMPRESS=DEFLATE
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdalbuildvrt<span class="w"> </span>-separate<span class="w"> </span>stack.vrt<span class="w"> </span>nir.tif<span class="w"> </span>red.tif<span class="w"> </span>green.tif
+gdal_translate<span class="w"> </span>stack.vrt<span class="w"> </span>composite.tif<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE
 </pre></div>
 </div>
 </div>
@@ -1014,14 +1014,14 @@ gdal_translate stack.vrt composite.tif -co COMPRESS=DEFLATE
 <h3><span class="section-number">26.14.3. </span>Handling Missing Data<a class="headerlink" href="#handling-missing-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_fillnodata.py -md 5 -of GTiff dem.tif filled_dem.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_fillnodata.py<span class="w"> </span>-md<span class="w"> </span><span class="m">5</span><span class="w"> </span>-of<span class="w"> </span>GTiff<span class="w"> </span>dem.tif<span class="w"> </span>filled_dem.tif
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_translate -a_nodata 0 dem.tif dem_nodata.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_translate<span class="w"> </span>-a_nodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>dem.tif<span class="w"> </span>dem_nodata.tif
 </pre></div>
 </div>
 </div>
@@ -1031,7 +1031,7 @@ gdal_translate stack.vrt composite.tif -co COMPRESS=DEFLATE
 <h3><span class="section-number">26.14.4. </span>Cloud Optimized GeoTIFF<a class="headerlink" href="#cloud-optimized-geotiff" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_translate dem.tif dem_cog.tif -of COG -co COMPRESS=DEFLATE
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_translate<span class="w"> </span>dem.tif<span class="w"> </span>dem_cog.tif<span class="w"> </span>-of<span class="w"> </span>COG<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE
 </pre></div>
 </div>
 </div>
@@ -1044,19 +1044,19 @@ gdal_translate stack.vrt composite.tif -co COMPRESS=DEFLATE
 <h3><span class="section-number">26.15.1. </span>Computing Slope<a class="headerlink" href="#computing-slope" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdaldem slope dem.tif slope.tif \
-  -of GTiff \
-  -compute_edges
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdaldem<span class="w"> </span>slope<span class="w"> </span>dem.tif<span class="w"> </span>slope.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-of<span class="w"> </span>GTiff<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-compute_edges
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdaldem slope dem.tif slope_percent.tif \
-  -of GTiff \
-  -compute_edges \
-  -p
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdaldem<span class="w"> </span>slope<span class="w"> </span>dem.tif<span class="w"> </span>slope_percent.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-of<span class="w"> </span>GTiff<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-compute_edges<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p
 </pre></div>
 </div>
 </div>
@@ -1066,9 +1066,9 @@ gdal_translate stack.vrt composite.tif -co COMPRESS=DEFLATE
 <h3><span class="section-number">26.15.2. </span>Computing Aspect<a class="headerlink" href="#computing-aspect" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdaldem aspect dem.tif aspect.tif \
-  -of GTiff \
-  -compute_edges
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdaldem<span class="w"> </span>aspect<span class="w"> </span>dem.tif<span class="w"> </span>aspect.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-of<span class="w"> </span>GTiff<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-compute_edges
 </pre></div>
 </div>
 </div>
@@ -1078,14 +1078,14 @@ gdal_translate stack.vrt composite.tif -co COMPRESS=DEFLATE
 <h3><span class="section-number">26.15.3. </span>Creating Hillshade Visualizations<a class="headerlink" href="#creating-hillshade-visualizations" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdaldem hillshade dem.tif hillshade.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdaldem<span class="w"> </span>hillshade<span class="w"> </span>dem.tif<span class="w"> </span>hillshade.tif
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdaldem hillshade dem.tif multidirectional_hillshade.tif -multidirectional
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdaldem<span class="w"> </span>hillshade<span class="w"> </span>dem.tif<span class="w"> </span>multidirectional_hillshade.tif<span class="w"> </span>-multidirectional
 </pre></div>
 </div>
 </div>
@@ -1095,23 +1095,23 @@ gdal_translate stack.vrt composite.tif -co COMPRESS=DEFLATE
 <h3><span class="section-number">26.15.4. </span>Creating Color Relief Maps<a class="headerlink" href="#creating-color-relief-maps" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cat &lt;&lt; EOF &gt; colormap.txt
-500, 51, 51, 153
-1000, 3, 147, 249
-1500, 37, 211, 109
-2000, 181, 240, 138
-2500, 218, 208, 133
-3000, 146, 115, 94
-4000, 183, 163, 159
-5000, 255, 255, 255
-EOF
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; colormap.txt</span>
+<span class="s">500, 51, 51, 153</span>
+<span class="s">1000, 3, 147, 249</span>
+<span class="s">1500, 37, 211, 109</span>
+<span class="s">2000, 181, 240, 138</span>
+<span class="s">2500, 218, 208, 133</span>
+<span class="s">3000, 146, 115, 94</span>
+<span class="s">4000, 183, 163, 159</span>
+<span class="s">5000, 255, 255, 255</span>
+<span class="s">EOF</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdaldem color-relief dem.tif colormap.txt color_relief.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdaldem<span class="w"> </span>color-relief<span class="w"> </span>dem.tif<span class="w"> </span>colormap.txt<span class="w"> </span>color_relief.tif
 </pre></div>
 </div>
 </div>
@@ -1121,40 +1121,40 @@ EOF
 <h3><span class="section-number">26.15.5. </span>Combining Hillshade and Color Relief<a class="headerlink" href="#combining-hillshade-and-color-relief" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_calc.py \
-  -A color_relief.tif \
-  -B hillshade.tif \
-  --outfile=shaded_relief.tif \
-  --calc=&quot;((A.astype(float) * 0.6) + (B.astype(float) * 0.4))&quot; \
-  --type=Byte
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-A<span class="w"> </span>color_relief.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-B<span class="w"> </span>hillshade.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--outfile<span class="o">=</span>shaded_relief.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--calc<span class="o">=</span><span class="s2">&quot;((A.astype(float) * 0.6) + (B.astype(float) * 0.4))&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--type<span class="o">=</span>Byte
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_calc.py \
-  -A color_relief.tif \
-  -B hillshade.tif \
-  --outfile=color_hillshade.tif \
-  --calc=&quot;A * (B / 255.0)&quot; \
-  --type=Byte
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-A<span class="w"> </span>color_relief.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-B<span class="w"> </span>hillshade.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--outfile<span class="o">=</span>color_hillshade.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--calc<span class="o">=</span><span class="s2">&quot;A * (B / 255.0)&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--type<span class="o">=</span>Byte
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_calc.py -A color_relief.tif --A_band=1 -B hillshade.tif --outfile=r.tif --calc=&quot;A*(B/255.0)&quot; --type=Byte
-gdal_calc.py -A color_relief.tif --A_band=2 -B hillshade.tif --outfile=g.tif --calc=&quot;A*(B/255.0)&quot; --type=Byte
-gdal_calc.py -A color_relief.tif --A_band=3 -B hillshade.tif --outfile=b.tif --calc=&quot;A*(B/255.0)&quot; --type=Byte
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>color_relief.tif<span class="w"> </span>--A_band<span class="o">=</span><span class="m">1</span><span class="w"> </span>-B<span class="w"> </span>hillshade.tif<span class="w"> </span>--outfile<span class="o">=</span>r.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A*(B/255.0)&quot;</span><span class="w"> </span>--type<span class="o">=</span>Byte
+gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>color_relief.tif<span class="w"> </span>--A_band<span class="o">=</span><span class="m">2</span><span class="w"> </span>-B<span class="w"> </span>hillshade.tif<span class="w"> </span>--outfile<span class="o">=</span>g.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A*(B/255.0)&quot;</span><span class="w"> </span>--type<span class="o">=</span>Byte
+gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>color_relief.tif<span class="w"> </span>--A_band<span class="o">=</span><span class="m">3</span><span class="w"> </span>-B<span class="w"> </span>hillshade.tif<span class="w"> </span>--outfile<span class="o">=</span>b.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A*(B/255.0)&quot;</span><span class="w"> </span>--type<span class="o">=</span>Byte
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_merge.py -separate -o color_shaded_relief.tif r.tif g.tif b.tif
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_merge.py<span class="w"> </span>-separate<span class="w"> </span>-o<span class="w"> </span>color_shaded_relief.tif<span class="w"> </span>r.tif<span class="w"> </span>g.tif<span class="w"> </span>b.tif
 </pre></div>
 </div>
 </div>
@@ -1164,7 +1164,7 @@ gdal_calc.py -A color_relief.tif --A_band=3 -B hillshade.tif --outfile=b.tif --c
 <h3><span class="section-number">26.15.6. </span>Generating Contour Lines<a class="headerlink" href="#generating-contour-lines" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_contour -i 100 dem.tif contours.shp
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gdal_contour<span class="w"> </span>-i<span class="w"> </span><span class="m">100</span><span class="w"> </span>dem.tif<span class="w"> </span>contours.shp
 </pre></div>
 </div>
 </div>
@@ -1215,16 +1215,16 @@ gdal_calc.py -A color_relief.tif --A_band=3 -B hillshade.tif --outfile=b.tif --c
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "bash"
         },
         kernelOptions: {
-            name: "python3",
+            name: "bash",
             path: "./book/geospatial"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'bash'</script>
 
                 </article>
               

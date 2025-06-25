@@ -551,15 +551,15 @@ document.write(`
 <h2><span class="section-number">27.3. </span>Installing Voilà and Solara<a class="headerlink" href="#installing-voila-and-solara" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># %pip install voila solara pygis
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install voila solara pygis</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import voila
-import solara
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">voila</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">solara</span>
 </pre></div>
 </div>
 </div>
@@ -571,7 +571,7 @@ import solara
 <h3><span class="section-number">27.4.1. </span>Installing the Hugging Face CLI<a class="headerlink" href="#installing-the-hugging-face-cli" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># %pip install -U &quot;huggingface_hub[cli]&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install -U &quot;huggingface_hub[cli]&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -596,17 +596,17 @@ import solara
 <h3><span class="section-number">27.5.3. </span>Running the Voilà Application<a class="headerlink" href="#running-the-voila-application" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import leafmap.maplibregl as leafmap
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">leafmap.maplibregl</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">leafmap</span>
 
-m = leafmap.Map(
-    style=&quot;liberty&quot;, projection=&quot;globe&quot;, sidebar_visible=True, height=&quot;750px&quot;
-)
-m.add_basemap(&quot;USGS.Imagery&quot;)
-cities = (
-    &quot;https://github.com/opengeos/datasets/releases/download/world/world_cities.geojson&quot;
-)
-m.add_geojson(cities, name=&quot;Cities&quot;)
-m
+<span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
+    <span class="n">style</span><span class="o">=</span><span class="s2">&quot;liberty&quot;</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;globe&quot;</span><span class="p">,</span> <span class="n">sidebar_visible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;750px&quot;</span>
+<span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;USGS.Imagery&quot;</span><span class="p">)</span>
+<span class="n">cities</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/world/world_cities.geojson&quot;</span>
+<span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span><span class="n">cities</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Cities&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -650,29 +650,29 @@ m
 <h3><span class="section-number">27.6.4. </span>Introduction to Solara Components<a class="headerlink" href="#introduction-to-solara-components" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import solara
-import leafmap.maplibregl as leafmap
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">solara</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">leafmap.maplibregl</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">leafmap</span>
 
 
-def create_map():
+<span class="k">def</span><span class="w"> </span><span class="nf">create_map</span><span class="p">():</span>
 
-    m = leafmap.Map(
-        style=&quot;liberty&quot;,
-        projection=&quot;globe&quot;,
-        height=&quot;750px&quot;,
-        zoom=2.5,
-        sidebar_visible=True,
-    )
-    return m
-
-
-@solara.component
-def Page():
-    m = create_map()
-    return m.to_solara()
+    <span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
+        <span class="n">style</span><span class="o">=</span><span class="s2">&quot;liberty&quot;</span><span class="p">,</span>
+        <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;globe&quot;</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="s2">&quot;750px&quot;</span><span class="p">,</span>
+        <span class="n">zoom</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+        <span class="n">sidebar_visible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">m</span>
 
 
-Page()
+<span class="nd">@solara</span><span class="o">.</span><span class="n">component</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Page</span><span class="p">():</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">create_map</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">to_solara</span><span class="p">()</span>
+
+
+<span class="n">Page</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -682,29 +682,29 @@ Page()
 <h3><span class="section-number">27.6.5. </span>Creating a New Page<a class="headerlink" href="#creating-a-new-page" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import solara
-import leafmap.maplibregl as leafmap
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">solara</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">leafmap.maplibregl</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">leafmap</span>
 
 
-def create_map():
+<span class="k">def</span><span class="w"> </span><span class="nf">create_map</span><span class="p">():</span>
 
-    m = leafmap.Map(
-        style=&quot;positron&quot;,
-        projection=&quot;globe&quot;,
-        height=&quot;750px&quot;,
-        zoom=2.5,
-        sidebar_visible=True,
-    )
-    geojson = &quot;https://github.com/opengeos/datasets/releases/download/world/mgrs_grid_zone.geojson&quot;
-    m.add_geojson(geojson)
-    m.add_labels(geojson, &quot;GZD&quot;, text_color=&quot;white&quot;, min_zoom=2, max_zoom=10)
-    return m
+    <span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
+        <span class="n">style</span><span class="o">=</span><span class="s2">&quot;positron&quot;</span><span class="p">,</span>
+        <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;globe&quot;</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="s2">&quot;750px&quot;</span><span class="p">,</span>
+        <span class="n">zoom</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+        <span class="n">sidebar_visible</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">geojson</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/world/mgrs_grid_zone.geojson&quot;</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span><span class="n">geojson</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">add_labels</span><span class="p">(</span><span class="n">geojson</span><span class="p">,</span> <span class="s2">&quot;GZD&quot;</span><span class="p">,</span> <span class="n">text_color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">min_zoom</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_zoom</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">m</span>
 
 
-@solara.component
-def Page():
-    m = create_map()
-    return m.to_solara()
+<span class="nd">@solara</span><span class="o">.</span><span class="n">component</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Page</span><span class="p">():</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">create_map</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">to_solara</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

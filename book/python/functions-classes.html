@@ -548,13 +548,13 @@ document.write(`
 <h3><span class="section-number">12.3.1. </span>Defining a Simple Function<a class="headerlink" href="#defining-a-simple-function" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def add(a, b):
-    return a + b
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 
 
-# Example usage
-result = add(5, 3)
-print(f&quot;Result: {result}&quot;)
+<span class="c1"># Example usage</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -564,13 +564,13 @@ print(f&quot;Result: {result}&quot;)
 <h3><span class="section-number">12.3.2. </span>Parameters with Default Values<a class="headerlink" href="#parameters-with-default-values" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def greet(name, greeting=&quot;Hello&quot;):
-    return f&quot;{greeting}, {name}!&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">greeting</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">greeting</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span>
 
 
-# Example usage
-print(greet(&quot;Alice&quot;))  # Uses the default greeting
-print(greet(&quot;Bob&quot;, &quot;Hi&quot;))  # Overrides the default greeting
+<span class="c1"># Example usage</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">greet</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">))</span>  <span class="c1"># Uses the default greeting</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">greet</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Hi&quot;</span><span class="p">))</span>  <span class="c1"># Overrides the default greeting</span>
 </pre></div>
 </div>
 </div>
@@ -580,14 +580,14 @@ print(greet(&quot;Bob&quot;, &quot;Hi&quot;))  # Overrides the default greeting
 <h3><span class="section-number">12.3.3. </span>Understanding Function Calls<a class="headerlink" href="#understanding-function-calls" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Function to multiply two numbers
-def multiply(a, b):
-    return a * b
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to multiply two numbers</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
 
 
-# Calling the function
-result = multiply(4, 5)
-print(f&quot;Multiplication Result: {result}&quot;)
+<span class="c1"># Calling the function</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">multiply</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Multiplication Result: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -597,29 +597,29 @@ print(f&quot;Multiplication Result: {result}&quot;)
 <h3><span class="section-number">12.3.4. </span>Geospatial Example: Haversine Function<a class="headerlink" href="#geospatial-example-haversine-function" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from math import radians, sin, cos, sqrt, atan2
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">radians</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">atan2</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def haversine(lat1, lon1, lat2, lon2):
-    R = 6371.0  # Earth radius in kilometers
-    dlat = radians(lat2 - lat1)
-    dlon = radians(lon2 - lon1)
-    a = (
-        sin(dlat / 2) ** 2
-        + cos(radians(lat1)) * cos(radians(lat2)) * sin(dlon / 2) ** 2
-    )
-    c = 2 * atan2(sqrt(a), sqrt(1 - a))
-    distance = R * c
-    return distance
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">haversine</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">):</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="mf">6371.0</span>  <span class="c1"># Earth radius in kilometers</span>
+    <span class="n">dlat</span> <span class="o">=</span> <span class="n">radians</span><span class="p">(</span><span class="n">lat2</span> <span class="o">-</span> <span class="n">lat1</span><span class="p">)</span>
+    <span class="n">dlon</span> <span class="o">=</span> <span class="n">radians</span><span class="p">(</span><span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">sin</span><span class="p">(</span><span class="n">dlat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="n">lat1</span><span class="p">))</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="n">lat2</span><span class="p">))</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">dlon</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">atan2</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">a</span><span class="p">))</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="n">c</span>
+    <span class="k">return</span> <span class="n">distance</span>
 
 
-# Example usage
-distance = haversine(35.6895, 139.6917, 34.0522, -118.2437)
-print(f&quot;Distance: {distance:.2f} km&quot;)
+<span class="c1"># Example usage</span>
+<span class="n">distance</span> <span class="o">=</span> <span class="n">haversine</span><span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">,</span> <span class="mf">34.0522</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance: </span><span class="si">{</span><span class="n">distance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -629,25 +629,25 @@ print(f&quot;Distance: {distance:.2f} km&quot;)
 <h3><span class="section-number">12.3.5. </span>Function with Default Values and Geospatial Application<a class="headerlink" href="#function-with-default-values-and-geospatial-application" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def haversine(lat1, lon1, lat2, lon2, radius=6371.0):
-    dlat = radians(lat2 - lat1)
-    dlon = radians(lon2 - lon1)
-    a = (
-        sin(dlat / 2) ** 2
-        + cos(radians(lat1)) * cos(radians(lat2)) * sin(dlon / 2) ** 2
-    )
-    c = 2 * atan2(sqrt(a), sqrt(1 - a))
-    distance = radius * c
-    return distance
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">haversine</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">6371.0</span><span class="p">):</span>
+    <span class="n">dlat</span> <span class="o">=</span> <span class="n">radians</span><span class="p">(</span><span class="n">lat2</span> <span class="o">-</span> <span class="n">lat1</span><span class="p">)</span>
+    <span class="n">dlon</span> <span class="o">=</span> <span class="n">radians</span><span class="p">(</span><span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">sin</span><span class="p">(</span><span class="n">dlat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="n">lat1</span><span class="p">))</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="n">lat2</span><span class="p">))</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">dlon</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">atan2</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">a</span><span class="p">))</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">c</span>
+    <span class="k">return</span> <span class="n">distance</span>
 
 
-# Example usage in kilometers
-distance_km = haversine(35.6895, 139.6917, 34.0522, -118.2437)
-print(f&quot;Distance in kilometers: {distance_km:.2f} km&quot;)
+<span class="c1"># Example usage in kilometers</span>
+<span class="n">distance_km</span> <span class="o">=</span> <span class="n">haversine</span><span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">,</span> <span class="mf">34.0522</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance in kilometers: </span><span class="si">{</span><span class="n">distance_km</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
 
-# Example usage in miles (radius of Earth is approximately 3958.8 miles)
-distance_miles = haversine(35.6895, 139.6917, 34.0522, -118.2437, radius=3958.8)
-print(f&quot;Distance in miles: {distance_miles:.2f} miles&quot;)
+<span class="c1"># Example usage in miles (radius of Earth is approximately 3958.8 miles)</span>
+<span class="n">distance_miles</span> <span class="o">=</span> <span class="n">haversine</span><span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">,</span> <span class="mf">34.0522</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">3958.8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance in miles: </span><span class="si">{</span><span class="n">distance_miles</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> miles&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -657,20 +657,20 @@ print(f&quot;Distance in miles: {distance_miles:.2f} miles&quot;)
 <h3><span class="section-number">12.3.6. </span>Processing Multiple Coordinates<a class="headerlink" href="#processing-multiple-coordinates" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def batch_haversine(coord_list):
-    distances = []
-    for i in range(len(coord_list) - 1):
-        lat1, lon1 = coord_list[i]
-        lat2, lon2 = coord_list[i + 1]
-        distance = haversine(lat1, lon1, lat2, lon2)
-        distances.append(distance)
-    return distances
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">batch_haversine</span><span class="p">(</span><span class="n">coord_list</span><span class="p">):</span>
+    <span class="n">distances</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">coord_list</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span> <span class="o">=</span> <span class="n">coord_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span> <span class="o">=</span> <span class="n">coord_list</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">distance</span> <span class="o">=</span> <span class="n">haversine</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">)</span>
+        <span class="n">distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">distances</span>
 
 
-# Example usage
-coordinates = [(35.6895, 139.6917), (34.0522, -118.2437), (40.7128, -74.0060)]
-distances = batch_haversine(coordinates)
-print(f&quot;Distances: {distances}&quot;)
+<span class="c1"># Example usage</span>
+<span class="n">coordinates</span> <span class="o">=</span> <span class="p">[(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">),</span> <span class="p">(</span><span class="mf">34.0522</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.7128</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.0060</span><span class="p">)]</span>
+<span class="n">distances</span> <span class="o">=</span> <span class="n">batch_haversine</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distances: </span><span class="si">{</span><span class="n">distances</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -682,13 +682,13 @@ print(f&quot;Distances: {distances}&quot;)
 <h4><span class="section-number">12.3.7.1. </span>Variable Arguments with *args<a class="headerlink" href="#variable-arguments-with-args" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def average(*numbers):
-    return sum(numbers) / len(numbers)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="o">*</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 
 
-# Example usage
-print(average(10, 20, 30))  # 20.0
-print(average(5, 15, 25, 35))  # 20.0
+<span class="c1"># Example usage</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">average</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>  <span class="c1"># 20.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">average</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">35</span><span class="p">))</span>  <span class="c1"># 20.0</span>
 </pre></div>
 </div>
 </div>
@@ -698,19 +698,19 @@ print(average(5, 15, 25, 35))  # 20.0
 <h4><span class="section-number">12.3.7.2. </span>Keyword Arguments with **kwargs<a class="headerlink" href="#keyword-arguments-with-kwargs" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def describe_point(latitude, longitude, **kwargs):
-    description = f&quot;Point at ({latitude}, {longitude})&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">describe_point</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Point at (</span><span class="si">{</span><span class="n">latitude</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">longitude</span><span class="si">}</span><span class="s2">)&quot;</span>
 
-    # Add optional keyword arguments to the description
-    for key, value in kwargs.items():
-        description += f&quot;, {key}: {value}&quot;
+    <span class="c1"># Add optional keyword arguments to the description</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">description</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;, </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
 
-    return description
+    <span class="k">return</span> <span class="n">description</span>
 
 
-# Example usage
-print(describe_point(35.6895, 139.6917, name=&quot;Tokyo&quot;, population=37400000))
-print(describe_point(34.0522, -118.2437, name=&quot;Los Angeles&quot;, state=&quot;California&quot;))
+<span class="c1"># Example usage</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">describe_point</span><span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="n">population</span><span class="o">=</span><span class="mi">37400000</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">describe_point</span><span class="p">(</span><span class="mf">34.0522</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="s2">&quot;California&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -724,19 +724,19 @@ print(describe_point(34.0522, -118.2437, name=&quot;Los Angeles&quot;, state=&qu
 <h3><span class="section-number">12.4.1. </span>Defining a Simple Class<a class="headerlink" href="#defining-a-simple-class" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class Point:
-    def __init__(self, latitude, longitude, name=None):
-        self.latitude = latitude
-        self.longitude = longitude
-        self.name = name
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latitude</span> <span class="o">=</span> <span class="n">latitude</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">longitude</span> <span class="o">=</span> <span class="n">longitude</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 
-    def __str__(self):
-        return f&quot;{self.name or &#39;Point&#39;} ({self.latitude}, {self.longitude})&quot;
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s1">&#39;Point&#39;</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">latitude</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">longitude</span><span class="si">}</span><span class="s2">)&quot;</span>
 
 
-# Example usage
-point1 = Point(35.6895, 139.6917, &quot;Tokyo&quot;)
-print(point1)
+<span class="c1"># Example usage</span>
+<span class="n">point1</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">,</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">point1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -746,24 +746,24 @@ print(point1)
 <h3><span class="section-number">12.4.2. </span>Adding Methods to a Class<a class="headerlink" href="#adding-methods-to-a-class" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class Point:
-    def __init__(self, latitude, longitude, name=None):
-        self.latitude = latitude
-        self.longitude = longitude
-        self.name = name
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latitude</span> <span class="o">=</span> <span class="n">latitude</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">longitude</span> <span class="o">=</span> <span class="n">longitude</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 
-    def distance_to(self, other_point):
-        return haversine(
-            self.latitude, self.longitude, other_point.latitude, other_point.longitude
-        )
+    <span class="k">def</span><span class="w"> </span><span class="nf">distance_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_point</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">haversine</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">other_point</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">other_point</span><span class="o">.</span><span class="n">longitude</span>
+        <span class="p">)</span>
 
 
-# Example usage
-point1 = Point(35.6895, 139.6917, &quot;Tokyo&quot;)
-point2 = Point(34.0522, -118.2437, &quot;Los Angeles&quot;)
-print(
-    f&quot;Distance from {point1.name} to {point2.name}: {point1.distance_to(point2):.2f} km&quot;
-)
+<span class="c1"># Example usage</span>
+<span class="n">point1</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">,</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">)</span>
+<span class="n">point2</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mf">34.0522</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Distance from </span><span class="si">{</span><span class="n">point1</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">point2</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">point1</span><span class="o">.</span><span class="n">distance_to</span><span class="p">(</span><span class="n">point2</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> km&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -773,11 +773,11 @@ print(
 <h3><span class="section-number">12.4.3. </span>Constructor with Default Values<a class="headerlink" href="#constructor-with-default-values" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class Point:
-    def __init__(self, latitude, longitude, name=&quot;Unnamed&quot;):
-        self.latitude = latitude
-        self.longitude = longitude
-        self.name = name
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Unnamed&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latitude</span> <span class="o">=</span> <span class="n">latitude</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">longitude</span> <span class="o">=</span> <span class="n">longitude</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 </pre></div>
 </div>
 </div>
@@ -788,20 +788,20 @@ print(
 <h2><span class="section-number">12.5. </span>Combining Functions and Classes<a class="headerlink" href="#combining-functions-and-classes" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class Route:
-    def __init__(self, points):
-        self.points = points
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Route</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">points</span> <span class="o">=</span> <span class="n">points</span>
 
-    def total_distance(self):
-        total_dist = 0
-        for i in range(len(self.points) - 1):
-            total_dist += self.points[i].distance_to(self.points[i + 1])
-        return total_dist
+    <span class="k">def</span><span class="w"> </span><span class="nf">total_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">total_dist</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">total_dist</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">distance_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">total_dist</span>
 
 
-# Example usage
-route = Route([point1, point2])
-print(f&quot;Total distance: {route.total_distance():.2f} km&quot;)
+<span class="c1"># Example usage</span>
+<span class="n">route</span> <span class="o">=</span> <span class="n">Route</span><span class="p">([</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total distance: </span><span class="si">{</span><span class="n">route</span><span class="o">.</span><span class="n">total_distance</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

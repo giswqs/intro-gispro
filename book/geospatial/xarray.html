@@ -602,7 +602,7 @@ document.write(`
 <h3><span class="section-number">18.4.1. </span>Installing Required Packages<a class="headerlink" href="#installing-required-packages" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%pip install xarray pooch pygis
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">xarray</span> <span class="n">pooch</span> <span class="n">pygis</span>
 </pre></div>
 </div>
 </div>
@@ -612,18 +612,18 @@ document.write(`
 <h3><span class="section-number">18.4.2. </span>Importing Libraries and Configuration<a class="headerlink" href="#importing-libraries-and-configuration" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
-import numpy as np
-import xarray as xr
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
 
-# Configure Xarray for better display and performance
-xr.set_options(keep_attrs=True, display_expand_data=False)
+<span class="c1"># Configure Xarray for better display and performance</span>
+<span class="n">xr</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="n">keep_attrs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">display_expand_data</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-# Configure NumPy display for cleaner output
-np.set_printoptions(threshold=10, edgeitems=2)
+<span class="c1"># Configure NumPy display for cleaner output</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">edgeitems</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-# Configure matplotlib for better plots
-plt.rcParams[&quot;figure.dpi&quot;] = 150
+<span class="c1"># Configure matplotlib for better plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.dpi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">150</span>
 </pre></div>
 </div>
 </div>
@@ -636,9 +636,9 @@ plt.rcParams[&quot;figure.dpi&quot;] = 150
 <h3><span class="section-number">18.5.1. </span>Loading Tutorial Data<a class="headerlink" href="#loading-tutorial-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Load a climate dataset with air temperature measurements
-ds = xr.tutorial.open_dataset(&quot;air_temperature&quot;)
-ds
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a climate dataset with air temperature measurements</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">tutorial</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;air_temperature&quot;</span><span class="p">)</span>
+<span class="n">ds</span>
 </pre></div>
 </div>
 </div>
@@ -651,18 +651,18 @@ ds
 <h3><span class="section-number">18.6.1. </span>Accessing DataArrays from Datasets<a class="headerlink" href="#accessing-dataarrays-from-datasets" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Extract the air temperature DataArray using dictionary notation
-temperature = ds[&quot;air&quot;]
-temperature
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the air temperature DataArray using dictionary notation</span>
+<span class="n">temperature</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;air&quot;</span><span class="p">]</span>
+<span class="n">temperature</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Same result using attribute access
-temperature = ds.air
-temperature
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Same result using attribute access</span>
+<span class="n">temperature</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">air</span>
+<span class="n">temperature</span>
 </pre></div>
 </div>
 </div>
@@ -672,39 +672,39 @@ temperature
 <h3><span class="section-number">18.6.2. </span>Exploring DataArray Components<a class="headerlink" href="#exploring-dataarray-components" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Examine the actual data values (a NumPy array)
-print(&quot;Data shape:&quot;, temperature.values.shape)
-print(&quot;Data type:&quot;, temperature.values.dtype)
-print(&quot;First few values:&quot;, temperature.values.flat[:5])
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Examine the actual data values (a NumPy array)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data shape:&quot;</span><span class="p">,</span> <span class="n">temperature</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data type:&quot;</span><span class="p">,</span> <span class="n">temperature</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First few values:&quot;</span><span class="p">,</span> <span class="n">temperature</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flat</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Understand the dimension structure
-print(&quot;Dimensions:&quot;, temperature.dims)
-print(&quot;Dimension sizes:&quot;, temperature.sizes)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Understand the dimension structure</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dimensions:&quot;</span><span class="p">,</span> <span class="n">temperature</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dimension sizes:&quot;</span><span class="p">,</span> <span class="n">temperature</span><span class="o">.</span><span class="n">sizes</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Explore the coordinate information
-print(&quot;Coordinates:&quot;)
-for name, coord in temperature.coords.items():
-    print(f&quot;  {name}: {coord.values[:3]}... (showing first 3 values)&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explore the coordinate information</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Coordinates:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">coord</span> <span class="ow">in</span> <span class="n">temperature</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">coord</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">... (showing first 3 values)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Examine metadata attributes
-print(&quot;Attributes:&quot;)
-for key, value in temperature.attrs.items():
-    print(f&quot;  {key}: {value}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Examine metadata attributes</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Attributes:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">temperature</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -717,9 +717,9 @@ for key, value in temperature.attrs.items():
 <h3><span class="section-number">18.7.1. </span>Label-Based Selection<a class="headerlink" href="#label-based-selection" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Select data for a specific date and location
-point_data = temperature.sel(time=&quot;2013-01-01&quot;, lat=40.0, lon=260.0)
-point_data
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select data for a specific date and location</span>
+<span class="n">point_data</span> <span class="o">=</span> <span class="n">temperature</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;2013-01-01&quot;</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="mf">40.0</span><span class="p">,</span> <span class="n">lon</span><span class="o">=</span><span class="mf">260.0</span><span class="p">)</span>
+<span class="n">point_data</span>
 </pre></div>
 </div>
 </div>
@@ -729,10 +729,10 @@ point_data
 <h3><span class="section-number">18.7.2. </span>Time Range Selection<a class="headerlink" href="#time-range-selection" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Select all data for January 2013
-january_data = temperature.sel(time=slice(&quot;2013-01-01&quot;, &quot;2013-01-31&quot;))
-print(f&quot;January 2013 data shape: {january_data.shape}&quot;)
-print(f&quot;Time range: {january_data.time.values[0]} to {january_data.time.values[-1]}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select all data for January 2013</span>
+<span class="n">january_data</span> <span class="o">=</span> <span class="n">temperature</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;2013-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2013-01-31&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;January 2013 data shape: </span><span class="si">{</span><span class="n">january_data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time range: </span><span class="si">{</span><span class="n">january_data</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">january_data</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -742,11 +742,11 @@ print(f&quot;Time range: {january_data.time.values[0]} to {january_data.time.val
 <h3><span class="section-number">18.7.3. </span>Nearest Neighbor Selection<a class="headerlink" href="#nearest-neighbor-selection" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Select data nearest to a location that might not be exactly on the grid
-nearest_data = temperature.sel(lat=40.5, lon=255.7, method=&quot;nearest&quot;)
-actual_coords = nearest_data.sel(time=&quot;2013-01-01&quot;)
-print(f&quot;Requested: lat=40.5, lon=255.7&quot;)
-print(f&quot;Actual: lat={actual_coords.lat.values}, lon={actual_coords.lon.values}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select data nearest to a location that might not be exactly on the grid</span>
+<span class="n">nearest_data</span> <span class="o">=</span> <span class="n">temperature</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="mf">40.5</span><span class="p">,</span> <span class="n">lon</span><span class="o">=</span><span class="mf">255.7</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">)</span>
+<span class="n">actual_coords</span> <span class="o">=</span> <span class="n">nearest_data</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;2013-01-01&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Requested: lat=40.5, lon=255.7&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Actual: lat=</span><span class="si">{</span><span class="n">actual_coords</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">, lon=</span><span class="si">{</span><span class="n">actual_coords</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -759,13 +759,13 @@ print(f&quot;Actual: lat={actual_coords.lat.values}, lon={actual_coords.lon.valu
 <h3><span class="section-number">18.8.1. </span>Statistical Operations Across Dimensions<a class="headerlink" href="#statistical-operations-across-dimensions" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate the temporal mean (average temperature at each location)
-mean_temperature = temperature.mean(dim=&quot;time&quot;)
-print(f&quot;Original data shape: {temperature.shape}&quot;)
-print(f&quot;Time-averaged data shape: {mean_temperature.shape}&quot;)
-print(
-    f&quot;Temperature range: {mean_temperature.min().values:.1f} to {mean_temperature.max().values:.1f} K&quot;
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the temporal mean (average temperature at each location)</span>
+<span class="n">mean_temperature</span> <span class="o">=</span> <span class="n">temperature</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original data shape: </span><span class="si">{</span><span class="n">temperature</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time-averaged data shape: </span><span class="si">{</span><span class="n">mean_temperature</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Temperature range: </span><span class="si">{</span><span class="n">mean_temperature</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">mean_temperature</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> K&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -775,14 +775,14 @@ print(
 <h3><span class="section-number">18.8.2. </span>Computing Anomalies<a class="headerlink" href="#computing-anomalies" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate temperature anomalies by subtracting the time mean from each time step
-anomalies = temperature - mean_temperature
-print(f&quot;Anomaly range: {anomalies.min().values:.1f} to {anomalies.max().values:.1f} K&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate temperature anomalies by subtracting the time mean from each time step</span>
+<span class="n">anomalies</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">mean_temperature</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Anomaly range: </span><span class="si">{</span><span class="n">anomalies</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">anomalies</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> K&quot;</span><span class="p">)</span>
 
-# Find the location and time of the largest positive anomaly
-max_anomaly = anomalies.max()
-max_location = anomalies.where(anomalies == max_anomaly, drop=True)
-print(f&quot;Largest positive anomaly: {max_anomaly.values:.1f} K&quot;)
+<span class="c1"># Find the location and time of the largest positive anomaly</span>
+<span class="n">max_anomaly</span> <span class="o">=</span> <span class="n">anomalies</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">max_location</span> <span class="o">=</span> <span class="n">anomalies</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">anomalies</span> <span class="o">==</span> <span class="n">max_anomaly</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Largest positive anomaly: </span><span class="si">{</span><span class="n">max_anomaly</span><span class="o">.</span><span class="n">values</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> K&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -792,15 +792,15 @@ print(f&quot;Largest positive anomaly: {max_anomaly.values:.1f} K&quot;)
 <h3><span class="section-number">18.8.3. </span>Spatial Statistics<a class="headerlink" href="#spatial-statistics" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate area-weighted spatial mean for each time step
-spatial_mean = temperature.mean(dim=[&quot;lat&quot;, &quot;lon&quot;])
-print(f&quot;Spatial mean temperature time series shape: {spatial_mean.shape}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate area-weighted spatial mean for each time step</span>
+<span class="n">spatial_mean</span> <span class="o">=</span> <span class="n">temperature</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Spatial mean temperature time series shape: </span><span class="si">{</span><span class="n">spatial_mean</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Find the warmest and coldest time periods
-warmest_date = spatial_mean.time[spatial_mean.argmax()]
-coldest_date = spatial_mean.time[spatial_mean.argmin()]
-print(f&quot;Warmest period: {warmest_date.values}&quot;)
-print(f&quot;Coldest period: {coldest_date.values}&quot;)
+<span class="c1"># Find the warmest and coldest time periods</span>
+<span class="n">warmest_date</span> <span class="o">=</span> <span class="n">spatial_mean</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="n">spatial_mean</span><span class="o">.</span><span class="n">argmax</span><span class="p">()]</span>
+<span class="n">coldest_date</span> <span class="o">=</span> <span class="n">spatial_mean</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="n">spatial_mean</span><span class="o">.</span><span class="n">argmin</span><span class="p">()]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Warmest period: </span><span class="si">{</span><span class="n">warmest_date</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Coldest period: </span><span class="si">{</span><span class="n">coldest_date</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -813,14 +813,14 @@ print(f&quot;Coldest period: {coldest_date.values}&quot;)
 <h3><span class="section-number">18.9.1. </span>Plotting 2D Spatial Data<a class="headerlink" href="#plotting-2d-spatial-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a map of long-term average temperature
-fig, ax = plt.subplots(figsize=(12, 6))
-mean_temperature.plot(ax=ax, cmap=&quot;RdYlBu_r&quot;, add_colorbar=True)
-plt.title(&quot;Long-term Average Air Temperature&quot;, fontsize=14, fontweight=&quot;bold&quot;)
-plt.xlabel(&quot;Longitude&quot;)
-plt.ylabel(&quot;Latitude&quot;)
-plt.tight_layout()
-plt.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a map of long-term average temperature</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">mean_temperature</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlBu_r&quot;</span><span class="p">,</span> <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Long-term Average Air Temperature&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Longitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Latitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -830,21 +830,21 @@ plt.show()
 <h3><span class="section-number">18.9.2. </span>Customizing Spatial Plots<a class="headerlink" href="#customizing-spatial-plots" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a more customized visualization
-fig, ax = plt.subplots(figsize=(12, 6))
-plot = mean_temperature.plot(
-    ax=ax,
-    cmap=&quot;RdYlBu_r&quot;,
-    levels=20,  # Number of contour levels
-    add_colorbar=True,
-    cbar_kwargs={&quot;label&quot;: &quot;Temperature (K)&quot;, &quot;shrink&quot;: 0.8, &quot;pad&quot;: 0.02},
-)
-plt.title(&quot;Mean Air Temperature (2013)&quot;, fontsize=16, fontweight=&quot;bold&quot;)
-plt.xlabel(&quot;Longitude (°E)&quot;, fontsize=12)
-plt.ylabel(&quot;Latitude (°N)&quot;, fontsize=12)
-plt.grid(True, alpha=0.3)
-plt.tight_layout()
-plt.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a more customized visualization</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">mean_temperature</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlBu_r&quot;</span><span class="p">,</span>
+    <span class="n">levels</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>  <span class="c1"># Number of contour levels</span>
+    <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">cbar_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Temperature (K)&quot;</span><span class="p">,</span> <span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s2">&quot;pad&quot;</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mean Air Temperature (2013)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Longitude (°E)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Latitude (°N)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -854,17 +854,17 @@ plt.show()
 <h3><span class="section-number">18.9.3. </span>Time Series Visualization<a class="headerlink" href="#time-series-visualization" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Select and plot time series for a specific location
-location_ts = temperature.sel(lat=40.0, lon=260.0)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select and plot time series for a specific location</span>
+<span class="n">location_ts</span> <span class="o">=</span> <span class="n">temperature</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="mf">40.0</span><span class="p">,</span> <span class="n">lon</span><span class="o">=</span><span class="mf">260.0</span><span class="p">)</span>
 
-fig, ax = plt.subplots(figsize=(12, 6))
-location_ts.plot(ax=ax, linewidth=1.5, color=&quot;darkblue&quot;)
-plt.title(&quot;Temperature Time Series at 40°N, 260°E&quot;, fontsize=14, fontweight=&quot;bold&quot;)
-plt.xlabel(&quot;Time&quot;)
-plt.ylabel(&quot;Temperature (K)&quot;)
-plt.grid(True, alpha=0.3)
-plt.tight_layout()
-plt.show()
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">location_ts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkblue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Temperature Time Series at 40°N, 260°E&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature (K)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -877,13 +877,13 @@ plt.show()
 <h3><span class="section-number">18.10.1. </span>Exploring Dataset Structure<a class="headerlink" href="#exploring-dataset-structure" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Examine all variables in the dataset
-print(&quot;Data variables in the dataset:&quot;)
-for var_name, var_info in ds.data_vars.items():
-    print(f&quot;  {var_name}: {var_info.dims}, shape {var_info.shape}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Examine all variables in the dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data variables in the dataset:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">var_name</span><span class="p">,</span> <span class="n">var_info</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">var_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">var_info</span><span class="o">.</span><span class="n">dims</span><span class="si">}</span><span class="s2">, shape </span><span class="si">{</span><span class="n">var_info</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-print(f&quot;\nShared coordinates: {list(ds.coords.keys())}&quot;)
-print(f&quot;Global attributes: {len(ds.attrs)} metadata items&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Shared coordinates: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Global attributes: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span><span class="si">}</span><span class="s2"> metadata items&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -893,9 +893,9 @@ print(f&quot;Global attributes: {len(ds.attrs)} metadata items&quot;)
 <h3><span class="section-number">18.10.2. </span>Dataset-Level Operations<a class="headerlink" href="#dataset-level-operations" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate temporal statistics for all variables in the dataset
-dataset_means = ds.mean(dim=&quot;time&quot;)
-dataset_means
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate temporal statistics for all variables in the dataset</span>
+<span class="n">dataset_means</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+<span class="n">dataset_means</span>
 </pre></div>
 </div>
 </div>
@@ -908,30 +908,30 @@ dataset_means
 <h3><span class="section-number">18.11.1. </span>The NumPy Approach: Index-Based Selection<a class="headerlink" href="#the-numpy-approach-index-based-selection" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Extract raw arrays and coordinates
-lat_values = ds.air.lat.values
-lon_values = ds.air.lon.values
-temp_values = ds.air.values
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract raw arrays and coordinates</span>
+<span class="n">lat_values</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">air</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">values</span>
+<span class="n">lon_values</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">air</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">values</span>
+<span class="n">temp_values</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">air</span><span class="o">.</span><span class="n">values</span>
 
-print(f&quot;Data shape: {temp_values.shape}&quot;)
-print(&quot;To plot the first time step, you need to remember:&quot;)
-print(&quot;- Time is dimension 0&quot;)
-print(&quot;- Latitude is dimension 1&quot;)
-print(&quot;- Longitude is dimension 2&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data shape: </span><span class="si">{</span><span class="n">temp_values</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;To plot the first time step, you need to remember:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Time is dimension 0&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Latitude is dimension 1&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- Longitude is dimension 2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Plot using NumPy approach - requires careful index management
-fig, ax = plt.subplots(figsize=(12, 6))
-im = ax.pcolormesh(lon_values, lat_values, temp_values[0, :, :], cmap=&quot;RdYlBu_r&quot;)
-plt.colorbar(im, ax=ax, label=&quot;Temperature (K)&quot;)
-plt.title(&quot;First Time Step (NumPy approach)&quot;)
-plt.xlabel(&quot;Longitude&quot;)
-plt.ylabel(&quot;Latitude&quot;)
-plt.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot using NumPy approach - requires careful index management</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon_values</span><span class="p">,</span> <span class="n">lat_values</span><span class="p">,</span> <span class="n">temp_values</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlBu_r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Temperature (K)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;First Time Step (NumPy approach)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Longitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Latitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -941,20 +941,20 @@ plt.show()
 <h3><span class="section-number">18.11.2. </span>The Xarray Approach: Label-Based Selection<a class="headerlink" href="#the-xarray-approach-label-based-selection" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Same result with Xarray - much more readable and less error-prone
-ds.air.isel(time=0).plot(figsize=(12, 6), cmap=&quot;RdYlBu_r&quot;)
-plt.title(&quot;First Time Step (Xarray approach)&quot;)
-plt.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Same result with Xarray - much more readable and less error-prone</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">air</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlBu_r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;First Time Step (Xarray approach)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Select by actual date rather than array index
-ds.air.sel(time=&quot;2013-01-01T00:00:00&quot;).plot(figsize=(12, 6), cmap=&quot;RdYlBu_r&quot;)
-plt.title(&quot;Temperature on January 1, 2013&quot;)
-plt.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select by actual date rather than array index</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">air</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;2013-01-01T00:00:00&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlBu_r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Temperature on January 1, 2013&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -967,13 +967,13 @@ plt.show()
 <h3><span class="section-number">18.12.1. </span>Position-Based vs. Label-Based Indexing<a class="headerlink" href="#position-based-vs-label-based-indexing" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Position-based indexing using isel() - useful for systematic sampling
-first_last_times = ds.air.isel(time=[0, -1])  # First and last time steps
-print(f&quot;Selected time steps: {first_last_times.time.values}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Position-based indexing using isel() - useful for systematic sampling</span>
+<span class="n">first_last_times</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">air</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># First and last time steps</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected time steps: </span><span class="si">{</span><span class="n">first_last_times</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Label-based indexing using sel() - useful for specific values
-specific_months = ds.air.sel(time=slice(&quot;2013-05&quot;, &quot;2013-07&quot;))
-print(f&quot;May-July 2013 contains {len(specific_months.time)} time steps&quot;)
+<span class="c1"># Label-based indexing using sel() - useful for specific values</span>
+<span class="n">specific_months</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">air</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;2013-05&quot;</span><span class="p">,</span> <span class="s2">&quot;2013-07&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;May-July 2013 contains </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">specific_months</span><span class="o">.</span><span class="n">time</span><span class="p">)</span><span class="si">}</span><span class="s2"> time steps&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -983,15 +983,15 @@ print(f&quot;May-July 2013 contains {len(specific_months.time)} time steps&quot;
 <h3><span class="section-number">18.12.2. </span>Boolean Indexing and Conditional Selection<a class="headerlink" href="#boolean-indexing-and-conditional-selection" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Find locations where average temperature exceeds a threshold
-warm_locations = mean_temperature.where(mean_temperature &gt; 280)  # 280 K ≈ 7°C
-warm_count = warm_locations.count()
-print(f&quot;Number of grid points with mean temperature &gt; 280 K: {warm_count.values}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find locations where average temperature exceeds a threshold</span>
+<span class="n">warm_locations</span> <span class="o">=</span> <span class="n">mean_temperature</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mean_temperature</span> <span class="o">&gt;</span> <span class="mi">280</span><span class="p">)</span>  <span class="c1"># 280 K ≈ 7°C</span>
+<span class="n">warm_count</span> <span class="o">=</span> <span class="n">warm_locations</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of grid points with mean temperature &gt; 280 K: </span><span class="si">{</span><span class="n">warm_count</span><span class="o">.</span><span class="n">values</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Find time periods when spatial average temperature was unusually high
-temp_threshold = spatial_mean.quantile(0.9)  # 90th percentile
-warm_periods = spatial_mean.where(spatial_mean &gt; temp_threshold, drop=True)
-print(f&quot;Number of exceptionally warm time periods: {len(warm_periods)}&quot;)
+<span class="c1"># Find time periods when spatial average temperature was unusually high</span>
+<span class="n">temp_threshold</span> <span class="o">=</span> <span class="n">spatial_mean</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.9</span><span class="p">)</span>  <span class="c1"># 90th percentile</span>
+<span class="n">warm_periods</span> <span class="o">=</span> <span class="n">spatial_mean</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">spatial_mean</span> <span class="o">&gt;</span> <span class="n">temp_threshold</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of exceptionally warm time periods: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">warm_periods</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1004,30 +1004,30 @@ print(f&quot;Number of exceptionally warm time periods: {len(warm_periods)}&quot
 <h3><span class="section-number">18.13.1. </span>GroupBy Operations for Temporal Analysis<a class="headerlink" href="#groupby-operations-for-temporal-analysis" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate seasonal climatology
-seasonal_means = ds.air.groupby(&quot;time.season&quot;).mean()
-print(&quot;Seasonal temperature patterns:&quot;)
-seasonal_means
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate seasonal climatology</span>
+<span class="n">seasonal_means</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">air</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;time.season&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Seasonal temperature patterns:&quot;</span><span class="p">)</span>
+<span class="n">seasonal_means</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Visualize seasonal patterns
-fig, axes = plt.subplots(2, 2, figsize=(12, 6))
-seasons = [&quot;DJF&quot;, &quot;MAM&quot;, &quot;JJA&quot;, &quot;SON&quot;]
-season_names = [&quot;Winter&quot;, &quot;Spring&quot;, &quot;Summer&quot;, &quot;Fall&quot;]
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize seasonal patterns</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">seasons</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;DJF&quot;</span><span class="p">,</span> <span class="s2">&quot;MAM&quot;</span><span class="p">,</span> <span class="s2">&quot;JJA&quot;</span><span class="p">,</span> <span class="s2">&quot;SON&quot;</span><span class="p">]</span>
+<span class="n">season_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Winter&quot;</span><span class="p">,</span> <span class="s2">&quot;Spring&quot;</span><span class="p">,</span> <span class="s2">&quot;Summer&quot;</span><span class="p">,</span> <span class="s2">&quot;Fall&quot;</span><span class="p">]</span>
 
-for i, (season, name) in enumerate(zip(seasons, season_names)):
-    ax = axes[i // 2, i % 2]
-    seasonal_means.sel(season=season).plot(ax=ax, cmap=&quot;RdYlBu_r&quot;, add_colorbar=False)
-    ax.set_title(f&quot;{name} ({season})&quot;)
-    ax.set_xlabel(&quot;Longitude&quot;)
-    ax.set_ylabel(&quot;Latitude&quot;)
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">season</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">seasons</span><span class="p">,</span> <span class="n">season_names</span><span class="p">)):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">seasonal_means</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">season</span><span class="o">=</span><span class="n">season</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlBu_r&quot;</span><span class="p">,</span> <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">season</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Longitude&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Latitude&quot;</span><span class="p">)</span>
 
-plt.tight_layout()
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1037,25 +1037,25 @@ plt.show()
 <h3><span class="section-number">18.13.2. </span>Rolling Window Operations<a class="headerlink" href="#rolling-window-operations" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a smoothed time series using a rolling window
-location_data = temperature.sel(lat=40.0, lon=260.0)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a smoothed time series using a rolling window</span>
+<span class="n">location_data</span> <span class="o">=</span> <span class="n">temperature</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="mf">40.0</span><span class="p">,</span> <span class="n">lon</span><span class="o">=</span><span class="mf">260.0</span><span class="p">)</span>
 
-fig, ax = plt.subplots(figsize=(12, 6))
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
-# Plot original data
-location_data.plot(ax=ax, alpha=0.5, label=&quot;Original&quot;, color=&quot;lightblue&quot;)
+<span class="c1"># Plot original data</span>
+<span class="n">location_data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Original&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">)</span>
 
-# Plot smoothed data using a 30-day rolling window
-smoothed_data = location_data.rolling(time=30, center=True).mean()
-smoothed_data.plot(ax=ax, label=&quot;30-day smoothed&quot;, color=&quot;darkblue&quot;, linewidth=2)
+<span class="c1"># Plot smoothed data using a 30-day rolling window</span>
+<span class="n">smoothed_data</span> <span class="o">=</span> <span class="n">location_data</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">smoothed_data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;30-day smoothed&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkblue&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-plt.title(&quot;Temperature Time Series: Original vs Smoothed&quot;)
-plt.xlabel(&quot;Time&quot;)
-plt.ylabel(&quot;Temperature (K)&quot;)
-plt.legend()
-plt.grid(True, alpha=0.3)
-plt.tight_layout()
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Temperature Time Series: Original vs Smoothed&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature (K)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1065,22 +1065,22 @@ plt.show()
 <h3><span class="section-number">18.13.3. </span>Weighted Operations<a class="headerlink" href="#weighted-operations" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create simple area weights (this is a simplified example)
-# In practice, you would use proper latitude-based area weighting
-lat_weights = np.cos(np.radians(ds.air.lat))
-area_weighted_mean = ds.air.weighted(lat_weights).mean(dim=[&quot;lat&quot;, &quot;lon&quot;])
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create simple area weights (this is a simplified example)</span>
+<span class="c1"># In practice, you would use proper latitude-based area weighting</span>
+<span class="n">lat_weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">air</span><span class="o">.</span><span class="n">lat</span><span class="p">))</span>
+<span class="n">area_weighted_mean</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">air</span><span class="o">.</span><span class="n">weighted</span><span class="p">(</span><span class="n">lat_weights</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span> <span class="s2">&quot;lon&quot;</span><span class="p">])</span>
 
-# Compare simple vs area-weighted spatial averages
-fig, ax = plt.subplots(figsize=(12, 6))
-spatial_mean.plot(ax=ax, label=&quot;Simple average&quot;, alpha=0.7)
-area_weighted_mean.plot(ax=ax, label=&quot;Area-weighted average&quot;, linewidth=2)
-plt.title(&quot;Spatial Temperature Averages: Simple vs Area-Weighted&quot;)
-plt.xlabel(&quot;Time&quot;)
-plt.ylabel(&quot;Temperature (K)&quot;)
-plt.legend()
-plt.grid(True, alpha=0.3)
-plt.tight_layout()
-plt.show()
+<span class="c1"># Compare simple vs area-weighted spatial averages</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">spatial_mean</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Simple average&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">area_weighted_mean</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Area-weighted average&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Spatial Temperature Averages: Simple vs Area-Weighted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature (K)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1096,17 +1096,17 @@ plt.show()
 <h3><span class="section-number">18.14.2. </span>Writing Data to NetCDF<a class="headerlink" href="#writing-data-to-netcdf" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Prepare data for saving (ensure proper data types)
-output_ds = ds.copy()
-output_ds[&quot;air&quot;] = output_ds[&quot;air&quot;].astype(&quot;float32&quot;)  # Reduce file size
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prepare data for saving (ensure proper data types)</span>
+<span class="n">output_ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">output_ds</span><span class="p">[</span><span class="s2">&quot;air&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_ds</span><span class="p">[</span><span class="s2">&quot;air&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>  <span class="c1"># Reduce file size</span>
 
-# Add processing metadata
-output_ds.attrs[&quot;processing_date&quot;] = str(np.datetime64(&quot;now&quot;))
-output_ds.attrs[&quot;created_by&quot;] = &quot;GIS Pro&quot;
+<span class="c1"># Add processing metadata</span>
+<span class="n">output_ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;processing_date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s2">&quot;now&quot;</span><span class="p">))</span>
+<span class="n">output_ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;created_by&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;GIS Pro&quot;</span>
 
-# Save to NetCDF file
-output_ds.to_netcdf(&quot;processed_air_temperature.nc&quot;)
-print(&quot;Dataset saved to processed_air_temperature.nc&quot;)
+<span class="c1"># Save to NetCDF file</span>
+<span class="n">output_ds</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="s2">&quot;processed_air_temperature.nc&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dataset saved to processed_air_temperature.nc&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1116,12 +1116,12 @@ print(&quot;Dataset saved to processed_air_temperature.nc&quot;)
 <h3><span class="section-number">18.14.3. </span>Reading Data from NetCDF<a class="headerlink" href="#reading-data-from-netcdf" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Load the saved dataset
-reloaded_ds = xr.open_dataset(&quot;processed_air_temperature.nc&quot;)
-print(&quot;Successfully reloaded dataset:&quot;)
-print(f&quot;Variables: {list(reloaded_ds.data_vars.keys())}&quot;)
-print(f&quot;Processing date: {reloaded_ds.attrs.get(&#39;processing_date&#39;, &#39;Not specified&#39;)}&quot;)
-print(f&quot;Data matches original: {reloaded_ds.air.equals(ds.air.astype(&#39;float32&#39;))}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the saved dataset</span>
+<span class="n">reloaded_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;processed_air_temperature.nc&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Successfully reloaded dataset:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Variables: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">reloaded_ds</span><span class="o">.</span><span class="n">data_vars</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing date: </span><span class="si">{</span><span class="n">reloaded_ds</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;processing_date&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Not specified&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data matches original: </span><span class="si">{</span><span class="n">reloaded_ds</span><span class="o">.</span><span class="n">air</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">air</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">))</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

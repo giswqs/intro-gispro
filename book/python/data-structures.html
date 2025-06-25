@@ -564,11 +564,11 @@ document.write(`
 <h3><span class="section-number">9.3.1. </span>Creating and Using Tuples<a class="headerlink" href="#creating-and-using-tuples" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tokyo_point = (
-    35.6895,
-    139.6917,
-)  # Tuple representing Tokyo&#39;s coordinates (latitude, longitude)
-print(f&quot;Tokyo coordinates: {tokyo_point}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tokyo_point</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="mf">35.6895</span><span class="p">,</span>
+    <span class="mf">139.6917</span><span class="p">,</span>
+<span class="p">)</span>  <span class="c1"># Tuple representing Tokyo&#39;s coordinates (latitude, longitude)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tokyo coordinates: </span><span class="si">{</span><span class="n">tokyo_point</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -578,10 +578,10 @@ print(f&quot;Tokyo coordinates: {tokyo_point}&quot;)
 <h3><span class="section-number">9.3.2. </span>Accessing Tuple Elements<a class="headerlink" href="#accessing-tuple-elements" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>latitude = tokyo_point[0]
-longitude = tokyo_point[1]
-print(f&quot;Latitude: {latitude}&quot;)
-print(f&quot;Longitude: {longitude}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">latitude</span> <span class="o">=</span> <span class="n">tokyo_point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="n">tokyo_point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Latitude: </span><span class="si">{</span><span class="n">latitude</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Longitude: </span><span class="si">{</span><span class="n">longitude</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -591,8 +591,8 @@ print(f&quot;Longitude: {longitude}&quot;)
 <h3><span class="section-number">9.3.3. </span>Tuple Unpacking<a class="headerlink" href="#tuple-unpacking" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>lat, lon = tokyo_point  # Unpacking the tuple into two variables
-print(f&quot;Tokyo is located at {lat}°N, {lon}°E&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="n">tokyo_point</span>  <span class="c1"># Unpacking the tuple into two variables</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tokyo is located at </span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">°N, </span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">°E&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -602,14 +602,14 @@ print(f&quot;Tokyo is located at {lat}°N, {lon}°E&quot;)
 <h3><span class="section-number">9.3.4. </span>Multiple Coordinate Points<a class="headerlink" href="#multiple-coordinate-points" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Different geographic locations as tuples
-new_york = (40.7128, -74.0060)
-london = (51.5074, -0.1278)
-sydney = (-33.8688, 151.2093)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Different geographic locations as tuples</span>
+<span class="n">new_york</span> <span class="o">=</span> <span class="p">(</span><span class="mf">40.7128</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.0060</span><span class="p">)</span>
+<span class="n">london</span> <span class="o">=</span> <span class="p">(</span><span class="mf">51.5074</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">)</span>
+<span class="n">sydney</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">33.8688</span><span class="p">,</span> <span class="mf">151.2093</span><span class="p">)</span>
 
-print(f&quot;New York: {new_york}&quot;)
-print(f&quot;London: {london}&quot;)
-print(f&quot;Sydney: {sydney}&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;New York: </span><span class="si">{</span><span class="n">new_york</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;London: </span><span class="si">{</span><span class="n">london</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sydney: </span><span class="si">{</span><span class="n">sydney</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -622,31 +622,31 @@ print(f&quot;Sydney: {sydney}&quot;)
 <h3><span class="section-number">9.4.1. </span>Creating Lists<a class="headerlink" href="#creating-lists" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># A list of coordinate tuples representing a travel route
-route = [
-    (35.6895, 139.6917),  # Tokyo
-    (34.0522, -118.2437),  # Los Angeles
-    (51.5074, -0.1278),  # London
-]
-print(&quot;Travel route:&quot;, route)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># A list of coordinate tuples representing a travel route</span>
+<span class="n">route</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">),</span>  <span class="c1"># Tokyo</span>
+    <span class="p">(</span><span class="mf">34.0522</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">),</span>  <span class="c1"># Los Angeles</span>
+    <span class="p">(</span><span class="mf">51.5074</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">),</span>  <span class="c1"># London</span>
+<span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Travel route:&quot;</span><span class="p">,</span> <span class="n">route</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># A list of elevation measurements (in meters)
-elevations = [120.5, 135.2, 150.8, 168.3, 185.7, 203.1]
-print(&quot;Elevation profile:&quot;, elevations)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># A list of elevation measurements (in meters)</span>
+<span class="n">elevations</span> <span class="o">=</span> <span class="p">[</span><span class="mf">120.5</span><span class="p">,</span> <span class="mf">135.2</span><span class="p">,</span> <span class="mf">150.8</span><span class="p">,</span> <span class="mf">168.3</span><span class="p">,</span> <span class="mf">185.7</span><span class="p">,</span> <span class="mf">203.1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Elevation profile:&quot;</span><span class="p">,</span> <span class="n">elevations</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># A list of city names
-cities = [&quot;Tokyo&quot;, &quot;Los Angeles&quot;, &quot;London&quot;, &quot;Paris&quot;]
-print(&quot;Cities to visit:&quot;, cities)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># A list of city names</span>
+<span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span> <span class="s2">&quot;Paris&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cities to visit:&quot;</span><span class="p">,</span> <span class="n">cities</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -656,18 +656,18 @@ print(&quot;Cities to visit:&quot;, cities)
 <h3><span class="section-number">9.4.2. </span>Adding Elements to Lists<a class="headerlink" href="#adding-elements-to-lists" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Add Paris to our travel route
-route.append((48.8566, 2.3522))  # Adding Paris coordinates
-print(&quot;Updated route:&quot;, route)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add Paris to our travel route</span>
+<span class="n">route</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mf">48.8566</span><span class="p">,</span> <span class="mf">2.3522</span><span class="p">))</span>  <span class="c1"># Adding Paris coordinates</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Updated route:&quot;</span><span class="p">,</span> <span class="n">route</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Add a new elevation measurement
-elevations.append(221.4)
-print(&quot;Updated elevations:&quot;, elevations)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add a new elevation measurement</span>
+<span class="n">elevations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">221.4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Updated elevations:&quot;</span><span class="p">,</span> <span class="n">elevations</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -677,13 +677,13 @@ print(&quot;Updated elevations:&quot;, elevations)
 <h3><span class="section-number">9.4.3. </span>Accessing List Elements<a class="headerlink" href="#accessing-list-elements" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Access the first city in our route
-first_stop = route[0]
-print(f&quot;First stop: {first_stop}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access the first city in our route</span>
+<span class="n">first_stop</span> <span class="o">=</span> <span class="n">route</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First stop: </span><span class="si">{</span><span class="n">first_stop</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Access the last city using negative indexing
-last_stop = route[-1]
-print(f&quot;Last stop: {last_stop}&quot;)
+<span class="c1"># Access the last city using negative indexing</span>
+<span class="n">last_stop</span> <span class="o">=</span> <span class="n">route</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Last stop: </span><span class="si">{</span><span class="n">last_stop</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -693,13 +693,13 @@ print(f&quot;Last stop: {last_stop}&quot;)
 <h3><span class="section-number">9.4.4. </span>List Slicing<a class="headerlink" href="#list-slicing" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Get the first two stops of our route
-first_two_stops = route[:2]
-print(&quot;First two stops:&quot;, first_two_stops)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the first two stops of our route</span>
+<span class="n">first_two_stops</span> <span class="o">=</span> <span class="n">route</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First two stops:&quot;</span><span class="p">,</span> <span class="n">first_two_stops</span><span class="p">)</span>
 
-# Get the middle portion of elevation data
-middle_elevations = elevations[2:5]
-print(&quot;Middle elevation readings:&quot;, middle_elevations)
+<span class="c1"># Get the middle portion of elevation data</span>
+<span class="n">middle_elevations</span> <span class="o">=</span> <span class="n">elevations</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Middle elevation readings:&quot;</span><span class="p">,</span> <span class="n">middle_elevations</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -709,17 +709,17 @@ print(&quot;Middle elevation readings:&quot;, middle_elevations)
 <h3><span class="section-number">9.4.5. </span>Useful List Operations<a class="headerlink" href="#useful-list-operations" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Find the number of waypoints in our route
-num_waypoints = len(route)
-print(f&quot;Number of waypoints: {num_waypoints}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the number of waypoints in our route</span>
+<span class="n">num_waypoints</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">route</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of waypoints: </span><span class="si">{</span><span class="n">num_waypoints</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Find the highest elevation
-max_elevation = max(elevations)
-print(f&quot;Highest elevation: {max_elevation} meters&quot;)
+<span class="c1"># Find the highest elevation</span>
+<span class="n">max_elevation</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">elevations</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Highest elevation: </span><span class="si">{</span><span class="n">max_elevation</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
 
-# Calculate average elevation
-avg_elevation = sum(elevations) / len(elevations)
-print(f&quot;Average elevation: {avg_elevation:.1f} meters&quot;)
+<span class="c1"># Calculate average elevation</span>
+<span class="n">avg_elevation</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">elevations</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">elevations</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average elevation: </span><span class="si">{</span><span class="n">avg_elevation</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -732,29 +732,29 @@ print(f&quot;Average elevation: {avg_elevation:.1f} meters&quot;)
 <h3><span class="section-number">9.5.1. </span>Creating Sets<a class="headerlink" href="#creating-sets" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a set of geographic regions
-regions_visited = {&quot;North America&quot;, &quot;Europe&quot;, &quot;Asia&quot;}
-print(&quot;Regions visited:&quot;, regions_visited)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a set of geographic regions</span>
+<span class="n">regions_visited</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;North America&quot;</span><span class="p">,</span> <span class="s2">&quot;Europe&quot;</span><span class="p">,</span> <span class="s2">&quot;Asia&quot;</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Regions visited:&quot;</span><span class="p">,</span> <span class="n">regions_visited</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a set from a list (automatically removes duplicates)
-country_codes = [&quot;US&quot;, &quot;CA&quot;, &quot;MX&quot;, &quot;US&quot;, &quot;CA&quot;]  # Notice the duplicates
-unique_codes = set(country_codes)
-print(&quot;Original list:&quot;, country_codes)
-print(&quot;Unique country codes:&quot;, unique_codes)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a set from a list (automatically removes duplicates)</span>
+<span class="n">country_codes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">,</span> <span class="s2">&quot;MX&quot;</span><span class="p">,</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">]</span>  <span class="c1"># Notice the duplicates</span>
+<span class="n">unique_codes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">country_codes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original list:&quot;</span><span class="p">,</span> <span class="n">country_codes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unique country codes:&quot;</span><span class="p">,</span> <span class="n">unique_codes</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a set of coordinate system codes
-crs_codes = {&quot;EPSG:4326&quot;, &quot;EPSG:3857&quot;, &quot;EPSG:32633&quot;}
-print(&quot;Coordinate reference systems:&quot;, crs_codes)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a set of coordinate system codes</span>
+<span class="n">crs_codes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">,</span> <span class="s2">&quot;EPSG:3857&quot;</span><span class="p">,</span> <span class="s2">&quot;EPSG:32633&quot;</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Coordinate reference systems:&quot;</span><span class="p">,</span> <span class="n">crs_codes</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -764,14 +764,14 @@ print(&quot;Coordinate reference systems:&quot;, crs_codes)
 <h3><span class="section-number">9.5.2. </span>Adding Elements to Sets<a class="headerlink" href="#adding-elements-to-sets" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Add a new region
-print(&quot;Original set:&quot;, regions_visited)
-regions_visited.add(&quot;Africa&quot;)
-print(&quot;After adding Africa:&quot;, regions_visited)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add a new region</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original set:&quot;</span><span class="p">,</span> <span class="n">regions_visited</span><span class="p">)</span>
+<span class="n">regions_visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Africa&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After adding Africa:&quot;</span><span class="p">,</span> <span class="n">regions_visited</span><span class="p">)</span>
 
-# Try to add a duplicate region
-regions_visited.add(&quot;Europe&quot;)  # This won&#39;t change the set
-print(&quot;After trying to add Europe again:&quot;, regions_visited)
+<span class="c1"># Try to add a duplicate region</span>
+<span class="n">regions_visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Europe&quot;</span><span class="p">)</span>  <span class="c1"># This won&#39;t change the set</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After trying to add Europe again:&quot;</span><span class="p">,</span> <span class="n">regions_visited</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -781,24 +781,24 @@ print(&quot;After trying to add Europe again:&quot;, regions_visited)
 <h3><span class="section-number">9.5.3. </span>Practical Set Operations<a class="headerlink" href="#practical-set-operations" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Two different survey areas with their observed species
-area_a_species = {&quot;oak&quot;, &quot;pine&quot;, &quot;maple&quot;, &quot;birch&quot;}
-area_b_species = {&quot;pine&quot;, &quot;birch&quot;, &quot;cedar&quot;, &quot;fir&quot;}
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Two different survey areas with their observed species</span>
+<span class="n">area_a_species</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;oak&quot;</span><span class="p">,</span> <span class="s2">&quot;pine&quot;</span><span class="p">,</span> <span class="s2">&quot;maple&quot;</span><span class="p">,</span> <span class="s2">&quot;birch&quot;</span><span class="p">}</span>
+<span class="n">area_b_species</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;pine&quot;</span><span class="p">,</span> <span class="s2">&quot;birch&quot;</span><span class="p">,</span> <span class="s2">&quot;cedar&quot;</span><span class="p">,</span> <span class="s2">&quot;fir&quot;</span><span class="p">}</span>
 
-print(&quot;Species in Area A:&quot;, area_a_species)
-print(&quot;Species in Area B:&quot;, area_b_species)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Species in Area A:&quot;</span><span class="p">,</span> <span class="n">area_a_species</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Species in Area B:&quot;</span><span class="p">,</span> <span class="n">area_b_species</span><span class="p">)</span>
 
-# Find species common to both areas
-common_species = area_a_species.intersection(area_b_species)
-print(&quot;Species found in both areas:&quot;, common_species)
+<span class="c1"># Find species common to both areas</span>
+<span class="n">common_species</span> <span class="o">=</span> <span class="n">area_a_species</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">area_b_species</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Species found in both areas:&quot;</span><span class="p">,</span> <span class="n">common_species</span><span class="p">)</span>
 
-# Find species unique to Area A
-unique_to_a = area_a_species - area_b_species
-print(&quot;Species only in Area A:&quot;, unique_to_a)
+<span class="c1"># Find species unique to Area A</span>
+<span class="n">unique_to_a</span> <span class="o">=</span> <span class="n">area_a_species</span> <span class="o">-</span> <span class="n">area_b_species</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Species only in Area A:&quot;</span><span class="p">,</span> <span class="n">unique_to_a</span><span class="p">)</span>
 
-# Find all species across both areas
-all_species = area_a_species.union(area_b_species)
-print(&quot;All species found:&quot;, all_species)
+<span class="c1"># Find all species across both areas</span>
+<span class="n">all_species</span> <span class="o">=</span> <span class="n">area_a_species</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">area_b_species</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All species found:&quot;</span><span class="p">,</span> <span class="n">all_species</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -808,14 +808,14 @@ print(&quot;All species found:&quot;, all_species)
 <h3><span class="section-number">9.5.4. </span>Checking Set Membership<a class="headerlink" href="#checking-set-membership" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Check if we&#39;ve visited a particular region
-if &quot;Asia&quot; in regions_visited:
-    print(&quot;We have visited Asia&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if we&#39;ve visited a particular region</span>
+<span class="k">if</span> <span class="s2">&quot;Asia&quot;</span> <span class="ow">in</span> <span class="n">regions_visited</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We have visited Asia&quot;</span><span class="p">)</span>
 
-if &quot;Antarctica&quot; in regions_visited:
-    print(&quot;We have visited Antarctica&quot;)
-else:
-    print(&quot;Antarctica not yet visited&quot;)
+<span class="k">if</span> <span class="s2">&quot;Antarctica&quot;</span> <span class="ow">in</span> <span class="n">regions_visited</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We have visited Antarctica&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Antarctica not yet visited&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -828,31 +828,31 @@ else:
 <h3><span class="section-number">9.6.1. </span>Creating Dictionaries<a class="headerlink" href="#creating-dictionaries" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Dictionary storing attributes of a city
-tokyo_info = {
-    &quot;name&quot;: &quot;Tokyo&quot;,
-    &quot;population&quot;: 13929286,
-    &quot;coordinates&quot;: (35.6895, 139.6917),
-    &quot;country&quot;: &quot;Japan&quot;,
-    &quot;established&quot;: 1603,
-}
-print(&quot;Tokyo information:&quot;, tokyo_info)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dictionary storing attributes of a city</span>
+<span class="n">tokyo_info</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;population&quot;</span><span class="p">:</span> <span class="mi">13929286</span><span class="p">,</span>
+    <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">),</span>
+    <span class="s2">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Japan&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;established&quot;</span><span class="p">:</span> <span class="mi">1603</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tokyo information:&quot;</span><span class="p">,</span> <span class="n">tokyo_info</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Dictionary for a geographic survey point
-survey_point = {
-    &quot;point_id&quot;: &quot;SP001&quot;,
-    &quot;latitude&quot;: 40.7589,
-    &quot;longitude&quot;: -73.9851,
-    &quot;elevation&quot;: 87.3,
-    &quot;land_cover&quot;: &quot;urban&quot;,
-    &quot;date_surveyed&quot;: &quot;2023-06-15&quot;,
-}
-print(&quot;Survey point data:&quot;, survey_point)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dictionary for a geographic survey point</span>
+<span class="n">survey_point</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;point_id&quot;</span><span class="p">:</span> <span class="s2">&quot;SP001&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">40.7589</span><span class="p">,</span>
+    <span class="s2">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">73.9851</span><span class="p">,</span>
+    <span class="s2">&quot;elevation&quot;</span><span class="p">:</span> <span class="mf">87.3</span><span class="p">,</span>
+    <span class="s2">&quot;land_cover&quot;</span><span class="p">:</span> <span class="s2">&quot;urban&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;date_surveyed&quot;</span><span class="p">:</span> <span class="s2">&quot;2023-06-15&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Survey point data:&quot;</span><span class="p">,</span> <span class="n">survey_point</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -862,14 +862,14 @@ print(&quot;Survey point data:&quot;, survey_point)
 <h3><span class="section-number">9.6.2. </span>Accessing Dictionary Values<a class="headerlink" href="#accessing-dictionary-values" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Access specific information about Tokyo
-city_name = tokyo_info[&quot;name&quot;]
-city_population = tokyo_info[&quot;population&quot;]
-city_coords = tokyo_info[&quot;coordinates&quot;]
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access specific information about Tokyo</span>
+<span class="n">city_name</span> <span class="o">=</span> <span class="n">tokyo_info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+<span class="n">city_population</span> <span class="o">=</span> <span class="n">tokyo_info</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">]</span>
+<span class="n">city_coords</span> <span class="o">=</span> <span class="n">tokyo_info</span><span class="p">[</span><span class="s2">&quot;coordinates&quot;</span><span class="p">]</span>
 
-print(f&quot;City: {city_name}&quot;)
-print(f&quot;Population: {city_population:,}&quot;)
-print(f&quot;Coordinates: {city_coords}&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;City: </span><span class="si">{</span><span class="n">city_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Population: </span><span class="si">{</span><span class="n">city_population</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Coordinates: </span><span class="si">{</span><span class="n">city_coords</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -879,12 +879,12 @@ print(f&quot;Coordinates: {city_coords}&quot;)
 <h3><span class="section-number">9.6.3. </span>Safe Access with get()<a class="headerlink" href="#safe-access-with-get" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Safe access to dictionary values
-area = tokyo_info.get(&quot;area_km2&quot;, &quot;Not specified&quot;)
-timezone = tokyo_info.get(&quot;timezone&quot;, &quot;Unknown&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Safe access to dictionary values</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">tokyo_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;area_km2&quot;</span><span class="p">,</span> <span class="s2">&quot;Not specified&quot;</span><span class="p">)</span>
+<span class="n">timezone</span> <span class="o">=</span> <span class="n">tokyo_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;timezone&quot;</span><span class="p">,</span> <span class="s2">&quot;Unknown&quot;</span><span class="p">)</span>
 
-print(f&quot;Area: {area}&quot;)
-print(f&quot;Timezone: {timezone}&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Area: </span><span class="si">{</span><span class="n">area</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Timezone: </span><span class="si">{</span><span class="n">timezone</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -894,12 +894,12 @@ print(f&quot;Timezone: {timezone}&quot;)
 <h3><span class="section-number">9.6.4. </span>Adding and Updating Values<a class="headerlink" href="#adding-and-updating-values" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Add new information to our Tokyo dictionary
-tokyo_info[&quot;area_km2&quot;] = 2191
-tokyo_info[&quot;timezone&quot;] = &quot;JST&quot;
-tokyo_info[&quot;population&quot;] = 14000000  # Update population
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add new information to our Tokyo dictionary</span>
+<span class="n">tokyo_info</span><span class="p">[</span><span class="s2">&quot;area_km2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2191</span>
+<span class="n">tokyo_info</span><span class="p">[</span><span class="s2">&quot;timezone&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;JST&quot;</span>
+<span class="n">tokyo_info</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14000000</span>  <span class="c1"># Update population</span>
 
-print(&quot;Updated Tokyo info:&quot;, tokyo_info)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Updated Tokyo info:&quot;</span><span class="p">,</span> <span class="n">tokyo_info</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -909,29 +909,29 @@ print(&quot;Updated Tokyo info:&quot;, tokyo_info)
 <h3><span class="section-number">9.6.5. </span>Working with Geographic Feature Collections<a class="headerlink" href="#working-with-geographic-feature-collections" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Collection of world capitals
-world_capitals = {
-    &quot;Japan&quot;: {
-        &quot;capital&quot;: &quot;Tokyo&quot;,
-        &quot;coordinates&quot;: (35.6895, 139.6917),
-        &quot;population&quot;: 13929286,
-    },
-    &quot;France&quot;: {
-        &quot;capital&quot;: &quot;Paris&quot;,
-        &quot;coordinates&quot;: (48.8566, 2.3522),
-        &quot;population&quot;: 2161000,
-    },
-    &quot;UK&quot;: {
-        &quot;capital&quot;: &quot;London&quot;,
-        &quot;coordinates&quot;: (51.5074, -0.1278),
-        &quot;population&quot;: 8982000,
-    },
-}
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Collection of world capitals</span>
+<span class="n">world_capitals</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Japan&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;capital&quot;</span><span class="p">:</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">),</span>
+        <span class="s2">&quot;population&quot;</span><span class="p">:</span> <span class="mi">13929286</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;France&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;capital&quot;</span><span class="p">:</span> <span class="s2">&quot;Paris&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">48.8566</span><span class="p">,</span> <span class="mf">2.3522</span><span class="p">),</span>
+        <span class="s2">&quot;population&quot;</span><span class="p">:</span> <span class="mi">2161000</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;UK&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;capital&quot;</span><span class="p">:</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mf">51.5074</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">),</span>
+        <span class="s2">&quot;population&quot;</span><span class="p">:</span> <span class="mi">8982000</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
 
-# Access information about France&#39;s capital
-france_info = world_capitals[&quot;France&quot;]
-print(f&quot;France&#39;s capital: {france_info[&#39;capital&#39;]}&quot;)
-print(f&quot;Population: {france_info[&#39;population&#39;]:,}&quot;)
+<span class="c1"># Access information about France&#39;s capital</span>
+<span class="n">france_info</span> <span class="o">=</span> <span class="n">world_capitals</span><span class="p">[</span><span class="s2">&quot;France&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;France&#39;s capital: </span><span class="si">{</span><span class="n">france_info</span><span class="p">[</span><span class="s1">&#39;capital&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Population: </span><span class="si">{</span><span class="n">france_info</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -941,17 +941,17 @@ print(f&quot;Population: {france_info[&#39;population&#39;]:,}&quot;)
 <h3><span class="section-number">9.6.6. </span>Dictionary Methods for Data Exploration<a class="headerlink" href="#dictionary-methods-for-data-exploration" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Explore the structure of our Tokyo dictionary
-print(&quot;Keys in tokyo_info:&quot;, list(tokyo_info.keys()))
-print(&quot;Values in tokyo_info:&quot;, list(tokyo_info.values()))
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explore the structure of our Tokyo dictionary</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Keys in tokyo_info:&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">tokyo_info</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Values in tokyo_info:&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">tokyo_info</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
 
-# Check if a key exists
-if &quot;coordinates&quot; in tokyo_info:
-    print(&quot;Coordinate information is available&quot;)
+<span class="c1"># Check if a key exists</span>
+<span class="k">if</span> <span class="s2">&quot;coordinates&quot;</span> <span class="ow">in</span> <span class="n">tokyo_info</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Coordinate information is available&quot;</span><span class="p">)</span>
 
-# Get all countries in our capitals dictionary
-countries = list(world_capitals.keys())
-print(&quot;Countries in our database:&quot;, countries)
+<span class="c1"># Get all countries in our capitals dictionary</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">world_capitals</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Countries in our database:&quot;</span><span class="p">,</span> <span class="n">countries</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -961,23 +961,23 @@ print(&quot;Countries in our database:&quot;, countries)
 <h3><span class="section-number">9.6.7. </span>Practical Example: GPS Waypoint Management<a class="headerlink" href="#practical-example-gps-waypoint-management" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># GPS waypoint with comprehensive metadata
-waypoint = {
-    &quot;id&quot;: &quot;WP001&quot;,
-    &quot;name&quot;: &quot;Trail Start&quot;,
-    &quot;latitude&quot;: 45.3311,
-    &quot;longitude&quot;: -121.7113,
-    &quot;elevation&quot;: 1200,
-    &quot;description&quot;: &quot;Beginning of Pacific Crest Trail section&quot;,
-    &quot;waypoint_type&quot;: &quot;trailhead&quot;,
-    &quot;facilities&quot;: [&quot;parking&quot;, &quot;restrooms&quot;, &quot;water&quot;],
-    &quot;difficulty&quot;: &quot;easy&quot;,
-}
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># GPS waypoint with comprehensive metadata</span>
+<span class="n">waypoint</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;WP001&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Trail Start&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">45.3311</span><span class="p">,</span>
+    <span class="s2">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">121.7113</span><span class="p">,</span>
+    <span class="s2">&quot;elevation&quot;</span><span class="p">:</span> <span class="mi">1200</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Beginning of Pacific Crest Trail section&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;waypoint_type&quot;</span><span class="p">:</span> <span class="s2">&quot;trailhead&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;facilities&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;parking&quot;</span><span class="p">,</span> <span class="s2">&quot;restrooms&quot;</span><span class="p">,</span> <span class="s2">&quot;water&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;difficulty&quot;</span><span class="p">:</span> <span class="s2">&quot;easy&quot;</span><span class="p">,</span>
+<span class="p">}</span>
 
-print(f&quot;Waypoint: {waypoint[&#39;name&#39;]}&quot;)
-print(f&quot;Location: {waypoint[&#39;latitude&#39;]}, {waypoint[&#39;longitude&#39;]}&quot;)
-print(f&quot;Elevation: {waypoint[&#39;elevation&#39;]} meters&quot;)
-print(f&quot;Available facilities: {&#39;, &#39;.join(waypoint[&#39;facilities&#39;])}&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Waypoint: </span><span class="si">{</span><span class="n">waypoint</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Location: </span><span class="si">{</span><span class="n">waypoint</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">waypoint</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elevation: </span><span class="si">{</span><span class="n">waypoint</span><span class="p">[</span><span class="s1">&#39;elevation&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Available facilities: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">waypoint</span><span class="p">[</span><span class="s1">&#39;facilities&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

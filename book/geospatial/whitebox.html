@@ -588,23 +588,23 @@ document.write(`
 <h2><span class="section-number">21.5. </span>Installing Whitebox<a class="headerlink" href="#installing-whitebox" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># %pip install whitebox &quot;pygis[lidar]&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install whitebox &quot;pygis[lidar]&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import os
-import leafmap
-import numpy as np
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">leafmap</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>os.environ[&quot;NODATA&quot;] = &quot;-32768&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;NODATA&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;-32768&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -616,11 +616,11 @@ import numpy as np
 <h3><span class="section-number">21.6.1. </span>Create Interactive Maps<a class="headerlink" href="#create-interactive-maps" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-m.add_basemap(&quot;OpenTopoMap&quot;)
-m.add_basemap(&quot;USGS 3DEP Elevation&quot;)
-m.add_basemap(&quot;USGS Hydrography&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;USGS 3DEP Elevation&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;USGS Hydrography&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -630,28 +630,28 @@ m
 <h3><span class="section-number">21.6.2. </span>Download Watershed Data<a class="headerlink" href="#download-watershed-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>lat = 44.361169
-lon = -122.821802
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="mf">44.361169</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">122.821802</span>
 
-m = leafmap.Map(center=[lat, lon], zoom=10)
-m.add_marker([lat, lon])
-m
+<span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_marker</span><span class="p">([</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">])</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geometry = {&quot;x&quot;: lon, &quot;y&quot;: lat}
-gdf = leafmap.get_wbd(geometry, digit=10, return_geometry=True)
-gdf.explore()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geometry</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">lon</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">lat</span><span class="p">}</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">get_wbd</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">digit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">return_geometry</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">explore</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdf.to_file(&quot;basin.geojson&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;basin.geojson&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -661,23 +661,23 @@ gdf.explore()
 <h3><span class="section-number">21.6.3. </span>Download and Display DEM<a class="headerlink" href="#download-and-display-dem" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>array = leafmap.get_3dep_dem(
-    gdf,
-    resolution=30,
-    output=&quot;dem.tif&quot;,
-    dst_crs=&quot;EPSG:3857&quot;,
-    to_cog=True,
-    overwrite=True,
-)
-array
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">get_3dep_dem</span><span class="p">(</span>
+    <span class="n">gdf</span><span class="p">,</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">output</span><span class="o">=</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">,</span>
+    <span class="n">dst_crs</span><span class="o">=</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">,</span>
+    <span class="n">to_cog</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">array</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.add_raster(&quot;dem.tif&quot;, palette=&quot;terrain&quot;, nodata=np.nan, layer_name=&quot;DEM&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;DEM&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -687,8 +687,8 @@ m
 <h3><span class="section-number">21.6.4. </span>Get DEM metadata<a class="headerlink" href="#get-dem-metadata" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>metadata = leafmap.image_metadata(&quot;dem.tif&quot;)
-metadata
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">image_metadata</span><span class="p">(</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">)</span>
+<span class="n">metadata</span>
 </pre></div>
 </div>
 </div>
@@ -698,15 +698,15 @@ metadata
 <h3><span class="section-number">21.6.5. </span>Add colorbar<a class="headerlink" href="#add-colorbar" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.image_min_max(&quot;dem.tif&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">image_min_max</span><span class="p">(</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.add_colormap(cmap=&quot;terrain&quot;, vmin=&quot;60&quot;, vmax=1500, label=&quot;Elevation (m)&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_colormap</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="s2">&quot;60&quot;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Elevation (m)&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -716,21 +716,21 @@ m
 <h3><span class="section-number">21.6.6. </span>Initialize WhiteboxTools<a class="headerlink" href="#initialize-whiteboxtools" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt = leafmap.WhiteboxTools()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">WhiteboxTools</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.version()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.whiteboxgui()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">whiteboxgui</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -743,8 +743,8 @@ m
 <h3><span class="section-number">21.6.8. </span>Set working directory<a class="headerlink" href="#set-working-directory" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.set_working_dir(os.getcwd())
-wbt.verbose = False
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">set_working_dir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+<span class="n">wbt</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
 </div>
 </div>
@@ -754,19 +754,19 @@ wbt.verbose = False
 <h3><span class="section-number">21.6.9. </span>Smooth DEM<a class="headerlink" href="#smooth-dem" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.feature_preserving_smoothing(&quot;dem.tif&quot;, &quot;smoothed.tif&quot;, filter=9)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">feature_preserving_smoothing</span><span class="p">(</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-m.add_basemap(&quot;Satellite&quot;)
-m.add_raster(&quot;smoothed.tif&quot;, colormap=&quot;terrain&quot;, layer_name=&quot;Smoothed DEM&quot;)
-m.add_geojson(&quot;basin.geojson&quot;, layer_name=&quot;Watershed&quot;, info_mode=None)
-m.add_basemap(&quot;USGS Hydrography&quot;, show=False)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Satellite&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Smoothed DEM&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span><span class="s2">&quot;basin.geojson&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Watershed&quot;</span><span class="p">,</span> <span class="n">info_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;USGS Hydrography&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -776,15 +776,15 @@ m
 <h3><span class="section-number">21.6.10. </span>Create hillshade<a class="headerlink" href="#create-hillshade" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.hillshade(&quot;smoothed.tif&quot;, &quot;hillshade.tif&quot;, azimuth=315, altitude=35)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">hillshade</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;hillshade.tif&quot;</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">315</span><span class="p">,</span> <span class="n">altitude</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.add_raster(&quot;hillshade.tif&quot;, layer_name=&quot;Hillshade&quot;)
-m.layers[-1].opacity = 0.6
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;hillshade.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Hillshade&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">opacity</span> <span class="o">=</span> <span class="mf">0.6</span>
 </pre></div>
 </div>
 </div>
@@ -794,14 +794,14 @@ m.layers[-1].opacity = 0.6
 <h3><span class="section-number">21.6.11. </span>Find no-flow cells<a class="headerlink" href="#find-no-flow-cells" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.find_no_flow_cells(&quot;smoothed.tif&quot;, &quot;noflow.tif&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">find_no_flow_cells</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;noflow.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.add_raster(&quot;noflow.tif&quot;, layer_name=&quot;No Flow Cells&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;noflow.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;No Flow Cells&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -811,30 +811,30 @@ m.layers[-1].opacity = 0.6
 <h3><span class="section-number">21.6.12. </span>Fill depressions<a class="headerlink" href="#fill-depressions" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.fill_depressions(&quot;smoothed.tif&quot;, &quot;filled.tif&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">fill_depressions</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;filled.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.breach_depressions(&quot;smoothed.tif&quot;, &quot;breached.tif&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">breach_depressions</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;breached.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.find_no_flow_cells(&quot;breached.tif&quot;, &quot;noflow2.tif&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">find_no_flow_cells</span><span class="p">(</span><span class="s2">&quot;breached.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;noflow2.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.layers[-1].visible = False
-m.add_raster(&quot;noflow2.tif&quot;, layer_name=&quot;No Flow Cells after Breaching&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;noflow2.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;No Flow Cells after Breaching&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -844,7 +844,7 @@ m
 <h3><span class="section-number">21.6.13. </span>Delineate flow direction<a class="headerlink" href="#delineate-flow-direction" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.d8_pointer(&quot;breached.tif&quot;, &quot;flow_direction.tif&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">d8_pointer</span><span class="p">(</span><span class="s2">&quot;breached.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -854,14 +854,14 @@ m
 <h3><span class="section-number">21.6.14. </span>Calculate flow accumulation<a class="headerlink" href="#calculate-flow-accumulation" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.d8_flow_accumulation(&quot;breached.tif&quot;, &quot;flow_accum.tif&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">d8_flow_accumulation</span><span class="p">(</span><span class="s2">&quot;breached.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;flow_accum.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.add_raster(&quot;flow_accum.tif&quot;, layer_name=&quot;Flow Accumulation&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;flow_accum.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Flow Accumulation&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -871,16 +871,16 @@ m
 <h3><span class="section-number">21.6.15. </span>Extract streams<a class="headerlink" href="#extract-streams" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.extract_streams(&quot;flow_accum.tif&quot;, &quot;streams.tif&quot;, threshold=5000)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">extract_streams</span><span class="p">(</span><span class="s2">&quot;flow_accum.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;streams.tif&quot;</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.layers[-1].visible = False
-m.add_raster(&quot;streams.tif&quot;, layer_name=&quot;Streams&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;streams.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Streams&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -890,16 +890,16 @@ m
 <h3><span class="section-number">21.6.16. </span>Calculate distance to outlet<a class="headerlink" href="#calculate-distance-to-outlet" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.distance_to_outlet(
-    &quot;flow_direction.tif&quot;, streams=&quot;streams.tif&quot;, output=&quot;distance_to_outlet.tif&quot;
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">distance_to_outlet</span><span class="p">(</span>
+    <span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">,</span> <span class="n">streams</span><span class="o">=</span><span class="s2">&quot;streams.tif&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;distance_to_outlet.tif&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.add_raster(&quot;distance_to_outlet.tif&quot;, layer_name=&quot;Distance to Outlet&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;distance_to_outlet.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Distance to Outlet&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -909,29 +909,29 @@ m
 <h3><span class="section-number">21.6.17. </span>Vectorize streams<a class="headerlink" href="#vectorize-streams" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.raster_streams_to_vector(
-    &quot;streams.tif&quot;, d8_pntr=&quot;flow_direction.tif&quot;, output=&quot;streams.shp&quot;
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">raster_streams_to_vector</span><span class="p">(</span>
+    <span class="s2">&quot;streams.tif&quot;</span><span class="p">,</span> <span class="n">d8_pntr</span><span class="o">=</span><span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;streams.shp&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.vector_set_crs(source=&quot;streams.shp&quot;, output=&quot;streams.shp&quot;, crs=&quot;EPSG:3857&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">vector_set_crs</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;streams.shp&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;streams.shp&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.add_shp(
-    &quot;streams.shp&quot;,
-    layer_name=&quot;Streams Vector&quot;,
-    style={&quot;color&quot;: &quot;#ff0000&quot;, &quot;weight&quot;: 3},
-    info_mode=None,
-)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_shp</span><span class="p">(</span>
+    <span class="s2">&quot;streams.shp&quot;</span><span class="p">,</span>
+    <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Streams Vector&quot;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ff0000&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="n">info_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -941,37 +941,37 @@ m
 <h3><span class="section-number">21.6.18. </span>Delineate the longest flow path<a class="headerlink" href="#delineate-the-longest-flow-path" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.basins(&quot;flow_direction.tif&quot;, &quot;basins.tif&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">basins</span><span class="p">(</span><span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;basins.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.longest_flowpath(
-    dem=&quot;breached.tif&quot;, basins=&quot;basins.tif&quot;, output=&quot;longest_flowpath.shp&quot;
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">longest_flowpath</span><span class="p">(</span>
+    <span class="n">dem</span><span class="o">=</span><span class="s2">&quot;breached.tif&quot;</span><span class="p">,</span> <span class="n">basins</span><span class="o">=</span><span class="s2">&quot;basins.tif&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;longest_flowpath.shp&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.select_largest(
-    &quot;longest_flowpath.shp&quot;, column=&quot;LENGTH&quot;, output=&quot;longest_flowpath.shp&quot;
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">select_largest</span><span class="p">(</span>
+    <span class="s2">&quot;longest_flowpath.shp&quot;</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;LENGTH&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;longest_flowpath.shp&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.add_shp(
-    &quot;longest_flowpath.shp&quot;,
-    layer_name=&quot;Longest Flowpath&quot;,
-    style={&quot;color&quot;: &quot;#ff0000&quot;, &quot;weight&quot;: 3},
-)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_shp</span><span class="p">(</span>
+    <span class="s2">&quot;longest_flowpath.shp&quot;</span><span class="p">,</span>
+    <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Longest Flowpath&quot;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ff0000&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -981,13 +981,13 @@ m
 <h3><span class="section-number">21.6.19. </span>Generate a pour point<a class="headerlink" href="#generate-a-pour-point" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if m.user_roi is not None:
-    m.save_draw_features(&quot;pour_point.shp&quot;, crs=&quot;EPSG:3857&quot;)
-else:
-    lat = 44.284642
-    lon = -122.611217
-    leafmap.coords_to_vector([lon, lat], output=&quot;pour_point.shp&quot;, crs=&quot;EPSG:3857&quot;)
-    m.add_marker([lat, lon])
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">user_roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">save_draw_features</span><span class="p">(</span><span class="s2">&quot;pour_point.shp&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="mf">44.284642</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">122.611217</span>
+    <span class="n">leafmap</span><span class="o">.</span><span class="n">coords_to_vector</span><span class="p">([</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">],</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;pour_point.shp&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">add_marker</span><span class="p">([</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -997,16 +997,16 @@ else:
 <h3><span class="section-number">21.6.20. </span>Snap pour point to stream<a class="headerlink" href="#snap-pour-point-to-stream" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.snap_pour_points(
-    &quot;pour_point.shp&quot;, &quot;flow_accum.tif&quot;, &quot;pour_point_snapped.shp&quot;, snap_dist=300
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">snap_pour_points</span><span class="p">(</span>
+    <span class="s2">&quot;pour_point.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;flow_accum.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;pour_point_snapped.shp&quot;</span><span class="p">,</span> <span class="n">snap_dist</span><span class="o">=</span><span class="mi">300</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.add_shp(&quot;pour_point_snapped.shp&quot;, layer_name=&quot;Pour Point&quot;, info_mode=False)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_shp</span><span class="p">(</span><span class="s2">&quot;pour_point_snapped.shp&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Pour Point&quot;</span><span class="p">,</span> <span class="n">info_mode</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1016,15 +1016,15 @@ else:
 <h3><span class="section-number">21.6.21. </span>Delineate watershed<a class="headerlink" href="#delineate-watershed" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.watershed(&quot;flow_direction.tif&quot;, &quot;pour_point_snapped.shp&quot;, &quot;watershed.tif&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">watershed</span><span class="p">(</span><span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;pour_point_snapped.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;watershed.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.add_raster(&quot;watershed.tif&quot;, layer_name=&quot;Watershed&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;watershed.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Watershed&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1034,20 +1034,20 @@ m
 <h3><span class="section-number">21.6.22. </span>Convert watershed raster to vector<a class="headerlink" href="#convert-watershed-raster-to-vector" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.raster_to_vector_polygons(&quot;watershed.tif&quot;, &quot;watershed.shp&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">raster_to_vector_polygons</span><span class="p">(</span><span class="s2">&quot;watershed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;watershed.shp&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.layers[-1].visible = False
-m.add_shp(
-    &quot;watershed.shp&quot;,
-    layer_name=&quot;Watershed Vector&quot;,
-    style={&quot;color&quot;: &quot;#ffff00&quot;, &quot;weight&quot;: 3},
-    info_mode=False,
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_shp</span><span class="p">(</span>
+    <span class="s2">&quot;watershed.shp&quot;</span><span class="p">,</span>
+    <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Watershed Vector&quot;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ffff00&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="n">info_mode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1060,9 +1060,9 @@ m.add_shp(
 <h3><span class="section-number">21.7.1. </span>Set up whitebox<a class="headerlink" href="#set-up-whitebox" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt = leafmap.WhiteboxTools()
-wbt.set_working_dir(os.getcwd())
-wbt.verbose = False
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">WhiteboxTools</span><span class="p">()</span>
+<span class="n">wbt</span><span class="o">.</span><span class="n">set_working_dir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+<span class="n">wbt</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
 </div>
 </div>
@@ -1072,9 +1072,9 @@ wbt.verbose = False
 <h3><span class="section-number">21.7.2. </span>Download a sample dataset<a class="headerlink" href="#download-a-sample-dataset" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://github.com/opengeos/datasets/releases/download/lidar/madison.zip&quot;
-filename = &quot;madison.las&quot;
-leafmap.download_file(url, &quot;madison.zip&quot;, quiet=True)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/lidar/madison.zip&quot;</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;madison.las&quot;</span>
+<span class="n">leafmap</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;madison.zip&quot;</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1084,15 +1084,15 @@ leafmap.download_file(url, &quot;madison.zip&quot;, quiet=True)
 <h3><span class="section-number">21.7.3. </span>Read LAS/LAZ data<a class="headerlink" href="#read-las-laz-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>laz = leafmap.read_lidar(filename)
-laz
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">laz</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">read_lidar</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="n">laz</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>str(laz.header.version)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="n">laz</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1102,8 +1102,8 @@ laz
 <h3><span class="section-number">21.7.4. </span>Upgrade file version<a class="headerlink" href="#upgrade-file-version" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>las = leafmap.convert_lidar(laz, file_version=&quot;1.4&quot;)
-str(las.header.version)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">las</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">convert_lidar</span><span class="p">(</span><span class="n">laz</span><span class="p">,</span> <span class="n">file_version</span><span class="o">=</span><span class="s2">&quot;1.4&quot;</span><span class="p">)</span>
+<span class="nb">str</span><span class="p">(</span><span class="n">las</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1113,7 +1113,7 @@ str(las.header.version)
 <h3><span class="section-number">21.7.5. </span>Write LAS data<a class="headerlink" href="#write-las-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.write_lidar(las, &quot;madison.las&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">write_lidar</span><span class="p">(</span><span class="n">las</span><span class="p">,</span> <span class="s2">&quot;madison.las&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1123,7 +1123,7 @@ str(las.header.version)
 <h3><span class="section-number">21.7.6. </span>Histogram analysis<a class="headerlink" href="#histogram-analysis" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.lidar_histogram(&quot;madison.las&quot;, &quot;histogram.html&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">lidar_histogram</span><span class="p">(</span><span class="s2">&quot;madison.las&quot;</span><span class="p">,</span> <span class="s2">&quot;histogram.html&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1133,7 +1133,7 @@ str(las.header.version)
 <h3><span class="section-number">21.7.7. </span>Visualize LiDAR data<a class="headerlink" href="#visualize-lidar-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.view_lidar(&quot;madison.las&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">view_lidar</span><span class="p">(</span><span class="s2">&quot;madison.las&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1143,7 +1143,7 @@ str(las.header.version)
 <h3><span class="section-number">21.7.8. </span>Remove outliers<a class="headerlink" href="#remove-outliers" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.lidar_elevation_slice(&quot;madison.las&quot;, &quot;madison_rm.las&quot;, minz=0, maxz=450)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">lidar_elevation_slice</span><span class="p">(</span><span class="s2">&quot;madison.las&quot;</span><span class="p">,</span> <span class="s2">&quot;madison_rm.las&quot;</span><span class="p">,</span> <span class="n">minz</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxz</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1153,7 +1153,7 @@ str(las.header.version)
 <h3><span class="section-number">21.7.9. </span>Visualize LiDAR data after removing outliers<a class="headerlink" href="#visualize-lidar-data-after-removing-outliers" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.view_lidar(&quot;madison_rm.las&quot;, cmap=&quot;terrain&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">view_lidar</span><span class="p">(</span><span class="s2">&quot;madison_rm.las&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1163,16 +1163,16 @@ str(las.header.version)
 <h3><span class="section-number">21.7.10. </span>Create DSM<a class="headerlink" href="#create-dsm" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.lidar_digital_surface_model(
-    &quot;madison_rm.las&quot;, &quot;dsm.tif&quot;, resolution=1.0, minz=0, maxz=450
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">lidar_digital_surface_model</span><span class="p">(</span>
+    <span class="s2">&quot;madison_rm.las&quot;</span><span class="p">,</span> <span class="s2">&quot;dsm.tif&quot;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">minz</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxz</span><span class="o">=</span><span class="mi">450</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.add_crs(&quot;dsm.tif&quot;, epsg=2255)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">add_crs</span><span class="p">(</span><span class="s2">&quot;dsm.tif&quot;</span><span class="p">,</span> <span class="n">epsg</span><span class="o">=</span><span class="mi">2255</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1182,10 +1182,10 @@ str(las.header.version)
 <h3><span class="section-number">21.7.11. </span>Visualize DSM<a class="headerlink" href="#visualize-dsm" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
-m.add_basemap(&quot;Satellite&quot;)
-m.add_raster(&quot;dsm.tif&quot;, colormap=&quot;terrain&quot;, layer_name=&quot;DSM&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Satellite&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;dsm.tif&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;DSM&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1195,7 +1195,7 @@ m
 <h3><span class="section-number">21.7.12. </span>Create DEM<a class="headerlink" href="#create-dem" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wbt.remove_off_terrain_objects(&quot;dsm.tif&quot;, &quot;dem.tif&quot;, filter=25, slope=15.0)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">remove_off_terrain_objects</span><span class="p">(</span><span class="s2">&quot;dsm.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;dem.tif&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="mf">15.0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1205,8 +1205,8 @@ m
 <h3><span class="section-number">21.7.13. </span>Visualize DEM<a class="headerlink" href="#visualize-dem" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.add_raster(&quot;dem.tif&quot;, palette=&quot;terrain&quot;, layer_name=&quot;DEM&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;DEM&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1216,16 +1216,16 @@ m
 <h3><span class="section-number">21.7.14. </span>Create CHM<a class="headerlink" href="#create-chm" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>chm = wbt.subtract(&quot;dsm.tif&quot;, &quot;dem.tif&quot;, &quot;chm.tif&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">chm</span> <span class="o">=</span> <span class="n">wbt</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="s2">&quot;dsm.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;dem.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;chm.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.add_raster(&quot;chm.tif&quot;, palette=&quot;gist_earth&quot;, layer_name=&quot;CHM&quot;)
-m.add_layer_manager()
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;chm.tif&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;gist_earth&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;CHM&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer_manager</span><span class="p">()</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>

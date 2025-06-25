@@ -529,20 +529,20 @@ document.write(`
 <h2><span class="section-number">13.3. </span>Creating a Sample File<a class="headerlink" href="#creating-a-sample-file" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sample_data = &quot;&quot;&quot;35.6895,139.6917
-34.0522,-118.2437
-51.5074,-0.1278
--33.8688,151.2093
-48.8566,2.3522&quot;&quot;&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sample_data</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;35.6895,139.6917</span>
+<span class="s2">34.0522,-118.2437</span>
+<span class="s2">51.5074,-0.1278</span>
+<span class="s2">-33.8688,151.2093</span>
+<span class="s2">48.8566,2.3522&quot;&quot;&quot;</span>
 
-output_file = &quot;coordinates.txt&quot;
+<span class="n">output_file</span> <span class="o">=</span> <span class="s2">&quot;coordinates.txt&quot;</span>
 
-try:
-    with open(output_file, &quot;w&quot;) as file:
-        file.write(sample_data)
-    print(f&quot;Sample file &#39;{output_file}&#39; has been created successfully.&quot;)
-except Exception as e:
-    print(f&quot;An error occurred while creating the file: {e}&quot;)
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sample_data</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample file &#39;</span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&#39; has been created successfully.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred while creating the file: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -552,35 +552,35 @@ except Exception as e:
 <h2><span class="section-number">13.4. </span>Reading and Writing Files<a class="headerlink" href="#reading-and-writing-files" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Example of reading coordinates from a file and writing to another file
-input_file = &quot;coordinates.txt&quot;
-output_file = &quot;output_coordinates.txt&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example of reading coordinates from a file and writing to another file</span>
+<span class="n">input_file</span> <span class="o">=</span> <span class="s2">&quot;coordinates.txt&quot;</span>
+<span class="n">output_file</span> <span class="o">=</span> <span class="s2">&quot;output_coordinates.txt&quot;</span>
 
-try:
-    # Step 1: Read the coordinate data from our input file
-    with open(input_file, &quot;r&quot;) as infile:
-        # readlines() returns a list where each element is a line from the file
-        # Each line still includes the newline character (\n) at the end
-        coordinates = infile.readlines()
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Step 1: Read the coordinate data from our input file</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
+        <span class="c1"># readlines() returns a list where each element is a line from the file</span>
+        <span class="c1"># Each line still includes the newline character (\n) at the end</span>
+        <span class="n">coordinates</span> <span class="o">=</span> <span class="n">infile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 
-    # Step 2: Process the data and write it to a new file with better formatting
-    with open(output_file, &quot;w&quot;) as outfile:
-        for line in coordinates:
-            # strip() removes whitespace (including \n) from both ends of the string
-            # split(&quot;,&quot;) breaks the line into parts wherever it finds a comma
-            lat, lon = line.strip().split(&quot;,&quot;)
+    <span class="c1"># Step 2: Process the data and write it to a new file with better formatting</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">coordinates</span><span class="p">:</span>
+            <span class="c1"># strip() removes whitespace (including \n) from both ends of the string</span>
+            <span class="c1"># split(&quot;,&quot;) breaks the line into parts wherever it finds a comma</span>
+            <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 
-            # Write the formatted data to our output file
-            # The \n adds a newline character so each coordinate is on its own line
-            outfile.write(f&quot;Latitude: {lat}, Longitude: {lon}\n&quot;)
+            <span class="c1"># Write the formatted data to our output file</span>
+            <span class="c1"># The \n adds a newline character so each coordinate is on its own line</span>
+            <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Latitude: </span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">, Longitude: </span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    print(f&quot;Coordinates have been written to {output_file}&quot;)
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Coordinates have been written to </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-except FileNotFoundError:
-    print(f&quot;Error: The file {input_file} was not found.&quot;)
-    print(
-        &quot;Make sure you ran the previous code cell to create the coordinates.txt file.&quot;
-    )
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: The file </span><span class="si">{</span><span class="n">input_file</span><span class="si">}</span><span class="s2"> was not found.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">&quot;Make sure you ran the previous code cell to create the coordinates.txt file.&quot;</span>
+    <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -590,51 +590,51 @@ except FileNotFoundError:
 <h2><span class="section-number">13.5. </span>Exception Handling<a class="headerlink" href="#exception-handling" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Example of exception handling when parsing coordinates
-def parse_coordinates(line):
-    &quot;&quot;&quot;
-    Parse a line of text into latitude and longitude coordinates.
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example of exception handling when parsing coordinates</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_coordinates</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parse a line of text into latitude and longitude coordinates.</span>
 
-    Args:
-        line (str): A string containing coordinates in the format &quot;lat,lon&quot;
+<span class="sd">    Args:</span>
+<span class="sd">        line (str): A string containing coordinates in the format &quot;lat,lon&quot;</span>
 
-    Returns:
-        tuple: (latitude, longitude) as floats, or None if parsing fails
-    &quot;&quot;&quot;
-    try:
-        # Attempt to split the line and convert to numbers
-        lat, lon = line.strip().split(&quot;,&quot;)
-        lat = float(lat)  # This might raise ValueError if lat isn&#39;t a valid number
-        lon = float(lon)  # This might raise ValueError if lon isn&#39;t a valid number
-        return lat, lon
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: (latitude, longitude) as floats, or None if parsing fails</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Attempt to split the line and convert to numbers</span>
+        <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+        <span class="n">lat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>  <span class="c1"># This might raise ValueError if lat isn&#39;t a valid number</span>
+        <span class="n">lon</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span>  <span class="c1"># This might raise ValueError if lon isn&#39;t a valid number</span>
+        <span class="k">return</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span>
 
-    except ValueError as e:
-        # This happens when we can&#39;t convert to float or split doesn&#39;t work as expected
-        print(f&quot;Data format error: {e}. Could not parse line: &#39;{line.strip()}&#39;&quot;)
-        return None
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="c1"># This happens when we can&#39;t convert to float or split doesn&#39;t work as expected</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data format error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">. Could not parse line: &#39;</span><span class="si">{</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
 
-    except Exception as e:
-        # This catches any other unexpected errors
-        print(f&quot;An unexpected error occurred: {e}&quot;)
-        return None
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="c1"># This catches any other unexpected errors</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An unexpected error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
 
 
-# Test with both valid and invalid data
-test_lines = [
-    &quot;35.6895,139.6917&quot;,  # Valid coordinates (Tokyo)
-    &quot;invalid data&quot;,  # Invalid format
-    &quot;45.0,-119.0&quot;,  # Valid coordinates
-    &quot;45.0,not_a_number&quot;,  # Invalid longitude
-    &quot;only_one_value&quot;,  # Missing comma
-]
+<span class="c1"># Test with both valid and invalid data</span>
+<span class="n">test_lines</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;35.6895,139.6917&quot;</span><span class="p">,</span>  <span class="c1"># Valid coordinates (Tokyo)</span>
+    <span class="s2">&quot;invalid data&quot;</span><span class="p">,</span>  <span class="c1"># Invalid format</span>
+    <span class="s2">&quot;45.0,-119.0&quot;</span><span class="p">,</span>  <span class="c1"># Valid coordinates</span>
+    <span class="s2">&quot;45.0,not_a_number&quot;</span><span class="p">,</span>  <span class="c1"># Invalid longitude</span>
+    <span class="s2">&quot;only_one_value&quot;</span><span class="p">,</span>  <span class="c1"># Missing comma</span>
+<span class="p">]</span>
 
-print(&quot;Testing coordinate parsing:&quot;)
-for line in test_lines:
-    coordinates = parse_coordinates(line)
-    if coordinates:
-        print(f&quot;✓ Successfully parsed: {coordinates}&quot;)
-    else:
-        print(f&quot;✗ Failed to parse: &#39;{line}&#39;&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing coordinate parsing:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">test_lines</span><span class="p">:</span>
+    <span class="n">coordinates</span> <span class="o">=</span> <span class="n">parse_coordinates</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">coordinates</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✓ Successfully parsed: </span><span class="si">{</span><span class="n">coordinates</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✗ Failed to parse: &#39;</span><span class="si">{</span><span class="n">line</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -644,63 +644,63 @@ for line in test_lines:
 <h2><span class="section-number">13.6. </span>Combining File Handling and Exception Handling<a class="headerlink" href="#combining-file-handling-and-exception-handling" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Example of robust file handling with exceptions
-def process_geospatial_file(input_file):
-    &quot;&quot;&quot;
-    Process a file containing coordinate data, handling various potential errors.
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example of robust file handling with exceptions</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">process_geospatial_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Process a file containing coordinate data, handling various potential errors.</span>
 
-    This function demonstrates robust file processing by:
-    - Handling missing files gracefully
-    - Continuing processing even when individual lines fail
-    - Providing informative feedback about the processing results
-    &quot;&quot;&quot;
-    processed_count = 0
-    error_count = 0
+<span class="sd">    This function demonstrates robust file processing by:</span>
+<span class="sd">    - Handling missing files gracefully</span>
+<span class="sd">    - Continuing processing even when individual lines fail</span>
+<span class="sd">    - Providing informative feedback about the processing results</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">processed_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">error_count</span> <span class="o">=</span> <span class="mi">0</span>
 
-    try:
-        print(f&quot;Starting to process file: {input_file}&quot;)
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Starting to process file: </span><span class="si">{</span><span class="n">input_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        with open(input_file, &quot;r&quot;) as infile:
-            for line_number, line in enumerate(infile, 1):
-                # Skip empty lines
-                if not line.strip():
-                    continue
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line_number</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="c1"># Skip empty lines</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+                    <span class="k">continue</span>
 
-                coordinates = parse_coordinates(line)
-                if coordinates:
-                    lat, lon = coordinates
-                    print(
-                        f&quot;Line {line_number}: Processed coordinates ({lat:.4f}, {lon:.4f})&quot;
-                    )
-                    processed_count += 1
-                else:
-                    print(f&quot;Line {line_number}: Skipped due to parsing error&quot;)
-                    error_count += 1
+                <span class="n">coordinates</span> <span class="o">=</span> <span class="n">parse_coordinates</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">coordinates</span><span class="p">:</span>
+                    <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="n">coordinates</span>
+                    <span class="nb">print</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Line </span><span class="si">{</span><span class="n">line_number</span><span class="si">}</span><span class="s2">: Processed coordinates (</span><span class="si">{</span><span class="n">lat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">lon</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span>
+                    <span class="p">)</span>
+                    <span class="n">processed_count</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Line </span><span class="si">{</span><span class="n">line_number</span><span class="si">}</span><span class="s2">: Skipped due to parsing error&quot;</span><span class="p">)</span>
+                    <span class="n">error_count</span> <span class="o">+=</span> <span class="mi">1</span>
 
-    except FileNotFoundError:
-        print(f&quot;Error: The file &#39;{input_file}&#39; was not found.&quot;)
-        print(&quot;Please check the file path and make sure the file exists.&quot;)
-        return
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: The file &#39;</span><span class="si">{</span><span class="n">input_file</span><span class="si">}</span><span class="s2">&#39; was not found.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please check the file path and make sure the file exists.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
 
-    except PermissionError:
-        print(f&quot;Error: Permission denied when trying to read &#39;{input_file}&#39;.&quot;)
-        print(&quot;Please check if you have read permissions for this file.&quot;)
-        return
+    <span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: Permission denied when trying to read &#39;</span><span class="si">{</span><span class="n">input_file</span><span class="si">}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please check if you have read permissions for this file.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
 
-    except Exception as e:
-        print(f&quot;An unexpected error occurred while processing the file: {e}&quot;)
-        return
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An unexpected error occurred while processing the file: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
 
-    finally:
-        # This block always runs, whether there was an error or not
-        print(f&quot;\n--- Processing Summary ---&quot;)
-        print(f&quot;Successfully processed: {processed_count} coordinates&quot;)
-        print(f&quot;Errors encountered: {error_count} lines&quot;)
-        print(f&quot;Finished processing {input_file}&quot;)
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="c1"># This block always runs, whether there was an error or not</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Processing Summary ---&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully processed: </span><span class="si">{</span><span class="n">processed_count</span><span class="si">}</span><span class="s2"> coordinates&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Errors encountered: </span><span class="si">{</span><span class="n">error_count</span><span class="si">}</span><span class="s2"> lines&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Finished processing </span><span class="si">{</span><span class="n">input_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 
-# Example usage with our coordinates file
-process_geospatial_file(&quot;coordinates.txt&quot;)
+<span class="c1"># Example usage with our coordinates file</span>
+<span class="n">process_geospatial_file</span><span class="p">(</span><span class="s2">&quot;coordinates.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -710,78 +710,78 @@ process_geospatial_file(&quot;coordinates.txt&quot;)
 <h2><span class="section-number">13.7. </span>Working with Different File Formats<a class="headerlink" href="#working-with-different-file-formats" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a CSV-style file with city names and coordinates
-csv_data = &quot;&quot;&quot;City,Latitude,Longitude
-Tokyo,35.6895,139.6917
-Los Angeles,34.0522,-118.2437
-London,51.5074,-0.1278
-Sydney,-33.8688,151.2093
-Paris,48.8566,2.3522&quot;&quot;&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a CSV-style file with city names and coordinates</span>
+<span class="n">csv_data</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;City,Latitude,Longitude</span>
+<span class="s2">Tokyo,35.6895,139.6917</span>
+<span class="s2">Los Angeles,34.0522,-118.2437</span>
+<span class="s2">London,51.5074,-0.1278</span>
+<span class="s2">Sydney,-33.8688,151.2093</span>
+<span class="s2">Paris,48.8566,2.3522&quot;&quot;&quot;</span>
 
-csv_file = &quot;cities.csv&quot;
+<span class="n">csv_file</span> <span class="o">=</span> <span class="s2">&quot;cities.csv&quot;</span>
 
-try:
-    with open(csv_file, &quot;w&quot;) as file:
-        file.write(csv_data)
-    print(f&quot;CSV file &#39;{csv_file}&#39; created successfully.&quot;)
-except Exception as e:
-    print(f&quot;Error creating CSV file: {e}&quot;)
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">csv_data</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CSV file &#39;</span><span class="si">{</span><span class="n">csv_file</span><span class="si">}</span><span class="s2">&#39; created successfully.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error creating CSV file: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def read_city_coordinates(filename):
-    &quot;&quot;&quot;
-    Read city coordinate data from a CSV-style file.
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">read_city_coordinates</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Read city coordinate data from a CSV-style file.</span>
 
-    Returns a list of dictionaries containing city information.
-    &quot;&quot;&quot;
-    cities = []
+<span class="sd">    Returns a list of dictionaries containing city information.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cities</span> <span class="o">=</span> <span class="p">[]</span>
 
-    try:
-        with open(filename, &quot;r&quot;) as file:
-            lines = file.readlines()
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">lines</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 
-            # Skip the header line (first line)
-            for line_num, line in enumerate(lines[1:], 2):  # Start from line 2
-                try:
-                    # Parse each line
-                    parts = line.strip().split(&quot;,&quot;)
-                    if len(parts) == 3:
-                        city_name = parts[0]
-                        latitude = float(parts[1])
-                        longitude = float(parts[2])
+            <span class="c1"># Skip the header line (first line)</span>
+            <span class="k">for</span> <span class="n">line_num</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="mi">2</span><span class="p">):</span>  <span class="c1"># Start from line 2</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="c1"># Parse each line</span>
+                    <span class="n">parts</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                        <span class="n">city_name</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="n">latitude</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                        <span class="n">longitude</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 
-                        cities.append(
-                            {
-                                &quot;name&quot;: city_name,
-                                &quot;latitude&quot;: latitude,
-                                &quot;longitude&quot;: longitude,
-                            }
-                        )
+                        <span class="n">cities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                            <span class="p">{</span>
+                                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">city_name</span><span class="p">,</span>
+                                <span class="s2">&quot;latitude&quot;</span><span class="p">:</span> <span class="n">latitude</span><span class="p">,</span>
+                                <span class="s2">&quot;longitude&quot;</span><span class="p">:</span> <span class="n">longitude</span><span class="p">,</span>
+                            <span class="p">}</span>
+                        <span class="p">)</span>
 
-                except ValueError as e:
-                    print(f&quot;Warning: Could not parse line {line_num}: {line.strip()}&quot;)
-                    continue
+                <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Warning: Could not parse line </span><span class="si">{</span><span class="n">line_num</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="k">continue</span>
 
-    except FileNotFoundError:
-        print(f&quot;Error: File &#39;{filename}&#39; not found.&quot;)
-        return []
-    except Exception as e:
-        print(f&quot;Error reading file: {e}&quot;)
-        return []
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: File &#39;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&#39; not found.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error reading file: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[]</span>
 
-    return cities
+    <span class="k">return</span> <span class="n">cities</span>
 
 
-# Read and display the city data
-cities = read_city_coordinates(&quot;cities.csv&quot;)
+<span class="c1"># Read and display the city data</span>
+<span class="n">cities</span> <span class="o">=</span> <span class="n">read_city_coordinates</span><span class="p">(</span><span class="s2">&quot;cities.csv&quot;</span><span class="p">)</span>
 
-print(f&quot;Successfully loaded {len(cities)} cities:&quot;)
-for city in cities:
-    print(f&quot;- {city[&#39;name&#39;]}: ({city[&#39;latitude&#39;]:.4f}, {city[&#39;longitude&#39;]:.4f})&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully loaded </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cities</span><span class="p">)</span><span class="si">}</span><span class="s2"> cities:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">city</span> <span class="ow">in</span> <span class="n">cities</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">city</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: (</span><span class="si">{</span><span class="n">city</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">city</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -799,21 +799,21 @@ for city in cities:
 <h3><span class="section-number">13.9.2. </span>Exercise 2: Processing Coordinates from a File<a class="headerlink" href="#exercise-2-processing-coordinates-from-a-file" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a sample coordinates.txt file
-sample_data = &quot;&quot;&quot;35.6895,139.6917
-34.0522,-118.2437
-51.5074,-0.1278
--33.8688,151.2093
-48.8566,2.3522&quot;&quot;&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a sample coordinates.txt file</span>
+<span class="n">sample_data</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;35.6895,139.6917</span>
+<span class="s2">34.0522,-118.2437</span>
+<span class="s2">51.5074,-0.1278</span>
+<span class="s2">-33.8688,151.2093</span>
+<span class="s2">48.8566,2.3522&quot;&quot;&quot;</span>
 
-output_file = &quot;coordinates.txt&quot;
+<span class="n">output_file</span> <span class="o">=</span> <span class="s2">&quot;coordinates.txt&quot;</span>
 
-try:
-    with open(output_file, &quot;w&quot;) as file:
-        file.write(sample_data)
-    print(f&quot;Sample file &#39;{output_file}&#39; has been created successfully.&quot;)
-except Exception as e:
-    print(f&quot;An error occurred while creating the file: {e}&quot;)
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sample_data</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample file &#39;</span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&#39; has been created successfully.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred while creating the file: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

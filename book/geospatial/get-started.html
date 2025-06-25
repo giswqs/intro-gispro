@@ -621,16 +621,16 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 <h2><span class="section-number">15.5. </span>Verification and First Steps<a class="headerlink" href="#verification-and-first-steps" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Test core geospatial libraries
-import geopandas as gpd
-import rasterio
-import xarray as xr
-import rioxarray
-import leafmap
-import pandas as pd
-import numpy as np
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test core geospatial libraries</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rioxarray</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">leafmap</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-print(&quot;✓ All core libraries imported successfully!&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✓ All core libraries imported successfully!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -639,15 +639,15 @@ print(&quot;✓ All core libraries imported successfully!&quot;)
 <h3><span class="section-number">15.5.1. </span>Create Your First Interactive Map<a class="headerlink" href="#create-your-first-interactive-map" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create an interactive map using Leafmap
-m = leafmap.Map(center=[40, -100], zoom=4, height=&quot;500px&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an interactive map using Leafmap</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;500px&quot;</span><span class="p">)</span>
 
-# Add different basemap options
-m.add_basemap(&quot;OpenTopoMap&quot;)
-m.add_basemap(&quot;USGS Imagery&quot;)
+<span class="c1"># Add different basemap options</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;USGS.Imagery&quot;</span><span class="p">)</span>
 
-# Display the map
-m
+<span class="c1"># Display the map</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>

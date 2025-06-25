@@ -538,21 +538,21 @@ document.write(`
 <h2><span class="section-number">24.3. </span>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># %pip install hypercoast pygis
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install hypercoast pygis</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import hypercoast
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">hypercoast</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>hypercoast.nasa_earth_login()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hypercoast</span><span class="o">.</span><span class="n">nasa_earth_login</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -564,26 +564,26 @@ document.write(`
 <h3><span class="section-number">24.4.1. </span>Programmatic Search<a class="headerlink" href="#programmatic-search" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>results, gdf = hypercoast.search_emit(
-    bbox=(-83, 25, -81, 28),
-    temporal=(&quot;2024-04-01&quot;, &quot;2024-05-16&quot;),
-    count=10,  # use -1 to return all datasets
-    return_gdf=True,
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="p">,</span> <span class="n">gdf</span> <span class="o">=</span> <span class="n">hypercoast</span><span class="o">.</span><span class="n">search_emit</span><span class="p">(</span>
+    <span class="n">bbox</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">83</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="o">-</span><span class="mi">81</span><span class="p">,</span> <span class="mi">28</span><span class="p">),</span>
+    <span class="n">temporal</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;2024-04-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-05-16&quot;</span><span class="p">),</span>
+    <span class="n">count</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># use -1 to return all datasets</span>
+    <span class="n">return_gdf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdf.explore()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">explore</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>hypercoast.download_emit(results[:1], out_dir=&quot;data&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hypercoast</span><span class="o">.</span><span class="n">download_emit</span><span class="p">(</span><span class="n">results</span><span class="p">[:</span><span class="mi">1</span><span class="p">],</span> <span class="n">out_dir</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -593,24 +593,24 @@ document.write(`
 <h3><span class="section-number">24.4.2. </span>Interactive Search<a class="headerlink" href="#interactive-search" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = hypercoast.Map(center=[30.0262, -90.1345], zoom=8)
-m.search_emit()
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">hypercoast</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">30.0262</span><span class="p">,</span> <span class="o">-</span><span class="mf">90.1345</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">search_emit</span><span class="p">()</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if hasattr(m, &quot;_NASA_DATA_GDF&quot;):
-    display(m._NASA_DATA_GDF.head())
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="s2">&quot;_NASA_DATA_GDF&quot;</span><span class="p">):</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">_NASA_DATA_GDF</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>hypercoast.download_emit(results[:1], out_dir=&quot;data&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hypercoast</span><span class="o">.</span><span class="n">download_emit</span><span class="p">(</span><span class="n">results</span><span class="p">[:</span><span class="mi">1</span><span class="p">],</span> <span class="n">out_dir</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -621,9 +621,9 @@ m
 <h2><span class="section-number">24.5. </span>Downloading Hyperspectral Data<a class="headerlink" href="#downloading-hyperspectral-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://github.com/opengeos/datasets/releases/download/hypercoast/EMIT_L2A_RFL_001_20240404T161230_2409511_009.nc&quot;
-filepath = &quot;data/EMIT_L2A_RFL_001_20240404T161230_2409511_009.nc&quot;
-hypercoast.download_file(url, filepath, quiet=True)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/hypercoast/EMIT_L2A_RFL_001_20240404T161230_2409511_009.nc&quot;</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;data/EMIT_L2A_RFL_001_20240404T161230_2409511_009.nc&quot;</span>
+<span class="n">hypercoast</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filepath</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -633,8 +633,8 @@ hypercoast.download_file(url, filepath, quiet=True)
 <h2><span class="section-number">24.6. </span>Reading Hyperspectral Data<a class="headerlink" href="#reading-hyperspectral-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dataset = hypercoast.read_emit(filepath)
-dataset
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">hypercoast</span><span class="o">.</span><span class="n">read_emit</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+<span class="n">dataset</span>
 </pre></div>
 </div>
 </div>
@@ -644,11 +644,11 @@ dataset
 <h2><span class="section-number">24.7. </span>Visualizing Hyperspectral Data<a class="headerlink" href="#visualizing-hyperspectral-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = hypercoast.Map()
-m.add_basemap(&quot;SATELLITE&quot;)
-m.add_emit(dataset, wavelengths=[1000, 600, 500], vmin=0, vmax=0.3, layer_name=&quot;EMIT&quot;)
-m.add(&quot;spectral&quot;)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">hypercoast</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;SATELLITE&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_emit</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">wavelengths</span><span class="o">=</span><span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;EMIT&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;spectral&quot;</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -658,23 +658,23 @@ m
 <h2><span class="section-number">24.8. </span>Creating Image Cubes<a class="headerlink" href="#creating-image-cubes" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ds = dataset.sel(longitude=slice(-90.1482, -89.7321), latitude=slice(30.0225, 29.7451))
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">longitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">90.1482</span><span class="p">,</span> <span class="o">-</span><span class="mf">89.7321</span><span class="p">),</span> <span class="n">latitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mf">30.0225</span><span class="p">,</span> <span class="mf">29.7451</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p = hypercoast.image_cube(
-    ds,
-    variable=&quot;reflectance&quot;,
-    cmap=&quot;jet&quot;,
-    clim=(0, 0.4),
-    rgb_wavelengths=[1000, 700, 500],
-    rgb_gamma=2,
-    title=&quot;EMIT Reflectance&quot;,
-)
-p.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">hypercoast</span><span class="o">.</span><span class="n">image_cube</span><span class="p">(</span>
+    <span class="n">ds</span><span class="p">,</span>
+    <span class="n">variable</span><span class="o">=</span><span class="s2">&quot;reflectance&quot;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;jet&quot;</span><span class="p">,</span>
+    <span class="n">clim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span>
+    <span class="n">rgb_wavelengths</span><span class="o">=</span><span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span>
+    <span class="n">rgb_gamma</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;EMIT Reflectance&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -684,25 +684,25 @@ p.show()
 <h2><span class="section-number">24.9. </span>Interactive Slicing<a class="headerlink" href="#interactive-slicing" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ds = dataset.sel(longitude=slice(-90.05, -89.99), latitude=slice(30.00, 29.93))
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">longitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">90.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">89.99</span><span class="p">),</span> <span class="n">latitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mf">30.00</span><span class="p">,</span> <span class="mf">29.93</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p = hypercoast.image_cube(
-    ds,
-    variable=&quot;reflectance&quot;,
-    cmap=&quot;jet&quot;,
-    clim=(0, 0.5),
-    rgb_wavelengths=[1000, 700, 500],
-    rgb_gamma=2,
-    title=&quot;EMIT Reflectance&quot;,
-    widget=&quot;plane&quot;,
-)
-p.add_text(&quot;Band slicing&quot;, position=&quot;upper_right&quot;, font_size=14)
-p.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">hypercoast</span><span class="o">.</span><span class="n">image_cube</span><span class="p">(</span>
+    <span class="n">ds</span><span class="p">,</span>
+    <span class="n">variable</span><span class="o">=</span><span class="s2">&quot;reflectance&quot;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;jet&quot;</span><span class="p">,</span>
+    <span class="n">clim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="n">rgb_wavelengths</span><span class="o">=</span><span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span>
+    <span class="n">rgb_gamma</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;EMIT Reflectance&quot;</span><span class="p">,</span>
+    <span class="n">widget</span><span class="o">=</span><span class="s2">&quot;plane&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="s2">&quot;Band slicing&quot;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;upper_right&quot;</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -712,18 +712,18 @@ p.show()
 <h2><span class="section-number">24.10. </span>Interactive Thresholding<a class="headerlink" href="#interactive-thresholding" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p = hypercoast.image_cube(
-    ds,
-    variable=&quot;reflectance&quot;,
-    cmap=&quot;jet&quot;,
-    clim=(0, 0.5),
-    rgb_wavelengths=[1000, 700, 500],
-    rgb_gamma=2,
-    title=&quot;EMIT Reflectance&quot;,
-    widget=&quot;threshold&quot;,
-)
-p.add_text(&quot;Thresholding&quot;, position=&quot;upper_right&quot;, font_size=14)
-p.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">hypercoast</span><span class="o">.</span><span class="n">image_cube</span><span class="p">(</span>
+    <span class="n">ds</span><span class="p">,</span>
+    <span class="n">variable</span><span class="o">=</span><span class="s2">&quot;reflectance&quot;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;jet&quot;</span><span class="p">,</span>
+    <span class="n">clim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="n">rgb_wavelengths</span><span class="o">=</span><span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span>
+    <span class="n">rgb_gamma</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;EMIT Reflectance&quot;</span><span class="p">,</span>
+    <span class="n">widget</span><span class="o">=</span><span class="s2">&quot;threshold&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="s2">&quot;Thresholding&quot;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;upper_right&quot;</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

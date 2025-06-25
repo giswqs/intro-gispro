@@ -605,11 +605,11 @@ document.write(`
 <h3><span class="section-number">28.3.2. </span>Core Imports and Configuration<a class="headerlink" href="#core-imports-and-configuration" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import leafmap
-import geopandas as gpd
-import pandas as pd
-from sedona.spark import *
-from pyspark.sql.functions import col, expr
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">leafmap</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sedona.spark</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql.functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">col</span><span class="p">,</span> <span class="n">expr</span>
 </pre></div>
 </div>
 </div>
@@ -619,41 +619,41 @@ from pyspark.sql.functions import col, expr
 <h3><span class="section-number">28.3.3. </span>Creating a Sedona-Enabled Spark Session<a class="headerlink" href="#creating-a-sedona-enabled-spark-session" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>config = (
-    SedonaContext.builder()
-    .appName(&quot;SedonaApp&quot;)  # Application name for tracking in Spark UI
-    .config(
-        &quot;spark.serializer&quot;, &quot;org.apache.spark.serializer.KryoSerializer&quot;
-    )  # Faster serialization
-    .config(
-        &quot;spark.kryo.registrator&quot;, &quot;org.apache.sedona.core.serde.SedonaKryoRegistrator&quot;
-    )  # Spatial object serialization
-    .config(
-        &quot;spark.jars.packages&quot;,
-        &quot;org.apache.sedona:sedona-spark-shaded-3.5_2.12:1.7.2,org.datasyslab:geotools-wrapper:1.7.2-28.5&quot;,
-    )  # Core Sedona packages
-    .config(
-        &quot;spark.jars.repositories&quot;,
-        &quot;https://artifacts.unidata.ucar.edu/repository/unidata-all&quot;,
-    )  # Additional repositories
-    .config(
-        &quot;spark.hadoop.fs.s3a.connection.ssl.enabled&quot;, &quot;true&quot;
-    )  # Enable SSL for S3 connections
-    .config(
-        &quot;spark.hadoop.fs.s3a.path.style.access&quot;, &quot;true&quot;
-    )  # Use path-style access for S3
-    .config(
-        &quot;spark.hadoop.fs.s3a.impl&quot;, &quot;org.apache.hadoop.fs.s3a.S3AFileSystem&quot;
-    )  # S3 filesystem implementation
-    .config(
-        &quot;spark.hadoop.fs.s3a.aws.credentials.provider&quot;,
-        &quot;org.apache.hadoop.fs.s3a.AnonymousAWSCredentialsProvider&quot;,
-    )  # Anonymous access to public S3 buckets
-    .getOrCreate()
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">SedonaContext</span><span class="o">.</span><span class="n">builder</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;SedonaApp&quot;</span><span class="p">)</span>  <span class="c1"># Application name for tracking in Spark UI</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span>
+        <span class="s2">&quot;spark.serializer&quot;</span><span class="p">,</span> <span class="s2">&quot;org.apache.spark.serializer.KryoSerializer&quot;</span>
+    <span class="p">)</span>  <span class="c1"># Faster serialization</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span>
+        <span class="s2">&quot;spark.kryo.registrator&quot;</span><span class="p">,</span> <span class="s2">&quot;org.apache.sedona.core.serde.SedonaKryoRegistrator&quot;</span>
+    <span class="p">)</span>  <span class="c1"># Spatial object serialization</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span>
+        <span class="s2">&quot;spark.jars.packages&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;org.apache.sedona:sedona-spark-shaded-3.5_2.12:1.7.2,org.datasyslab:geotools-wrapper:1.7.2-28.5&quot;</span><span class="p">,</span>
+    <span class="p">)</span>  <span class="c1"># Core Sedona packages</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span>
+        <span class="s2">&quot;spark.jars.repositories&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;https://artifacts.unidata.ucar.edu/repository/unidata-all&quot;</span><span class="p">,</span>
+    <span class="p">)</span>  <span class="c1"># Additional repositories</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span>
+        <span class="s2">&quot;spark.hadoop.fs.s3a.connection.ssl.enabled&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span>
+    <span class="p">)</span>  <span class="c1"># Enable SSL for S3 connections</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span>
+        <span class="s2">&quot;spark.hadoop.fs.s3a.path.style.access&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span>
+    <span class="p">)</span>  <span class="c1"># Use path-style access for S3</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span>
+        <span class="s2">&quot;spark.hadoop.fs.s3a.impl&quot;</span><span class="p">,</span> <span class="s2">&quot;org.apache.hadoop.fs.s3a.S3AFileSystem&quot;</span>
+    <span class="p">)</span>  <span class="c1"># S3 filesystem implementation</span>
+    <span class="o">.</span><span class="n">config</span><span class="p">(</span>
+        <span class="s2">&quot;spark.hadoop.fs.s3a.aws.credentials.provider&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;org.apache.hadoop.fs.s3a.AnonymousAWSCredentialsProvider&quot;</span><span class="p">,</span>
+    <span class="p">)</span>  <span class="c1"># Anonymous access to public S3 buckets</span>
+    <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+<span class="p">)</span>
 
-# Create the Sedona context which adds spatial capabilities to the Spark session
-sedona = SedonaContext.create(config)
+<span class="c1"># Create the Sedona context which adds spatial capabilities to the Spark session</span>
+<span class="n">sedona</span> <span class="o">=</span> <span class="n">SedonaContext</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -664,10 +664,10 @@ sedona = SedonaContext.create(config)
 <h2><span class="section-number">28.4. </span>Downloading Sample Data<a class="headerlink" href="#downloading-sample-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = (
-    &quot;https://github.com/opengeos/datasets/releases/download/book/sedona-sample-data.zip&quot;
-)
-leafmap.download_file(url)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/book/sedona-sample-data.zip&quot;</span>
+<span class="p">)</span>
+<span class="n">leafmap</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -685,25 +685,25 @@ leafmap.download_file(url)
 <h3><span class="section-number">28.5.3. </span>Creating Spatial DataFrames<a class="headerlink" href="#creating-spatial-dataframes" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create sample city data with coordinates for major US cities
-cities_data = [
-    (&quot;New York&quot;, 40.7128, -74.0060),
-    (&quot;Los Angeles&quot;, 34.0522, -118.2437),
-    (&quot;Chicago&quot;, 41.8781, -87.6298),
-    (&quot;Houston&quot;, 29.7604, -95.3698),
-    (&quot;Phoenix&quot;, 33.4484, -112.0740),
-]
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create sample city data with coordinates for major US cities</span>
+<span class="n">cities_data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;New York&quot;</span><span class="p">,</span> <span class="mf">40.7128</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.0060</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="mf">34.0522</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Chicago&quot;</span><span class="p">,</span> <span class="mf">41.8781</span><span class="p">,</span> <span class="o">-</span><span class="mf">87.6298</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Houston&quot;</span><span class="p">,</span> <span class="mf">29.7604</span><span class="p">,</span> <span class="o">-</span><span class="mf">95.3698</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Phoenix&quot;</span><span class="p">,</span> <span class="mf">33.4484</span><span class="p">,</span> <span class="o">-</span><span class="mf">112.0740</span><span class="p">),</span>
+<span class="p">]</span>
 
-# Convert to Spark DataFrame - this creates a distributed dataset
-cities_df = sedona.createDataFrame(
-    data=cities_data, schema=[&quot;city&quot;, &quot;latitude&quot;, &quot;longitude&quot;]
-)
+<span class="c1"># Convert to Spark DataFrame - this creates a distributed dataset</span>
+<span class="n">cities_df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">cities_data</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;city&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
+<span class="p">)</span>
 
-# Create geometry column using ST_Point function - this transforms coordinates into spatial objects
-cities_spatial = cities_df.withColumn(&quot;geometry&quot;, expr(&quot;ST_Point(longitude, latitude)&quot;))
+<span class="c1"># Create geometry column using ST_Point function - this transforms coordinates into spatial objects</span>
+<span class="n">cities_spatial</span> <span class="o">=</span> <span class="n">cities_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_Point(longitude, latitude)&quot;</span><span class="p">))</span>
 
-# Display the resulting spatial DataFrame
-cities_spatial.show(truncate=False)
+<span class="c1"># Display the resulting spatial DataFrame</span>
+<span class="n">cities_spatial</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -713,33 +713,33 @@ cities_spatial.show(truncate=False)
 <h3><span class="section-number">28.5.4. </span>Working with Real Geospatial Data<a class="headerlink" href="#working-with-real-geospatial-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Load NYC boroughs GeoJSON using GeoPandas for initial processing
-boroughs_gdf = gpd.read_file(&quot;nybb.geojson&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load NYC boroughs GeoJSON using GeoPandas for initial processing</span>
+<span class="n">boroughs_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;nybb.geojson&quot;</span><span class="p">)</span>
 
-# Reproject from New York State Plane (EPSG:2263) to Albers Equal Area (EPSG:5070)
-# This ensures accurate area calculations for our later analysis
-boroughs_gdf = boroughs_gdf.to_crs(&quot;EPSG:5070&quot;)
-boroughs_gdf
+<span class="c1"># Reproject from New York State Plane (EPSG:2263) to Albers Equal Area (EPSG:5070)</span>
+<span class="c1"># This ensures accurate area calculations for our later analysis</span>
+<span class="n">boroughs_gdf</span> <span class="o">=</span> <span class="n">boroughs_gdf</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:5070&quot;</span><span class="p">)</span>
+<span class="n">boroughs_gdf</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Convert to Pandas DataFrame and extract WKT (Well-Known Text) representation of geometries
-boroughs_pd = pd.DataFrame(boroughs_gdf.drop(columns=&quot;geometry&quot;))
-boroughs_pd[&quot;wkt_geometry&quot;] = boroughs_gdf.geometry.to_wkt()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert to Pandas DataFrame and extract WKT (Well-Known Text) representation of geometries</span>
+<span class="n">boroughs_pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">boroughs_gdf</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">&quot;geometry&quot;</span><span class="p">))</span>
+<span class="n">boroughs_pd</span><span class="p">[</span><span class="s2">&quot;wkt_geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">boroughs_gdf</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">to_wkt</span><span class="p">()</span>
 
-# Create Spark DataFrame from the Pandas DataFrame
-boroughs_df = sedona.createDataFrame(boroughs_pd)
+<span class="c1"># Create Spark DataFrame from the Pandas DataFrame</span>
+<span class="n">boroughs_df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">boroughs_pd</span><span class="p">)</span>
 
-# Convert WKT strings back to spatial geometry objects using Sedona&#39;s ST_GeomFromWKT function
-boroughs_spatial = boroughs_df.withColumn(
-    &quot;geometry&quot;, expr(&quot;ST_GeomFromWKT(wkt_geometry)&quot;)
-)
+<span class="c1"># Convert WKT strings back to spatial geometry objects using Sedona&#39;s ST_GeomFromWKT function</span>
+<span class="n">boroughs_spatial</span> <span class="o">=</span> <span class="n">boroughs_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+    <span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_GeomFromWKT(wkt_geometry)&quot;</span><span class="p">)</span>
+<span class="p">)</span>
 
-# Display the key columns of our spatial DataFrame
-boroughs_spatial.select(&quot;BoroCode&quot;, &quot;BoroName&quot;, &quot;geometry&quot;).show()
+<span class="c1"># Display the key columns of our spatial DataFrame</span>
+<span class="n">boroughs_spatial</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;BoroCode&quot;</span><span class="p">,</span> <span class="s2">&quot;BoroName&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -752,19 +752,19 @@ boroughs_spatial.select(&quot;BoroCode&quot;, &quot;BoroName&quot;, &quot;geomet
 <h3><span class="section-number">28.6.1. </span>Basic Geometric Properties<a class="headerlink" href="#basic-geometric-properties" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate geometric properties for each borough
-boroughs_with_metrics = (
-    boroughs_spatial.withColumn(
-        &quot;area_km2&quot;, expr(&quot;ROUND(ST_Area(geometry) / 1e6, 2)&quot;)
-    )  # Convert from m² to km²
-    .withColumn(
-        &quot;perimeter_km&quot;, expr(&quot;ROUND(ST_Perimeter(geometry) / 1000, 2)&quot;)
-    )  # Convert from m to km
-    .withColumn(&quot;centroid&quot;, expr(&quot;ST_Centroid(geometry)&quot;))  # Calculate geometric center
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate geometric properties for each borough</span>
+<span class="n">boroughs_with_metrics</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">boroughs_spatial</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">&quot;area_km2&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ROUND(ST_Area(geometry) / 1e6, 2)&quot;</span><span class="p">)</span>
+    <span class="p">)</span>  <span class="c1"># Convert from m² to km²</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">&quot;perimeter_km&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ROUND(ST_Perimeter(geometry) / 1000, 2)&quot;</span><span class="p">)</span>
+    <span class="p">)</span>  <span class="c1"># Convert from m to km</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;centroid&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_Centroid(geometry)&quot;</span><span class="p">))</span>  <span class="c1"># Calculate geometric center</span>
+<span class="p">)</span>
 
-# Display the calculated metrics
-boroughs_with_metrics.select(&quot;BoroName&quot;, &quot;area_km2&quot;, &quot;perimeter_km&quot;, &quot;centroid&quot;).show()
+<span class="c1"># Display the calculated metrics</span>
+<span class="n">boroughs_with_metrics</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;BoroName&quot;</span><span class="p">,</span> <span class="s2">&quot;area_km2&quot;</span><span class="p">,</span> <span class="s2">&quot;perimeter_km&quot;</span><span class="p">,</span> <span class="s2">&quot;centroid&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -774,52 +774,52 @@ boroughs_with_metrics.select(&quot;BoroName&quot;, &quot;area_km2&quot;, &quot;p
 <h3><span class="section-number">28.6.2. </span>Distance Calculations<a class="headerlink" href="#distance-calculations" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Transform city coordinates from geographic (EPSG:4326) to projected (EPSG:5070) coordinate system
-# This is essential for accurate distance calculations in linear units (meters)
-cities_projected = cities_spatial.withColumn(
-    &quot;geometry&quot;, expr(&quot;ST_Transform(geometry, &#39;EPSG:4326&#39;, &#39;EPSG:5070&#39;)&quot;)
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Transform city coordinates from geographic (EPSG:4326) to projected (EPSG:5070) coordinate system</span>
+<span class="c1"># This is essential for accurate distance calculations in linear units (meters)</span>
+<span class="n">cities_projected</span> <span class="o">=</span> <span class="n">cities_spatial</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+    <span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_Transform(geometry, &#39;EPSG:4326&#39;, &#39;EPSG:5070&#39;)&quot;</span><span class="p">)</span>
+<span class="p">)</span>
 
-# View the transformed coordinates
-cities_projected.show(truncate=False)
+<span class="c1"># View the transformed coordinates</span>
+<span class="n">cities_projected</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate distances from each city to Manhattan&#39;s centroid
-# First, extract Manhattan&#39;s centroid as a reference point
-manhattan_centroid = (
-    boroughs_spatial.filter(col(&quot;BoroName&quot;) == &quot;Manhattan&quot;)
-    .select(expr(&quot;ST_Centroid(geometry)&quot;).alias(&quot;manhattan_center&quot;))
-    .collect()[0][0]  # collect() brings the result to the driver node
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate distances from each city to Manhattan&#39;s centroid</span>
+<span class="c1"># First, extract Manhattan&#39;s centroid as a reference point</span>
+<span class="n">manhattan_centroid</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">boroughs_spatial</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;BoroName&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Manhattan&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_Centroid(geometry)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;manhattan_center&quot;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">collect</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># collect() brings the result to the driver node</span>
+<span class="p">)</span>
 
-# Create a new DataFrame with distance calculations
-cities_with_distances = (
-    cities_projected.withColumn(
-        &quot;manhattan_center&quot;,
-        expr(
-            f&quot;ST_GeomFromWKT(&#39;{manhattan_centroid.wkt}&#39;)&quot;
-        ),  # Add Manhattan center as reference
-    )
-    .withColumn(
-        &quot;distance_to_manhattan_meters&quot;,
-        expr(&quot;ST_Distance(geometry, manhattan_center)&quot;),  # Calculate distance in meters
-    )
-    .withColumn(
-        &quot;distance_to_manhattan_km&quot;,
-        expr(
-            &quot;ROUND(ST_Distance(geometry, manhattan_center) / 1000, 2)&quot;
-        ),  # Convert to kilometers and round
-    )
-)
+<span class="c1"># Create a new DataFrame with distance calculations</span>
+<span class="n">cities_with_distances</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">cities_projected</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">&quot;manhattan_center&quot;</span><span class="p">,</span>
+        <span class="n">expr</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;ST_GeomFromWKT(&#39;</span><span class="si">{</span><span class="n">manhattan_centroid</span><span class="o">.</span><span class="n">wkt</span><span class="si">}</span><span class="s2">&#39;)&quot;</span>
+        <span class="p">),</span>  <span class="c1"># Add Manhattan center as reference</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">&quot;distance_to_manhattan_meters&quot;</span><span class="p">,</span>
+        <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_Distance(geometry, manhattan_center)&quot;</span><span class="p">),</span>  <span class="c1"># Calculate distance in meters</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">&quot;distance_to_manhattan_km&quot;</span><span class="p">,</span>
+        <span class="n">expr</span><span class="p">(</span>
+            <span class="s2">&quot;ROUND(ST_Distance(geometry, manhattan_center) / 1000, 2)&quot;</span>
+        <span class="p">),</span>  <span class="c1"># Convert to kilometers and round</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 
-# Display results ordered by distance (closest first)
-cities_with_distances.select(&quot;city&quot;, &quot;distance_to_manhattan_km&quot;).orderBy(
-    &quot;distance_to_manhattan_km&quot;
-).show()
+<span class="c1"># Display results ordered by distance (closest first)</span>
+<span class="n">cities_with_distances</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;city&quot;</span><span class="p">,</span> <span class="s2">&quot;distance_to_manhattan_km&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span>
+    <span class="s2">&quot;distance_to_manhattan_km&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -829,26 +829,26 @@ cities_with_distances.select(&quot;city&quot;, &quot;distance_to_manhattan_km&qu
 <h3><span class="section-number">28.6.3. </span>Spatial Relationships<a class="headerlink" href="#spatial-relationships" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a 5-kilometer buffer around Manhattan&#39;s boundary
-manhattan_with_buffer = boroughs_spatial.filter(
-    col(&quot;BoroName&quot;) == &quot;Manhattan&quot;
-).withColumn(
-    &quot;buffer_5km&quot;, expr(&quot;ST_Buffer(geometry, 5000)&quot;)  # 5000 meters = 5km buffer
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 5-kilometer buffer around Manhattan&#39;s boundary</span>
+<span class="n">manhattan_with_buffer</span> <span class="o">=</span> <span class="n">boroughs_spatial</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">col</span><span class="p">(</span><span class="s2">&quot;BoroName&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Manhattan&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+    <span class="s2">&quot;buffer_5km&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_Buffer(geometry, 5000)&quot;</span><span class="p">)</span>  <span class="c1"># 5000 meters = 5km buffer</span>
+<span class="p">)</span>
 
-# Perform spatial join to find cities within the buffer zone
-cities_in_buffer = (
-    cities_projected.crossJoin(
-        manhattan_with_buffer.select(&quot;buffer_5km&quot;)
-    )  # Cross join to compare all cities with the buffer
-    .withColumn(
-        &quot;within_buffer&quot;, expr(&quot;ST_Within(geometry, buffer_5km)&quot;)
-    )  # Test if city point is within buffer
-    .filter(col(&quot;within_buffer&quot;) == True)  # Keep only cities that are within the buffer
-)
+<span class="c1"># Perform spatial join to find cities within the buffer zone</span>
+<span class="n">cities_in_buffer</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">cities_projected</span><span class="o">.</span><span class="n">crossJoin</span><span class="p">(</span>
+        <span class="n">manhattan_with_buffer</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;buffer_5km&quot;</span><span class="p">)</span>
+    <span class="p">)</span>  <span class="c1"># Cross join to compare all cities with the buffer</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">&quot;within_buffer&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_Within(geometry, buffer_5km)&quot;</span><span class="p">)</span>
+    <span class="p">)</span>  <span class="c1"># Test if city point is within buffer</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;within_buffer&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span>  <span class="c1"># Keep only cities that are within the buffer</span>
+<span class="p">)</span>
 
-# Display cities that fall within the 5km buffer of Manhattan
-cities_in_buffer.select(&quot;city&quot;).show()
+<span class="c1"># Display cities that fall within the 5km buffer of Manhattan</span>
+<span class="n">cities_in_buffer</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;city&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -864,24 +864,24 @@ cities_in_buffer.select(&quot;city&quot;).show()
 <h3><span class="section-number">28.7.2. </span>Performing Spatial Joins with World Cities<a class="headerlink" href="#performing-spatial-joins-with-world-cities" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>world_cities_pd = pd.read_csv(&quot;world_cities.csv&quot;)
-world_cities_pd.head()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">world_cities_pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;world_cities.csv&quot;</span><span class="p">)</span>
+<span class="n">world_cities_pd</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Convert Pandas DataFrame to Spark DataFrame for distributed processing
-world_cities_df = sedona.createDataFrame(world_cities_pd)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert Pandas DataFrame to Spark DataFrame for distributed processing</span>
+<span class="n">world_cities_df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">world_cities_pd</span><span class="p">)</span>
 
-# Create spatial point geometries from longitude and latitude columns
-world_cities_spatial = world_cities_df.withColumn(
-    &quot;geometry&quot;, expr(&quot;ST_Point(longitude, latitude)&quot;)
-)
+<span class="c1"># Create spatial point geometries from longitude and latitude columns</span>
+<span class="n">world_cities_spatial</span> <span class="o">=</span> <span class="n">world_cities_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+    <span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_Point(longitude, latitude)&quot;</span><span class="p">)</span>
+<span class="p">)</span>
 
-# Display sample data showing the spatial DataFrame structure
-world_cities_spatial.show(10)
+<span class="c1"># Display sample data showing the spatial DataFrame structure</span>
+<span class="n">world_cities_spatial</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -891,42 +891,42 @@ world_cities_spatial.show(10)
 <h3><span class="section-number">28.7.3. </span>Spatial Join Example: Cities by Country<a class="headerlink" href="#spatial-join-example-cities-by-country" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create simplified country boundaries for demonstration
-# In production, you would load actual country boundary data from sources like Natural Earth
-sample_countries = [
-    (
-        &quot;Australia&quot;,
-        &quot;POLYGON ((112 -44, 112 -10, 154 -10, 154 -44, 112 -44))&quot;,
-    ),  # Simplified Australia bbox
-    (
-        &quot;UK&quot;,
-        &quot;POLYGON ((-8.65 49.9, -8.65 60.9, 1.75 60.9, 1.75 49.9, -8.65 49.9))&quot;,
-    ),  # Simplified UK bbox
-]
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create simplified country boundaries for demonstration</span>
+<span class="c1"># In production, you would load actual country boundary data from sources like Natural Earth</span>
+<span class="n">sample_countries</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;Australia&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;POLYGON ((112 -44, 112 -10, 154 -10, 154 -44, 112 -44))&quot;</span><span class="p">,</span>
+    <span class="p">),</span>  <span class="c1"># Simplified Australia bbox</span>
+    <span class="p">(</span>
+        <span class="s2">&quot;UK&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;POLYGON ((-8.65 49.9, -8.65 60.9, 1.75 60.9, 1.75 49.9, -8.65 49.9))&quot;</span><span class="p">,</span>
+    <span class="p">),</span>  <span class="c1"># Simplified UK bbox</span>
+<span class="p">]</span>
 
-# Create DataFrame with country boundaries
-countries_df = sedona.createDataFrame(sample_countries, schema=[&quot;country&quot;, &quot;wkt&quot;])
-countries_spatial = countries_df.withColumn(&quot;geometry&quot;, expr(&quot;ST_GeomFromWKT(wkt)&quot;))
+<span class="c1"># Create DataFrame with country boundaries</span>
+<span class="n">countries_df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">sample_countries</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;country&quot;</span><span class="p">,</span> <span class="s2">&quot;wkt&quot;</span><span class="p">])</span>
+<span class="n">countries_spatial</span> <span class="o">=</span> <span class="n">countries_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_GeomFromWKT(wkt)&quot;</span><span class="p">))</span>
 
-# Perform spatial join to find cities within country boundaries
-# This operation tests each city point against each country polygon
-cities_in_countries = world_cities_spatial.alias(&quot;cities&quot;).join(
-    countries_spatial.alias(&quot;countries&quot;),
-    expr(
-        &quot;ST_Within(cities.geometry, countries.geometry)&quot;
-    ),  # Spatial predicate: city within country
-    &quot;inner&quot;,  # Only keep cities that are within a country boundary
-)
-cities_in_countries.show()
+<span class="c1"># Perform spatial join to find cities within country boundaries</span>
+<span class="c1"># This operation tests each city point against each country polygon</span>
+<span class="n">cities_in_countries</span> <span class="o">=</span> <span class="n">world_cities_spatial</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;cities&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">countries_spatial</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;countries&quot;</span><span class="p">),</span>
+    <span class="n">expr</span><span class="p">(</span>
+        <span class="s2">&quot;ST_Within(cities.geometry, countries.geometry)&quot;</span>
+    <span class="p">),</span>  <span class="c1"># Spatial predicate: city within country</span>
+    <span class="s2">&quot;inner&quot;</span><span class="p">,</span>  <span class="c1"># Only keep cities that are within a country boundary</span>
+<span class="p">)</span>
+<span class="n">cities_in_countries</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Aggregate cities by country to get summary statistics
-city_counts = cities_in_countries.groupBy(&quot;countries.country&quot;).count()
-city_counts.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aggregate cities by country to get summary statistics</span>
+<span class="n">city_counts</span> <span class="o">=</span> <span class="n">cities_in_countries</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">&quot;countries.country&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">city_counts</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -939,26 +939,26 @@ city_counts.show()
 <h3><span class="section-number">28.8.1. </span>Spatial Aggregations<a class="headerlink" href="#spatial-aggregations" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Perform spatial and statistical aggregations on North American cities
-country_unions = (
-    world_cities_spatial.filter(
-        col(&quot;country&quot;).isin(
-            [&quot;USA&quot;, &quot;CAN&quot;, &quot;MEX&quot;]
-        )  # Filter for North American countries
-    )
-    .groupBy(&quot;country&quot;)
-    .agg(
-        expr(&quot;ST_Union_Aggr(geometry)&quot;).alias(
-            &quot;union_geometry&quot;
-        ),  # Create union of all city points per country
-        expr(&quot;COUNT(*)&quot;).alias(&quot;city_count&quot;),  # Count cities per country
-        expr(&quot;CAST(AVG(population) AS INT)&quot;).alias(
-            &quot;avg_population&quot;
-        ),  # Calculate average population per country
-    )
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perform spatial and statistical aggregations on North American cities</span>
+<span class="n">country_unions</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">world_cities_spatial</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">col</span><span class="p">(</span><span class="s2">&quot;country&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">&quot;USA&quot;</span><span class="p">,</span> <span class="s2">&quot;CAN&quot;</span><span class="p">,</span> <span class="s2">&quot;MEX&quot;</span><span class="p">]</span>
+        <span class="p">)</span>  <span class="c1"># Filter for North American countries</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">&quot;country&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_Union_Aggr(geometry)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span>
+            <span class="s2">&quot;union_geometry&quot;</span>
+        <span class="p">),</span>  <span class="c1"># Create union of all city points per country</span>
+        <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;COUNT(*)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;city_count&quot;</span><span class="p">),</span>  <span class="c1"># Count cities per country</span>
+        <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;CAST(AVG(population) AS INT)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span>
+            <span class="s2">&quot;avg_population&quot;</span>
+        <span class="p">),</span>  <span class="c1"># Calculate average population per country</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 
-country_unions.show()
+<span class="n">country_unions</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -968,34 +968,34 @@ country_unions.show()
 <h3><span class="section-number">28.8.2. </span>Spatial Clustering Analysis<a class="headerlink" href="#spatial-clustering-analysis" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a 2-degree geographic grid for clustering analysis
-grid_analysis = (
-    world_cities_spatial.filter(
-        col(&quot;population&quot;) &gt; 100000
-    )  # Focus on major cities only
-    .withColumn(
-        &quot;grid_x&quot;, expr(&quot;floor(longitude / 2) * 2&quot;)
-    )  # Create 2-degree longitude grid cells
-    .withColumn(
-        &quot;grid_y&quot;, expr(&quot;floor(latitude / 2) * 2&quot;)
-    )  # Create 2-degree latitude grid cells
-    .groupBy(&quot;grid_x&quot;, &quot;grid_y&quot;)  # Group cities by grid cell
-    .agg(
-        expr(&quot;COUNT(*)&quot;).alias(&quot;city_count&quot;),  # Count cities in each grid cell
-        expr(&quot;SUM(population)&quot;).alias(
-            &quot;total_population&quot;
-        ),  # Sum population in each grid cell
-        expr(&quot;ST_Centroid(ST_Union_Aggr(geometry))&quot;).alias(
-            &quot;grid_center&quot;
-        ),  # Calculate center of city cluster
-    )
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 2-degree geographic grid for clustering analysis</span>
+<span class="n">grid_analysis</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">world_cities_spatial</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">col</span><span class="p">(</span><span class="s2">&quot;population&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">100000</span>
+    <span class="p">)</span>  <span class="c1"># Focus on major cities only</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">&quot;grid_x&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;floor(longitude / 2) * 2&quot;</span><span class="p">)</span>
+    <span class="p">)</span>  <span class="c1"># Create 2-degree longitude grid cells</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">&quot;grid_y&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;floor(latitude / 2) * 2&quot;</span><span class="p">)</span>
+    <span class="p">)</span>  <span class="c1"># Create 2-degree latitude grid cells</span>
+    <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">&quot;grid_x&quot;</span><span class="p">,</span> <span class="s2">&quot;grid_y&quot;</span><span class="p">)</span>  <span class="c1"># Group cities by grid cell</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;COUNT(*)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;city_count&quot;</span><span class="p">),</span>  <span class="c1"># Count cities in each grid cell</span>
+        <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;SUM(population)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span>
+            <span class="s2">&quot;total_population&quot;</span>
+        <span class="p">),</span>  <span class="c1"># Sum population in each grid cell</span>
+        <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_Centroid(ST_Union_Aggr(geometry))&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span>
+            <span class="s2">&quot;grid_center&quot;</span>
+        <span class="p">),</span>  <span class="c1"># Calculate center of city cluster</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 
-# Identify and display high-density urban clusters
-high_density_grids = grid_analysis.filter(
-    col(&quot;city_count&quot;) &gt;= 5
-)  # Grid cells with 5+ major cities
-high_density_grids.orderBy(col(&quot;city_count&quot;).desc()).show()
+<span class="c1"># Identify and display high-density urban clusters</span>
+<span class="n">high_density_grids</span> <span class="o">=</span> <span class="n">grid_analysis</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">col</span><span class="p">(</span><span class="s2">&quot;city_count&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">5</span>
+<span class="p">)</span>  <span class="c1"># Grid cells with 5+ major cities</span>
+<span class="n">high_density_grids</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;city_count&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1008,16 +1008,16 @@ high_density_grids.orderBy(col(&quot;city_count&quot;).desc()).show()
 <h3><span class="section-number">28.9.1. </span>Reading CSV<a class="headerlink" href="#reading-csv" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Read CSV file and create spatial geometries from coordinate columns
-cities_df = (
-    sedona.read.option(&quot;header&quot;, True)  # CSV has header row
-    .format(&quot;CSV&quot;)
-    .load(&quot;world_cities.csv&quot;)
-    .withColumn(
-        &quot;geometry&quot;, expr(&quot;ST_Point(longitude, latitude)&quot;)
-    )  # Create point geometries from coords
-)
-cities_df.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read CSV file and create spatial geometries from coordinate columns</span>
+<span class="n">cities_df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">sedona</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>  <span class="c1"># CSV has header row</span>
+    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;CSV&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;world_cities.csv&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_Point(longitude, latitude)&quot;</span><span class="p">)</span>
+    <span class="p">)</span>  <span class="c1"># Create point geometries from coords</span>
+<span class="p">)</span>
+<span class="n">cities_df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1027,28 +1027,28 @@ cities_df.show()
 <h3><span class="section-number">28.9.2. </span>Reading GeoJSON<a class="headerlink" href="#reading-geojson" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Read GeoJSON file - initial structure shows nested format
-cables_df = sedona.read.format(&quot;geojson&quot;).load(&quot;cables.geojson&quot;)
-cables_df.printSchema()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read GeoJSON file - initial structure shows nested format</span>
+<span class="n">cables_df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;geojson&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;cables.geojson&quot;</span><span class="p">)</span>
+<span class="n">cables_df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Flatten GeoJSON structure for easier analysis
-cables_df = (
-    sedona.read.format(&quot;geojson&quot;)
-    .load(&quot;cables.geojson&quot;)
-    .selectExpr(&quot;explode(features) as features&quot;)  # Expand the features array
-    .select(&quot;features.*&quot;)  # Select all fields from features
-    .withColumn(&quot;id&quot;, expr(&quot;properties[&#39;id&#39;]&quot;))  # Extract property fields
-    .withColumn(&quot;name&quot;, expr(&quot;properties[&#39;name&#39;]&quot;))
-    .withColumn(&quot;color&quot;, expr(&quot;properties[&#39;color&#39;]&quot;))
-    .drop(&quot;properties&quot;)  # Remove nested properties object
-    .drop(&quot;type&quot;)  # Remove type field
-)
-cables_df.show(5)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Flatten GeoJSON structure for easier analysis</span>
+<span class="n">cables_df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">sedona</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;geojson&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;cables.geojson&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;explode(features) as features&quot;</span><span class="p">)</span>  <span class="c1"># Expand the features array</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;features.*&quot;</span><span class="p">)</span>  <span class="c1"># Select all fields from features</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;properties[&#39;id&#39;]&quot;</span><span class="p">))</span>  <span class="c1"># Extract property fields</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;properties[&#39;name&#39;]&quot;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;properties[&#39;color&#39;]&quot;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;properties&quot;</span><span class="p">)</span>  <span class="c1"># Remove nested properties object</span>
+    <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span>  <span class="c1"># Remove type field</span>
+<span class="p">)</span>
+<span class="n">cables_df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1058,9 +1058,9 @@ cables_df.show(5)
 <h3><span class="section-number">28.9.3. </span>Reading Shapefiles<a class="headerlink" href="#reading-shapefiles" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Read shapefile directly into spatial DataFrame
-countries_df = sedona.read.format(&quot;shapefile&quot;).load(&quot;countries.shp&quot;)
-countries_df.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read shapefile directly into spatial DataFrame</span>
+<span class="n">countries_df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;shapefile&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;countries.shp&quot;</span><span class="p">)</span>
+<span class="n">countries_df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1070,13 +1070,13 @@ countries_df.show()
 <h3><span class="section-number">28.9.4. </span>Reading GeoPackage<a class="headerlink" href="#reading-geopackage" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Read specific table from GeoPackage file
-countries_df = (
-    sedona.read.format(&quot;geopackage&quot;)
-    .option(&quot;tableName&quot;, &quot;countries&quot;)  # Specify the table/layer name
-    .load(&quot;countries.gpkg&quot;)
-)
-countries_df.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read specific table from GeoPackage file</span>
+<span class="n">countries_df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">sedona</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;geopackage&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;tableName&quot;</span><span class="p">,</span> <span class="s2">&quot;countries&quot;</span><span class="p">)</span>  <span class="c1"># Specify the table/layer name</span>
+    <span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;countries.gpkg&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">countries_df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1086,18 +1086,18 @@ countries_df.show()
 <h3><span class="section-number">28.9.5. </span>Reading GeoParquet<a class="headerlink" href="#reading-geoparquet" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Read GeoParquet files - optimized for large datasets
-states_df = sedona.read.format(&quot;geoparquet&quot;).load(&quot;us_states.parquet&quot;)
-states_df.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read GeoParquet files - optimized for large datasets</span>
+<span class="n">states_df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;geoparquet&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;us_states.parquet&quot;</span><span class="p">)</span>
+<span class="n">states_df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># GeoParquet is excellent for point datasets like cities
-us_cities_df = sedona.read.format(&quot;geoparquet&quot;).load(&quot;us_cities.parquet&quot;)
-us_cities_df.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># GeoParquet is excellent for point datasets like cities</span>
+<span class="n">us_cities_df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;geoparquet&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;us_cities.parquet&quot;</span><span class="p">)</span>
+<span class="n">us_cities_df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1107,44 +1107,44 @@ us_cities_df.show()
 <h3><span class="section-number">28.9.6. </span>Reading Cloud-Stored Data<a class="headerlink" href="#reading-cloud-stored-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Read individual state wetlands data from S3 (DC wetlands - smaller dataset for demonstration)
-url = &quot;s3a://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/DC_Wetlands.parquet&quot;
-df = sedona.read.format(&quot;parquet&quot;).load(url)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read individual state wetlands data from S3 (DC wetlands - smaller dataset for demonstration)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;s3a://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/DC_Wetlands.parquet&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;parquet&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Display basic information about the dataset
-df.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display basic information about the dataset</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Convert WKB geometry to readable WKT format for inspection
-df_wkt = df.withColumn(&quot;geometry&quot;, expr(&quot;ST_AsText(ST_GeomFromWKB(geometry))&quot;))
-df_wkt.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert WKB geometry to readable WKT format for inspection</span>
+<span class="n">df_wkt</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_AsText(ST_GeomFromWKB(geometry))&quot;</span><span class="p">))</span>
+<span class="n">df_wkt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Read all state wetlands data using wildcard pattern (75.8 GB total)
-url = &quot;s3a://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet&quot;
-df = sedona.read.format(&quot;parquet&quot;).load(url)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read all state wetlands data using wildcard pattern (75.8 GB total)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;s3a://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;parquet&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Count total wetland features across all states
-# This operation may take several minutes due to the dataset size
-df.count()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Count total wetland features across all states</span>
+<span class="c1"># This operation may take several minutes due to the dataset size</span>
+<span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1157,34 +1157,34 @@ df.count()
 <h3><span class="section-number">28.10.1. </span>Using KeplerGL<a class="headerlink" href="#using-keplergl" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Configure the initial map view for global data
-config = {
-    &quot;mapState&quot;: {
-        &quot;latitude&quot;: 20,  # Center latitude
-        &quot;longitude&quot;: 0,  # Center longitude (prime meridian)
-        &quot;zoom&quot;: 1,  # Global zoom level
-        &quot;pitch&quot;: 0,  # Map tilt angle
-        &quot;bearing&quot;: 0,  # Map rotation
-    },
-}
-# Create initial map with cities data
-m = SedonaKepler.create_map(cities_df, name=&quot;Cities&quot;, config=config)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configure the initial map view for global data</span>
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;mapState&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;latitude&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>  <span class="c1"># Center latitude</span>
+        <span class="s2">&quot;longitude&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># Center longitude (prime meridian)</span>
+        <span class="s2">&quot;zoom&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># Global zoom level</span>
+        <span class="s2">&quot;pitch&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># Map tilt angle</span>
+        <span class="s2">&quot;bearing&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># Map rotation</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+<span class="c1"># Create initial map with cities data</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">SedonaKepler</span><span class="o">.</span><span class="n">create_map</span><span class="p">(</span><span class="n">cities_df</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Cities&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Add additional layer to the existing map
-SedonaKepler.add_df(m, countries_df, name=&quot;Countries&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add additional layer to the existing map</span>
+<span class="n">SedonaKepler</span><span class="o">.</span><span class="n">add_df</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">countries_df</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Countries&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Display the interactive map
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the interactive map</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1194,18 +1194,18 @@ m
 <h3><span class="section-number">28.10.2. </span>Using PyDeck<a class="headerlink" href="#using-pydeck" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create 3D geometry visualization for country boundaries
-m = SedonaPyDeck.create_geometry_map(countries_df)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create 3D geometry visualization for country boundaries</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">SedonaPyDeck</span><span class="o">.</span><span class="n">create_geometry_map</span><span class="p">(</span><span class="n">countries_df</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create scatterplot visualization for cities with custom point size
-m = SedonaPyDeck.create_scatterplot_map(cities_df, radius_min_pixels=3)
-m
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create scatterplot visualization for cities with custom point size</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">SedonaPyDeck</span><span class="o">.</span><span class="n">create_scatterplot_map</span><span class="p">(</span><span class="n">cities_df</span><span class="p">,</span> <span class="n">radius_min_pixels</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -1216,36 +1216,36 @@ m
 <h2><span class="section-number">28.11. </span>Writing Vector Data<a class="headerlink" href="#writing-vector-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Load the wetlands data for processing
-url = &quot;s3a://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/DC_Wetlands.parquet&quot;
-df = sedona.read.format(&quot;parquet&quot;).load(url)
-df.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the wetlands data for processing</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;s3a://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/DC_Wetlands.parquet&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;parquet&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Convert WKB geometry to Sedona geometry objects for spatial operations
-df = df.withColumn(&quot;geometry&quot;, expr(&quot;ST_GeomFromWKB(geometry)&quot;))
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert WKB geometry to Sedona geometry objects for spatial operations</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_GeomFromWKB(geometry)&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write to GeoParquet format with optimized partitioning
-# Repartitioning to 10 partitions creates 10 output files for better performance
-df.repartition(10).write.format(&quot;geoparquet&quot;).mode(&quot;overwrite&quot;).save(&quot;DE_Wetlands&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write to GeoParquet format with optimized partitioning</span>
+<span class="c1"># Repartitioning to 10 partitions creates 10 output files for better performance</span>
+<span class="n">df</span><span class="o">.</span><span class="n">repartition</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;geoparquet&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">&quot;overwrite&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;DE_Wetlands&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write to GeoJSON format for compatibility with web applications
-# GeoJSON is widely supported but less efficient for large datasets
-df.write.format(&quot;geojson&quot;).mode(&quot;overwrite&quot;).save(&quot;DE_Wetlands_GeoJSON&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write to GeoJSON format for compatibility with web applications</span>
+<span class="c1"># GeoJSON is widely supported but less efficient for large datasets</span>
+<span class="n">df</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;geojson&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">&quot;overwrite&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;DE_Wetlands_GeoJSON&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1257,24 +1257,24 @@ df.write.format(&quot;geojson&quot;).mode(&quot;overwrite&quot;).save(&quot;DE_W
 <h3><span class="section-number">28.12.1. </span>Reading NetCDF<a class="headerlink" href="#reading-netcdf" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Load NetCDF file as binary data
-df = sedona.read.format(&quot;binaryFile&quot;).load(&quot;wind_global.nc&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load NetCDF file as binary data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;binaryFile&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;wind_global.nc&quot;</span><span class="p">)</span>
 
-# Extract metadata information to understand the file structure
-record_info_df = df.selectExpr(&quot;RS_NetCDFInfo(content) as record_info&quot;)
+<span class="c1"># Extract metadata information to understand the file structure</span>
+<span class="n">record_info_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;RS_NetCDFInfo(content) as record_info&quot;</span><span class="p">)</span>
 
-# Display metadata about variables, dimensions, and attributes
-record_info = record_info_df.first()[&quot;record_info&quot;]
-print(record_info)
+<span class="c1"># Display metadata about variables, dimensions, and attributes</span>
+<span class="n">record_info</span> <span class="o">=</span> <span class="n">record_info_df</span><span class="o">.</span><span class="n">first</span><span class="p">()[</span><span class="s2">&quot;record_info&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">record_info</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Extract the u_wind variable as a raster using lon/lat coordinates
-df = df.withColumn(&quot;raster&quot;, expr(&quot;RS_FromNetCDF(content, &#39;u_wind&#39;, &#39;lon&#39;, &#39;lat&#39;)&quot;))
-df.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the u_wind variable as a raster using lon/lat coordinates</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;raster&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;RS_FromNetCDF(content, &#39;u_wind&#39;, &#39;lon&#39;, &#39;lat&#39;)&quot;</span><span class="p">))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1284,39 +1284,39 @@ df.show()
 <h3><span class="section-number">28.12.2. </span>Reading GeoTIFF<a class="headerlink" href="#reading-geotiff" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dem_df = sedona.read.format(&quot;binaryFile&quot;).load(&quot;dem_90m.tif&quot;)
-dem_df = dem_df.withColumn(&quot;raster&quot;, expr(&quot;RS_FromGeoTiff(content)&quot;))
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dem_df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;binaryFile&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;dem_90m.tif&quot;</span><span class="p">)</span>
+<span class="n">dem_df</span> <span class="o">=</span> <span class="n">dem_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;raster&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;RS_FromGeoTiff(content)&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dem_df.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dem_df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a temporary view to enable SQL operations on the raster data
-dem_df.createOrReplaceTempView(&quot;dem_df&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a temporary view to enable SQL operations on the raster data</span>
+<span class="n">dem_df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;dem_df&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Tile the raster into 256x256 pixel chunks for distributed processing
-tiles_df = dem_df.selectExpr(&quot;RS_TileExplode(raster, 256, 256) as (x, y, raster)&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tile the raster into 256x256 pixel chunks for distributed processing</span>
+<span class="n">tiles_df</span> <span class="o">=</span> <span class="n">dem_df</span><span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;RS_TileExplode(raster, 256, 256) as (x, y, raster)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Display the tiled dataset - each row represents one tile
-tiles_df.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the tiled dataset - each row represents one tile</span>
+<span class="n">tiles_df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1327,9 +1327,9 @@ tiles_df.show()
 <h2><span class="section-number">28.13. </span>Visualizing Raster Data<a class="headerlink" href="#visualizing-raster-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Convert raster data to image format for visualization
-htmlDF = dem_df.selectExpr(&quot;RS_AsImage(raster, 1000) as raster_image&quot;)
-SedonaUtils.display_image(htmlDF)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert raster data to image format for visualization</span>
+<span class="n">htmlDF</span> <span class="o">=</span> <span class="n">dem_df</span><span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;RS_AsImage(raster, 1000) as raster_image&quot;</span><span class="p">)</span>
+<span class="n">SedonaUtils</span><span class="o">.</span><span class="n">display_image</span><span class="p">(</span><span class="n">htmlDF</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1339,63 +1339,63 @@ SedonaUtils.display_image(htmlDF)
 <h2><span class="section-number">28.14. </span>Raster Map Algebra<a class="headerlink" href="#raster-map-algebra" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dem_df.printSchema()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dem_df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dem_df.createOrReplaceTempView(&quot;dem_df&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dem_df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;dem_df&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create binary mask for areas above 2000m elevation using map algebra
-mountain = sedona.sql(
-    &quot;&quot;&quot;
-SELECT
-  RS_MapAlgebra(
-    raster,
-    &#39;D&#39;,
-    &#39;out = (rast[0] &gt; 2000) ? 1 : 0;&#39;
-  ) AS mountain
-FROM dem_df
-&quot;&quot;&quot;
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create binary mask for areas above 2000m elevation using map algebra</span>
+<span class="n">mountain</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">SELECT</span>
+<span class="sd">  RS_MapAlgebra(</span>
+<span class="sd">    raster,</span>
+<span class="sd">    &#39;D&#39;,</span>
+<span class="sd">    &#39;out = (rast[0] &gt; 2000) ? 1 : 0;&#39;</span>
+<span class="sd">  ) AS mountain</span>
+<span class="sd">FROM dem_df</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Display the results of the map algebra operation
-mountain.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the results of the map algebra operation</span>
+<span class="n">mountain</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Visualize the binary mountain mask
-htmlDF = mountain.selectExpr(&quot;RS_AsImage(mountain, 1000) as raster_image&quot;)
-SedonaUtils.display_image(htmlDF)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize the binary mountain mask</span>
+<span class="n">htmlDF</span> <span class="o">=</span> <span class="n">mountain</span><span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;RS_AsImage(mountain, 1000) as raster_image&quot;</span><span class="p">)</span>
+<span class="n">SedonaUtils</span><span class="o">.</span><span class="n">display_image</span><span class="p">(</span><span class="n">htmlDF</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Save the mountain classification raster as a GeoTIFF file
-mountain.withColumn(&quot;raster_binary&quot;, expr(&quot;RS_AsGeoTiff(mountain)&quot;)).write.format(
-    &quot;raster&quot;
-).option(&quot;rasterField&quot;, &quot;raster_binary&quot;).option(&quot;fileExtension&quot;, &quot;.tiff&quot;).mode(
-    &quot;overwrite&quot;
-).save(
-    &quot;mountain&quot;
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save the mountain classification raster as a GeoTIFF file</span>
+<span class="n">mountain</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;raster_binary&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;RS_AsGeoTiff(mountain)&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="s2">&quot;raster&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;rasterField&quot;</span><span class="p">,</span> <span class="s2">&quot;raster_binary&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;fileExtension&quot;</span><span class="p">,</span> <span class="s2">&quot;.tiff&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span>
+    <span class="s2">&quot;overwrite&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span>
+    <span class="s2">&quot;mountain&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1405,40 +1405,40 @@ mountain.withColumn(&quot;raster_binary&quot;, expr(&quot;RS_AsGeoTiff(mountain)
 <h2><span class="section-number">28.15. </span>Raster Zonal Statistics<a class="headerlink" href="#raster-zonal-statistics" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Display the elevation raster structure for reference
-dem_df.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the elevation raster structure for reference</span>
+<span class="n">dem_df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Define a polygon representing a study area in the Sierra Nevada mountains
-polygon = &quot;POLYGON((-119.715885 37.995326, -118.452104 37.995326, -118.452104 37.373679, -119.715885 37.373679, -119.715885 37.995326))&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a polygon representing a study area in the Sierra Nevada mountains</span>
+<span class="n">polygon</span> <span class="o">=</span> <span class="s2">&quot;POLYGON((-119.715885 37.995326, -118.452104 37.995326, -118.452104 37.373679, -119.715885 37.373679, -119.715885 37.995326))&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate average elevation within the study area polygon
-mount_elev = sedona.sql(
-    f&quot;&quot;&quot;
-select
-RS_ZonalStats(dem_df.raster, ST_Transform(
-    ST_GeomFromText(&#39;{polygon}&#39;), &#39;EPSG:4326&#39;, &#39;EPSG:3857&#39;
-    ), 1, &#39;avg&#39;, false, false) as avg_elev
-from dem_df
-&quot;&quot;&quot;
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate average elevation within the study area polygon</span>
+<span class="n">mount_elev</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">select</span>
+<span class="s2">RS_ZonalStats(dem_df.raster, ST_Transform(</span>
+<span class="s2">    ST_GeomFromText(&#39;</span><span class="si">{</span><span class="n">polygon</span><span class="si">}</span><span class="s2">&#39;), &#39;EPSG:4326&#39;, &#39;EPSG:3857&#39;</span>
+<span class="s2">    ), 1, &#39;avg&#39;, false, false) as avg_elev</span>
+<span class="s2">from dem_df</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Display the calculated average elevation
-mount_elev.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the calculated average elevation</span>
+<span class="n">mount_elev</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1448,44 +1448,44 @@ mount_elev.show()
 <h2><span class="section-number">28.16. </span>Writing Raster Data<a class="headerlink" href="#writing-raster-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write the digital elevation model to GeoTIFF with compression
-dem_df.withColumn(
-    &quot;raster_binary&quot;, expr(&quot;RS_AsGeoTiff(raster, &#39;LZW&#39;, &#39;0.75&#39;)&quot;)
-).write.format(&quot;raster&quot;).option(&quot;rasterField&quot;, &quot;raster_binary&quot;).option(
-    &quot;pathField&quot;, &quot;path&quot;
-).option(
-    &quot;fileExtension&quot;, &quot;.tiff&quot;
-).mode(
-    &quot;overwrite&quot;
-).save(
-    &quot;dem&quot;
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write the digital elevation model to GeoTIFF with compression</span>
+<span class="n">dem_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+    <span class="s2">&quot;raster_binary&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;RS_AsGeoTiff(raster, &#39;LZW&#39;, &#39;0.75&#39;)&quot;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;raster&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;rasterField&quot;</span><span class="p">,</span> <span class="s2">&quot;raster_binary&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;pathField&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
+    <span class="s2">&quot;fileExtension&quot;</span><span class="p">,</span> <span class="s2">&quot;.tiff&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span>
+    <span class="s2">&quot;overwrite&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span>
+    <span class="s2">&quot;dem&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Load NetCDF file containing global wind data
-netcdf_df = sedona.read.format(&quot;binaryFile&quot;).load(&quot;wind_global.nc&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load NetCDF file containing global wind data</span>
+<span class="n">netcdf_df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;binaryFile&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;wind_global.nc&quot;</span><span class="p">)</span>
 
-# Extract and display metadata to understand the data structure
-record_info_df = netcdf_df.selectExpr(&quot;RS_NetCDFInfo(content) as record_info&quot;)
+<span class="c1"># Extract and display metadata to understand the data structure</span>
+<span class="n">record_info_df</span> <span class="o">=</span> <span class="n">netcdf_df</span><span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;RS_NetCDFInfo(content) as record_info&quot;</span><span class="p">)</span>
 
-# Display metadata information
-record_info = record_info_df.first()[&quot;record_info&quot;]
-print(record_info)
+<span class="c1"># Display metadata information</span>
+<span class="n">record_info</span> <span class="o">=</span> <span class="n">record_info_df</span><span class="o">.</span><span class="n">first</span><span class="p">()[</span><span class="s2">&quot;record_info&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">record_info</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Extract the u_wind component as a raster for analysis
-netcdf_df = netcdf_df.withColumn(
-    &quot;raster&quot;, expr(&quot;RS_FromNetCDF(content, &#39;u_wind&#39;, &#39;lon&#39;, &#39;lat&#39;)&quot;)
-)
-netcdf_df.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the u_wind component as a raster for analysis</span>
+<span class="n">netcdf_df</span> <span class="o">=</span> <span class="n">netcdf_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+    <span class="s2">&quot;raster&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;RS_FromNetCDF(content, &#39;u_wind&#39;, &#39;lon&#39;, &#39;lat&#39;)&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">netcdf_df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1497,31 +1497,31 @@ netcdf_df.show()
 <h3><span class="section-number">28.17.1. </span>From Sedona DataFrame to GeoPandas GeoDataFrame<a class="headerlink" href="#from-sedona-dataframe-to-geopandas-geodataframe" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Load and create spatial data in Sedona format
-cities_df = (
-    sedona.read.option(&quot;header&quot;, True)
-    .format(&quot;CSV&quot;)
-    .load(&quot;world_cities.csv&quot;)
-    .withColumn(&quot;geometry&quot;, expr(&quot;ST_Point(longitude, latitude)&quot;))
-)
-cities_df.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load and create spatial data in Sedona format</span>
+<span class="n">cities_df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">sedona</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;CSV&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;world_cities.csv&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_Point(longitude, latitude)&quot;</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="n">cities_df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Convert Sedona DataFrame to GeoPandas GeoDataFrame
-df = cities_df.toPandas()  # Convert to Pandas DataFrame
-gdf = gpd.GeoDataFrame(df, geometry=&quot;geometry&quot;)
-gdf.crs = &quot;EPSG:4326&quot;  # Set coordinate reference system
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert Sedona DataFrame to GeoPandas GeoDataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">cities_df</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>  <span class="c1"># Convert to Pandas DataFrame</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="s2">&quot;geometry&quot;</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="s2">&quot;EPSG:4326&quot;</span>  <span class="c1"># Set coordinate reference system</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdf.explore()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">explore</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1531,9 +1531,9 @@ gdf.crs = &quot;EPSG:4326&quot;  # Set coordinate reference system
 <h3><span class="section-number">28.17.2. </span>From Sedona DataFrame To GeoArrow<a class="headerlink" href="#from-sedona-dataframe-to-geoarrow" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Convert Sedona DataFrame to Apache Arrow format for efficient interchange
-arrow = dataframe_to_arrow(cities_df)
-arrow
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert Sedona DataFrame to Apache Arrow format for efficient interchange</span>
+<span class="n">arrow</span> <span class="o">=</span> <span class="n">dataframe_to_arrow</span><span class="p">(</span><span class="n">cities_df</span><span class="p">)</span>
+<span class="n">arrow</span>
 </pre></div>
 </div>
 </div>
@@ -1543,27 +1543,27 @@ arrow
 <h3><span class="section-number">28.17.3. </span>From GeoPandas GeoDataFrame to Sedona DataFrame<a class="headerlink" href="#from-geopandas-geodataframe-to-sedona-dataframe" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Load geospatial data using GeoPandas
-gdf = gpd.read_file(&quot;world_cities.geojson&quot;)
-gdf.head()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load geospatial data using GeoPandas</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;world_cities.geojson&quot;</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Check the coordinate reference system
-gdf.crs
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the coordinate reference system</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">crs</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Convert GeoPandas GeoDataFrame directly to Sedona DataFrame
-# Sedona automatically handles the geometry conversion
-df = sedona.createDataFrame(gdf)
-df.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert GeoPandas GeoDataFrame directly to Sedona DataFrame</span>
+<span class="c1"># Sedona automatically handles the geometry conversion</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1573,33 +1573,33 @@ df.show()
 <h3><span class="section-number">28.17.4. </span>Advanced Integration: Converting Through GeoArrow<a class="headerlink" href="#advanced-integration-converting-through-geoarrow" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Convert Sedona DataFrame to Arrow format
-arrow = dataframe_to_arrow(df)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert Sedona DataFrame to Arrow format</span>
+<span class="n">arrow</span> <span class="o">=</span> <span class="n">dataframe_to_arrow</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Convert Arrow format back to GeoPandas
-gdf = gpd.GeoDataFrame.from_arrow(arrow)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert Arrow format back to GeoPandas</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="o">.</span><span class="n">from_arrow</span><span class="p">(</span><span class="n">arrow</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Display the reconstructed GeoPandas DataFrame
-gdf.head()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the reconstructed GeoPandas DataFrame</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Convert back to Sedona for further distributed processing
-df = sedona.createDataFrame(gdf)
-df.show()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert back to Sedona for further distributed processing</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1609,39 +1609,39 @@ df.show()
 <h3><span class="section-number">28.17.5. </span>Custom Conversion Functions<a class="headerlink" href="#custom-conversion-functions" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Custom function to convert Sedona DataFrame to GeoPandas with error handling
-def sedona_to_geopandas(sedona_df, geometry_col=&quot;geometry&quot;):
-    &quot;&quot;&quot;Convert Sedona DataFrame to GeoPandas DataFrame with robust error handling&quot;&quot;&quot;
-    # Convert spatial geometries to WKT format for transfer
-    with_wkt = sedona_df.withColumn(&quot;wkt_geom&quot;, expr(f&quot;ST_AsText({geometry_col})&quot;))
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Custom function to convert Sedona DataFrame to GeoPandas with error handling</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sedona_to_geopandas</span><span class="p">(</span><span class="n">sedona_df</span><span class="p">,</span> <span class="n">geometry_col</span><span class="o">=</span><span class="s2">&quot;geometry&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert Sedona DataFrame to GeoPandas DataFrame with robust error handling&quot;&quot;&quot;</span>
+    <span class="c1"># Convert spatial geometries to WKT format for transfer</span>
+    <span class="n">with_wkt</span> <span class="o">=</span> <span class="n">sedona_df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;wkt_geom&quot;</span><span class="p">,</span> <span class="n">expr</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ST_AsText(</span><span class="si">{</span><span class="n">geometry_col</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">))</span>
 
-    # Convert to Pandas DataFrame
-    pandas_df = with_wkt.toPandas()
+    <span class="c1"># Convert to Pandas DataFrame</span>
+    <span class="n">pandas_df</span> <span class="o">=</span> <span class="n">with_wkt</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
 
-    # Convert WKT strings to Shapely geometries
-    from shapely import wkt
+    <span class="c1"># Convert WKT strings to Shapely geometries</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">shapely</span><span class="w"> </span><span class="kn">import</span> <span class="n">wkt</span>
 
-    pandas_df[&quot;geometry&quot;] = pandas_df[&quot;wkt_geom&quot;].apply(wkt.loads)
+    <span class="n">pandas_df</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pandas_df</span><span class="p">[</span><span class="s2">&quot;wkt_geom&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">wkt</span><span class="o">.</span><span class="n">loads</span><span class="p">)</span>
 
-    # Create GeoPandas GeoDataFrame
-    gdf = gpd.GeoDataFrame(pandas_df.drop(&quot;wkt_geom&quot;, axis=1), geometry=&quot;geometry&quot;)
+    <span class="c1"># Create GeoPandas GeoDataFrame</span>
+    <span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">pandas_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;wkt_geom&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">geometry</span><span class="o">=</span><span class="s2">&quot;geometry&quot;</span><span class="p">)</span>
 
-    return gdf
+    <span class="k">return</span> <span class="n">gdf</span>
 
 
-# Example usage: convert filtered dataset to GeoPandas
-major_cities = world_cities_spatial.filter(col(&quot;population&quot;) &gt; 1000000)
-major_cities_gdf = sedona_to_geopandas(major_cities)
+<span class="c1"># Example usage: convert filtered dataset to GeoPandas</span>
+<span class="n">major_cities</span> <span class="o">=</span> <span class="n">world_cities_spatial</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;population&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1000000</span><span class="p">)</span>
+<span class="n">major_cities_gdf</span> <span class="o">=</span> <span class="n">sedona_to_geopandas</span><span class="p">(</span><span class="n">major_cities</span><span class="p">)</span>
 
-print(f&quot;Converted {len(major_cities_gdf)} major cities to GeoPandas&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Converted </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">major_cities_gdf</span><span class="p">)</span><span class="si">}</span><span class="s2"> major cities to GeoPandas&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Display the converted major cities dataset
-major_cities_gdf
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display the converted major cities dataset</span>
+<span class="n">major_cities_gdf</span>
 </pre></div>
 </div>
 </div>
@@ -1654,33 +1654,33 @@ major_cities_gdf
 <h3><span class="section-number">28.18.1. </span>Use Case 1: Global Urban Density Analysis<a class="headerlink" href="#use-case-1-global-urban-density-analysis" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Analyze urban density patterns for cities with population &gt; 500,000
-urban_analysis = (
-    world_cities_spatial.filter(col(&quot;population&quot;) &gt; 500000)  # Focus on major cities
-    .withColumn(
-        &quot;urban_density&quot;,
-        col(&quot;population&quot;)
-        / expr(&quot;ST_Area(ST_Buffer(geometry, 10000))&quot;),  # People per m² in 10km radius
-    )
-    .withColumn(
-        &quot;city_category&quot;,
-        expr(
-            &quot;&quot;&quot;
-        CASE
-            WHEN population &gt; 5000000 THEN &#39;Megacity&#39;      -- Cities &gt; 5M people
-            WHEN population &gt; 1000000 THEN &#39;Large City&#39;    -- Cities 1-5M people
-            ELSE &#39;Medium City&#39;                              -- Cities 500K-1M people
-        END
-    &quot;&quot;&quot;
-        ),
-    )
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Analyze urban density patterns for cities with population &gt; 500,000</span>
+<span class="n">urban_analysis</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">world_cities_spatial</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;population&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">500000</span><span class="p">)</span>  <span class="c1"># Focus on major cities</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">&quot;urban_density&quot;</span><span class="p">,</span>
+        <span class="n">col</span><span class="p">(</span><span class="s2">&quot;population&quot;</span><span class="p">)</span>
+        <span class="o">/</span> <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_Area(ST_Buffer(geometry, 10000))&quot;</span><span class="p">),</span>  <span class="c1"># People per m² in 10km radius</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">&quot;city_category&quot;</span><span class="p">,</span>
+        <span class="n">expr</span><span class="p">(</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        CASE</span>
+<span class="sd">            WHEN population &gt; 5000000 THEN &#39;Megacity&#39;      -- Cities &gt; 5M people</span>
+<span class="sd">            WHEN population &gt; 1000000 THEN &#39;Large City&#39;    -- Cities 1-5M people</span>
+<span class="sd">            ELSE &#39;Medium City&#39;                              -- Cities 500K-1M people</span>
+<span class="sd">        END</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 
-# Calculate average density by city category
-urban_analysis.groupBy(&quot;city_category&quot;).agg(
-    expr(&quot;count(*)&quot;).alias(&quot;count&quot;),  # Number of cities in each category
-    expr(&quot;avg(urban_density)&quot;).alias(&quot;avg_density&quot;),  # Average density per category
-).show()
+<span class="c1"># Calculate average density by city category</span>
+<span class="n">urban_analysis</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">&quot;city_category&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;count(*)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">),</span>  <span class="c1"># Number of cities in each category</span>
+    <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;avg(urban_density)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;avg_density&quot;</span><span class="p">),</span>  <span class="c1"># Average density per category</span>
+<span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1690,30 +1690,30 @@ urban_analysis.groupBy(&quot;city_category&quot;).agg(
 <h3><span class="section-number">28.18.2. </span>Use Case 2: Transit Accessibility Assessment<a class="headerlink" href="#use-case-2-transit-accessibility-assessment" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Analyze potential transit coverage for cities with population &gt; 100,000
-transit_analysis = (
-    world_cities_spatial.filter(col(&quot;population&quot;) &gt; 100000)
-    .withColumn(
-        &quot;transit_coverage&quot;,
-        expr(&quot;ST_Buffer(geometry, 1000)&quot;),  # 1km radius transit catchment area
-    )
-    .withColumn(
-        &quot;coverage_area_km2&quot;,
-        expr(&quot;ST_Area(ST_Buffer(geometry, 1000)) / 1000000&quot;),  # Convert m² to km²
-    )
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Analyze potential transit coverage for cities with population &gt; 100,000</span>
+<span class="n">transit_analysis</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">world_cities_spatial</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;population&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">100000</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">&quot;transit_coverage&quot;</span><span class="p">,</span>
+        <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_Buffer(geometry, 1000)&quot;</span><span class="p">),</span>  <span class="c1"># 1km radius transit catchment area</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s2">&quot;coverage_area_km2&quot;</span><span class="p">,</span>
+        <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;ST_Area(ST_Buffer(geometry, 1000)) / 1000000&quot;</span><span class="p">),</span>  <span class="c1"># Convert m² to km²</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 
-# Calculate global transit accessibility metrics
-accessibility_metrics = transit_analysis.agg(
-    expr(&quot;avg(coverage_area_km2)&quot;).alias(
-        &quot;avg_coverage_area&quot;
-    ),  # Average coverage area per city
-    expr(&quot;sum(coverage_area_km2)&quot;).alias(
-        &quot;total_coverage_area&quot;
-    ),  # Total potential coverage globally
-)
+<span class="c1"># Calculate global transit accessibility metrics</span>
+<span class="n">accessibility_metrics</span> <span class="o">=</span> <span class="n">transit_analysis</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;avg(coverage_area_km2)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span>
+        <span class="s2">&quot;avg_coverage_area&quot;</span>
+    <span class="p">),</span>  <span class="c1"># Average coverage area per city</span>
+    <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;sum(coverage_area_km2)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span>
+        <span class="s2">&quot;total_coverage_area&quot;</span>
+    <span class="p">),</span>  <span class="c1"># Total potential coverage globally</span>
+<span class="p">)</span>
 
-accessibility_metrics.show()
+<span class="n">accessibility_metrics</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

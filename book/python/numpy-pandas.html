@@ -555,70 +555,70 @@ document.write(`
 <h3><span class="section-number">14.3.1. </span>Creating NumPy Arrays<a class="headerlink" href="#creating-numpy-arrays" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import numpy as np
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>elevation_readings = np.array([245, 312, 156, 423, 678])
-print(f&quot;1D Array (elevation readings): {elevation_readings}&quot;)
-print(f&quot;Data type: {elevation_readings.dtype}&quot;)
-print(f&quot;Array shape: {elevation_readings.shape}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">elevation_readings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">245</span><span class="p">,</span> <span class="mi">312</span><span class="p">,</span> <span class="mi">156</span><span class="p">,</span> <span class="mi">423</span><span class="p">,</span> <span class="mi">678</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;1D Array (elevation readings): </span><span class="si">{</span><span class="n">elevation_readings</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data type: </span><span class="si">{</span><span class="n">elevation_readings</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Array shape: </span><span class="si">{</span><span class="n">elevation_readings</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Each row represents one location: [latitude, longitude]
-coordinates = np.array(
-    [[35.6895, 139.6917], [40.7128, -74.0060], [51.5074, -0.1278]]  # Tokyo  # New York
-)  # London
-print(f&quot;2D Array (city coordinates):\n{coordinates}&quot;)
-print(f&quot;Array shape: {coordinates.shape}&quot;)  # (3 rows, 2 columns)
-print(f&quot;Number of cities: {coordinates.shape[0]}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Each row represents one location: [latitude, longitude]</span>
+<span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[[</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">],</span> <span class="p">[</span><span class="mf">40.7128</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.0060</span><span class="p">],</span> <span class="p">[</span><span class="mf">51.5074</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">]]</span>  <span class="c1"># Tokyo  # New York</span>
+<span class="p">)</span>  <span class="c1"># London</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2D Array (city coordinates):</span><span class="se">\n</span><span class="si">{</span><span class="n">coordinates</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Array shape: </span><span class="si">{</span><span class="n">coordinates</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># (3 rows, 2 columns)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of cities: </span><span class="si">{</span><span class="n">coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># For example, you might create a grid to store calculated distances
-distance_matrix = np.zeros((3, 3))
-print(f&quot;Distance matrix (initialized with zeros):\n{distance_matrix}&quot;)
-print(f&quot;This could store distances between {distance_matrix.shape[0]} cities&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># For example, you might create a grid to store calculated distances</span>
+<span class="n">distance_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance matrix (initialized with zeros):</span><span class="se">\n</span><span class="si">{</span><span class="n">distance_matrix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;This could store distances between </span><span class="si">{</span><span class="n">distance_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> cities&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># You can multiply by any number to get arrays filled with that value
-weights = np.ones((2, 4)) * 0.5  # Array filled with 0.5
-print(f&quot;Array of weights (0.5):\n{weights}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># You can multiply by any number to get arrays filled with that value</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="o">*</span> <span class="mf">0.5</span>  <span class="c1"># Array filled with 0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Array of weights (0.5):</span><span class="se">\n</span><span class="si">{</span><span class="n">weights</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Or create an array for marking valid data points
-valid_data_flags = np.ones((5,), dtype=bool)  # All True initially
-print(f&quot;Data validity flags: {valid_data_flags}&quot;)
+<span class="c1"># Or create an array for marking valid data points</span>
+<span class="n">valid_data_flags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>  <span class="c1"># All True initially</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data validity flags: </span><span class="si">{</span><span class="n">valid_data_flags</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># For example, creating a series of years for time series analysis
-years = np.arange(2010, 2021, 1)  # From 2010 to 2020, step by 1
-print(f&quot;Years array: {years}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># For example, creating a series of years for time series analysis</span>
+<span class="n">years</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># From 2010 to 2020, step by 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Years array: </span><span class="si">{</span><span class="n">years</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Or creating latitude values for a grid
-latitudes = np.arange(-90, 91, 30)  # From -90 to 90 degrees, every 30 degrees
-print(f&quot;Latitude grid: {latitudes}&quot;)
+<span class="c1"># Or creating latitude values for a grid</span>
+<span class="n">latitudes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>  <span class="c1"># From -90 to 90 degrees, every 30 degrees</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Latitude grid: </span><span class="si">{</span><span class="n">latitudes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# You can also use linspace for evenly spaced values
-longitudes = np.linspace(-180, 180, 7)  # 7 evenly spaced values from -180 to 180
-print(f&quot;Longitude grid: {longitudes}&quot;)
+<span class="c1"># You can also use linspace for evenly spaced values</span>
+<span class="n">longitudes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>  <span class="c1"># 7 evenly spaced values from -180 to 180</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Longitude grid: </span><span class="si">{</span><span class="n">longitudes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -628,51 +628,51 @@ print(f&quot;Longitude grid: {longitudes}&quot;)
 <h3><span class="section-number">14.3.2. </span>Basic Array Operations<a class="headerlink" href="#basic-array-operations" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Element-wise addition - add the same value to every element
-# Example: adjusting elevation readings by adding a reference height
-elevation_readings = np.array([245, 312, 156, 423, 678])
-sea_level_adjustment = elevation_readings + 10  # Add 10 meters to all readings
-print(f&quot;Original elevations: {elevation_readings}&quot;)
-print(f&quot;Adjusted elevations: {sea_level_adjustment}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Element-wise addition - add the same value to every element</span>
+<span class="c1"># Example: adjusting elevation readings by adding a reference height</span>
+<span class="n">elevation_readings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">245</span><span class="p">,</span> <span class="mi">312</span><span class="p">,</span> <span class="mi">156</span><span class="p">,</span> <span class="mi">423</span><span class="p">,</span> <span class="mi">678</span><span class="p">])</span>
+<span class="n">sea_level_adjustment</span> <span class="o">=</span> <span class="n">elevation_readings</span> <span class="o">+</span> <span class="mi">10</span>  <span class="c1"># Add 10 meters to all readings</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original elevations: </span><span class="si">{</span><span class="n">elevation_readings</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Adjusted elevations: </span><span class="si">{</span><span class="n">sea_level_adjustment</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Element-wise multiplication - multiply every element by the same value
-# Example: converting elevation from meters to feet (1 meter = 3.28084 feet)
-elevations_meters = np.array([245, 312, 156, 423, 678])
-elevations_feet = elevations_meters * 3.28084
-print(f&quot;Elevations in meters: {elevations_meters}&quot;)
-print(f&quot;Elevations in feet: {elevations_feet.round(1)}&quot;)  # Round to 1 decimal place
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Element-wise multiplication - multiply every element by the same value</span>
+<span class="c1"># Example: converting elevation from meters to feet (1 meter = 3.28084 feet)</span>
+<span class="n">elevations_meters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">245</span><span class="p">,</span> <span class="mi">312</span><span class="p">,</span> <span class="mi">156</span><span class="p">,</span> <span class="mi">423</span><span class="p">,</span> <span class="mi">678</span><span class="p">])</span>
+<span class="n">elevations_feet</span> <span class="o">=</span> <span class="n">elevations_meters</span> <span class="o">*</span> <span class="mf">3.28084</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elevations in meters: </span><span class="si">{</span><span class="n">elevations_meters</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elevations in feet: </span><span class="si">{</span><span class="n">elevations_feet</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Round to 1 decimal place</span>
 
-# You can also add, subtract, and divide arrays by scalars
-temperatures_celsius = np.array([15.5, 22.3, 8.9, 31.2])
-temperatures_fahrenheit = temperatures_celsius * 9 / 5 + 32
-print(f&quot;Temperatures in Celsius: {temperatures_celsius}&quot;)
-print(f&quot;Temperatures in Fahrenheit: {temperatures_fahrenheit.round(1)}&quot;)
+<span class="c1"># You can also add, subtract, and divide arrays by scalars</span>
+<span class="n">temperatures_celsius</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">15.5</span><span class="p">,</span> <span class="mf">22.3</span><span class="p">,</span> <span class="mf">8.9</span><span class="p">,</span> <span class="mf">31.2</span><span class="p">])</span>
+<span class="n">temperatures_fahrenheit</span> <span class="o">=</span> <span class="n">temperatures_celsius</span> <span class="o">*</span> <span class="mi">9</span> <span class="o">/</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">32</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperatures in Celsius: </span><span class="si">{</span><span class="n">temperatures_celsius</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperatures in Fahrenheit: </span><span class="si">{</span><span class="n">temperatures_fahrenheit</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Operations between arrays - element-wise operations between two arrays
-# Example: calculating weighted coordinates
-coordinates = np.array(
-    [[35.6895, 139.6917], [40.7128, -74.0060], [51.5074, -0.1278]]  # Tokyo  # New York
-)  # London
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Operations between arrays - element-wise operations between two arrays</span>
+<span class="c1"># Example: calculating weighted coordinates</span>
+<span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[[</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">],</span> <span class="p">[</span><span class="mf">40.7128</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.0060</span><span class="p">],</span> <span class="p">[</span><span class="mf">51.5074</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">]]</span>  <span class="c1"># Tokyo  # New York</span>
+<span class="p">)</span>  <span class="c1"># London</span>
 
-# Apply different weights to latitude and longitude (useful for some projections)
-weights = np.array([1.0, 0.8])  # Weight latitude normally, reduce longitude weight
-weighted_coords = coordinates * weights
-print(f&quot;Original coordinates:\n{coordinates}&quot;)
-print(f&quot;Weighted coordinates:\n{weighted_coords}&quot;)
+<span class="c1"># Apply different weights to latitude and longitude (useful for some projections)</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>  <span class="c1"># Weight latitude normally, reduce longitude weight</span>
+<span class="n">weighted_coords</span> <span class="o">=</span> <span class="n">coordinates</span> <span class="o">*</span> <span class="n">weights</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original coordinates:</span><span class="se">\n</span><span class="si">{</span><span class="n">coordinates</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Weighted coordinates:</span><span class="se">\n</span><span class="si">{</span><span class="n">weighted_coords</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# You can also perform operations between arrays of the same shape
-coord_differences = coordinates - coordinates[0]  # Distance from first city (Tokyo)
-print(f&quot;Coordinate differences from Tokyo:\n{coord_differences}&quot;)
+<span class="c1"># You can also perform operations between arrays of the same shape</span>
+<span class="n">coord_differences</span> <span class="o">=</span> <span class="n">coordinates</span> <span class="o">-</span> <span class="n">coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Distance from first city (Tokyo)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Coordinate differences from Tokyo:</span><span class="se">\n</span><span class="si">{</span><span class="n">coord_differences</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -682,35 +682,35 @@ print(f&quot;Coordinate differences from Tokyo:\n{coord_differences}&quot;)
 <h3><span class="section-number">14.3.3. </span>Reshaping Arrays<a class="headerlink" href="#reshaping-arrays" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Example: Reshape coordinate data received as a flat list
-# Imagine you received GPS data as: [lat1, lon1, lat2, lon2, lat3, lon3]
-flat_coordinates = np.array([35.6895, 139.6917, 40.7128, -74.0060, 51.5074, -0.1278])
-print(f&quot;Flat coordinate data: {flat_coordinates}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example: Reshape coordinate data received as a flat list</span>
+<span class="c1"># Imagine you received GPS data as: [lat1, lon1, lat2, lon2, lat3, lon3]</span>
+<span class="n">flat_coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">,</span> <span class="mf">40.7128</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.0060</span><span class="p">,</span> <span class="mf">51.5074</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Flat coordinate data: </span><span class="si">{</span><span class="n">flat_coordinates</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Reshape into coordinate pairs (3 rows, 2 columns)
-coordinate_pairs = flat_coordinates.reshape((3, 2))
-print(f&quot;Reshaped into coordinate pairs:\n{coordinate_pairs}&quot;)
+<span class="c1"># Reshape into coordinate pairs (3 rows, 2 columns)</span>
+<span class="n">coordinate_pairs</span> <span class="o">=</span> <span class="n">flat_coordinates</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reshaped into coordinate pairs:</span><span class="se">\n</span><span class="si">{</span><span class="n">coordinate_pairs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Alternatively, you can use -1 to let NumPy calculate one dimension
-# This is useful when you know you want pairs but don&#39;t know how many
-coordinate_pairs_auto = flat_coordinates.reshape(-1, 2)
-print(f&quot;Auto-calculated rows: {coordinate_pairs_auto.shape}&quot;)
+<span class="c1"># Alternatively, you can use -1 to let NumPy calculate one dimension</span>
+<span class="c1"># This is useful when you know you want pairs but don&#39;t know how many</span>
+<span class="n">coordinate_pairs_auto</span> <span class="o">=</span> <span class="n">flat_coordinates</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Auto-calculated rows: </span><span class="si">{</span><span class="n">coordinate_pairs_auto</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Understanding array properties
-print(f&quot;Original flat array shape: {flat_coordinates.shape}&quot;)
-print(f&quot;Reshaped array shape: {coordinate_pairs.shape}&quot;)
-print(
-    f&quot;Total elements (should be the same): {flat_coordinates.size} vs {coordinate_pairs.size}&quot;
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Understanding array properties</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original flat array shape: </span><span class="si">{</span><span class="n">flat_coordinates</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reshaped array shape: </span><span class="si">{</span><span class="n">coordinate_pairs</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Total elements (should be the same): </span><span class="si">{</span><span class="n">flat_coordinates</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2"> vs </span><span class="si">{</span><span class="n">coordinate_pairs</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
 
-# You can also flatten a multidimensional array back to 1D
-flattened_again = coordinate_pairs.flatten()
-print(f&quot;Flattened back to 1D: {flattened_again}&quot;)
+<span class="c1"># You can also flatten a multidimensional array back to 1D</span>
+<span class="n">flattened_again</span> <span class="o">=</span> <span class="n">coordinate_pairs</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Flattened back to 1D: </span><span class="si">{</span><span class="n">flattened_again</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -720,38 +720,38 @@ print(f&quot;Flattened back to 1D: {flattened_again}&quot;)
 <h3><span class="section-number">14.3.4. </span>Mathematical Functions on Arrays<a class="headerlink" href="#mathematical-functions-on-arrays" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Mathematical functions applied to arrays
-distances_squared = np.array([100, 400, 900, 1600, 2500])  # Squared distances in km²
-actual_distances = np.sqrt(distances_squared)  # Calculate actual distances
-print(f&quot;Squared distances: {distances_squared}&quot;)
-print(f&quot;Actual distances: {actual_distances}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mathematical functions applied to arrays</span>
+<span class="n">distances_squared</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">2500</span><span class="p">])</span>  <span class="c1"># Squared distances in km²</span>
+<span class="n">actual_distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">distances_squared</span><span class="p">)</span>  <span class="c1"># Calculate actual distances</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Squared distances: </span><span class="si">{</span><span class="n">distances_squared</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Actual distances: </span><span class="si">{</span><span class="n">actual_distances</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Trigonometric functions - essential for coordinate conversions
-angles_degrees = np.array([0, 30, 45, 60, 90])
-angles_radians = np.radians(angles_degrees)  # Convert to radians first
-sine_values = np.sin(angles_radians)
-cosine_values = np.cos(angles_radians)
-print(f&quot;Angles (degrees): {angles_degrees}&quot;)
-print(f&quot;Sine values: {sine_values.round(3)}&quot;)
-print(f&quot;Cosine values: {cosine_values.round(3)}&quot;)
+<span class="c1"># Trigonometric functions - essential for coordinate conversions</span>
+<span class="n">angles_degrees</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span>
+<span class="n">angles_radians</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angles_degrees</span><span class="p">)</span>  <span class="c1"># Convert to radians first</span>
+<span class="n">sine_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angles_radians</span><span class="p">)</span>
+<span class="n">cosine_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angles_radians</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Angles (degrees): </span><span class="si">{</span><span class="n">angles_degrees</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sine values: </span><span class="si">{</span><span class="n">sine_values</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cosine values: </span><span class="si">{</span><span class="n">cosine_values</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Logarithmic and exponential functions
-population_data = np.array([100000, 500000, 1000000, 5000000, 10000000])
-# Log transformation is often used to normalize highly skewed data like population
-log_population = np.log10(population_data)  # Base-10 logarithm
-print(f&quot;Population data: {population_data}&quot;)
-print(f&quot;Log10 of population: {log_population.round(2)}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Logarithmic and exponential functions</span>
+<span class="n">population_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">500000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span> <span class="mi">5000000</span><span class="p">,</span> <span class="mi">10000000</span><span class="p">])</span>
+<span class="c1"># Log transformation is often used to normalize highly skewed data like population</span>
+<span class="n">log_population</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">population_data</span><span class="p">)</span>  <span class="c1"># Base-10 logarithm</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Population data: </span><span class="si">{</span><span class="n">population_data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Log10 of population: </span><span class="si">{</span><span class="n">log_population</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Exponential functions
-growth_rates = np.array([0.01, 0.02, 0.03, 0.05])  # 1%, 2%, 3%, 5% growth rates
-exponential_growth = np.exp(growth_rates)  # e^x
-print(f&quot;Growth rates: {growth_rates}&quot;)
-print(f&quot;Exponential factors: {exponential_growth.round(3)}&quot;)
+<span class="c1"># Exponential functions</span>
+<span class="n">growth_rates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">])</span>  <span class="c1"># 1%, 2%, 3%, 5% growth rates</span>
+<span class="n">exponential_growth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">growth_rates</span><span class="p">)</span>  <span class="c1"># e^x</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Growth rates: </span><span class="si">{</span><span class="n">growth_rates</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exponential factors: </span><span class="si">{</span><span class="n">exponential_growth</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -761,27 +761,27 @@ print(f&quot;Exponential factors: {exponential_growth.round(3)}&quot;)
 <h3><span class="section-number">14.3.5. </span>Statistical Operations<a class="headerlink" href="#statistical-operations" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>elevation_profile = np.array(
-    [1245, 1367, 1423, 1389, 1456, 1502, 1478, 1398, 1334, 1278]
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">elevation_profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">1245</span><span class="p">,</span> <span class="mi">1367</span><span class="p">,</span> <span class="mi">1423</span><span class="p">,</span> <span class="mi">1389</span><span class="p">,</span> <span class="mi">1456</span><span class="p">,</span> <span class="mi">1502</span><span class="p">,</span> <span class="mi">1478</span><span class="p">,</span> <span class="mi">1398</span><span class="p">,</span> <span class="mi">1334</span><span class="p">,</span> <span class="mi">1278</span><span class="p">]</span>
+<span class="p">)</span>
 
-# Basic descriptive statistics
-mean_elevation = np.mean(elevation_profile)
-median_elevation = np.median(elevation_profile)
-std_elevation = np.std(elevation_profile)
-min_elevation = np.min(elevation_profile)
-max_elevation = np.max(elevation_profile)
+<span class="c1"># Basic descriptive statistics</span>
+<span class="n">mean_elevation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">elevation_profile</span><span class="p">)</span>
+<span class="n">median_elevation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">elevation_profile</span><span class="p">)</span>
+<span class="n">std_elevation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">elevation_profile</span><span class="p">)</span>
+<span class="n">min_elevation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">elevation_profile</span><span class="p">)</span>
+<span class="n">max_elevation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">elevation_profile</span><span class="p">)</span>
 
-print(f&quot;Elevation Profile Statistics:&quot;)
-print(f&quot;Mean elevation: {mean_elevation:.1f} meters&quot;)
-print(f&quot;Median elevation: {median_elevation:.1f} meters&quot;)
-print(f&quot;Standard deviation: {std_elevation:.1f} meters&quot;)
-print(f&quot;Elevation range: {min_elevation} - {max_elevation} meters&quot;)
-print(f&quot;Total elevation gain: {max_elevation - min_elevation} meters&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elevation Profile Statistics:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean elevation: </span><span class="si">{</span><span class="n">mean_elevation</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Median elevation: </span><span class="si">{</span><span class="n">median_elevation</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Standard deviation: </span><span class="si">{</span><span class="n">std_elevation</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elevation range: </span><span class="si">{</span><span class="n">min_elevation</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">max_elevation</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total elevation gain: </span><span class="si">{</span><span class="n">max_elevation</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">min_elevation</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
 
-# Percentiles help understand the distribution
-percentiles = np.percentile(elevation_profile, [25, 50, 75])
-print(f&quot;25th, 50th, 75th percentiles: {percentiles}&quot;)
+<span class="c1"># Percentiles help understand the distribution</span>
+<span class="n">percentiles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">elevation_profile</span><span class="p">,</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;25th, 50th, 75th percentiles: </span><span class="si">{</span><span class="n">percentiles</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -791,34 +791,34 @@ print(f&quot;25th, 50th, 75th percentiles: {percentiles}&quot;)
 <h3><span class="section-number">14.3.6. </span>Random Data Generation for Simulation<a class="headerlink" href="#random-data-generation-for-simulation" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Set a seed for reproducible results (useful for testing)
-np.random.seed(42)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set a seed for reproducible results (useful for testing)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
-# Generate random coordinates within realistic bounds
-# Latitudes: -90 to 90 degrees, Longitudes: -180 to 180 degrees
-n_points = 5
-random_latitudes = np.random.uniform(-90, 90, n_points)
-random_longitudes = np.random.uniform(-180, 180, n_points)
+<span class="c1"># Generate random coordinates within realistic bounds</span>
+<span class="c1"># Latitudes: -90 to 90 degrees, Longitudes: -180 to 180 degrees</span>
+<span class="n">n_points</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">random_latitudes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="n">n_points</span><span class="p">)</span>
+<span class="n">random_longitudes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="n">n_points</span><span class="p">)</span>
 
-print(f&quot;Random coordinates:&quot;)
-for i in range(n_points):
-    print(f&quot;Point {i+1}: ({random_latitudes[i]:.4f}, {random_longitudes[i]:.4f})&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Random coordinates:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_points</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Point </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: (</span><span class="si">{</span><span class="n">random_latitudes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">random_longitudes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>temperature_base = 20  # Base temperature in Celsius
-temperature_readings = np.random.normal(
-    temperature_base, 3, 10
-)  # Mean=20, std=3, 10 readings
-print(f&quot;\nSimulated temperature readings (°C):&quot;)
-print(temperature_readings.round(1))
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temperature_base</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># Base temperature in Celsius</span>
+<span class="n">temperature_readings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span>
+    <span class="n">temperature_base</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span>
+<span class="p">)</span>  <span class="c1"># Mean=20, std=3, 10 readings</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Simulated temperature readings (°C):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temperature_readings</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
-# Generate random integers - useful for sampling or indexing
-random_indices = np.random.randint(0, 100, 5)  # Random integers between 0 and 99
-print(f&quot;\nRandom sample indices: {random_indices}&quot;)
+<span class="c1"># Generate random integers - useful for sampling or indexing</span>
+<span class="n">random_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># Random integers between 0 and 99</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Random sample indices: </span><span class="si">{</span><span class="n">random_indices</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -830,42 +830,42 @@ print(f&quot;\nRandom sample indices: {random_indices}&quot;)
 <h4><span class="section-number">14.3.7.1. </span>Indexing in NumPy<a class="headerlink" href="#indexing-in-numpy" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a 1D array of temperatures recorded at different times
-temperatures = np.array([15.2, 18.5, 22.1, 19.8, 16.3])
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 1D array of temperatures recorded at different times</span>
+<span class="n">temperatures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">15.2</span><span class="p">,</span> <span class="mf">18.5</span><span class="p">,</span> <span class="mf">22.1</span><span class="p">,</span> <span class="mf">19.8</span><span class="p">,</span> <span class="mf">16.3</span><span class="p">])</span>
 
-# Accessing the first temperature reading
-first_temp = temperatures[0]
-print(f&quot;First temperature reading: {first_temp}°C&quot;)
+<span class="c1"># Accessing the first temperature reading</span>
+<span class="n">first_temp</span> <span class="o">=</span> <span class="n">temperatures</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First temperature reading: </span><span class="si">{</span><span class="n">first_temp</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
 
-# Accessing the last temperature reading (negative indexing)
-last_temp = temperatures[-1]
-print(f&quot;Last temperature reading: {last_temp}°C&quot;)
+<span class="c1"># Accessing the last temperature reading (negative indexing)</span>
+<span class="n">last_temp</span> <span class="o">=</span> <span class="n">temperatures</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Last temperature reading: </span><span class="si">{</span><span class="n">last_temp</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
 
-# Accessing the middle reading
-middle_temp = temperatures[2]
-print(f&quot;Middle temperature reading: {middle_temp}°C&quot;)
+<span class="c1"># Accessing the middle reading</span>
+<span class="n">middle_temp</span> <span class="o">=</span> <span class="n">temperatures</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Middle temperature reading: </span><span class="si">{</span><span class="n">middle_temp</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a 2D array
-arr_2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-arr_2d
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 2D array</span>
+<span class="n">arr_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+<span class="n">arr_2d</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Accessing the element in the first row and second column
-element = arr_2d[0, 1]
-print(f&quot;Element at row 1, column 2: {element}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Accessing the element in the first row and second column</span>
+<span class="n">element</span> <span class="o">=</span> <span class="n">arr_2d</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Element at row 1, column 2: </span><span class="si">{</span><span class="n">element</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Accessing the element in the last row and last column
-element_last = arr_2d[-1, -1]
-print(f&quot;Element at last row, last column: {element_last}&quot;)
+<span class="c1"># Accessing the element in the last row and last column</span>
+<span class="n">element_last</span> <span class="o">=</span> <span class="n">arr_2d</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Element at last row, last column: </span><span class="si">{</span><span class="n">element_last</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -875,38 +875,38 @@ print(f&quot;Element at last row, last column: {element_last}&quot;)
 <h4><span class="section-number">14.3.7.2. </span>Slicing in NumPy<a class="headerlink" href="#slicing-in-numpy" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a 1D array
-arr = np.array([10, 20, 30, 40, 50])
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 1D array</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
 
-# Slice elements from index 1 to 3 (exclusive)
-slice_1d = arr[1:4]
-print(f&quot;Slice from index 1 to 3: {slice_1d}&quot;)
+<span class="c1"># Slice elements from index 1 to 3 (exclusive)</span>
+<span class="n">slice_1d</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Slice from index 1 to 3: </span><span class="si">{</span><span class="n">slice_1d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Slice all elements from index 2 onwards
-slice_2d = arr[2:]
-print(f&quot;Slice from index 2 onwards: {slice_2d}&quot;)
+<span class="c1"># Slice all elements from index 2 onwards</span>
+<span class="n">slice_2d</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Slice from index 2 onwards: </span><span class="si">{</span><span class="n">slice_2d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a 2D array
-arr_2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-arr_2d
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 2D array</span>
+<span class="n">arr_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+<span class="n">arr_2d</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Slice the first two rows and all columns
-slice_2d = arr_2d[:2, :]
-print(f&quot;Sliced 2D array (first two rows):\n{slice_2d}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Slice the first two rows and all columns</span>
+<span class="n">slice_2d</span> <span class="o">=</span> <span class="n">arr_2d</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sliced 2D array (first two rows):</span><span class="se">\n</span><span class="si">{</span><span class="n">slice_2d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Slice the last two rows and the first two columns
-slice_2d_partial = arr_2d[1:, :2]
-print(f&quot;Sliced 2D array (last two rows, first two columns):\n{slice_2d_partial}&quot;)
+<span class="c1"># Slice the last two rows and the first two columns</span>
+<span class="n">slice_2d_partial</span> <span class="o">=</span> <span class="n">arr_2d</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sliced 2D array (last two rows, first two columns):</span><span class="se">\n</span><span class="si">{</span><span class="n">slice_2d_partial</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -916,16 +916,16 @@ print(f&quot;Sliced 2D array (last two rows, first two columns):\n{slice_2d_part
 <h4><span class="section-number">14.3.7.3. </span>Boolean Indexing<a class="headerlink" href="#boolean-indexing" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a 1D array
-arr = np.array([10, 20, 30, 40, 50])
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 1D array</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
 
-# Boolean condition to select elements greater than 25
-condition = arr &gt; 25
-print(f&quot;Boolean condition: {condition}&quot;)
+<span class="c1"># Boolean condition to select elements greater than 25</span>
+<span class="n">condition</span> <span class="o">=</span> <span class="n">arr</span> <span class="o">&gt;</span> <span class="mi">25</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Boolean condition: </span><span class="si">{</span><span class="n">condition</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Use the condition to filter the array
-filtered_arr = arr[condition]
-print(f&quot;Filtered array (elements &gt; 25): {filtered_arr}&quot;)
+<span class="c1"># Use the condition to filter the array</span>
+<span class="n">filtered_arr</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">condition</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Filtered array (elements &gt; 25): </span><span class="si">{</span><span class="n">filtered_arr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -935,31 +935,31 @@ print(f&quot;Filtered array (elements &gt; 25): {filtered_arr}&quot;)
 <h4><span class="section-number">14.3.7.4. </span>Iterating Over Arrays<a class="headerlink" href="#iterating-over-arrays" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a 1D array
-arr = np.array([10, 20, 30, 40, 50])
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 1D array</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
 
-# Iterating through the array
-for element in arr:
-    print(f&quot;Element: {element}&quot;)
+<span class="c1"># Iterating through the array</span>
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Element: </span><span class="si">{</span><span class="n">element</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a 2D array
-arr_2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 2D array</span>
+<span class="n">arr_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
 
-# Iterating through rows of the 2D array
-print(&quot;Iterating over rows:&quot;)
-for row in arr_2d:
-    print(row)
+<span class="c1"># Iterating through rows of the 2D array</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iterating over rows:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">arr_2d</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 
-# Iterating through each element of the 2D array
-print(&quot;\nIterating over each element:&quot;)
-for row in arr_2d:
-    for element in row:
-        print(element, end=&quot; &quot;)
+<span class="c1"># Iterating through each element of the 2D array</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Iterating over each element:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">arr_2d</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -970,16 +970,16 @@ for row in arr_2d:
 <h3><span class="section-number">14.3.8. </span>Modifying Array Elements<a class="headerlink" href="#modifying-array-elements" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a 1D array
-arr = np.array([10, 20, 30, 40, 50])
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 1D array</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
 
-# Modify the element at index 1
-arr[1] = 25
-print(f&quot;Modified array: {arr}&quot;)
+<span class="c1"># Modify the element at index 1</span>
+<span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Modified array: </span><span class="si">{</span><span class="n">arr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Modify multiple elements using slicing
-arr[2:4] = [35, 45]
-print(f&quot;Modified array with slicing: {arr}&quot;)
+<span class="c1"># Modify multiple elements using slicing</span>
+<span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Modified array with slicing: </span><span class="si">{</span><span class="n">arr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -989,12 +989,12 @@ print(f&quot;Modified array with slicing: {arr}&quot;)
 <h3><span class="section-number">14.3.9. </span>Working with Geospatial Coordinates<a class="headerlink" href="#working-with-geospatial-coordinates" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Array of latitudes and longitudes
-coords = np.array([[35.6895, 139.6917], [34.0522, -118.2437], [51.5074, -0.1278]])
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Array of latitudes and longitudes</span>
+<span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">],</span> <span class="p">[</span><span class="mf">34.0522</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">],</span> <span class="p">[</span><span class="mf">51.5074</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">]])</span>
 
-# Convert degrees to radians
-coords_radians = np.radians(coords)
-print(f&quot;Coordinates in radians:\n{coords_radians}&quot;)
+<span class="c1"># Convert degrees to radians</span>
+<span class="n">coords_radians</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Coordinates in radians:</span><span class="se">\n</span><span class="si">{</span><span class="n">coords_radians</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1007,43 +1007,43 @@ print(f&quot;Coordinates in radians:\n{coords_radians}&quot;)
 <h3><span class="section-number">14.4.1. </span>Creating Pandas Series and DataFrames<a class="headerlink" href="#creating-pandas-series-and-dataframes" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Creating a Series - a labeled one-dimensional array
-# This could represent a list of city names with automatic indexing
-city_series = pd.Series([&quot;Tokyo&quot;, &quot;Los Angeles&quot;, &quot;London&quot;], name=&quot;City&quot;)
-print(f&quot;Pandas Series (city names):\n{city_series}&quot;)
-print(f&quot;Series name: {city_series.name}&quot;)
-print(f&quot;Series index: {city_series.index.tolist()}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a Series - a labeled one-dimensional array</span>
+<span class="c1"># This could represent a list of city names with automatic indexing</span>
+<span class="n">city_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;City&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pandas Series (city names):</span><span class="se">\n</span><span class="si">{</span><span class="n">city_series</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Series name: </span><span class="si">{</span><span class="n">city_series</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Series index: </span><span class="si">{</span><span class="n">city_series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>data = {
-    &quot;City&quot;: [&quot;Tokyo&quot;, &quot;Los Angeles&quot;, &quot;London&quot;],
-    &quot;Latitude&quot;: [35.6895, 34.0522, 51.5074],
-    &quot;Longitude&quot;: [139.6917, -118.2437, -0.1278],
-    &quot;Country&quot;: [&quot;Japan&quot;, &quot;USA&quot;, &quot;UK&quot;],
-}
-df = pd.DataFrame(data)
-print(f&quot;Pandas DataFrame (city information):\n{df}&quot;)
-print(f&quot;\nDataFrame shape: {df.shape}&quot;)  # (rows, columns)
-print(f&quot;Column names: {df.columns.tolist()}&quot;)
-print(f&quot;Data types:\n{df.dtypes}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;City&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Latitude&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">34.0522</span><span class="p">,</span> <span class="mf">51.5074</span><span class="p">],</span>
+    <span class="s2">&quot;Longitude&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">139.6917</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">],</span>
+    <span class="s2">&quot;Country&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Japan&quot;</span><span class="p">,</span> <span class="s2">&quot;USA&quot;</span><span class="p">,</span> <span class="s2">&quot;UK&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pandas DataFrame (city information):</span><span class="se">\n</span><span class="si">{</span><span class="n">df</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">DataFrame shape: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># (rows, columns)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Column names: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data types:</span><span class="se">\n</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>display(df)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1053,58 +1053,58 @@ print(f&quot;Data types:\n{df.dtypes}&quot;)
 <h3><span class="section-number">14.4.2. </span>Basic DataFrame Operations<a class="headerlink" href="#basic-dataframe-operations" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Selecting a specific column - returns a Series
-latitudes = df[&quot;Latitude&quot;]
-print(f&quot;Latitudes column (Series):\n{latitudes}&quot;)
-print(f&quot;Type: {type(latitudes)}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selecting a specific column - returns a Series</span>
+<span class="n">latitudes</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Latitude&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Latitudes column (Series):</span><span class="se">\n</span><span class="si">{</span><span class="n">latitudes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">latitudes</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Selecting multiple columns - returns a DataFrame
-coordinates = df[[&quot;Latitude&quot;, &quot;Longitude&quot;]]
-print(f&quot;\nCoordinates (DataFrame):\n{coordinates}&quot;)
-print(f&quot;Type: {type(coordinates)}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selecting multiple columns - returns a DataFrame</span>
+<span class="n">coordinates</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Latitude&quot;</span><span class="p">,</span> <span class="s2">&quot;Longitude&quot;</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Coordinates (DataFrame):</span><span class="se">\n</span><span class="si">{</span><span class="n">coordinates</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Type: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>western_cities = df[df[&quot;Longitude&quot;] &lt; 0]
-print(&quot;Cities in Western Hemisphere:&quot;)
-print(western_cities)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">western_cities</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Longitude&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cities in Western Hemisphere:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">western_cities</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>northern_western = df[(df[&quot;Latitude&quot;] &gt; 40) &amp; (df[&quot;Longitude&quot;] &lt; 0)]
-print(f&quot;\nNorthern Western cities:\n{northern_western}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">northern_western</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Latitude&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">40</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Longitude&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Northern Western cities:</span><span class="se">\n</span><span class="si">{</span><span class="n">northern_western</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Filter by text values
-usa_cities = df[df[&quot;Country&quot;] == &quot;USA&quot;]
-print(f&quot;\nUSA cities:\n{usa_cities}&quot;)
+<span class="c1"># Filter by text values</span>
+<span class="n">usa_cities</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Country&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;USA&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">USA cities:</span><span class="se">\n</span><span class="si">{</span><span class="n">usa_cities</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df[&quot;Lat_Radians&quot;] = np.radians(df[&quot;Latitude&quot;])
-df[&quot;Lon_Radians&quot;] = np.radians(df[&quot;Longitude&quot;])
-df
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Lat_Radians&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Latitude&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Lon_Radians&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Longitude&quot;</span><span class="p">])</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df[&quot;City_Country&quot;] = df[&quot;City&quot;] + &quot;, &quot; + df[&quot;Country&quot;]
-df
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;City_Country&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;City&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Country&quot;</span><span class="p">]</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -1114,21 +1114,21 @@ df
 <h3><span class="section-number">14.4.3. </span>Grouping and Aggregation<a class="headerlink" href="#grouping-and-aggregation" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>data = {
-    &quot;City&quot;: [&quot;Tokyo&quot;, &quot;Los Angeles&quot;, &quot;London&quot;, &quot;Paris&quot;, &quot;Chicago&quot;],
-    &quot;Country&quot;: [&quot;Japan&quot;, &quot;USA&quot;, &quot;UK&quot;, &quot;France&quot;, &quot;USA&quot;],
-    &quot;Population&quot;: [37400068, 3970000, 9126366, 2140526, 2665000],
-}
-df = pd.DataFrame(data)
-df
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;City&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span> <span class="s2">&quot;Paris&quot;</span><span class="p">,</span> <span class="s2">&quot;Chicago&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Country&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Japan&quot;</span><span class="p">,</span> <span class="s2">&quot;USA&quot;</span><span class="p">,</span> <span class="s2">&quot;UK&quot;</span><span class="p">,</span> <span class="s2">&quot;France&quot;</span><span class="p">,</span> <span class="s2">&quot;USA&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Population&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">37400068</span><span class="p">,</span> <span class="mi">3970000</span><span class="p">,</span> <span class="mi">9126366</span><span class="p">,</span> <span class="mi">2140526</span><span class="p">,</span> <span class="mi">2665000</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df_grouped = df.groupby(&quot;Country&quot;)[&quot;Population&quot;].sum()
-print(f&quot;Total Population by Country:\n{df_grouped}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Country&quot;</span><span class="p">)[</span><span class="s2">&quot;Population&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Population by Country:</span><span class="se">\n</span><span class="si">{</span><span class="n">df_grouped</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1138,38 +1138,38 @@ print(f&quot;Total Population by Country:\n{df_grouped}&quot;)
 <h3><span class="section-number">14.4.4. </span>Merging DataFrames<a class="headerlink" href="#merging-dataframes" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df1 = pd.DataFrame(
-    {&quot;City&quot;: [&quot;Tokyo&quot;, &quot;Los Angeles&quot;, &quot;London&quot;], &quot;Country&quot;: [&quot;Japan&quot;, &quot;USA&quot;, &quot;UK&quot;]}
-)
-df2 = pd.DataFrame(
-    {
-        &quot;City&quot;: [&quot;Tokyo&quot;, &quot;Los Angeles&quot;, &quot;London&quot;],
-        &quot;Population&quot;: [37400068, 3970000, 9126366],
-    }
-)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;City&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">],</span> <span class="s2">&quot;Country&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Japan&quot;</span><span class="p">,</span> <span class="s2">&quot;USA&quot;</span><span class="p">,</span> <span class="s2">&quot;UK&quot;</span><span class="p">]}</span>
+<span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;City&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Population&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">37400068</span><span class="p">,</span> <span class="mi">3970000</span><span class="p">,</span> <span class="mi">9126366</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df1
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df2
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Merge the two DataFrames on the &#39;City&#39; column
-df_merged = pd.merge(df1, df2, on=&quot;City&quot;)
-df_merged
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Merge the two DataFrames on the &#39;City&#39; column</span>
+<span class="n">df_merged</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;City&quot;</span><span class="p">)</span>
+<span class="n">df_merged</span>
 </pre></div>
 </div>
 </div>
@@ -1179,20 +1179,20 @@ df_merged
 <h3><span class="section-number">14.4.5. </span>Handling Missing Data<a class="headerlink" href="#handling-missing-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>data_with_nan = {
-    &quot;City&quot;: [&quot;Tokyo&quot;, &quot;Los Angeles&quot;, &quot;London&quot;, &quot;Paris&quot;],
-    &quot;Population&quot;: [37400068, 3970000, None, 2140526],
-}
-df_nan = pd.DataFrame(data_with_nan)
-df_nan
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_with_nan</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;City&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span> <span class="s2">&quot;Paris&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Population&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">37400068</span><span class="p">,</span> <span class="mi">3970000</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">2140526</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">df_nan</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_with_nan</span><span class="p">)</span>
+<span class="n">df_nan</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df_filled = df_nan.fillna(df_nan[&quot;Population&quot;].mean())
-df_filled
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_filled</span> <span class="o">=</span> <span class="n">df_nan</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df_nan</span><span class="p">[</span><span class="s2">&quot;Population&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">df_filled</span>
 </pre></div>
 </div>
 </div>
@@ -1202,16 +1202,16 @@ df_filled
 <h3><span class="section-number">14.4.6. </span>Reading Geospatial Data from a CSV File<a class="headerlink" href="#reading-geospatial-data-from-a-csv-file" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://github.com/opengeos/datasets/releases/download/world/world_cities.csv&quot;
-df = pd.read_csv(url)
-df.head()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/world/world_cities.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>np.sum(df[&quot;population&quot;])
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1221,50 +1221,50 @@ df.head()
 <h3><span class="section-number">14.4.7. </span>Creating plots with Pandas<a class="headerlink" href="#creating-plots-with-pandas" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Load the dataset from an online source
-url = &quot;https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/data/air_quality_no2.csv&quot;
-air_quality = pd.read_csv(url, index_col=0, parse_dates=True)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the dataset from an online source</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/data/air_quality_no2.csv&quot;</span>
+<span class="n">air_quality</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-# Display the first few rows of the dataset
-air_quality.head()
+<span class="c1"># Display the first few rows of the dataset</span>
+<span class="n">air_quality</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-# Set default DPI for all plots
-plt.rcParams[&quot;figure.dpi&quot;] = 300
+<span class="c1"># Set default DPI for all plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.dpi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>air_quality.plot(figsize=(10, 5))
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>air_quality[&quot;station_paris&quot;].plot(figsize=(10, 5))
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;station_paris&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>air_quality.plot.scatter(x=&quot;station_london&quot;, y=&quot;station_paris&quot;, alpha=0.5)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;station_london&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;station_paris&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>air_quality.plot.area(figsize=(12, 4), subplots=True)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1275,41 +1275,41 @@ plt.rcParams[&quot;figure.dpi&quot;] = 300
 <h2><span class="section-number">14.5. </span>Combining NumPy and Pandas<a class="headerlink" href="#combining-numpy-and-pandas" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Define the Haversine formula using NumPy
-def haversine_np(lat1, lon1, lat2, lon2):
-    R = 6371.0  # Earth radius in kilometers
-    dlat = np.radians(lat2 - lat1)
-    dlon = np.radians(lon2 - lon1)
-    a = (
-        np.sin(dlat / 2) ** 2
-        + np.cos(np.radians(lat1)) * np.cos(np.radians(lat2)) * np.sin(dlon / 2) ** 2
-    )
-    c = 2 * np.arctan2(np.sqrt(a), np.sqrt(1 - a))
-    distance = R * c
-    return distance
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the Haversine formula using NumPy</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">haversine_np</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">):</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="mf">6371.0</span>  <span class="c1"># Earth radius in kilometers</span>
+    <span class="n">dlat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat2</span> <span class="o">-</span> <span class="n">lat1</span><span class="p">)</span>
+    <span class="n">dlon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">dlat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat1</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat2</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">dlon</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">a</span><span class="p">))</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="n">c</span>
+    <span class="k">return</span> <span class="n">distance</span>
 
 
-# Define a function to calculate distances from a city to all other cities
-def calculate_average_distance(df):
-    lat1 = df[&quot;Latitude&quot;].values
-    lon1 = df[&quot;Longitude&quot;].values
-    lat2, lon2 = np.meshgrid(lat1, lon1)
-    distances = haversine_np(lat1, lon1, lat2, lon2)
-    avg_distances = np.mean(distances, axis=1)
-    return avg_distances
+<span class="c1"># Define a function to calculate distances from a city to all other cities</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_average_distance</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">lat1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">lon1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">)</span>
+    <span class="n">distances</span> <span class="o">=</span> <span class="n">haversine_np</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">)</span>
+    <span class="n">avg_distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">avg_distances</span>
 
 
-# Creating a DataFrame
-data = {
-    &quot;City&quot;: [&quot;Tokyo&quot;, &quot;Los Angeles&quot;, &quot;London&quot;],
-    &quot;Latitude&quot;: [35.6895, 34.0522, 51.5074],
-    &quot;Longitude&quot;: [139.6917, -118.2437, -0.1278],
-}
-df = pd.DataFrame(data)
+<span class="c1"># Creating a DataFrame</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;City&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Latitude&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">34.0522</span><span class="p">,</span> <span class="mf">51.5074</span><span class="p">],</span>
+    <span class="s2">&quot;Longitude&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">139.6917</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-# Apply the function to calculate average distances
-df[&quot;Avg_Distance_km&quot;] = calculate_average_distance(df)
-df
+<span class="c1"># Apply the function to calculate average distances</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Avg_Distance_km&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_average_distance</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>

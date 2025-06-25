@@ -567,16 +567,54 @@ document.write(`
 <h3><span class="section-number">2.3.2. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
 <section id="windows">
 <h4><span class="section-number">2.3.2.1. </span>Windows<a class="headerlink" href="#windows" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe<span class="w"> </span>-o<span class="w"> </span>.<span class="se">\m</span>iniconda.exe
+start<span class="w"> </span>/wait<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>.<span class="se">\m</span>iniconda.exe<span class="w"> </span>/S
+del<span class="w"> </span>.<span class="se">\m</span>iniconda.exe
+</pre></div>
+</div>
 </section>
 <section id="macos">
 <h4><span class="section-number">2.3.2.2. </span>macOS<a class="headerlink" href="#macos" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/miniconda3
+curl<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh<span class="w"> </span>-o<span class="w"> </span>~/miniconda3/miniconda.sh
+bash<span class="w"> </span>~/miniconda3/miniconda.sh<span class="w"> </span>-b<span class="w"> </span>-u<span class="w"> </span>-p<span class="w"> </span>~/miniconda3
+rm<span class="w"> </span>~/miniconda3/miniconda.sh
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/miniconda3
+curl<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh<span class="w"> </span>-o<span class="w"> </span>~/miniconda3/miniconda.sh
+bash<span class="w"> </span>~/miniconda3/miniconda.sh<span class="w"> </span>-b<span class="w"> </span>-u<span class="w"> </span>-p<span class="w"> </span>~/miniconda3
+rm<span class="w"> </span>~/miniconda3/miniconda.sh
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/miniconda3/bin/activate
+conda<span class="w"> </span>init<span class="w"> </span>--all
+</pre></div>
+</div>
 </section>
 <section id="linux">
 <h4><span class="section-number">2.3.2.3. </span>Linux<a class="headerlink" href="#linux" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/miniconda3
+wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh<span class="w"> </span>-O<span class="w"> </span>~/miniconda3/miniconda.sh
+bash<span class="w"> </span>~/miniconda3/miniconda.sh<span class="w"> </span>-b<span class="w"> </span>-u<span class="w"> </span>-p<span class="w"> </span>~/miniconda3
+rm<span class="w"> </span>~/miniconda3/miniconda.sh
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>~/miniconda3/bin/activate
+conda<span class="w"> </span>init<span class="w"> </span>--all
+</pre></div>
+</div>
 </section>
 </section>
 <section id="verifying-installation">
 <h3><span class="section-number">2.3.3. </span>Verifying Installation<a class="headerlink" href="#verifying-installation" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>--version
+conda<span class="w"> </span>info
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>config<span class="w"> </span>--set<span class="w"> </span>auto_activate_base<span class="w"> </span><span class="nb">false</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="understanding-conda-concepts">
@@ -590,32 +628,199 @@ document.write(`
 </section>
 <section id="creating-your-first-geospatial-environment">
 <h2><span class="section-number">2.5. </span>Creating Your First Geospatial Environment<a class="headerlink" href="#creating-your-first-geospatial-environment" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new environment named &#39;geo&#39; with Python 3.12</span>
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>geo<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12
+
+<span class="c1"># Activate the environment</span>
+conda<span class="w"> </span>activate<span class="w"> </span>geo
+
+<span class="c1"># Install mamba for faster package management</span>
+conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>base<span class="w"> </span>mamba<span class="w"> </span>-c<span class="w"> </span>conda-forge
+
+<span class="c1"># Install essential packages for geospatial programming</span>
+mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>pygis
+</pre></div>
+</div>
 </section>
 <section id="troubleshooting-conda">
 <h2><span class="section-number">2.6. </span>Troubleshooting Conda<a class="headerlink" href="#troubleshooting-conda" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>init<span class="w"> </span>cmd.exe
+</pre></div>
+</div>
 </section>
 <section id="essential-conda-commands">
 <h2><span class="section-number">2.7. </span>Essential Conda Commands<a class="headerlink" href="#essential-conda-commands" title="Link to this heading">#</a></h2>
 <section id="creating-and-managing-environments">
 <h3><span class="section-number">2.7.1. </span>Creating and Managing Environments<a class="headerlink" href="#creating-and-managing-environments" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic environment with specific Python version</span>
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>myenv<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12
+
+<span class="c1"># Environment with multiple packages from the start</span>
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>geoenv<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>matplotlib
+
+<span class="c1"># Create environment with packages from specific channels</span>
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>geoenv2<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geopandas
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>myenv
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>deactivate
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>list
+<span class="c1"># or</span>
+conda<span class="w"> </span>info<span class="w"> </span>--envs
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove entire environment and all its packages</span>
+conda<span class="w"> </span>remove<span class="w"> </span>-n<span class="w"> </span>myenv<span class="w"> </span>--all
+
+<span class="c1"># Alternative method using env remove</span>
+conda<span class="w"> </span>env<span class="w"> </span>remove<span class="w"> </span>-n<span class="w"> </span>myenv
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a copy of an existing environment</span>
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>newenv<span class="w"> </span>--clone<span class="w"> </span>oldenv
+</pre></div>
+</div>
 </section>
 <section id="installing-and-managing-packages">
 <h3><span class="section-number">2.7.2. </span>Installing and Managing Packages<a class="headerlink" href="#installing-and-managing-packages" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install a package from the main channel</span>
+conda<span class="w"> </span>install<span class="w"> </span>numpy
+
+<span class="c1"># Install multiple packages from the main channel</span>
+conda<span class="w"> </span>install<span class="w"> </span>scipy<span class="w"> </span>matplotlib<span class="w"> </span>seaborn
+
+<span class="c1"># Install specific versions</span>
+conda<span class="w"> </span>install<span class="w"> </span><span class="nv">numpy</span><span class="o">=</span><span class="m">1</span>.24.0<span class="w"> </span>pandas&gt;<span class="o">=</span><span class="m">1</span>.5.0
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install without activating the environment</span>
+conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>myenv<span class="w"> </span>pandas
+
+<span class="c1"># Useful for setting up environments remotely</span>
+conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>geoenv<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geopandas<span class="w"> </span>rasterio
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install from conda-forge (recommended for geospatial packages)</span>
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geopandas
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Update all packages in current environment</span>
+conda<span class="w"> </span>update<span class="w"> </span>--all
+
+<span class="c1"># Update specific packages</span>
+conda<span class="w"> </span>update<span class="w"> </span>numpy<span class="w"> </span>pandas
+
+<span class="c1"># Update conda itself</span>
+conda<span class="w"> </span>update<span class="w"> </span>conda
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Search for packages</span>
+conda<span class="w"> </span>search<span class="w"> </span>scikit-learn
+conda<span class="w"> </span>search<span class="w"> </span><span class="s2">&quot;*gdal*&quot;</span><span class="w">  </span><span class="c1"># wildcard search</span>
+
+<span class="c1"># Get package information</span>
+conda<span class="w"> </span>search<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geopandas<span class="w"> </span>--info
+
+<span class="c1"># List all installed packages</span>
+conda<span class="w"> </span>list
+
+<span class="c1"># List packages matching a pattern</span>
+conda<span class="w"> </span>list<span class="w"> </span><span class="s2">&quot;*geo*&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove a single package</span>
+conda<span class="w"> </span>remove<span class="w"> </span>numpy
+
+<span class="c1"># Remove multiple packages</span>
+conda<span class="w"> </span>remove<span class="w"> </span>scipy<span class="w"> </span>matplotlib
+
+<span class="c1"># Remove packages and their dependencies (if not needed by others)</span>
+conda<span class="w"> </span>remove<span class="w"> </span>numpy<span class="w"> </span>--all
+</pre></div>
+</div>
 </section>
 <section id="using-mamba-faster-package-management">
 <h3><span class="section-number">2.7.3. </span>Using Mamba (Faster Package Management)<a class="headerlink" href="#using-mamba-faster-package-management" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install mamba in the base environment (do this once)</span>
+conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>base<span class="w"> </span>mamba<span class="w"> </span>-c<span class="w"> </span>conda-forge
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># These commands are much faster with mamba</span>
+mamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>geofast<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12
+mamba<span class="w"> </span>activate<span class="w"> </span>geofast
+mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geopandas<span class="w"> </span>rasterio<span class="w"> </span>geemap<span class="w"> </span>leafmap
+
+<span class="c1"># All conda commands work with mamba</span>
+mamba<span class="w"> </span>list
+mamba<span class="w"> </span>update<span class="w"> </span>--all
+mamba<span class="w"> </span>remove<span class="w"> </span>geopandas
+</pre></div>
+</div>
 </section>
 <section id="environment-files-for-reproducibility">
 <h3><span class="section-number">2.7.4. </span>Environment Files for Reproducibility<a class="headerlink" href="#environment-files-for-reproducibility" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Export all packages and versions</span>
+conda<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&gt;<span class="w"> </span>environment.yml
+
+<span class="c1"># Export with specific name</span>
+conda<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>-n<span class="w"> </span>myenv<span class="w"> </span>&gt;<span class="w"> </span>myenv.yml
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create environment from exported file</span>
+conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml
+
+<span class="c1"># Create with different name</span>
+conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yml<span class="w"> </span>-n<span class="w"> </span>newname
+</pre></div>
+</div>
 </section>
 </section>
 <section id="introducing-uv-the-fast-alternative">
 <h2><span class="section-number">2.8. </span>Introducing uv: The Fast Alternative<a class="headerlink" href="#introducing-uv-the-fast-alternative" title="Link to this heading">#</a></h2>
 <section id="installing-uv">
 <h3><span class="section-number">2.8.1. </span>Installing uv<a class="headerlink" href="#installing-uv" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>uv
+</pre></div>
+</div>
 </section>
 <section id="basic-uv-usage">
 <h3><span class="section-number">2.8.2. </span>Basic uv Usage<a class="headerlink" href="#basic-uv-usage" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Navigate to your project directory</span>
+<span class="nb">cd</span><span class="w"> </span>/path/to/your/project
+
+<span class="c1"># Create a virtual environment</span>
+uv<span class="w"> </span>venv
+
+<span class="c1"># Create with specific Python version</span>
+uv<span class="w"> </span>venv<span class="w"> </span>--python<span class="w"> </span><span class="m">3</span>.12
+
+<span class="c1"># Activate the environment (varies by OS)</span>
+<span class="c1"># On macOS/Linux:</span>
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+<span class="c1"># On Windows:</span>
+.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install packages</span>
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab<span class="w"> </span>leafmap
+
+<span class="c1"># Install from requirements file</span>
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># Run Python directly in the environment</span>
+uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>script.py
+
+<span class="c1"># Run Jupyter directly</span>
+uv<span class="w"> </span>run<span class="w"> </span>jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
 </section>
 <section id="uv-vs-pip-performance">
 <h3><span class="section-number">2.8.3. </span>uv vs pip Performance<a class="headerlink" href="#uv-vs-pip-performance" title="Link to this heading">#</a></h3>

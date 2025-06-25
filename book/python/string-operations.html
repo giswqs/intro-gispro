@@ -555,15 +555,15 @@ document.write(`
 <h3><span class="section-number">10.3.1. </span>Creating Strings<a class="headerlink" href="#creating-strings" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Different ways to create strings
-location_name = &quot;Mount Everest&quot;  # Using double quotes
-country = &quot;Nepal&quot;  # Using single quotes
-description = &quot;&quot;&quot;Mount Everest is the highest peak
-in the world, located in the Himalayas.&quot;&quot;&quot;  # Multi-line string
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Different ways to create strings</span>
+<span class="n">location_name</span> <span class="o">=</span> <span class="s2">&quot;Mount Everest&quot;</span>  <span class="c1"># Using double quotes</span>
+<span class="n">country</span> <span class="o">=</span> <span class="s2">&quot;Nepal&quot;</span>  <span class="c1"># Using single quotes</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Mount Everest is the highest peak</span>
+<span class="s2">in the world, located in the Himalayas.&quot;&quot;&quot;</span>  <span class="c1"># Multi-line string</span>
 
-print(f&quot;Location: {location_name}&quot;)
-print(f&quot;Country: {country}&quot;)
-print(f&quot;Description: {description}&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Location: </span><span class="si">{</span><span class="n">location_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Country: </span><span class="si">{</span><span class="n">country</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Description: </span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -573,15 +573,15 @@ print(f&quot;Description: {description}&quot;)
 <h3><span class="section-number">10.3.2. </span>String Concatenation<a class="headerlink" href="#string-concatenation" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Basic concatenation using the + operator
-location_full = location_name + &quot;, &quot; + country
-print(f&quot;Full location: {location_full}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic concatenation using the + operator</span>
+<span class="n">location_full</span> <span class="o">=</span> <span class="n">location_name</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="n">country</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Full location: </span><span class="si">{</span><span class="n">location_full</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Building a file path
-data_folder = &quot;geographic_data&quot;
-filename = &quot;mountain_peaks.csv&quot;
-file_path = data_folder + &quot;/&quot; + filename
-print(f&quot;File path: {file_path}&quot;)
+<span class="c1"># Building a file path</span>
+<span class="n">data_folder</span> <span class="o">=</span> <span class="s2">&quot;geographic_data&quot;</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;mountain_peaks.csv&quot;</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="n">data_folder</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">filename</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File path: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -591,16 +591,16 @@ print(f&quot;File path: {file_path}&quot;)
 <h3><span class="section-number">10.3.3. </span>String Repetition<a class="headerlink" href="#string-repetition" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create visual separators
-separator = &quot;-&quot; * 30
-print(separator)
-print(&quot;Geographic Data Report&quot;)
-print(separator)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create visual separators</span>
+<span class="n">separator</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">30</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">separator</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Geographic Data Report&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">separator</span><span class="p">)</span>
 
-# Create formatted spacing
-tab_space = &quot; &quot; * 4
-print(f&quot;Location:{tab_space}{location_name}&quot;)
-print(f&quot;Elevation:{tab_space}8,848 meters&quot;)
+<span class="c1"># Create formatted spacing</span>
+<span class="n">tab_space</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Location:</span><span class="si">{</span><span class="n">tab_space</span><span class="si">}{</span><span class="n">location_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elevation:</span><span class="si">{</span><span class="n">tab_space</span><span class="si">}</span><span class="s2">8,848 meters&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -610,17 +610,17 @@ print(f&quot;Elevation:{tab_space}8,848 meters&quot;)
 <h3><span class="section-number">10.3.4. </span>String Length and Basic Properties<a class="headerlink" href="#string-length-and-basic-properties" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Get the length of a string
-location_length = len(location_name)
-print(f&quot;The location name &#39;{location_name}&#39; has {location_length} characters&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the length of a string</span>
+<span class="n">location_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">location_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The location name &#39;</span><span class="si">{</span><span class="n">location_name</span><span class="si">}</span><span class="s2">&#39; has </span><span class="si">{</span><span class="n">location_length</span><span class="si">}</span><span class="s2"> characters&quot;</span><span class="p">)</span>
 
-# Check if a string contains only letters
-city_name = &quot;SanFrancisco&quot;
-print(f&quot;Is &#39;{city_name}&#39; alphabetic? {city_name.isalpha()}&quot;)
+<span class="c1"># Check if a string contains only letters</span>
+<span class="n">city_name</span> <span class="o">=</span> <span class="s2">&quot;SanFrancisco&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is &#39;</span><span class="si">{</span><span class="n">city_name</span><span class="si">}</span><span class="s2">&#39; alphabetic? </span><span class="si">{</span><span class="n">city_name</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Check if a string contains only digits (useful for coordinate validation)
-zip_code = &quot;94102&quot;
-print(f&quot;Is &#39;{zip_code}&#39; numeric? {zip_code.isdigit()}&quot;)
+<span class="c1"># Check if a string contains only digits (useful for coordinate validation)</span>
+<span class="n">zip_code</span> <span class="o">=</span> <span class="s2">&quot;94102&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Is &#39;</span><span class="si">{</span><span class="n">zip_code</span><span class="si">}</span><span class="s2">&#39; numeric? </span><span class="si">{</span><span class="n">zip_code</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -630,24 +630,24 @@ print(f&quot;Is &#39;{zip_code}&#39; numeric? {zip_code.isdigit()}&quot;)
 <h3><span class="section-number">10.3.5. </span>Building Dynamic Content<a class="headerlink" href="#building-dynamic-content" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Building dynamic location descriptions
-latitude = 27.9881
-longitude = 86.9250
-elevation = 8848
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Building dynamic location descriptions</span>
+<span class="n">latitude</span> <span class="o">=</span> <span class="mf">27.9881</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="mf">86.9250</span>
+<span class="n">elevation</span> <span class="o">=</span> <span class="mi">8848</span>
 
-location_info = (
-    location_name
-    + &quot; is located at coordinates &quot;
-    + str(latitude)
-    + &quot;, &quot;
-    + str(longitude)
-)
-print(location_info)
+<span class="n">location_info</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">location_name</span>
+    <span class="o">+</span> <span class="s2">&quot; is located at coordinates &quot;</span>
+    <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span>
+    <span class="o">+</span> <span class="s2">&quot;, &quot;</span>
+    <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">longitude</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">location_info</span><span class="p">)</span>
 
-# A more complex example - building a geographic summary
-cities = [&quot;Kathmandu&quot;, &quot;Pokhara&quot;, &quot;Lalitpur&quot;]
-summary = &quot;Major cities in &quot; + country + &quot; include: &quot; + &quot;, &quot;.join(cities)
-print(summary)
+<span class="c1"># A more complex example - building a geographic summary</span>
+<span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Kathmandu&quot;</span><span class="p">,</span> <span class="s2">&quot;Pokhara&quot;</span><span class="p">,</span> <span class="s2">&quot;Lalitpur&quot;</span><span class="p">]</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="s2">&quot;Major cities in &quot;</span> <span class="o">+</span> <span class="n">country</span> <span class="o">+</span> <span class="s2">&quot; include: &quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cities</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -660,15 +660,15 @@ print(summary)
 <h3><span class="section-number">10.4.1. </span>Case Conversion Methods<a class="headerlink" href="#case-conversion-methods" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Case conversion examples
-mountain_name = &quot;Mount Everest&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Case conversion examples</span>
+<span class="n">mountain_name</span> <span class="o">=</span> <span class="s2">&quot;Mount Everest&quot;</span>
 
-# Convert to different cases
-print(f&quot;Original: {mountain_name}&quot;)
-print(f&quot;Uppercase: {mountain_name.upper()}&quot;)
-print(f&quot;Lowercase: {mountain_name.lower()}&quot;)
-print(f&quot;Title case: {mountain_name.title()}&quot;)
-print(f&quot;Capitalize: {mountain_name.capitalize()}&quot;)
+<span class="c1"># Convert to different cases</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original: </span><span class="si">{</span><span class="n">mountain_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Uppercase: </span><span class="si">{</span><span class="n">mountain_name</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Lowercase: </span><span class="si">{</span><span class="n">mountain_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Title case: </span><span class="si">{</span><span class="n">mountain_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Capitalize: </span><span class="si">{</span><span class="n">mountain_name</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -678,15 +678,15 @@ print(f&quot;Capitalize: {mountain_name.capitalize()}&quot;)
 <h3><span class="section-number">10.4.2. </span>Whitespace Removal Methods<a class="headerlink" href="#whitespace-removal-methods" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Whitespace removal examples
-messy_location = &quot;   San Francisco   &quot;
-messy_left = &quot;   Los Angeles&quot;
-messy_right = &quot;Chicago   &quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Whitespace removal examples</span>
+<span class="n">messy_location</span> <span class="o">=</span> <span class="s2">&quot;   San Francisco   &quot;</span>
+<span class="n">messy_left</span> <span class="o">=</span> <span class="s2">&quot;   Los Angeles&quot;</span>
+<span class="n">messy_right</span> <span class="o">=</span> <span class="s2">&quot;Chicago   &quot;</span>
 
-print(f&quot;Original: &#39;{messy_location}&#39;&quot;)
-print(f&quot;strip(): &#39;{messy_location.strip()}&#39;&quot;)  # Remove both sides
-print(f&quot;lstrip(): &#39;{messy_left.lstrip()}&#39;&quot;)  # Remove left side
-print(f&quot;rstrip(): &#39;{messy_right.rstrip()}&#39;&quot;)  # Remove right side
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original: &#39;</span><span class="si">{</span><span class="n">messy_location</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;strip(): &#39;</span><span class="si">{</span><span class="n">messy_location</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>  <span class="c1"># Remove both sides</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;lstrip(): &#39;</span><span class="si">{</span><span class="n">messy_left</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>  <span class="c1"># Remove left side</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rstrip(): &#39;</span><span class="si">{</span><span class="n">messy_right</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>  <span class="c1"># Remove right side</span>
 </pre></div>
 </div>
 </div>
@@ -696,17 +696,17 @@ print(f&quot;rstrip(): &#39;{messy_right.rstrip()}&#39;&quot;)  # Remove right s
 <h3><span class="section-number">10.4.3. </span>String Replacement<a class="headerlink" href="#string-replacement" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Basic replacement
-location = &quot;Mount Everest, Nepal&quot;
-updated_location = location.replace(&quot;Everest&quot;, &quot;Kilimanjaro&quot;)
-print(f&quot;Original: {location}&quot;)
-print(f&quot;Updated: {updated_location}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic replacement</span>
+<span class="n">location</span> <span class="o">=</span> <span class="s2">&quot;Mount Everest, Nepal&quot;</span>
+<span class="n">updated_location</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Everest&quot;</span><span class="p">,</span> <span class="s2">&quot;Kilimanjaro&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original: </span><span class="si">{</span><span class="n">location</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Updated: </span><span class="si">{</span><span class="n">updated_location</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Replace multiple occurrences
-path_string = &quot;data/raw_data/geographic_data/raw_data/points.csv&quot;
-clean_path = path_string.replace(&quot;raw_data/&quot;, &quot;&quot;)
-print(f&quot;Original path: {path_string}&quot;)
-print(f&quot;Clean path: {clean_path}&quot;)
+<span class="c1"># Replace multiple occurrences</span>
+<span class="n">path_string</span> <span class="o">=</span> <span class="s2">&quot;data/raw_data/geographic_data/raw_data/points.csv&quot;</span>
+<span class="n">clean_path</span> <span class="o">=</span> <span class="n">path_string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;raw_data/&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original path: </span><span class="si">{</span><span class="n">path_string</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Clean path: </span><span class="si">{</span><span class="n">clean_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -716,40 +716,40 @@ print(f&quot;Clean path: {clean_path}&quot;)
 <h3><span class="section-number">10.4.4. </span>String Splitting<a class="headerlink" href="#string-splitting" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Basic splitting
-location_full = &quot;Mount Everest, Nepal, Asia&quot;
-location_parts = location_full.split(&quot;, &quot;)
-print(f&quot;Original: {location_full}&quot;)
-print(f&quot;Split into parts: {location_parts}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic splitting</span>
+<span class="n">location_full</span> <span class="o">=</span> <span class="s2">&quot;Mount Everest, Nepal, Asia&quot;</span>
+<span class="n">location_parts</span> <span class="o">=</span> <span class="n">location_full</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original: </span><span class="si">{</span><span class="n">location_full</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Split into parts: </span><span class="si">{</span><span class="n">location_parts</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Extract individual components
-mountain, country, continent = location_parts
-print(f&quot;Mountain: {mountain}&quot;)
-print(f&quot;Country: {country}&quot;)
-print(f&quot;Continent: {continent}&quot;)
+<span class="c1"># Extract individual components</span>
+<span class="n">mountain</span><span class="p">,</span> <span class="n">country</span><span class="p">,</span> <span class="n">continent</span> <span class="o">=</span> <span class="n">location_parts</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mountain: </span><span class="si">{</span><span class="n">mountain</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Country: </span><span class="si">{</span><span class="n">country</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Continent: </span><span class="si">{</span><span class="n">continent</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Splitting coordinate strings
-coordinate_string = &quot;40.7128,-74.0060&quot;
-lat_str, lon_str = coordinate_string.split(&quot;,&quot;)
-latitude = float(lat_str)
-longitude = float(lon_str)
-print(f&quot;Parsed coordinates: Lat={latitude}, Lon={longitude}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Splitting coordinate strings</span>
+<span class="n">coordinate_string</span> <span class="o">=</span> <span class="s2">&quot;40.7128,-74.0060&quot;</span>
+<span class="n">lat_str</span><span class="p">,</span> <span class="n">lon_str</span> <span class="o">=</span> <span class="n">coordinate_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">latitude</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lat_str</span><span class="p">)</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">lon_str</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parsed coordinates: Lat=</span><span class="si">{</span><span class="n">latitude</span><span class="si">}</span><span class="s2">, Lon=</span><span class="si">{</span><span class="n">longitude</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Splitting file paths
-file_path = &quot;data/geographic/cities/world_cities.csv&quot;
-path_components = file_path.split(&quot;/&quot;)
-print(f&quot;Path components: {path_components}&quot;)
-print(f&quot;Filename: {path_components[-1]}&quot;)  # Last component is the filename
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Splitting file paths</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;data/geographic/cities/world_cities.csv&quot;</span>
+<span class="n">path_components</span> <span class="o">=</span> <span class="n">file_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path components: </span><span class="si">{</span><span class="n">path_components</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Filename: </span><span class="si">{</span><span class="n">path_components</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Last component is the filename</span>
 </pre></div>
 </div>
 </div>
@@ -759,30 +759,30 @@ print(f&quot;Filename: {path_components[-1]}&quot;)  # Last component is the fil
 <h3><span class="section-number">10.4.5. </span>String Joining<a class="headerlink" href="#string-joining" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Basic joining
-city_names = [&quot;San Francisco&quot;, &quot;New York&quot;, &quot;Tokyo&quot;]
-city_name = &quot;, &quot;.join(city_names)
-print(f&quot;Joined city name: {city_name}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic joining</span>
+<span class="n">city_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;San Francisco&quot;</span><span class="p">,</span> <span class="s2">&quot;New York&quot;</span><span class="p">,</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">]</span>
+<span class="n">city_name</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">city_names</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Joined city name: </span><span class="si">{</span><span class="n">city_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Creating file paths
-path_parts = [&quot;data&quot;, &quot;geographic&quot;, &quot;elevation&quot;, &quot;dem.tif&quot;]
-full_path = &quot;/&quot;.join(path_parts)
-print(f&quot;Full path: {full_path}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating file paths</span>
+<span class="n">path_parts</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;geographic&quot;</span><span class="p">,</span> <span class="s2">&quot;elevation&quot;</span><span class="p">,</span> <span class="s2">&quot;dem.tif&quot;</span><span class="p">]</span>
+<span class="n">full_path</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_parts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Full path: </span><span class="si">{</span><span class="n">full_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Practical example: creating coordinate strings
-coordinates = [&quot;40.7128&quot;, &quot;-74.0060&quot;]
-coordinate_string = &quot;,&quot;.join(coordinates)
-print(f&quot;Coordinate string: {coordinate_string}&quot;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Practical example: creating coordinate strings</span>
+<span class="n">coordinates</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;40.7128&quot;</span><span class="p">,</span> <span class="s2">&quot;-74.0060&quot;</span><span class="p">]</span>
+<span class="n">coordinate_string</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Coordinate string: </span><span class="si">{</span><span class="n">coordinate_string</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -795,23 +795,23 @@ print(f&quot;Coordinate string: {coordinate_string}&quot;)
 <h3><span class="section-number">10.5.1. </span>F-String Formatting (Recommended)<a class="headerlink" href="#f-string-formatting-recommended" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Basic f-string formatting with geographic data
-location = &quot;Mount Everest&quot;
-latitude = 27.9881
-longitude = 86.9250
-elevation = 8848
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic f-string formatting with geographic data</span>
+<span class="n">location</span> <span class="o">=</span> <span class="s2">&quot;Mount Everest&quot;</span>
+<span class="n">latitude</span> <span class="o">=</span> <span class="mf">27.9881</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="mf">86.9250</span>
+<span class="n">elevation</span> <span class="o">=</span> <span class="mi">8848</span>
 
-# Simple variable insertion
-location_info = f&quot;Location: {location}&quot;
-print(location_info)
+<span class="c1"># Simple variable insertion</span>
+<span class="n">location_info</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Location: </span><span class="si">{</span><span class="n">location</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">location_info</span><span class="p">)</span>
 
-# Multiple variables
-coordinates = f&quot;Coordinates: ({latitude}, {longitude})&quot;
-print(coordinates)
+<span class="c1"># Multiple variables</span>
+<span class="n">coordinates</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Coordinates: (</span><span class="si">{</span><span class="n">latitude</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">longitude</span><span class="si">}</span><span class="s2">)&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
 
-# Complete geographic summary
-summary = f&quot;{location} is located at {latitude}°N, {longitude}°E with an elevation of {elevation} meters&quot;
-print(summary)
+<span class="c1"># Complete geographic summary</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">location</span><span class="si">}</span><span class="s2"> is located at </span><span class="si">{</span><span class="n">latitude</span><span class="si">}</span><span class="s2">°N, </span><span class="si">{</span><span class="n">longitude</span><span class="si">}</span><span class="s2">°E with an elevation of </span><span class="si">{</span><span class="n">elevation</span><span class="si">}</span><span class="s2"> meters&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -821,23 +821,23 @@ print(summary)
 <h3><span class="section-number">10.5.2. </span>Formatting Numbers in Strings<a class="headerlink" href="#formatting-numbers-in-strings" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Controlling decimal places for coordinates
-precise_lat = 40.712776
-precise_lon = -74.005974
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Controlling decimal places for coordinates</span>
+<span class="n">precise_lat</span> <span class="o">=</span> <span class="mf">40.712776</span>
+<span class="n">precise_lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">74.005974</span>
 
-# Round to different decimal places
-coords_2_places = f&quot;Coordinates: ({precise_lat:.2f}, {precise_lon:.2f})&quot;
-coords_4_places = f&quot;Coordinates: ({precise_lat:.4f}, {precise_lon:.4f})&quot;
+<span class="c1"># Round to different decimal places</span>
+<span class="n">coords_2_places</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Coordinates: (</span><span class="si">{</span><span class="n">precise_lat</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">precise_lon</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span>
+<span class="n">coords_4_places</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Coordinates: (</span><span class="si">{</span><span class="n">precise_lat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">precise_lon</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span>
 
-print(coords_2_places)
-print(coords_4_places)
+<span class="nb">print</span><span class="p">(</span><span class="n">coords_2_places</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coords_4_places</span><span class="p">)</span>
 
-# Adding thousands separators for large numbers
-population = 8336817
-area_sqkm = 783.8
+<span class="c1"># Adding thousands separators for large numbers</span>
+<span class="n">population</span> <span class="o">=</span> <span class="mi">8336817</span>
+<span class="n">area_sqkm</span> <span class="o">=</span> <span class="mf">783.8</span>
 
-formatted_stats = f&quot;NYC Population: {population:,} people, Area: {area_sqkm:.1f} km²&quot;
-print(formatted_stats)
+<span class="n">formatted_stats</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NYC Population: </span><span class="si">{</span><span class="n">population</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> people, Area: </span><span class="si">{</span><span class="n">area_sqkm</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> km²&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">formatted_stats</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -847,24 +847,24 @@ print(formatted_stats)
 <h3><span class="section-number">10.5.3. </span>Legacy Formatting Methods<a class="headerlink" href="#legacy-formatting-methods" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Using .format() method
-location = &quot;San Francisco&quot;
-lat = 37.7749
-lon = -122.4194
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using .format() method</span>
+<span class="n">location</span> <span class="o">=</span> <span class="s2">&quot;San Francisco&quot;</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="mf">37.7749</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">122.4194</span>
 
-# Basic format method
-formatted_1 = &quot;Location: {} at coordinates ({}, {})&quot;.format(location, lat, lon)
-print(formatted_1)
+<span class="c1"># Basic format method</span>
+<span class="n">formatted_1</span> <span class="o">=</span> <span class="s2">&quot;Location: </span><span class="si">{}</span><span class="s2"> at coordinates (</span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">formatted_1</span><span class="p">)</span>
 
-# With positional arguments
-formatted_2 = &quot;Location: {0} at coordinates ({1}, {2})&quot;.format(location, lat, lon)
-print(formatted_2)
+<span class="c1"># With positional arguments</span>
+<span class="n">formatted_2</span> <span class="o">=</span> <span class="s2">&quot;Location: </span><span class="si">{0}</span><span class="s2"> at coordinates (</span><span class="si">{1}</span><span class="s2">, </span><span class="si">{2}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">formatted_2</span><span class="p">)</span>
 
-# With named arguments
-formatted_3 = &quot;Location: {name} at coordinates ({latitude}, {longitude})&quot;.format(
-    name=location, latitude=lat, longitude=lon
-)
-print(formatted_3)
+<span class="c1"># With named arguments</span>
+<span class="n">formatted_3</span> <span class="o">=</span> <span class="s2">&quot;Location: </span><span class="si">{name}</span><span class="s2"> at coordinates (</span><span class="si">{latitude}</span><span class="s2">, </span><span class="si">{longitude}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="n">location</span><span class="p">,</span> <span class="n">latitude</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=</span><span class="n">lon</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">formatted_3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -874,37 +874,37 @@ print(formatted_3)
 <h3><span class="section-number">10.5.4. </span>Practical Formatting Examples<a class="headerlink" href="#practical-formatting-examples" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Creating file names with timestamps and coordinates
-import datetime
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating file names with timestamps and coordinates</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
 
-current_time = datetime.datetime.now()
-survey_lat = 45.3311
-survey_lon = -121.7113
+<span class="n">current_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">survey_lat</span> <span class="o">=</span> <span class="mf">45.3311</span>
+<span class="n">survey_lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">121.7113</span>
 
-filename = f&quot;survey_{current_time.strftime(&#39;%Y%m%d&#39;)}_{survey_lat:.4f}N_{abs(survey_lon):.4f}W.csv&quot;
-print(f&quot;Generated filename: {filename}&quot;)
+<span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;survey_</span><span class="si">{</span><span class="n">current_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">survey_lat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">N_</span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">survey_lon</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">W.csv&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generated filename: </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-# Creating Well-Known Text (WKT) representations
-wkt_point = f&quot;POINT({survey_lon} {survey_lat})&quot;
-print(f&quot;WKT Point: {wkt_point}&quot;)
+<span class="c1"># Creating Well-Known Text (WKT) representations</span>
+<span class="n">wkt_point</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;POINT(</span><span class="si">{</span><span class="n">survey_lon</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">survey_lat</span><span class="si">}</span><span class="s2">)&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;WKT Point: </span><span class="si">{</span><span class="n">wkt_point</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Building SQL queries with formatting
-table_name = &quot;cities&quot;
-min_population = 1000000
-region = &quot;North America&quot;
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Building SQL queries with formatting</span>
+<span class="n">table_name</span> <span class="o">=</span> <span class="s2">&quot;cities&quot;</span>
+<span class="n">min_population</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="n">region</span> <span class="o">=</span> <span class="s2">&quot;North America&quot;</span>
 
-sql_query = f&quot;&quot;&quot;SELECT name, latitude, longitude
-FROM {table_name}
-WHERE population &gt; {min_population:,}
-AND region = &#39;{region}&#39;&quot;&quot;&quot;
+<span class="n">sql_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;SELECT name, latitude, longitude</span>
+<span class="s2">FROM </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span>
+<span class="s2">WHERE population &gt; </span><span class="si">{</span><span class="n">min_population</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span>
+<span class="s2">AND region = &#39;</span><span class="si">{</span><span class="n">region</span><span class="si">}</span><span class="s2">&#39;&quot;&quot;&quot;</span>
 
-print(&quot;Generated SQL Query:&quot;)
-print(sql_query)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generated SQL Query:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sql_query</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
