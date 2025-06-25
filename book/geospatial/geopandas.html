@@ -583,11 +583,46 @@ document.write(`
 </section>
 <section id="installing-geopandas">
 <h2><span class="section-number">16.4. </span>Installing GeoPandas<a class="headerlink" href="#installing-geopandas" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># %pip install geopandas pygis
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import geopandas as gpd
+import matplotlib.pyplot as plt
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="creating-geodataframes">
 <h2><span class="section-number">16.5. </span>Creating GeoDataFrames<a class="headerlink" href="#creating-geodataframes" title="Link to this heading">#</a></h2>
 <section id="creating-points-from-coordinate-data">
 <h3><span class="section-number">16.5.1. </span>Creating Points from Coordinate Data<a class="headerlink" href="#creating-points-from-coordinate-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Creating a GeoDataFrame from coordinate data
+data = {
+    &quot;City&quot;: [&quot;Tokyo&quot;, &quot;New York&quot;, &quot;London&quot;, &quot;Paris&quot;],
+    &quot;Latitude&quot;: [35.6895, 40.7128, 51.5074, 48.8566],
+    &quot;Longitude&quot;: [139.6917, -74.0060, -0.1278, 2.3522],
+}
+
+# First create a regular pandas DataFrame
+df = pd.DataFrame(data)
+
+# Convert to GeoDataFrame by creating Point geometries from coordinates
+gdf = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.Longitude, df.Latitude))
+gdf
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="reading-and-writing-geospatial-data">
@@ -597,9 +632,40 @@ document.write(`
 </section>
 <section id="reading-a-geojson-file">
 <h3><span class="section-number">16.6.2. </span>Reading a GeoJSON File<a class="headerlink" href="#reading-a-geojson-file" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://github.com/opengeos/datasets/releases/download/vector/nybb.geojson&quot;
+gdf = gpd.read_file(url)
+gdf.head()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="writing-geospatial-data">
 <h3><span class="section-number">16.6.3. </span>Writing Geospatial Data<a class="headerlink" href="#writing-geospatial-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>output_file = &quot;nyc_boroughs.geojson&quot;
+gdf.to_file(output_file, driver=&quot;GeoJSON&quot;)
+print(f&quot;GeoDataFrame has been written to {output_file}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Save as Shapefile (traditional GIS format)
+output_file = &quot;nyc_boroughs.shp&quot;
+gdf.to_file(output_file)
+
+# Save as GeoPackage (modern, single-file format)
+output_file = &quot;nyc_boroughs.gpkg&quot;
+gdf.to_file(output_file, driver=&quot;GPKG&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="projections-and-coordinate-reference-systems-crs">
@@ -609,60 +675,353 @@ document.write(`
 </section>
 <section id="checking-and-understanding-crs">
 <h3><span class="section-number">16.7.2. </span>Checking and Understanding CRS<a class="headerlink" href="#checking-and-understanding-crs" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(f&quot;Current CRS: {gdf.crs}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="reprojecting-to-different-coordinate-systems">
 <h3><span class="section-number">16.7.3. </span>Reprojecting to Different Coordinate Systems<a class="headerlink" href="#reprojecting-to-different-coordinate-systems" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Reproject to WGS84 (latitude/longitude) for global compatibility
+gdf_4326 = gdf.to_crs(epsg=4326)
+print(f&quot;Reprojected CRS: {gdf_4326.crs}&quot;)
+gdf_4326.head()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="spatial-measurements-and-analysis">
 <h2><span class="section-number">16.8. </span>Spatial Measurements and Analysis<a class="headerlink" href="#spatial-measurements-and-analysis" title="Link to this heading">#</a></h2>
 <section id="preparing-data-for-accurate-measurements">
 <h3><span class="section-number">16.8.1. </span>Preparing Data for Accurate Measurements<a class="headerlink" href="#preparing-data-for-accurate-measurements" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Reproject to Web Mercator for accurate area calculations in square meters
+gdf = gdf.to_crs(&quot;EPSG:3857&quot;)
+
+# Set BoroName as index for easier data access
+gdf = gdf.set_index(&quot;BoroName&quot;)
+print(f&quot;Now using CRS: {gdf.crs}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="calculating-areas">
 <h3><span class="section-number">16.8.2. </span>Calculating Areas<a class="headerlink" href="#calculating-areas" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate area in square meters
+gdf[&quot;area&quot;] = gdf.area
+
+# Convert to more readable units (square kilometers)
+gdf[&quot;area_km2&quot;] = gdf[&quot;area&quot;] / 1_000_000
+
+# Display results sorted by area
+gdf[[&quot;area&quot;, &quot;area_km2&quot;]].sort_values(&quot;area_km2&quot;, ascending=False)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="extracting-geometric-features">
 <h3><span class="section-number">16.8.3. </span>Extracting Geometric Features<a class="headerlink" href="#extracting-geometric-features" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Extract boundary lines from polygons
+gdf[&quot;boundary&quot;] = gdf.boundary
+
+# Calculate centroids (geometric centers)
+gdf[&quot;centroid&quot;] = gdf.centroid
+
+# Display the geometric features
+gdf[[&quot;boundary&quot;, &quot;centroid&quot;]].head()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="distance-calculations">
 <h3><span class="section-number">16.8.4. </span>Distance Calculations<a class="headerlink" href="#distance-calculations" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Use Manhattan&#39;s centroid as the reference point
+manhattan_centroid = gdf.loc[&quot;Manhattan&quot;, &quot;centroid&quot;]
+
+# Calculate distance from each borough centroid to Manhattan
+gdf[&quot;distance_to_manhattan&quot;] = gdf[&quot;centroid&quot;].distance(manhattan_centroid)
+
+# Convert to kilometers and display results
+gdf[&quot;distance_to_manhattan_km&quot;] = gdf[&quot;distance_to_manhattan&quot;] / 1000
+
+gdf[[&quot;distance_to_manhattan_km&quot;]].sort_values(&quot;distance_to_manhattan_km&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="statistical-analysis-of-spatial-data">
 <h3><span class="section-number">16.8.5. </span>Statistical Analysis of Spatial Data<a class="headerlink" href="#statistical-analysis-of-spatial-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate summary statistics
+mean_distance = gdf[&quot;distance_to_manhattan_km&quot;].mean()
+max_distance = gdf[&quot;distance_to_manhattan_km&quot;].max()
+total_area = gdf[&quot;area_km2&quot;].sum()
+
+print(f&quot;Mean distance to Manhattan: {mean_distance:.2f} km&quot;)
+print(f&quot;Maximum distance to Manhattan: {max_distance:.2f} km&quot;)
+print(f&quot;Total NYC area: {total_area:.2f} km²&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="visualizing-geospatial-data">
 <h2><span class="section-number">16.9. </span>Visualizing Geospatial Data<a class="headerlink" href="#visualizing-geospatial-data" title="Link to this heading">#</a></h2>
 <section id="setting-up-plotting-environment">
 <h3><span class="section-number">16.9.1. </span>Setting Up Plotting Environment<a class="headerlink" href="#setting-up-plotting-environment" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+
+# Set high resolution for better quality plots
+plt.rcParams[&quot;figure.dpi&quot;] = 150
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="thematic-mapping">
 <h3><span class="section-number">16.9.2. </span>Thematic Mapping<a class="headerlink" href="#thematic-mapping" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a choropleth map showing borough areas
+fig, ax = plt.subplots(figsize=(10, 6))
+
+gdf.plot(
+    column=&quot;area_km2&quot;,
+    ax=ax,
+    legend=True,
+    cmap=&quot;YlOrRd&quot;,  # Yellow-Orange-Red colormap
+    edgecolor=&quot;black&quot;,
+    linewidth=0.5,
+)
+
+plt.title(&quot;NYC Boroughs by Area (km²)&quot;, fontsize=16, fontweight=&quot;bold&quot;)
+plt.axis(&quot;off&quot;)  # Remove coordinate axes for cleaner appearance
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="multi-layer-visualization">
 <h3><span class="section-number">16.9.3. </span>Multi-Layer Visualization<a class="headerlink" href="#multi-layer-visualization" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a comprehensive map with multiple layers
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Plot borough boundaries as base layer
+gdf[&quot;geometry&quot;].plot(
+    ax=ax, color=&quot;lightblue&quot;, edgecolor=&quot;navy&quot;, linewidth=1.5, alpha=0.7
+)
+
+# Add centroids as point layer
+gdf[&quot;centroid&quot;].plot(
+    ax=ax, color=&quot;red&quot;, markersize=80, edgecolor=&quot;darkred&quot;, linewidth=1
+)
+
+# Add borough labels
+for idx, row in gdf.iterrows():
+    # Get centroid coordinates for label placement
+    x = row.centroid.x
+    y = row.centroid.y
+    ax.annotate(
+        idx,
+        (x, y),
+        xytext=(5, 5),
+        textcoords=&quot;offset points&quot;,
+        fontsize=10,
+        fontweight=&quot;bold&quot;,
+        bbox=dict(boxstyle=&quot;round,pad=0.3&quot;, facecolor=&quot;white&quot;, alpha=0.8),
+    )
+
+plt.title(&quot;NYC Borough Boundaries and Centroids&quot;, fontsize=16, fontweight=&quot;bold&quot;)
+plt.axis(&quot;off&quot;)
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="interactive-visualization">
 <h3><span class="section-number">16.9.4. </span>Interactive Visualization<a class="headerlink" href="#interactive-visualization" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create an interactive map using Folium integration
+m = gdf.explore(
+    column=&quot;area_km2&quot;,
+    cmap=&quot;YlOrRd&quot;,
+    tooltip=[&quot;area_km2&quot;, &quot;distance_to_manhattan_km&quot;],
+    popup=True,
+    legend=True,
+)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="advanced-geometric-operations">
 <h2><span class="section-number">16.10. </span>Advanced Geometric Operations<a class="headerlink" href="#advanced-geometric-operations" title="Link to this heading">#</a></h2>
 <section id="buffer-analysis">
 <h3><span class="section-number">16.10.1. </span>Buffer Analysis<a class="headerlink" href="#buffer-analysis" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create 3-kilometer buffer zones around each borough
+buffer_distance = 3000  # meters
+gdf[&quot;buffered&quot;] = gdf.buffer(buffer_distance)
+
+print(f&quot;Created {buffer_distance/1000} km buffer zones around each borough&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Visualize original vs buffered geometries
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Plot buffered areas first (background)
+gdf[&quot;buffered&quot;].plot(
+    ax=ax,
+    alpha=0.3,
+    color=&quot;orange&quot;,
+    edgecolor=&quot;red&quot;,
+    linewidth=1,
+    label=&quot;3km Buffer Zone&quot;,
+)
+
+# Plot original geometries on top
+gdf[&quot;geometry&quot;].plot(
+    ax=ax,
+    color=&quot;lightblue&quot;,
+    edgecolor=&quot;navy&quot;,
+    linewidth=1.5,
+    label=&quot;Original Boundaries&quot;,
+)
+
+plt.title(&quot;NYC Boroughs: Original vs 3km Buffer Zones&quot;, fontsize=16, fontweight=&quot;bold&quot;)
+plt.legend(loc=&quot;upper right&quot;)
+plt.axis(&quot;off&quot;)
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="convex-hull-analysis">
 <h3><span class="section-number">16.10.2. </span>Convex Hull Analysis<a class="headerlink" href="#convex-hull-analysis" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate convex hulls for each borough
+gdf[&quot;convex_hull&quot;] = gdf.convex_hull
+
+# Compare areas between original shapes and convex hulls
+gdf[&quot;convex_hull_area&quot;] = gdf[&quot;convex_hull&quot;].area / 1_000_000  # Convert to km²
+gdf[&quot;area_ratio&quot;] = gdf[&quot;convex_hull_area&quot;] / gdf[&quot;area_km2&quot;]
+
+print(&quot;Convex Hull Analysis:&quot;)
+print(gdf[[&quot;area_km2&quot;, &quot;convex_hull_area&quot;, &quot;area_ratio&quot;]].round(2))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create comparison visualization
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Plot original geometries
+gdf[&quot;geometry&quot;].plot(
+    ax=ax, color=&quot;lightblue&quot;, edgecolor=&quot;navy&quot;, linewidth=2, label=&quot;Original Shape&quot;
+)
+
+# Plot convex hulls as outlines
+gdf[&quot;convex_hull&quot;].plot(
+    ax=ax,
+    facecolor=&quot;none&quot;,
+    edgecolor=&quot;red&quot;,
+    linewidth=2,
+    linestyle=&quot;--&quot;,
+    label=&quot;Convex Hull&quot;,
+)
+
+plt.title(
+    &quot;NYC Boroughs: Original Shapes vs Convex Hulls&quot;, fontsize=16, fontweight=&quot;bold&quot;
+)
+plt.legend(loc=&quot;upper right&quot;)
+plt.axis(&quot;off&quot;)
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="spatial-relationships-and-queries">
 <h2><span class="section-number">16.11. </span>Spatial Relationships and Queries<a class="headerlink" href="#spatial-relationships-and-queries" title="Link to this heading">#</a></h2>
 <section id="intersection-analysis">
 <h3><span class="section-number">16.11.1. </span>Intersection Analysis<a class="headerlink" href="#intersection-analysis" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Test which buffered boroughs intersect with Manhattan&#39;s original boundary
+manhattan_geom = gdf.loc[&quot;Manhattan&quot;, &quot;geometry&quot;]
+
+gdf[&quot;intersects_manhattan&quot;] = gdf[&quot;buffered&quot;].intersects(manhattan_geom)
+gdf[&quot;touches_manhattan&quot;] = gdf[&quot;geometry&quot;].touches(manhattan_geom)
+
+# Display results
+intersection_results = gdf[[&quot;intersects_manhattan&quot;, &quot;touches_manhattan&quot;]]
+intersection_results
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="containment-and-spatial-validation">
 <h3><span class="section-number">16.11.2. </span>Containment and Spatial Validation<a class="headerlink" href="#containment-and-spatial-validation" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Verify that centroids fall within their respective borough boundaries
+gdf[&quot;centroid_within_borough&quot;] = gdf[&quot;centroid&quot;].within(gdf[&quot;geometry&quot;])
+
+# Check for any anomalies
+anomalies = gdf[~gdf[&quot;centroid_within_borough&quot;]]
+if len(anomalies) &gt; 0:
+    print(&quot;Warning: Some centroids fall outside their borough boundaries&quot;)
+    print(anomalies.index.tolist())
+else:
+    print(&quot;✓ All centroids correctly fall within their borough boundaries&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="best-practices-and-performance-considerations">

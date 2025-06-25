@@ -553,51 +553,362 @@ document.write(`
 <h2><span class="section-number">10.3. </span>Creating and Manipulating Strings<a class="headerlink" href="#creating-and-manipulating-strings" title="Link to this heading">#</a></h2>
 <section id="creating-strings">
 <h3><span class="section-number">10.3.1. </span>Creating Strings<a class="headerlink" href="#creating-strings" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Different ways to create strings
+location_name = &quot;Mount Everest&quot;  # Using double quotes
+country = &quot;Nepal&quot;  # Using single quotes
+description = &quot;&quot;&quot;Mount Everest is the highest peak
+in the world, located in the Himalayas.&quot;&quot;&quot;  # Multi-line string
+
+print(f&quot;Location: {location_name}&quot;)
+print(f&quot;Country: {country}&quot;)
+print(f&quot;Description: {description}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="string-concatenation">
 <h3><span class="section-number">10.3.2. </span>String Concatenation<a class="headerlink" href="#string-concatenation" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Basic concatenation using the + operator
+location_full = location_name + &quot;, &quot; + country
+print(f&quot;Full location: {location_full}&quot;)
+
+# Building a file path
+data_folder = &quot;geographic_data&quot;
+filename = &quot;mountain_peaks.csv&quot;
+file_path = data_folder + &quot;/&quot; + filename
+print(f&quot;File path: {file_path}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="string-repetition">
 <h3><span class="section-number">10.3.3. </span>String Repetition<a class="headerlink" href="#string-repetition" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create visual separators
+separator = &quot;-&quot; * 30
+print(separator)
+print(&quot;Geographic Data Report&quot;)
+print(separator)
+
+# Create formatted spacing
+tab_space = &quot; &quot; * 4
+print(f&quot;Location:{tab_space}{location_name}&quot;)
+print(f&quot;Elevation:{tab_space}8,848 meters&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="string-length-and-basic-properties">
 <h3><span class="section-number">10.3.4. </span>String Length and Basic Properties<a class="headerlink" href="#string-length-and-basic-properties" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Get the length of a string
+location_length = len(location_name)
+print(f&quot;The location name &#39;{location_name}&#39; has {location_length} characters&quot;)
+
+# Check if a string contains only letters
+city_name = &quot;SanFrancisco&quot;
+print(f&quot;Is &#39;{city_name}&#39; alphabetic? {city_name.isalpha()}&quot;)
+
+# Check if a string contains only digits (useful for coordinate validation)
+zip_code = &quot;94102&quot;
+print(f&quot;Is &#39;{zip_code}&#39; numeric? {zip_code.isdigit()}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="building-dynamic-content">
 <h3><span class="section-number">10.3.5. </span>Building Dynamic Content<a class="headerlink" href="#building-dynamic-content" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Building dynamic location descriptions
+latitude = 27.9881
+longitude = 86.9250
+elevation = 8848
+
+location_info = (
+    location_name
+    + &quot; is located at coordinates &quot;
+    + str(latitude)
+    + &quot;, &quot;
+    + str(longitude)
+)
+print(location_info)
+
+# A more complex example - building a geographic summary
+cities = [&quot;Kathmandu&quot;, &quot;Pokhara&quot;, &quot;Lalitpur&quot;]
+summary = &quot;Major cities in &quot; + country + &quot; include: &quot; + &quot;, &quot;.join(cities)
+print(summary)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="string-methods-for-geospatial-data">
 <h2><span class="section-number">10.4. </span>String Methods for Geospatial Data<a class="headerlink" href="#string-methods-for-geospatial-data" title="Link to this heading">#</a></h2>
 <section id="case-conversion-methods">
 <h3><span class="section-number">10.4.1. </span>Case Conversion Methods<a class="headerlink" href="#case-conversion-methods" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Case conversion examples
+mountain_name = &quot;Mount Everest&quot;
+
+# Convert to different cases
+print(f&quot;Original: {mountain_name}&quot;)
+print(f&quot;Uppercase: {mountain_name.upper()}&quot;)
+print(f&quot;Lowercase: {mountain_name.lower()}&quot;)
+print(f&quot;Title case: {mountain_name.title()}&quot;)
+print(f&quot;Capitalize: {mountain_name.capitalize()}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="whitespace-removal-methods">
 <h3><span class="section-number">10.4.2. </span>Whitespace Removal Methods<a class="headerlink" href="#whitespace-removal-methods" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Whitespace removal examples
+messy_location = &quot;   San Francisco   &quot;
+messy_left = &quot;   Los Angeles&quot;
+messy_right = &quot;Chicago   &quot;
+
+print(f&quot;Original: &#39;{messy_location}&#39;&quot;)
+print(f&quot;strip(): &#39;{messy_location.strip()}&#39;&quot;)  # Remove both sides
+print(f&quot;lstrip(): &#39;{messy_left.lstrip()}&#39;&quot;)  # Remove left side
+print(f&quot;rstrip(): &#39;{messy_right.rstrip()}&#39;&quot;)  # Remove right side
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="string-replacement">
 <h3><span class="section-number">10.4.3. </span>String Replacement<a class="headerlink" href="#string-replacement" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Basic replacement
+location = &quot;Mount Everest, Nepal&quot;
+updated_location = location.replace(&quot;Everest&quot;, &quot;Kilimanjaro&quot;)
+print(f&quot;Original: {location}&quot;)
+print(f&quot;Updated: {updated_location}&quot;)
+
+# Replace multiple occurrences
+path_string = &quot;data/raw_data/geographic_data/raw_data/points.csv&quot;
+clean_path = path_string.replace(&quot;raw_data/&quot;, &quot;&quot;)
+print(f&quot;Original path: {path_string}&quot;)
+print(f&quot;Clean path: {clean_path}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="string-splitting">
 <h3><span class="section-number">10.4.4. </span>String Splitting<a class="headerlink" href="#string-splitting" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Basic splitting
+location_full = &quot;Mount Everest, Nepal, Asia&quot;
+location_parts = location_full.split(&quot;, &quot;)
+print(f&quot;Original: {location_full}&quot;)
+print(f&quot;Split into parts: {location_parts}&quot;)
+
+# Extract individual components
+mountain, country, continent = location_parts
+print(f&quot;Mountain: {mountain}&quot;)
+print(f&quot;Country: {country}&quot;)
+print(f&quot;Continent: {continent}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Splitting coordinate strings
+coordinate_string = &quot;40.7128,-74.0060&quot;
+lat_str, lon_str = coordinate_string.split(&quot;,&quot;)
+latitude = float(lat_str)
+longitude = float(lon_str)
+print(f&quot;Parsed coordinates: Lat={latitude}, Lon={longitude}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Splitting file paths
+file_path = &quot;data/geographic/cities/world_cities.csv&quot;
+path_components = file_path.split(&quot;/&quot;)
+print(f&quot;Path components: {path_components}&quot;)
+print(f&quot;Filename: {path_components[-1]}&quot;)  # Last component is the filename
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="string-joining">
 <h3><span class="section-number">10.4.5. </span>String Joining<a class="headerlink" href="#string-joining" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Basic joining
+city_names = [&quot;San Francisco&quot;, &quot;New York&quot;, &quot;Tokyo&quot;]
+city_name = &quot;, &quot;.join(city_names)
+print(f&quot;Joined city name: {city_name}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Creating file paths
+path_parts = [&quot;data&quot;, &quot;geographic&quot;, &quot;elevation&quot;, &quot;dem.tif&quot;]
+full_path = &quot;/&quot;.join(path_parts)
+print(f&quot;Full path: {full_path}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Practical example: creating coordinate strings
+coordinates = [&quot;40.7128&quot;, &quot;-74.0060&quot;]
+coordinate_string = &quot;,&quot;.join(coordinates)
+print(f&quot;Coordinate string: {coordinate_string}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="string-formatting">
 <h2><span class="section-number">10.5. </span>String Formatting<a class="headerlink" href="#string-formatting" title="Link to this heading">#</a></h2>
 <section id="f-string-formatting-recommended">
 <h3><span class="section-number">10.5.1. </span>F-String Formatting (Recommended)<a class="headerlink" href="#f-string-formatting-recommended" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Basic f-string formatting with geographic data
+location = &quot;Mount Everest&quot;
+latitude = 27.9881
+longitude = 86.9250
+elevation = 8848
+
+# Simple variable insertion
+location_info = f&quot;Location: {location}&quot;
+print(location_info)
+
+# Multiple variables
+coordinates = f&quot;Coordinates: ({latitude}, {longitude})&quot;
+print(coordinates)
+
+# Complete geographic summary
+summary = f&quot;{location} is located at {latitude}°N, {longitude}°E with an elevation of {elevation} meters&quot;
+print(summary)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="formatting-numbers-in-strings">
 <h3><span class="section-number">10.5.2. </span>Formatting Numbers in Strings<a class="headerlink" href="#formatting-numbers-in-strings" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Controlling decimal places for coordinates
+precise_lat = 40.712776
+precise_lon = -74.005974
+
+# Round to different decimal places
+coords_2_places = f&quot;Coordinates: ({precise_lat:.2f}, {precise_lon:.2f})&quot;
+coords_4_places = f&quot;Coordinates: ({precise_lat:.4f}, {precise_lon:.4f})&quot;
+
+print(coords_2_places)
+print(coords_4_places)
+
+# Adding thousands separators for large numbers
+population = 8336817
+area_sqkm = 783.8
+
+formatted_stats = f&quot;NYC Population: {population:,} people, Area: {area_sqkm:.1f} km²&quot;
+print(formatted_stats)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="legacy-formatting-methods">
 <h3><span class="section-number">10.5.3. </span>Legacy Formatting Methods<a class="headerlink" href="#legacy-formatting-methods" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Using .format() method
+location = &quot;San Francisco&quot;
+lat = 37.7749
+lon = -122.4194
+
+# Basic format method
+formatted_1 = &quot;Location: {} at coordinates ({}, {})&quot;.format(location, lat, lon)
+print(formatted_1)
+
+# With positional arguments
+formatted_2 = &quot;Location: {0} at coordinates ({1}, {2})&quot;.format(location, lat, lon)
+print(formatted_2)
+
+# With named arguments
+formatted_3 = &quot;Location: {name} at coordinates ({latitude}, {longitude})&quot;.format(
+    name=location, latitude=lat, longitude=lon
+)
+print(formatted_3)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="practical-formatting-examples">
 <h3><span class="section-number">10.5.4. </span>Practical Formatting Examples<a class="headerlink" href="#practical-formatting-examples" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Creating file names with timestamps and coordinates
+import datetime
+
+current_time = datetime.datetime.now()
+survey_lat = 45.3311
+survey_lon = -121.7113
+
+filename = f&quot;survey_{current_time.strftime(&#39;%Y%m%d&#39;)}_{survey_lat:.4f}N_{abs(survey_lon):.4f}W.csv&quot;
+print(f&quot;Generated filename: {filename}&quot;)
+
+# Creating Well-Known Text (WKT) representations
+wkt_point = f&quot;POINT({survey_lon} {survey_lat})&quot;
+print(f&quot;WKT Point: {wkt_point}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Building SQL queries with formatting
+table_name = &quot;cities&quot;
+min_population = 1000000
+region = &quot;North America&quot;
+
+sql_query = f&quot;&quot;&quot;SELECT name, latitude, longitude
+FROM {table_name}
+WHERE population &gt; {min_population:,}
+AND region = &#39;{region}&#39;&quot;&quot;&quot;
+
+print(&quot;Generated SQL Query:&quot;)
+print(sql_query)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="string-operation-decision-guide">

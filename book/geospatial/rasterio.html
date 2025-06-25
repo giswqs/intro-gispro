@@ -571,74 +571,467 @@ document.write(`
 </section>
 <section id="installing-rasterio">
 <h2><span class="section-number">17.3. </span>Installing Rasterio<a class="headerlink" href="#installing-rasterio" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># %pip install rasterio pygis
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import rasterio
+import rasterio.plot
+import geopandas as gpd
+import numpy as np
+import matplotlib.pyplot as plt
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="reading-raster-data">
 <h2><span class="section-number">17.4. </span>Reading Raster Data<a class="headerlink" href="#reading-raster-data" title="Link to this heading">#</a></h2>
 <section id="opening-raster-files">
 <h3><span class="section-number">17.4.1. </span>Opening Raster Files<a class="headerlink" href="#opening-raster-files" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>raster_path = (
+    &quot;https://github.com/opengeos/datasets/releases/download/raster/dem_90m.tif&quot;
+)
+src = rasterio.open(raster_path)
+print(src)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="understanding-raster-metadata">
 <h3><span class="section-number">17.4.2. </span>Understanding Raster Metadata<a class="headerlink" href="#understanding-raster-metadata" title="Link to this heading">#</a></h3>
 <section id="basic-file-information">
 <h4><span class="section-number">17.4.2.1. </span>Basic File Information<a class="headerlink" href="#basic-file-information" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(f&quot;File name: {src.name}&quot;)
+print(f&quot;File mode: {src.mode}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;Raster metadata:&quot;)
+for key, value in src.meta.items():
+    print(f&quot;{key}: {value}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="spatial-properties">
 <h4><span class="section-number">17.4.2.2. </span>Spatial Properties<a class="headerlink" href="#spatial-properties" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(f&quot;Coordinate Reference System: {src.crs}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(f&quot;Pixel size (x, y): {src.res}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(f&quot;Raster dimensions: {src.width} x {src.height} pixels&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(f&quot;Geographic bounds: {src.bounds}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="data-properties">
 <h4><span class="section-number">17.4.2.3. </span>Data Properties<a class="headerlink" href="#data-properties" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(f&quot;Data types: {src.dtypes}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(f&quot;Number of bands: {src.count}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="the-affine-transform">
 <h3><span class="section-number">17.4.3. </span>The Affine Transform<a class="headerlink" href="#the-affine-transform" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;Affine transform:&quot;)
+print(src.transform)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="visualizing-raster-data">
 <h2><span class="section-number">17.5. </span>Visualizing Raster Data<a class="headerlink" href="#visualizing-raster-data" title="Link to this heading">#</a></h2>
 <section id="basic-raster-visualization">
 <h3><span class="section-number">17.5.1. </span>Basic Raster Visualization<a class="headerlink" href="#basic-raster-visualization" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rasterio.plot.show(src)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="understanding-color-maps">
 <h3><span class="section-number">17.5.2. </span>Understanding Color Maps<a class="headerlink" href="#understanding-color-maps" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots(figsize=(8, 8))
+rasterio.plot.show(src, cmap=&quot;terrain&quot;, ax=ax, title=&quot;Digital Elevation Model (DEM)&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-colorbars">
 <h3><span class="section-number">17.5.3. </span>Adding Colorbars<a class="headerlink" href="#adding-colorbars" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>elev_band = src.read(1)
+plt.figure(figsize=(8, 8))
+plt.imshow(elev_band, cmap=&quot;terrain&quot;)
+plt.colorbar(label=&quot;Elevation (meters)&quot;, shrink=0.5)
+plt.title(&quot;DEM with Terrain Colormap&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="visualizing-multiple-bands">
 <h3><span class="section-number">17.5.4. </span>Visualizing Multiple Bands<a class="headerlink" href="#visualizing-multiple-bands" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>raster_path = &quot;https://github.com/opengeos/datasets/releases/download/raster/LC09_039035_20240708_90m.tif&quot;
+src = rasterio.open(raster_path)
+</pre></div>
+</div>
+</div>
+</div>
 <section id="single-band-visualization">
 <h4><span class="section-number">17.5.4.1. </span>Single Band Visualization<a class="headerlink" href="#single-band-visualization" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rasterio.plot.show((src, 1), cmap=&quot;gray&quot;, title=&quot;Band 1&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="rgb-composite">
 <h4><span class="section-number">17.5.4.2. </span>RGB Composite<a class="headerlink" href="#rgb-composite" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>nir_band = src.read(5)
+red_band = src.read(4)
+green_band = src.read(3)
+
+# Stack the bands into a single array
+rgb = np.dstack((nir_band, red_band, green_band)).clip(0, 1)
+
+# Plot the stacked array
+plt.figure(figsize=(8, 8))
+plt.imshow(rgb)
+plt.title(&quot;Bands NIR, Red, and Green combined&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="creating-a-multi-panel-plot">
 <h4><span class="section-number">17.5.4.3. </span>Creating a Multi-Panel Plot<a class="headerlink" href="#creating-a-multi-panel-plot" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>band_names = [&quot;Coastal Aerosol&quot;, &quot;Blue&quot;, &quot;Green&quot;, &quot;Red&quot;, &quot;NIR&quot;, &quot;SWIR1&quot;, &quot;SWIR2&quot;]
+
+fig, axes = plt.subplots(nrows=3, ncols=2, figsize=(8, 10))
+axes = axes.flatten()  # Flatten the 2D array of axes to 1D for easy iteration
+
+for band in range(1, src.count):
+    data = src.read(band)
+    ax = axes[band - 1]
+    im = ax.imshow(data, cmap=&quot;gray&quot;, vmin=0, vmax=0.5)
+    ax.set_title(f&quot;Band {band_names[band - 1]}&quot;)
+    fig.colorbar(im, ax=ax, label=&quot;Reflectance&quot;, shrink=0.5)
+
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="overlaying-vector-data">
 <h3><span class="section-number">17.5.5. </span>Overlaying Vector Data<a class="headerlink" href="#overlaying-vector-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Load raster data
+raster_path = (
+    &quot;https://github.com/opengeos/datasets/releases/download/raster/dem_90m.tif&quot;
+)
+src = rasterio.open(raster_path)
+
+# Load vector data
+vector_path = (
+    &quot;https://github.com/opengeos/datasets/releases/download/places/dem_bounds.geojson&quot;
+)
+gdf = gpd.read_file(vector_path)
+gdf = gdf.to_crs(src.crs)  # Ensure same CRS as raster
+
+# Create the plot
+fig, ax = plt.subplots(figsize=(8, 8))
+rasterio.plot.show(src, cmap=&quot;terrain&quot;, ax=ax, title=&quot;DEM with Vector Overlay&quot;)
+gdf.plot(ax=ax, edgecolor=&quot;red&quot;, facecolor=&quot;none&quot;, linewidth=2)
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="accessing-and-manipulating-raster-bands">
 <h2><span class="section-number">17.6. </span>Accessing and Manipulating Raster Bands<a class="headerlink" href="#accessing-and-manipulating-raster-bands" title="Link to this heading">#</a></h2>
 <section id="stacking-multiple-bands">
 <h3><span class="section-number">17.6.1. </span>Stacking Multiple Bands<a class="headerlink" href="#stacking-multiple-bands" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>raster_path = &quot;https://github.com/opengeos/datasets/releases/download/raster/LC09_039035_20240708_90m.tif&quot;
+src = rasterio.open(raster_path)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>nir_band = src.read(5)
+red_band = src.read(4)
+green_band = src.read(3)
+
+# Stack the bands into a single array
+rgb = np.dstack((nir_band, red_band, green_band)).clip(0, 1)
+
+print(rgb.shape)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="basic-band-math-ndvi-calculation">
 <h3><span class="section-number">17.6.2. </span>Basic Band Math (NDVI Calculation)<a class="headerlink" href="#basic-band-math-ndvi-calculation" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># NDVI Calculation: NDVI = (NIR - Red) / (NIR + Red)
+ndvi = (nir_band - red_band) / (nir_band + red_band)
+ndvi = ndvi.clip(-1, 1)
+
+plt.figure(figsize=(8, 8))
+plt.imshow(ndvi, cmap=&quot;RdYlGn&quot;, vmin=-1, vmax=1)
+plt.colorbar(label=&quot;NDVI&quot;, shrink=0.75)
+plt.title(&quot;NDVI&quot;)
+plt.xlabel(&quot;Column #&quot;)
+plt.ylabel(&quot;Row #&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="writing-raster-data">
 <h2><span class="section-number">17.7. </span>Writing Raster Data<a class="headerlink" href="#writing-raster-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>with rasterio.open(raster_path) as src:
+    profile = src.profile
+print(profile)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>profile.update(dtype=rasterio.float32, count=1, compress=&quot;lzw&quot;)
+print(profile)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>output_raster_path = &quot;ndvi.tif&quot;
+
+with rasterio.open(output_raster_path, &quot;w&quot;, **profile) as dst:
+    dst.write(ndvi, 1)
+print(f&quot;Raster data has been written to {output_raster_path}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="clipping-raster-data">
 <h2><span class="section-number">17.8. </span>Clipping Raster Data<a class="headerlink" href="#clipping-raster-data" title="Link to this heading">#</a></h2>
 <section id="clipping-with-a-bounding-box">
 <h3><span class="section-number">17.8.1. </span>Clipping with a Bounding Box<a class="headerlink" href="#clipping-with-a-bounding-box" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>raster_path = &quot;https://github.com/opengeos/datasets/releases/download/raster/LC09_039035_20240708_90m.tif&quot;
+src = rasterio.open(raster_path)
+data = src.read()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>data.shape
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>subset = data[:, 900:1400, 700:1200].clip(0, 1)
+rgb_subset = np.dstack((subset[4], subset[3], subset[2]))
+rgb_subset.shape
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Plot the stacked array
+plt.figure(figsize=(8, 8))
+plt.imshow(rgb_subset)
+plt.title(&quot;Las Vegas, NV&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from rasterio.windows import Window
+from rasterio.transform import from_bounds
+
+# Assuming subset and src are already defined
+# Define the window of the subset (replace with actual window coordinates)
+window = Window(col_off=700, row_off=900, width=500, height=500)
+
+# Calculate the bounds of the window
+window_bounds = rasterio.windows.bounds(window, src.transform)
+
+# Calculate the new transform based on the window bounds
+new_transform = from_bounds(*window_bounds, window.width, window.height)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>with rasterio.open(
+    &quot;las_vegas.tif&quot;,
+    &quot;w&quot;,
+    driver=&quot;GTiff&quot;,
+    height=subset.shape[1],
+    width=subset.shape[2],
+    count=subset.shape[0],
+    dtype=subset.dtype,
+    crs=src.crs,
+    transform=new_transform,
+    compress=&quot;lzw&quot;,
+) as dst:
+    dst.write(subset)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="clipping-with-a-vector-dataset">
 <h3><span class="section-number">17.8.2. </span>Clipping with a Vector Dataset<a class="headerlink" href="#clipping-with-a-vector-dataset" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import fiona
+import rasterio.mask
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geojson_path = &quot;https://github.com/opengeos/datasets/releases/download/places/las_vegas_bounds_utm.geojson&quot;
+bounds = gpd.read_file(geojson_path)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots()
+rasterio.plot.show(src, ax=ax)
+bounds.plot(ax=ax, edgecolor=&quot;red&quot;, facecolor=&quot;none&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>with fiona.open(geojson_path, &quot;r&quot;) as f:
+    shapes = [feature[&quot;geometry&quot;] for feature in f]
+out_image, out_transform = rasterio.mask.mask(src, shapes, crop=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>out_meta = src.meta
+out_meta.update(
+    {
+        &quot;driver&quot;: &quot;GTiff&quot;,
+        &quot;height&quot;: out_image.shape[1],
+        &quot;width&quot;: out_image.shape[2],
+        &quot;transform&quot;: out_transform,
+    }
+)
+
+with rasterio.open(&quot;las_vegas_clip.tif&quot;, &quot;w&quot;, **out_meta) as dst:
+    dst.write(out_image)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="key-takeaways">

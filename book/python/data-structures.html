@@ -562,72 +562,426 @@ document.write(`
 <h2><span class="section-number">9.3. </span>Tuples<a class="headerlink" href="#tuples" title="Link to this heading">#</a></h2>
 <section id="creating-and-using-tuples">
 <h3><span class="section-number">9.3.1. </span>Creating and Using Tuples<a class="headerlink" href="#creating-and-using-tuples" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tokyo_point = (
+    35.6895,
+    139.6917,
+)  # Tuple representing Tokyo&#39;s coordinates (latitude, longitude)
+print(f&quot;Tokyo coordinates: {tokyo_point}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="accessing-tuple-elements">
 <h3><span class="section-number">9.3.2. </span>Accessing Tuple Elements<a class="headerlink" href="#accessing-tuple-elements" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>latitude = tokyo_point[0]
+longitude = tokyo_point[1]
+print(f&quot;Latitude: {latitude}&quot;)
+print(f&quot;Longitude: {longitude}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="tuple-unpacking">
 <h3><span class="section-number">9.3.3. </span>Tuple Unpacking<a class="headerlink" href="#tuple-unpacking" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>lat, lon = tokyo_point  # Unpacking the tuple into two variables
+print(f&quot;Tokyo is located at {lat}°N, {lon}°E&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="multiple-coordinate-points">
 <h3><span class="section-number">9.3.4. </span>Multiple Coordinate Points<a class="headerlink" href="#multiple-coordinate-points" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Different geographic locations as tuples
+new_york = (40.7128, -74.0060)
+london = (51.5074, -0.1278)
+sydney = (-33.8688, 151.2093)
+
+print(f&quot;New York: {new_york}&quot;)
+print(f&quot;London: {london}&quot;)
+print(f&quot;Sydney: {sydney}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="lists">
 <h2><span class="section-number">9.4. </span>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h2>
 <section id="creating-lists">
 <h3><span class="section-number">9.4.1. </span>Creating Lists<a class="headerlink" href="#creating-lists" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># A list of coordinate tuples representing a travel route
+route = [
+    (35.6895, 139.6917),  # Tokyo
+    (34.0522, -118.2437),  # Los Angeles
+    (51.5074, -0.1278),  # London
+]
+print(&quot;Travel route:&quot;, route)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># A list of elevation measurements (in meters)
+elevations = [120.5, 135.2, 150.8, 168.3, 185.7, 203.1]
+print(&quot;Elevation profile:&quot;, elevations)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># A list of city names
+cities = [&quot;Tokyo&quot;, &quot;Los Angeles&quot;, &quot;London&quot;, &quot;Paris&quot;]
+print(&quot;Cities to visit:&quot;, cities)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-elements-to-lists">
 <h3><span class="section-number">9.4.2. </span>Adding Elements to Lists<a class="headerlink" href="#adding-elements-to-lists" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Add Paris to our travel route
+route.append((48.8566, 2.3522))  # Adding Paris coordinates
+print(&quot;Updated route:&quot;, route)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Add a new elevation measurement
+elevations.append(221.4)
+print(&quot;Updated elevations:&quot;, elevations)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="accessing-list-elements">
 <h3><span class="section-number">9.4.3. </span>Accessing List Elements<a class="headerlink" href="#accessing-list-elements" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Access the first city in our route
+first_stop = route[0]
+print(f&quot;First stop: {first_stop}&quot;)
+
+# Access the last city using negative indexing
+last_stop = route[-1]
+print(f&quot;Last stop: {last_stop}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="list-slicing">
 <h3><span class="section-number">9.4.4. </span>List Slicing<a class="headerlink" href="#list-slicing" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Get the first two stops of our route
+first_two_stops = route[:2]
+print(&quot;First two stops:&quot;, first_two_stops)
+
+# Get the middle portion of elevation data
+middle_elevations = elevations[2:5]
+print(&quot;Middle elevation readings:&quot;, middle_elevations)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="useful-list-operations">
 <h3><span class="section-number">9.4.5. </span>Useful List Operations<a class="headerlink" href="#useful-list-operations" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Find the number of waypoints in our route
+num_waypoints = len(route)
+print(f&quot;Number of waypoints: {num_waypoints}&quot;)
+
+# Find the highest elevation
+max_elevation = max(elevations)
+print(f&quot;Highest elevation: {max_elevation} meters&quot;)
+
+# Calculate average elevation
+avg_elevation = sum(elevations) / len(elevations)
+print(f&quot;Average elevation: {avg_elevation:.1f} meters&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="sets">
 <h2><span class="section-number">9.5. </span>Sets<a class="headerlink" href="#sets" title="Link to this heading">#</a></h2>
 <section id="creating-sets">
 <h3><span class="section-number">9.5.1. </span>Creating Sets<a class="headerlink" href="#creating-sets" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a set of geographic regions
+regions_visited = {&quot;North America&quot;, &quot;Europe&quot;, &quot;Asia&quot;}
+print(&quot;Regions visited:&quot;, regions_visited)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a set from a list (automatically removes duplicates)
+country_codes = [&quot;US&quot;, &quot;CA&quot;, &quot;MX&quot;, &quot;US&quot;, &quot;CA&quot;]  # Notice the duplicates
+unique_codes = set(country_codes)
+print(&quot;Original list:&quot;, country_codes)
+print(&quot;Unique country codes:&quot;, unique_codes)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a set of coordinate system codes
+crs_codes = {&quot;EPSG:4326&quot;, &quot;EPSG:3857&quot;, &quot;EPSG:32633&quot;}
+print(&quot;Coordinate reference systems:&quot;, crs_codes)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-elements-to-sets">
 <h3><span class="section-number">9.5.2. </span>Adding Elements to Sets<a class="headerlink" href="#adding-elements-to-sets" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Add a new region
+print(&quot;Original set:&quot;, regions_visited)
+regions_visited.add(&quot;Africa&quot;)
+print(&quot;After adding Africa:&quot;, regions_visited)
+
+# Try to add a duplicate region
+regions_visited.add(&quot;Europe&quot;)  # This won&#39;t change the set
+print(&quot;After trying to add Europe again:&quot;, regions_visited)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="practical-set-operations">
 <h3><span class="section-number">9.5.3. </span>Practical Set Operations<a class="headerlink" href="#practical-set-operations" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Two different survey areas with their observed species
+area_a_species = {&quot;oak&quot;, &quot;pine&quot;, &quot;maple&quot;, &quot;birch&quot;}
+area_b_species = {&quot;pine&quot;, &quot;birch&quot;, &quot;cedar&quot;, &quot;fir&quot;}
+
+print(&quot;Species in Area A:&quot;, area_a_species)
+print(&quot;Species in Area B:&quot;, area_b_species)
+
+# Find species common to both areas
+common_species = area_a_species.intersection(area_b_species)
+print(&quot;Species found in both areas:&quot;, common_species)
+
+# Find species unique to Area A
+unique_to_a = area_a_species - area_b_species
+print(&quot;Species only in Area A:&quot;, unique_to_a)
+
+# Find all species across both areas
+all_species = area_a_species.union(area_b_species)
+print(&quot;All species found:&quot;, all_species)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="checking-set-membership">
 <h3><span class="section-number">9.5.4. </span>Checking Set Membership<a class="headerlink" href="#checking-set-membership" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Check if we&#39;ve visited a particular region
+if &quot;Asia&quot; in regions_visited:
+    print(&quot;We have visited Asia&quot;)
+
+if &quot;Antarctica&quot; in regions_visited:
+    print(&quot;We have visited Antarctica&quot;)
+else:
+    print(&quot;Antarctica not yet visited&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="dictionaries">
 <h2><span class="section-number">9.6. </span>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h2>
 <section id="creating-dictionaries">
 <h3><span class="section-number">9.6.1. </span>Creating Dictionaries<a class="headerlink" href="#creating-dictionaries" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Dictionary storing attributes of a city
+tokyo_info = {
+    &quot;name&quot;: &quot;Tokyo&quot;,
+    &quot;population&quot;: 13929286,
+    &quot;coordinates&quot;: (35.6895, 139.6917),
+    &quot;country&quot;: &quot;Japan&quot;,
+    &quot;established&quot;: 1603,
+}
+print(&quot;Tokyo information:&quot;, tokyo_info)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Dictionary for a geographic survey point
+survey_point = {
+    &quot;point_id&quot;: &quot;SP001&quot;,
+    &quot;latitude&quot;: 40.7589,
+    &quot;longitude&quot;: -73.9851,
+    &quot;elevation&quot;: 87.3,
+    &quot;land_cover&quot;: &quot;urban&quot;,
+    &quot;date_surveyed&quot;: &quot;2023-06-15&quot;,
+}
+print(&quot;Survey point data:&quot;, survey_point)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="accessing-dictionary-values">
 <h3><span class="section-number">9.6.2. </span>Accessing Dictionary Values<a class="headerlink" href="#accessing-dictionary-values" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Access specific information about Tokyo
+city_name = tokyo_info[&quot;name&quot;]
+city_population = tokyo_info[&quot;population&quot;]
+city_coords = tokyo_info[&quot;coordinates&quot;]
+
+print(f&quot;City: {city_name}&quot;)
+print(f&quot;Population: {city_population:,}&quot;)
+print(f&quot;Coordinates: {city_coords}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="safe-access-with-get">
 <h3><span class="section-number">9.6.3. </span>Safe Access with get()<a class="headerlink" href="#safe-access-with-get" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Safe access to dictionary values
+area = tokyo_info.get(&quot;area_km2&quot;, &quot;Not specified&quot;)
+timezone = tokyo_info.get(&quot;timezone&quot;, &quot;Unknown&quot;)
+
+print(f&quot;Area: {area}&quot;)
+print(f&quot;Timezone: {timezone}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-and-updating-values">
 <h3><span class="section-number">9.6.4. </span>Adding and Updating Values<a class="headerlink" href="#adding-and-updating-values" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Add new information to our Tokyo dictionary
+tokyo_info[&quot;area_km2&quot;] = 2191
+tokyo_info[&quot;timezone&quot;] = &quot;JST&quot;
+tokyo_info[&quot;population&quot;] = 14000000  # Update population
+
+print(&quot;Updated Tokyo info:&quot;, tokyo_info)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="working-with-geographic-feature-collections">
 <h3><span class="section-number">9.6.5. </span>Working with Geographic Feature Collections<a class="headerlink" href="#working-with-geographic-feature-collections" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Collection of world capitals
+world_capitals = {
+    &quot;Japan&quot;: {
+        &quot;capital&quot;: &quot;Tokyo&quot;,
+        &quot;coordinates&quot;: (35.6895, 139.6917),
+        &quot;population&quot;: 13929286,
+    },
+    &quot;France&quot;: {
+        &quot;capital&quot;: &quot;Paris&quot;,
+        &quot;coordinates&quot;: (48.8566, 2.3522),
+        &quot;population&quot;: 2161000,
+    },
+    &quot;UK&quot;: {
+        &quot;capital&quot;: &quot;London&quot;,
+        &quot;coordinates&quot;: (51.5074, -0.1278),
+        &quot;population&quot;: 8982000,
+    },
+}
+
+# Access information about France&#39;s capital
+france_info = world_capitals[&quot;France&quot;]
+print(f&quot;France&#39;s capital: {france_info[&#39;capital&#39;]}&quot;)
+print(f&quot;Population: {france_info[&#39;population&#39;]:,}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="dictionary-methods-for-data-exploration">
 <h3><span class="section-number">9.6.6. </span>Dictionary Methods for Data Exploration<a class="headerlink" href="#dictionary-methods-for-data-exploration" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Explore the structure of our Tokyo dictionary
+print(&quot;Keys in tokyo_info:&quot;, list(tokyo_info.keys()))
+print(&quot;Values in tokyo_info:&quot;, list(tokyo_info.values()))
+
+# Check if a key exists
+if &quot;coordinates&quot; in tokyo_info:
+    print(&quot;Coordinate information is available&quot;)
+
+# Get all countries in our capitals dictionary
+countries = list(world_capitals.keys())
+print(&quot;Countries in our database:&quot;, countries)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="practical-example-gps-waypoint-management">
 <h3><span class="section-number">9.6.7. </span>Practical Example: GPS Waypoint Management<a class="headerlink" href="#practical-example-gps-waypoint-management" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># GPS waypoint with comprehensive metadata
+waypoint = {
+    &quot;id&quot;: &quot;WP001&quot;,
+    &quot;name&quot;: &quot;Trail Start&quot;,
+    &quot;latitude&quot;: 45.3311,
+    &quot;longitude&quot;: -121.7113,
+    &quot;elevation&quot;: 1200,
+    &quot;description&quot;: &quot;Beginning of Pacific Crest Trail section&quot;,
+    &quot;waypoint_type&quot;: &quot;trailhead&quot;,
+    &quot;facilities&quot;: [&quot;parking&quot;, &quot;restrooms&quot;, &quot;water&quot;],
+    &quot;difficulty&quot;: &quot;easy&quot;,
+}
+
+print(f&quot;Waypoint: {waypoint[&#39;name&#39;]}&quot;)
+print(f&quot;Location: {waypoint[&#39;latitude&#39;]}, {waypoint[&#39;longitude&#39;]}&quot;)
+print(f&quot;Elevation: {waypoint[&#39;elevation&#39;]} meters&quot;)
+print(f&quot;Available facilities: {&#39;, &#39;.join(waypoint[&#39;facilities&#39;])}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="data-structure-selection-guide">

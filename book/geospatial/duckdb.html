@@ -650,15 +650,84 @@ document.write(`
 <h2><span class="section-number">25.3. </span>Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Link to this heading">#</a></h2>
 <section id="installing-required-packages">
 <h3><span class="section-number">25.3.1. </span>Installing Required Packages<a class="headerlink" href="#installing-required-packages" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># %pip install duckdb pygis
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="library-import-and-configuration">
 <h3><span class="section-number">25.3.2. </span>Library Import and Configuration<a class="headerlink" href="#library-import-and-configuration" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Configure jupysql for optimal output
+%config SqlMagic.autopandas = True
+%config SqlMagic.feedback = False
+%config SqlMagic.displaycon = False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import duckdb
+import leafmap
+import pandas as pd
+
+# Import jupysql Jupyter extension for SQL magic commands
+%load_ext sql
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="understanding-duckdb-connections">
 <h3><span class="section-number">25.3.3. </span>Understanding DuckDB Connections<a class="headerlink" href="#understanding-duckdb-connections" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Connect to in-memory database
+con = duckdb.connect()
+
+# Connect to persistent file-based database
+con = duckdb.connect(&quot;filename.db&quot;)
+
+# Connect using SQL magic for jupyter notebooks
+%sql duckdb:///:memory:
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="installing-and-loading-extensions">
 <h3><span class="section-number">25.3.4. </span>Installing and Loading Extensions<a class="headerlink" href="#installing-and-loading-extensions" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Install and load essential extensions
+con.install_extension(&quot;httpfs&quot;)  # For remote file access
+con.load_extension(&quot;httpfs&quot;)
+
+con.install_extension(&quot;spatial&quot;)  # For spatial operations
+con.load_extension(&quot;spatial&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(&quot;FROM duckdb_extensions();&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(&quot;FROM duckdb_extensions();&quot;).df()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="sql-basics-for-spatial-analysis">
@@ -671,38 +740,178 @@ document.write(`
 </section>
 <section id="reading-data-directly-from-urls">
 <h3><span class="section-number">25.4.3. </span>Reading Data Directly from URLs<a class="headerlink" href="#reading-data-directly-from-urls" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+SELECT * FROM &#39;https://opengeos.org/data/duckdb/cities.csv&#39;;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+SELECT * FROM &#39;https://opengeos.org/data/duckdb/countries.csv&#39;;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="creating-persistent-tables">
 <h3><span class="section-number">25.4.4. </span>Creating Persistent Tables<a class="headerlink" href="#creating-persistent-tables" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+CREATE OR REPLACE TABLE cities AS SELECT * FROM &#39;https://opengeos.org/data/duckdb/cities.csv&#39;;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+CREATE OR REPLACE TABLE countries AS SELECT * FROM &#39;https://opengeos.org/data/duckdb/countries.csv&#39;;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="viewing-your-data">
 <h3><span class="section-number">25.4.5. </span>Viewing Your Data<a class="headerlink" href="#viewing-your-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+FROM cities;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+FROM countries;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="essential-sql-commands">
 <h3><span class="section-number">25.4.6. </span>Essential SQL Commands<a class="headerlink" href="#essential-sql-commands" title="Link to this heading">#</a></h3>
 <section id="selecting-data">
 <h4><span class="section-number">25.4.6.1. </span>Selecting Data<a class="headerlink" href="#selecting-data" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+SELECT * FROM cities LIMIT 10;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="choosing-specific-columns">
 <h4><span class="section-number">25.4.6.2. </span>Choosing Specific Columns<a class="headerlink" href="#choosing-specific-columns" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+SELECT name, country FROM cities LIMIT 10;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="finding-unique-values">
 <h4><span class="section-number">25.4.6.3. </span>Finding Unique Values<a class="headerlink" href="#finding-unique-values" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+SELECT DISTINCT country FROM cities LIMIT 10;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="counting-and-aggregation">
 <h4><span class="section-number">25.4.6.4. </span>Counting and Aggregation<a class="headerlink" href="#counting-and-aggregation" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+SELECT COUNT(*) FROM cities;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+SELECT COUNT(DISTINCT country) FROM cities;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+SELECT MAX(population) FROM cities;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+SELECT MIN(population) FROM cities;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+SELECT AVG(population) FROM cities;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="filtering-and-sorting-data">
 <h3><span class="section-number">25.4.7. </span>Filtering and Sorting Data<a class="headerlink" href="#filtering-and-sorting-data" title="Link to this heading">#</a></h3>
 <section id="filtering-with-where-clauses">
 <h4><span class="section-number">25.4.7.1. </span>Filtering with WHERE Clauses<a class="headerlink" href="#filtering-with-where-clauses" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+SELECT * FROM cities WHERE population &gt; 1000000 LIMIT 10;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="sorting-your-results">
 <h4><span class="section-number">25.4.7.2. </span>Sorting Your Results<a class="headerlink" href="#sorting-your-results" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+SELECT * FROM cities ORDER BY population DESC LIMIT 10;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="grouping-and-aggregating-data">
 <h4><span class="section-number">25.4.7.3. </span>Grouping and Aggregating Data<a class="headerlink" href="#grouping-and-aggregating-data" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%%sql
+SELECT country, COUNT(*) as city_count, AVG(population) as avg_population
+FROM cities
+GROUP BY country
+ORDER BY city_count DESC
+LIMIT 10;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -710,15 +919,100 @@ document.write(`
 <h2><span class="section-number">25.5. </span>Python API Integration<a class="headerlink" href="#python-api-integration" title="Link to this heading">#</a></h2>
 <section id="understanding-result-formats">
 <h3><span class="section-number">25.5.1. </span>Understanding Result Formats<a class="headerlink" href="#understanding-result-formats" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Execute SQL and get different result formats
+con.sql(&quot;SELECT 42&quot;).fetchall()  # Python objects
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(&quot;SELECT 42&quot;).df()  # Pandas DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(&quot;SELECT 42&quot;).fetchnumpy()  # NumPy Arrays
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="seamless-dataframe-integration">
 <h3><span class="section-number">25.5.2. </span>Seamless DataFrame Integration<a class="headerlink" href="#seamless-dataframe-integration" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Query Pandas DataFrames directly
+pandas_df = pd.DataFrame({&quot;a&quot;: [42]})
+con.sql(&quot;SELECT * FROM pandas_df&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Convert remote data to DataFrame
+df = con.read_csv(&quot;https://opengeos.org/data/duckdb/cities.csv&quot;).df()
+df.head()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="result-conversion-and-export">
 <h3><span class="section-number">25.5.3. </span>Result Conversion and Export<a class="headerlink" href="#result-conversion-and-export" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Write results to various formats
+con.sql(&quot;SELECT 42&quot;).write_parquet(&quot;out.parquet&quot;)
+con.sql(&quot;SELECT 42&quot;).write_csv(&quot;out.csv&quot;)
+con.sql(&quot;COPY (SELECT 42) TO &#39;out.parquet&#39;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="persistent-storage">
 <h3><span class="section-number">25.5.4. </span>Persistent Storage<a class="headerlink" href="#persistent-storage" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create persistent database connection
+# create a connection to a file called &#39;file.db&#39;
+con_persistent = duckdb.connect(&quot;file.db&quot;)
+# create a table and load data into it
+con_persistent.sql(
+    &#39;CREATE TABLE IF NOT EXISTS cities AS FROM read_csv_auto(&quot;https://opengeos.org/data/duckdb/cities.csv&quot;)&#39;
+)
+# query the table
+con_persistent.table(&quot;cities&quot;).show()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># explicitly close the connection
+con_persistent.close()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>with duckdb.connect(&quot;file.db&quot;) as con:
+    con.sql(
+        &#39;CREATE TABLE IF NOT EXISTS cities AS FROM read_csv_auto(&quot;https://opengeos.org/data/duckdb/cities.csv&quot;)&#39;
+    )
+    con.table(&quot;cities&quot;).show(max_rows=5)
+    # the context manager closes the connection automatically
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="data-import">
@@ -728,45 +1022,337 @@ document.write(`
 </section>
 <section id="downloading-sample-data">
 <h3><span class="section-number">25.6.2. </span>Downloading Sample Data<a class="headerlink" href="#downloading-sample-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://opengeos.org/data/duckdb/cities.zip&quot;
+leafmap.download_file(url, unzip=True)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="working-with-csv-files">
 <h3><span class="section-number">25.6.3. </span>Working with CSV Files<a class="headerlink" href="#working-with-csv-files" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Read CSV with auto-detection
+con = duckdb.connect()
+con.read_csv(&quot;cities.csv&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Read CSV with specific options
+con.read_csv(&quot;cities.csv&quot;, header=True, sep=&quot;,&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Use parallel CSV reader
+con.read_csv(&quot;cities.csv&quot;, parallel=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Read CSV directly in SQL
+con.sql(&quot;SELECT * FROM &#39;cities.csv&#39;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Call read_csv from within SQL
+con.sql(&quot;SELECT * FROM read_csv_auto(&#39;cities.csv&#39;)&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="json-files">
 <h3><span class="section-number">25.6.4. </span>JSON Files<a class="headerlink" href="#json-files" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Read JSON files
+con.read_json(&quot;cities.json&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Read JSON directly in SQL
+con.sql(&quot;SELECT * FROM &#39;cities.json&#39;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Call read_json from within SQL
+con.sql(&quot;SELECT * FROM read_json_auto(&#39;cities.json&#39;)&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="dataframes">
 <h3><span class="section-number">25.6.5. </span>DataFrames<a class="headerlink" href="#dataframes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df = pd.read_csv(&quot;cities.csv&quot;)
+df
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(&quot;SELECT * FROM df&quot;).fetchall()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="parquet-files">
 <h3><span class="section-number">25.6.6. </span>Parquet Files<a class="headerlink" href="#parquet-files" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Read from a single Parquet file
+con.read_parquet(&quot;cities.parquet&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Read Parquet directly in SQL
+con.sql(&quot;SELECT * FROM &#39;cities.parquet&#39;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Call read_parquet from within SQL
+con.sql(&quot;SELECT * FROM read_parquet(&#39;cities.parquet&#39;)&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="spatial-data-formats">
 <h3><span class="section-number">25.6.7. </span>Spatial Data Formats<a class="headerlink" href="#spatial-data-formats" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.load_extension(&quot;spatial&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(&quot;SELECT * FROM ST_Drivers()&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Read GeoJSON
+con.sql(&quot;SELECT * FROM ST_Read(&#39;cities.geojson&#39;)&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create spatial table from GeoJSON
+con.sql(&quot;CREATE TABLE cities AS SELECT * FROM ST_Read(&#39;cities.geojson&#39;)&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.table(&quot;cities&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(&quot;SELECT * FROM ST_Read(&#39;cities.shp&#39;)&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;&quot;&quot;
+        CREATE TABLE IF NOT EXISTS cities2 AS
+        SELECT * FROM ST_Read(&#39;cities.shp&#39;)
+        &quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.table(&quot;cities2&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="data-export">
 <h2><span class="section-number">25.7. </span>Data Export<a class="headerlink" href="#data-export" title="Link to this heading">#</a></h2>
 <section id="sample-spatial-data-setup">
 <h3><span class="section-number">25.7.1. </span>Sample Spatial Data Setup<a class="headerlink" href="#sample-spatial-data-setup" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con = duckdb.connect()
+con.load_extension(&quot;spatial&quot;)
+con.sql(
+    &quot;&quot;&quot;
+CREATE TABLE IF NOT EXISTS cities AS
+FROM &#39;https://opengeos.org/data/duckdb/cities.parquet&#39;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.table(&quot;cities&quot;).show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="export-to-dataframes">
 <h3><span class="section-number">25.7.2. </span>Export to DataFrames<a class="headerlink" href="#export-to-dataframes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.table(&quot;cities&quot;).df()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="export-to-files">
 <h3><span class="section-number">25.7.3. </span>Export to Files<a class="headerlink" href="#export-to-files" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Export to CSV
+con.sql(&quot;COPY cities TO &#39;cities.csv&#39; (HEADER, DELIMITER &#39;,&#39;)&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;COPY (SELECT * FROM cities WHERE country=&#39;USA&#39;) TO &#39;cities_us.csv&#39; (HEADER, DELIMITER &#39;,&#39;)&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="export-to-json">
 <h3><span class="section-number">25.7.4. </span>Export to JSON<a class="headerlink" href="#export-to-json" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(&quot;COPY cities TO &#39;cities.json&#39;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(&quot;COPY (SELECT * FROM cities WHERE country=&#39;USA&#39;) TO &#39;cities_us.json&#39;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="export-to-excel">
 <h3><span class="section-number">25.7.5. </span>Export to Excel<a class="headerlink" href="#export-to-excel" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;COPY (SELECT * EXCLUDE geometry FROM cities) TO &#39;cities.xlsx&#39; WITH (FORMAT GDAL, DRIVER &#39;XLSX&#39;)&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="export-to-parquet">
 <h3><span class="section-number">25.7.6. </span>Export to Parquet<a class="headerlink" href="#export-to-parquet" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(&quot;COPY cities TO &#39;cities.parquet&#39; (FORMAT PARQUET)&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;COPY (SELECT * FROM cities WHERE country=&#39;USA&#39;) TO &#39;cities_us.parquet&#39; (FORMAT PARQUET)&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="export-spatial-formats">
 <h3><span class="section-number">25.7.7. </span>Export Spatial Formats<a class="headerlink" href="#export-spatial-formats" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Export to GeoJSON
+con.sql(&quot;COPY cities TO &#39;cities.geojson&#39; WITH (FORMAT GDAL, DRIVER &#39;GeoJSON&#39;)&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;COPY (SELECT * FROM cities WHERE country=&#39;USA&#39;) TO &#39;cities_us.geojson&#39; WITH (FORMAT GDAL, DRIVER &#39;GeoJSON&#39;)&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Export to Shapefile
+con.sql(&quot;COPY cities TO &#39;cities.shp&#39; WITH (FORMAT GDAL, DRIVER &#39;ESRI Shapefile&#39;)&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Export to GeoPackage
+con.sql(&quot;COPY cities TO &#39;cities.gpkg&#39; WITH (FORMAT GDAL, DRIVER &#39;GPKG&#39;)&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="working-with-geometries">
@@ -776,18 +1362,188 @@ document.write(`
 </section>
 <section id="sample-data-setup">
 <h3><span class="section-number">25.8.2. </span>Sample Data Setup<a class="headerlink" href="#sample-data-setup" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Download NYC sample data
+url = &quot;https://opengeos.org/data/duckdb/nyc_data.db.zip&quot;
+leafmap.download_file(url, unzip=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Connect to spatial database
+con = duckdb.connect(&quot;nyc_data.db&quot;)
+con.install_extension(&quot;spatial&quot;)
+con.load_extension(&quot;spatial&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(&quot;SHOW TABLES;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="creating-and-understanding-geometries">
 <h3><span class="section-number">25.8.3. </span>Creating and Understanding Geometries<a class="headerlink" href="#creating-and-understanding-geometries" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;&quot;&quot;
+
+CREATE or REPLACE TABLE samples (name VARCHAR, geom GEOMETRY);
+
+INSERT INTO samples VALUES
+  (&#39;Point&#39;, ST_GeomFromText(&#39;POINT(-100 40)&#39;)),
+  (&#39;Linestring&#39;, ST_GeomFromText(&#39;LINESTRING(0 0, 1 1, 2 1, 2 2)&#39;)),
+  (&#39;Polygon&#39;, ST_GeomFromText(&#39;POLYGON((0 0, 1 0, 1 1, 0 1, 0 0))&#39;)),
+  (&#39;PolygonWithHole&#39;, ST_GeomFromText(&#39;POLYGON((0 0, 10 0, 10 10, 0 10, 0 0),(1 1, 1 2, 2 2, 2 1, 1 1))&#39;)),
+  (&#39;Collection&#39;, ST_GeomFromText(&#39;GEOMETRYCOLLECTION(POINT(2 0),POLYGON((0 0, 1 0, 1 1, 0 1, 0 0)))&#39;));
+
+SELECT * FROM samples;
+
+  &quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(&quot;SELECT name, ST_AsText(geom) AS geometry FROM samples;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;&quot;&quot;
+COPY samples TO &#39;samples.geojson&#39; (FORMAT GDAL, DRIVER GeoJSON);
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="working-with-points">
 <h3><span class="section-number">25.8.4. </span>Working with Points<a class="headerlink" href="#working-with-points" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;&quot;&quot;
+SELECT ST_AsText(geom)
+  FROM samples
+  WHERE name = &#39;Point&#39;;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;&quot;&quot;
+SELECT ST_X(geom), ST_Y(geom)
+  FROM samples
+  WHERE name = &#39;Point&#39;;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;&quot;&quot;
+SELECT * FROM nyc_subway_stations
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;&quot;&quot;
+SELECT name, ST_AsText(geom)
+  FROM nyc_subway_stations
+  LIMIT 10;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="working-with-linestrings">
 <h3><span class="section-number">25.8.5. </span>Working with LineStrings<a class="headerlink" href="#working-with-linestrings" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;&quot;&quot;
+SELECT ST_AsText(geom)
+  FROM samples
+  WHERE name = &#39;Linestring&#39;;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;&quot;&quot;
+SELECT ST_Length(geom)
+  FROM samples
+  WHERE name = &#39;Linestring&#39;;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="working-with-polygons">
 <h3><span class="section-number">25.8.6. </span>Working with Polygons<a class="headerlink" href="#working-with-polygons" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;&quot;&quot;
+SELECT ST_AsText(geom)
+  FROM samples
+  WHERE name = &#39;Polygon&#39;;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;&quot;&quot;
+SELECT
+    ST_Area(geom) as area,
+    ST_Perimeter(geom) as perimeter
+FROM samples
+WHERE name = &#39;Polygon&#39;;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="spatial-relationships">
@@ -797,15 +1553,78 @@ document.write(`
 </section>
 <section id="working-with-real-spatial-data">
 <h3><span class="section-number">25.9.2. </span>Working with Real Spatial Data<a class="headerlink" href="#working-with-real-spatial-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Find subway station
+con.sql(
+    &quot;&quot;&quot;
+SELECT name, geom
+FROM nyc_subway_stations
+WHERE name = &#39;Broad St&#39;;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="testing-spatial-equality">
 <h3><span class="section-number">25.9.3. </span>Testing Spatial Equality<a class="headerlink" href="#testing-spatial-equality" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Test spatial equality
+con.sql(
+    &quot;&quot;&quot;
+SELECT name
+FROM nyc_subway_stations
+WHERE ST_Equals(geom, ST_GeomFromText(&#39;POINT (583571.9059213118 4506714.341192182)&#39;));
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="point-in-polygon-analysis">
 <h3><span class="section-number">25.9.4. </span>Point-in-Polygon Analysis<a class="headerlink" href="#point-in-polygon-analysis" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(&quot;FROM nyc_neighborhoods LIMIT 5&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Find neighborhood containing a point
+con.sql(
+    &quot;&quot;&quot;
+SELECT name, boroname
+FROM nyc_neighborhoods
+WHERE ST_Intersects(geom, ST_GeomFromText(&#39;POINT(583571 4506714)&#39;));
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="proximity-analysis-with-distance">
 <h3><span class="section-number">25.9.5. </span>Proximity Analysis with Distance<a class="headerlink" href="#proximity-analysis-with-distance" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Find features within distance
+con.sql(
+    &quot;&quot;&quot;
+SELECT COUNT(*) as nearby_stations
+FROM nyc_subway_stations
+WHERE ST_DWithin(geom, ST_GeomFromText(&#39;POINT(583571 4506714)&#39;), 500);
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="spatial-joins">
@@ -815,59 +1634,408 @@ document.write(`
 </section>
 <section id="exploring-our-data">
 <h3><span class="section-number">25.10.2. </span>Exploring Our Data<a class="headerlink" href="#exploring-our-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(&quot;FROM nyc_neighborhoods SELECT * LIMIT 5;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(&quot;FROM nyc_subway_stations SELECT * LIMIT 5;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="your-first-spatial-join">
 <h3><span class="section-number">25.10.3. </span>Your First Spatial Join<a class="headerlink" href="#your-first-spatial-join" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Find subway stations and their neighborhoods
+con.sql(
+    &quot;&quot;&quot;
+SELECT
+  subways.name AS subway_name,
+  neighborhoods.name AS neighborhood_name,
+  neighborhoods.boroname AS borough
+FROM nyc_neighborhoods AS neighborhoods
+JOIN nyc_subway_stations AS subways
+ON ST_Intersects(neighborhoods.geom, subways.geom)
+WHERE subways.NAME = &#39;Broad St&#39;;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="advanced-spatial-analysis">
 <h3><span class="section-number">25.10.4. </span>Advanced Spatial Analysis<a class="headerlink" href="#advanced-spatial-analysis" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;&quot;&quot;
+SELECT DISTINCT COLOR FROM nyc_subway_stations;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Find RED subway stations and their neighborhoods
+con.sql(
+    &quot;&quot;&quot;
+SELECT
+  subways.name AS subway_name,
+  neighborhoods.name AS neighborhood_name,
+  neighborhoods.boroname AS borough
+FROM nyc_neighborhoods AS neighborhoods
+JOIN nyc_subway_stations AS subways
+ON ST_Intersects(neighborhoods.geom, subways.geom)
+WHERE subways.color = &#39;RED&#39;;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="distance-based-analysis">
 <h3><span class="section-number">25.10.5. </span>Distance-Based Analysis<a class="headerlink" href="#distance-based-analysis" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Get baseline demographics
+con.sql(
+    &quot;&quot;&quot;
+SELECT
+  100.0 * Sum(popn_white) / Sum(popn_total) AS white_pct,
+  100.0 * Sum(popn_black) / Sum(popn_total) AS black_pct,
+  Sum(popn_total) AS popn_total
+FROM nyc_census_blocks;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;&quot;&quot;
+SELECT DISTINCT routes
+FROM nyc_subway_stations AS subways
+WHERE strpos(subways.routes,&#39;A&#39;) &gt; 0;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Demographics within 200 meters of A-train
+con.sql(
+    &quot;&quot;&quot;
+SELECT
+  100.0 * Sum(popn_white) / Sum(popn_total) AS white_pct,
+  100.0 * Sum(popn_black) / Sum(popn_total) AS black_pct,
+  Sum(popn_total) AS popn_total
+FROM nyc_census_blocks AS census
+JOIN nyc_subway_stations AS subways
+ON ST_DWithin(census.geom, subways.geom, 200)
+WHERE strpos(subways.routes,&#39;A&#39;) &gt; 0;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="advanced-multi-table-joins">
 <h3><span class="section-number">25.10.6. </span>Advanced Multi-Table Joins<a class="headerlink" href="#advanced-multi-table-joins" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create subway lines reference table
+con.sql(
+    &quot;&quot;&quot;
+CREATE OR REPLACE TABLE subway_lines ( route char(1) );
+INSERT INTO subway_lines (route) VALUES
+  (&#39;A&#39;),(&#39;B&#39;),(&#39;C&#39;),(&#39;D&#39;),(&#39;E&#39;),(&#39;F&#39;),(&#39;G&#39;),
+  (&#39;J&#39;),(&#39;L&#39;),(&#39;M&#39;),(&#39;N&#39;),(&#39;Q&#39;),(&#39;R&#39;),(&#39;S&#39;),
+  (&#39;Z&#39;),(&#39;1&#39;),(&#39;2&#39;),(&#39;3&#39;),(&#39;4&#39;),(&#39;5&#39;),(&#39;6&#39;),
+  (&#39;7&#39;);
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Analyze demographics by subway line
+con.sql(
+    &quot;&quot;&quot;
+SELECT
+  lines.route,
+  100.0 * Sum(popn_white) / Sum(popn_total) AS white_pct,
+  100.0 * Sum(popn_black) / Sum(popn_total) AS black_pct,
+  Sum(popn_total) AS popn_total
+FROM nyc_census_blocks AS census
+JOIN nyc_subway_stations AS subways
+ON ST_DWithin(census.geom, subways.geom, 200)
+JOIN subway_lines AS lines
+ON strpos(subways.routes, lines.route) &gt; 0
+GROUP BY lines.route
+ORDER BY black_pct DESC;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="large-scale-data-analysis">
 <h2><span class="section-number">25.11. </span>Large-Scale Data Analysis<a class="headerlink" href="#large-scale-data-analysis" title="Link to this heading">#</a></h2>
 <section id="analyzing-the-national-wetlands-inventory">
 <h3><span class="section-number">25.11.1. </span>Analyzing the National Wetlands Inventory<a class="headerlink" href="#analyzing-the-national-wetlands-inventory" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Connect and prepare for large-scale analysis
+con = duckdb.connect()
+con.install_extension(&quot;spatial&quot;)
+con.load_extension(&quot;spatial&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Analyze single state data
+state = &quot;DC&quot;  # Change to the US State of your choice
+url = f&quot;https://data.source.coop/giswqs/nwi/wetlands/{state}_Wetlands.parquet&quot;
+con.sql(f&quot;SELECT * FROM &#39;{url}&#39;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Inspect the table schema
+con.sql(f&quot;DESCRIBE FROM &#39;{url}&#39;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="scaling-up-nationwide-wetland-analysis">
 <h3><span class="section-number">25.11.2. </span>Scaling Up: Nationwide Wetland Analysis<a class="headerlink" href="#scaling-up-nationwide-wetland-analysis" title="Link to this heading">#</a></h3>
 <section id="count-the-total-number-of-wetlands">
 <h4><span class="section-number">25.11.2.1. </span>Count the Total Number of Wetlands<a class="headerlink" href="#count-the-total-number-of-wetlands" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    f&quot;&quot;&quot;
+SELECT COUNT(*) AS Count
+FROM &#39;s3://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet&#39;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="count-wetlands-by-state">
 <h4><span class="section-number">25.11.2.2. </span>Count Wetlands by State<a class="headerlink" href="#count-wetlands-by-state" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Count wetlands by state using filename
+df = con.sql(
+    f&quot;&quot;&quot;
+SELECT filename, COUNT(*) AS Count
+FROM read_parquet(&#39;s3://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet&#39;, filename=true)
+GROUP BY filename
+ORDER BY COUNT(*) DESC;
+&quot;&quot;&quot;
+).df()
+df.head()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Extract state codes from filenames
+count_df = con.sql(
+    f&quot;&quot;&quot;
+SELECT SUBSTRING(filename, LENGTH(filename) - 18, 2) AS State, COUNT(*) AS Count
+FROM read_parquet(&#39;s3://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet&#39;, filename=true)
+GROUP BY State
+ORDER BY COUNT(*) DESC;
+&quot;&quot;&quot;
+).df()
+count_df.head(10)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a wetlands table from the DataFrame
+con.sql(&quot;CREATE OR REPLACE TABLE wetlands AS FROM count_df&quot;)
+con.sql(&quot;FROM wetlands&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="mapping-wetland-counts-by-state">
 <h3><span class="section-number">25.11.3. </span>Mapping Wetland Counts by State<a class="headerlink" href="#mapping-wetland-counts-by-state" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create states table with geometries
+url = &quot;https://opengeos.org/data/us/us_states.parquet&quot;
+con.sql(
+    f&quot;&quot;&quot;
+CREATE OR REPLACE TABLE states AS
+SELECT * FROM &#39;{url}&#39;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    &quot;&quot;&quot;
+SELECT * FROM states INNER JOIN wetlands ON states.id = wetlands.State
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Join wetlands count with state geometries for visualization
+file_path = &quot;states_with_wetlands.geojson&quot;
+con.sql(
+    f&quot;&quot;&quot;
+    COPY (
+    SELECT s.name, s.id, w.Count, s.geometry
+    FROM states s
+    JOIN wetlands w ON s.id = w.State
+    ORDER BY w.Count DESC
+    ) TO &#39;{file_path}&#39; WITH (FORMAT GDAL, DRIVER &#39;GeoJSON&#39;)
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
+m.add_data(
+    file_path,
+    column=&quot;Count&quot;,
+    scheme=&quot;Quantiles&quot;,
+    cmap=&quot;Greens&quot;,
+    legend_title=&quot;Wetland Count&quot;,
+)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="wetland-distribution-charts">
 <h3><span class="section-number">25.11.4. </span>Wetland Distribution Charts<a class="headerlink" href="#wetland-distribution-charts" title="Link to this heading">#</a></h3>
 <section id="pie-chart-of-wetlands-by-state">
 <h4><span class="section-number">25.11.4.1. </span>Pie Chart of Wetlands by State<a class="headerlink" href="#pie-chart-of-wetlands-by-state" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.pie_chart(
+    count_df, &quot;State&quot;, &quot;Count&quot;, height=800, title=&quot;Number of Wetlands by State&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="bar-chart-of-wetlands-by-state">
 <h4><span class="section-number">25.11.4.2. </span>Bar Chart of Wetlands by State<a class="headerlink" href="#bar-chart-of-wetlands-by-state" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.bar_chart(count_df, &quot;State&quot;, &quot;Count&quot;, title=&quot;Number of Wetlands by State&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="wetland-area-analysis">
 <h3><span class="section-number">25.11.5. </span>Wetland Area Analysis<a class="headerlink" href="#wetland-area-analysis" title="Link to this heading">#</a></h3>
 <section id="total-wetland-area-in-the-u-s">
 <h4><span class="section-number">25.11.5.1. </span>Total Wetland Area in the U.S.<a class="headerlink" href="#total-wetland-area-in-the-u-s" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>con.sql(
+    f&quot;&quot;&quot;
+SELECT SUM(Shape_Area) /  1000000 AS Area_SqKm
+FROM &#39;s3://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet&#39;
+&quot;&quot;&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="wetland-area-by-state">
 <h4><span class="section-number">25.11.5.2. </span>Wetland Area by State<a class="headerlink" href="#wetland-area-by-state" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>area_df = con.sql(
+    f&quot;&quot;&quot;
+SELECT SUBSTRING(filename, LENGTH(filename) - 18, 2) AS State, SUM(Shape_Area) /  1000000 AS Area_SqKm
+FROM read_parquet(&#39;s3://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet&#39;, filename=true)
+GROUP BY State
+ORDER BY COUNT(*) DESC;
+&quot;&quot;&quot;
+).df()
+area_df.head(10)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="pie-chart-of-wetland-area-by-state">
 <h4><span class="section-number">25.11.5.3. </span>Pie Chart of Wetland Area by State<a class="headerlink" href="#pie-chart-of-wetland-area-by-state" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.pie_chart(
+    area_df, &quot;State&quot;, &quot;Area_SqKm&quot;, height=850, title=&quot;Wetland Area by State&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="bar-chart-of-wetland-area-by-state">
 <h4><span class="section-number">25.11.5.4. </span>Bar Chart of Wetland Area by State<a class="headerlink" href="#bar-chart-of-wetland-area-by-state" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.bar_chart(area_df, &quot;State&quot;, &quot;Area_SqKm&quot;, title=&quot;Wetland Area by State&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>

@@ -549,14 +549,39 @@ document.write(`
 </section>
 <section id="installing-voila-and-solara">
 <h2><span class="section-number">27.3. </span>Installing Voilà and Solara<a class="headerlink" href="#installing-voila-and-solara" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># %pip install voila solara pygis
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import voila
+import solara
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="introduction-to-hugging-face-spaces">
 <h2><span class="section-number">27.4. </span>Introduction to Hugging Face Spaces<a class="headerlink" href="#introduction-to-hugging-face-spaces" title="Link to this heading">#</a></h2>
 <section id="installing-the-hugging-face-cli">
 <h3><span class="section-number">27.4.1. </span>Installing the Hugging Face CLI<a class="headerlink" href="#installing-the-hugging-face-cli" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># %pip install -U &quot;huggingface_hub[cli]&quot;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="logging-in-to-hugging-face">
 <h3><span class="section-number">27.4.2. </span>Logging in to Hugging Face<a class="headerlink" href="#logging-in-to-hugging-face" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>huggingface-cli<span class="w"> </span>login
+</pre></div>
+</div>
 </section>
 </section>
 <section id="creating-a-basic-voila-application">
@@ -569,6 +594,23 @@ document.write(`
 </section>
 <section id="running-the-voila-application">
 <h3><span class="section-number">27.5.3. </span>Running the Voilà Application<a class="headerlink" href="#running-the-voila-application" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import leafmap.maplibregl as leafmap
+
+m = leafmap.Map(
+    style=&quot;liberty&quot;, projection=&quot;globe&quot;, sidebar_visible=True, height=&quot;750px&quot;
+)
+m.add_basemap(&quot;USGS.Imagery&quot;)
+cities = (
+    &quot;https://github.com/opengeos/datasets/releases/download/world/world_cities.geojson&quot;
+)
+m.add_geojson(cities, name=&quot;Cities&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="exploring-the-file-structure-of-the-space">
 <h3><span class="section-number">27.5.4. </span>Exploring the File Structure of the Space<a class="headerlink" href="#exploring-the-file-structure-of-the-space" title="Link to this heading">#</a></h3>
@@ -580,6 +622,16 @@ document.write(`
 </section>
 <section id="updating-the-space-from-the-command-line">
 <h4><span class="section-number">27.5.5.2. </span>Updating the Space from the Command Line<a class="headerlink" href="#updating-the-space-from-the-command-line" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://huggingface.co/spaces/YOUR-USERNAME/leafmap-voila
+<span class="nb">cd</span><span class="w"> </span>leafmap-voila
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>voila<span class="w"> </span>notebooks/
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>voila<span class="w"> </span>notebooks/<span class="w"> </span>--strip_sources<span class="o">=</span>False
+</pre></div>
+</div>
 </section>
 </section>
 </section>
@@ -596,15 +648,82 @@ document.write(`
 </section>
 <section id="introduction-to-solara-components">
 <h3><span class="section-number">27.6.4. </span>Introduction to Solara Components<a class="headerlink" href="#introduction-to-solara-components" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import solara
+import leafmap.maplibregl as leafmap
+
+
+def create_map():
+
+    m = leafmap.Map(
+        style=&quot;liberty&quot;,
+        projection=&quot;globe&quot;,
+        height=&quot;750px&quot;,
+        zoom=2.5,
+        sidebar_visible=True,
+    )
+    return m
+
+
+@solara.component
+def Page():
+    m = create_map()
+    return m.to_solara()
+
+
+Page()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="creating-a-new-page">
 <h3><span class="section-number">27.6.5. </span>Creating a New Page<a class="headerlink" href="#creating-a-new-page" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import solara
+import leafmap.maplibregl as leafmap
+
+
+def create_map():
+
+    m = leafmap.Map(
+        style=&quot;positron&quot;,
+        projection=&quot;globe&quot;,
+        height=&quot;750px&quot;,
+        zoom=2.5,
+        sidebar_visible=True,
+    )
+    geojson = &quot;https://github.com/opengeos/datasets/releases/download/world/mgrs_grid_zone.geojson&quot;
+    m.add_geojson(geojson)
+    m.add_labels(geojson, &quot;GZD&quot;, text_color=&quot;white&quot;, min_zoom=2, max_zoom=10)
+    return m
+
+
+@solara.component
+def Page():
+    m = create_map()
+    return m.to_solara()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="running-the-solara-web-app-locally">
 <h3><span class="section-number">27.6.6. </span>Running the Solara Web App Locally<a class="headerlink" href="#running-the-solara-web-app-locally" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>solara-maplibre
+solara<span class="w"> </span>run<span class="w"> </span>pages/
+</pre></div>
+</div>
 </section>
 <section id="pushing-changes-to-the-hugging-face-space">
 <h3><span class="section-number">27.6.7. </span>Pushing Changes to the Hugging Face Space<a class="headerlink" href="#pushing-changes-to-the-hugging-face-space" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update the web app&quot;</span>
+git<span class="w"> </span>push
+</pre></div>
+</div>
 </section>
 </section>
 <section id="key-takeaways">

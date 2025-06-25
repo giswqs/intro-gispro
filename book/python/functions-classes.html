@@ -546,29 +546,175 @@ document.write(`
 <h2><span class="section-number">12.3. </span>Functions: Building Reusable Code Blocks<a class="headerlink" href="#functions-building-reusable-code-blocks" title="Link to this heading">#</a></h2>
 <section id="defining-a-simple-function">
 <h3><span class="section-number">12.3.1. </span>Defining a Simple Function<a class="headerlink" href="#defining-a-simple-function" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def add(a, b):
+    return a + b
+
+
+# Example usage
+result = add(5, 3)
+print(f&quot;Result: {result}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="parameters-with-default-values">
 <h3><span class="section-number">12.3.2. </span>Parameters with Default Values<a class="headerlink" href="#parameters-with-default-values" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def greet(name, greeting=&quot;Hello&quot;):
+    return f&quot;{greeting}, {name}!&quot;
+
+
+# Example usage
+print(greet(&quot;Alice&quot;))  # Uses the default greeting
+print(greet(&quot;Bob&quot;, &quot;Hi&quot;))  # Overrides the default greeting
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="understanding-function-calls">
 <h3><span class="section-number">12.3.3. </span>Understanding Function Calls<a class="headerlink" href="#understanding-function-calls" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Function to multiply two numbers
+def multiply(a, b):
+    return a * b
+
+
+# Calling the function
+result = multiply(4, 5)
+print(f&quot;Multiplication Result: {result}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="geospatial-example-haversine-function">
 <h3><span class="section-number">12.3.4. </span>Geospatial Example: Haversine Function<a class="headerlink" href="#geospatial-example-haversine-function" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from math import radians, sin, cos, sqrt, atan2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def haversine(lat1, lon1, lat2, lon2):
+    R = 6371.0  # Earth radius in kilometers
+    dlat = radians(lat2 - lat1)
+    dlon = radians(lon2 - lon1)
+    a = (
+        sin(dlat / 2) ** 2
+        + cos(radians(lat1)) * cos(radians(lat2)) * sin(dlon / 2) ** 2
+    )
+    c = 2 * atan2(sqrt(a), sqrt(1 - a))
+    distance = R * c
+    return distance
+
+
+# Example usage
+distance = haversine(35.6895, 139.6917, 34.0522, -118.2437)
+print(f&quot;Distance: {distance:.2f} km&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="function-with-default-values-and-geospatial-application">
 <h3><span class="section-number">12.3.5. </span>Function with Default Values and Geospatial Application<a class="headerlink" href="#function-with-default-values-and-geospatial-application" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def haversine(lat1, lon1, lat2, lon2, radius=6371.0):
+    dlat = radians(lat2 - lat1)
+    dlon = radians(lon2 - lon1)
+    a = (
+        sin(dlat / 2) ** 2
+        + cos(radians(lat1)) * cos(radians(lat2)) * sin(dlon / 2) ** 2
+    )
+    c = 2 * atan2(sqrt(a), sqrt(1 - a))
+    distance = radius * c
+    return distance
+
+
+# Example usage in kilometers
+distance_km = haversine(35.6895, 139.6917, 34.0522, -118.2437)
+print(f&quot;Distance in kilometers: {distance_km:.2f} km&quot;)
+
+# Example usage in miles (radius of Earth is approximately 3958.8 miles)
+distance_miles = haversine(35.6895, 139.6917, 34.0522, -118.2437, radius=3958.8)
+print(f&quot;Distance in miles: {distance_miles:.2f} miles&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="processing-multiple-coordinates">
 <h3><span class="section-number">12.3.6. </span>Processing Multiple Coordinates<a class="headerlink" href="#processing-multiple-coordinates" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def batch_haversine(coord_list):
+    distances = []
+    for i in range(len(coord_list) - 1):
+        lat1, lon1 = coord_list[i]
+        lat2, lon2 = coord_list[i + 1]
+        distance = haversine(lat1, lon1, lat2, lon2)
+        distances.append(distance)
+    return distances
+
+
+# Example usage
+coordinates = [(35.6895, 139.6917), (34.0522, -118.2437), (40.7128, -74.0060)]
+distances = batch_haversine(coordinates)
+print(f&quot;Distances: {distances}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="advanced-parameter-handling">
 <h3><span class="section-number">12.3.7. </span>Advanced Parameter Handling<a class="headerlink" href="#advanced-parameter-handling" title="Link to this heading">#</a></h3>
 <section id="variable-arguments-with-args">
 <h4><span class="section-number">12.3.7.1. </span>Variable Arguments with *args<a class="headerlink" href="#variable-arguments-with-args" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def average(*numbers):
+    return sum(numbers) / len(numbers)
+
+
+# Example usage
+print(average(10, 20, 30))  # 20.0
+print(average(5, 15, 25, 35))  # 20.0
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="keyword-arguments-with-kwargs">
 <h4><span class="section-number">12.3.7.2. </span>Keyword Arguments with **kwargs<a class="headerlink" href="#keyword-arguments-with-kwargs" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def describe_point(latitude, longitude, **kwargs):
+    description = f&quot;Point at ({latitude}, {longitude})&quot;
+
+    # Add optional keyword arguments to the description
+    for key, value in kwargs.items():
+        description += f&quot;, {key}: {value}&quot;
+
+    return description
+
+
+# Example usage
+print(describe_point(35.6895, 139.6917, name=&quot;Tokyo&quot;, population=37400000))
+print(describe_point(34.0522, -118.2437, name=&quot;Los Angeles&quot;, state=&quot;California&quot;))
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -576,16 +722,90 @@ document.write(`
 <h2><span class="section-number">12.4. </span>Classes: Organizing Data and Behavior Together<a class="headerlink" href="#classes-organizing-data-and-behavior-together" title="Link to this heading">#</a></h2>
 <section id="defining-a-simple-class">
 <h3><span class="section-number">12.4.1. </span>Defining a Simple Class<a class="headerlink" href="#defining-a-simple-class" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class Point:
+    def __init__(self, latitude, longitude, name=None):
+        self.latitude = latitude
+        self.longitude = longitude
+        self.name = name
+
+    def __str__(self):
+        return f&quot;{self.name or &#39;Point&#39;} ({self.latitude}, {self.longitude})&quot;
+
+
+# Example usage
+point1 = Point(35.6895, 139.6917, &quot;Tokyo&quot;)
+print(point1)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-methods-to-a-class">
 <h3><span class="section-number">12.4.2. </span>Adding Methods to a Class<a class="headerlink" href="#adding-methods-to-a-class" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class Point:
+    def __init__(self, latitude, longitude, name=None):
+        self.latitude = latitude
+        self.longitude = longitude
+        self.name = name
+
+    def distance_to(self, other_point):
+        return haversine(
+            self.latitude, self.longitude, other_point.latitude, other_point.longitude
+        )
+
+
+# Example usage
+point1 = Point(35.6895, 139.6917, &quot;Tokyo&quot;)
+point2 = Point(34.0522, -118.2437, &quot;Los Angeles&quot;)
+print(
+    f&quot;Distance from {point1.name} to {point2.name}: {point1.distance_to(point2):.2f} km&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="constructor-with-default-values">
 <h3><span class="section-number">12.4.3. </span>Constructor with Default Values<a class="headerlink" href="#constructor-with-default-values" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class Point:
+    def __init__(self, latitude, longitude, name=&quot;Unnamed&quot;):
+        self.latitude = latitude
+        self.longitude = longitude
+        self.name = name
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="combining-functions-and-classes">
 <h2><span class="section-number">12.5. </span>Combining Functions and Classes<a class="headerlink" href="#combining-functions-and-classes" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>class Route:
+    def __init__(self, points):
+        self.points = points
+
+    def total_distance(self):
+        total_dist = 0
+        for i in range(len(self.points) - 1):
+            total_dist += self.points[i].distance_to(self.points[i + 1])
+        return total_dist
+
+
+# Example usage
+route = Route([point1, point2])
+print(f&quot;Total distance: {route.total_distance():.2f} km&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="function-and-class-design-guidelines">
 <h2><span class="section-number">12.6. </span>Function and Class Design Guidelines<a class="headerlink" href="#function-and-class-design-guidelines" title="Link to this heading">#</a></h2>

@@ -561,6 +561,9 @@ document.write(`
 </section>
 <section id="verifying-installation">
 <h3><span class="section-number">7.3.3. </span>Verifying Installation<a class="headerlink" href="#verifying-installation" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>--version
+</pre></div>
+</div>
 </section>
 </section>
 <section id="basic-concepts">
@@ -574,6 +577,12 @@ document.write(`
 </section>
 <section id="running-code-examples-in-docker">
 <h2><span class="section-number">7.5. </span>Running Code Examples in Docker<a class="headerlink" href="#running-code-examples-in-docker" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>giswqs/pygis:book
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/app/workspace<span class="w"> </span>giswqs/pygis:book
+</pre></div>
+</div>
 <section id="working-with-files">
 <h3><span class="section-number">7.5.1. </span>Working with Files<a class="headerlink" href="#working-with-files" title="Link to this heading">#</a></h3>
 </section>
@@ -582,18 +591,52 @@ document.write(`
 </section>
 <section id="listing-running-containers">
 <h3><span class="section-number">7.5.3. </span>Listing Running Containers<a class="headerlink" href="#listing-running-containers" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>ps
+</pre></div>
+</div>
 </section>
 </section>
 <section id="common-docker-commands">
 <h2><span class="section-number">7.6. </span>Common Docker Commands<a class="headerlink" href="#common-docker-commands" title="Link to this heading">#</a></h2>
 <section id="basic-operations">
 <h3><span class="section-number">7.6.1. </span>Basic Operations<a class="headerlink" href="#basic-operations" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pull an image from Docker Hub</span>
+docker<span class="w"> </span>pull<span class="w"> </span>giswqs/pygis:book
+
+<span class="c1"># List downloaded images</span>
+docker<span class="w"> </span>images
+
+<span class="c1"># List running containers</span>
+docker<span class="w"> </span>ps
+
+<span class="c1"># List all containers (including stopped ones)</span>
+docker<span class="w"> </span>ps<span class="w"> </span>-a
+
+<span class="c1"># Stop a container</span>
+docker<span class="w"> </span>stop<span class="w"> </span>container_name
+
+<span class="c1"># Remove a container</span>
+docker<span class="w"> </span>rm<span class="w"> </span>container_name
+
+<span class="c1"># Remove an image</span>
+docker<span class="w"> </span>rmi<span class="w"> </span>image_name
+</pre></div>
+</div>
 </section>
 <section id="getting-help">
 <h3><span class="section-number">7.6.2. </span>Getting Help<a class="headerlink" href="#getting-help" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get help for any Docker command</span>
+docker<span class="w"> </span><span class="nb">help</span>
+docker<span class="w"> </span>run<span class="w"> </span>--help
+</pre></div>
+</div>
 </section>
 <section id="choosing-port-numbers">
 <h3><span class="section-number">7.6.3. </span>Choosing Port Numbers<a class="headerlink" href="#choosing-port-numbers" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use port 8889 instead</span>
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>-p<span class="w"> </span><span class="m">8889</span>:8888<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/app/workspace<span class="w"> </span>giswqs/pygis:book
+</pre></div>
+</div>
 </section>
 <section id="saving-your-work">
 <h3><span class="section-number">7.6.4. </span>Saving Your Work<a class="headerlink" href="#saving-your-work" title="Link to this heading">#</a></h3>
@@ -606,9 +649,33 @@ document.write(`
 <h2><span class="section-number">7.8. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <section id="exercise-1-first-docker-run">
 <h3><span class="section-number">7.8.1. </span>Exercise 1: First Docker Run<a class="headerlink" href="#exercise-1-first-docker-run" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>-p<span class="w"> </span><span class="m">8888</span>:8888<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/home/jovyan/work<span class="w"> </span>ghcr.io/opengeos/leafmap:latest
+</pre></div>
+</div>
 </section>
 <section id="exercise-2-exploring-the-environment">
 <h3><span class="section-number">7.8.2. </span>Exercise 2: Exploring the Environment<a class="headerlink" href="#exercise-2-exploring-the-environment" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import geopandas as gpd
+import rasterio
+import leafmap
+
+print(&quot;All libraries imported successfully!&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import leafmap.maplibregl as leafmap
+
+m = leafmap.Map(projection=&quot;globe&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="exercise-3-working-with-different-ports">
 <h3><span class="section-number">7.8.3. </span>Exercise 3: Working with Different Ports<a class="headerlink" href="#exercise-3-working-with-different-ports" title="Link to this heading">#</a></h3>

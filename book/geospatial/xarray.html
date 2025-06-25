@@ -600,99 +600,491 @@ document.write(`
 <h2><span class="section-number">18.4. </span>Setting Up Your Environment<a class="headerlink" href="#setting-up-your-environment" title="Link to this heading">#</a></h2>
 <section id="installing-required-packages">
 <h3><span class="section-number">18.4.1. </span>Installing Required Packages<a class="headerlink" href="#installing-required-packages" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%pip install xarray pooch pygis
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="importing-libraries-and-configuration">
 <h3><span class="section-number">18.4.2. </span>Importing Libraries and Configuration<a class="headerlink" href="#importing-libraries-and-configuration" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+import numpy as np
+import xarray as xr
+
+# Configure Xarray for better display and performance
+xr.set_options(keep_attrs=True, display_expand_data=False)
+
+# Configure NumPy display for cleaner output
+np.set_printoptions(threshold=10, edgeitems=2)
+
+# Configure matplotlib for better plots
+plt.rcParams[&quot;figure.dpi&quot;] = 150
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="loading-and-exploring-real-climate-data">
 <h2><span class="section-number">18.5. </span>Loading and Exploring Real Climate Data<a class="headerlink" href="#loading-and-exploring-real-climate-data" title="Link to this heading">#</a></h2>
 <section id="loading-tutorial-data">
 <h3><span class="section-number">18.5.1. </span>Loading Tutorial Data<a class="headerlink" href="#loading-tutorial-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Load a climate dataset with air temperature measurements
+ds = xr.tutorial.open_dataset(&quot;air_temperature&quot;)
+ds
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="working-with-dataarrays">
 <h2><span class="section-number">18.6. </span>Working with DataArrays<a class="headerlink" href="#working-with-dataarrays" title="Link to this heading">#</a></h2>
 <section id="accessing-dataarrays-from-datasets">
 <h3><span class="section-number">18.6.1. </span>Accessing DataArrays from Datasets<a class="headerlink" href="#accessing-dataarrays-from-datasets" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Extract the air temperature DataArray using dictionary notation
+temperature = ds[&quot;air&quot;]
+temperature
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Same result using attribute access
+temperature = ds.air
+temperature
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="exploring-dataarray-components">
 <h3><span class="section-number">18.6.2. </span>Exploring DataArray Components<a class="headerlink" href="#exploring-dataarray-components" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Examine the actual data values (a NumPy array)
+print(&quot;Data shape:&quot;, temperature.values.shape)
+print(&quot;Data type:&quot;, temperature.values.dtype)
+print(&quot;First few values:&quot;, temperature.values.flat[:5])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Understand the dimension structure
+print(&quot;Dimensions:&quot;, temperature.dims)
+print(&quot;Dimension sizes:&quot;, temperature.sizes)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Explore the coordinate information
+print(&quot;Coordinates:&quot;)
+for name, coord in temperature.coords.items():
+    print(f&quot;  {name}: {coord.values[:3]}... (showing first 3 values)&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Examine metadata attributes
+print(&quot;Attributes:&quot;)
+for key, value in temperature.attrs.items():
+    print(f&quot;  {key}: {value}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="intuitive-data-selection-and-indexing">
 <h2><span class="section-number">18.7. </span>Intuitive Data Selection and Indexing<a class="headerlink" href="#intuitive-data-selection-and-indexing" title="Link to this heading">#</a></h2>
 <section id="label-based-selection">
 <h3><span class="section-number">18.7.1. </span>Label-Based Selection<a class="headerlink" href="#label-based-selection" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Select data for a specific date and location
+point_data = temperature.sel(time=&quot;2013-01-01&quot;, lat=40.0, lon=260.0)
+point_data
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="time-range-selection">
 <h3><span class="section-number">18.7.2. </span>Time Range Selection<a class="headerlink" href="#time-range-selection" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Select all data for January 2013
+january_data = temperature.sel(time=slice(&quot;2013-01-01&quot;, &quot;2013-01-31&quot;))
+print(f&quot;January 2013 data shape: {january_data.shape}&quot;)
+print(f&quot;Time range: {january_data.time.values[0]} to {january_data.time.values[-1]}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="nearest-neighbor-selection">
 <h3><span class="section-number">18.7.3. </span>Nearest Neighbor Selection<a class="headerlink" href="#nearest-neighbor-selection" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Select data nearest to a location that might not be exactly on the grid
+nearest_data = temperature.sel(lat=40.5, lon=255.7, method=&quot;nearest&quot;)
+actual_coords = nearest_data.sel(time=&quot;2013-01-01&quot;)
+print(f&quot;Requested: lat=40.5, lon=255.7&quot;)
+print(f&quot;Actual: lat={actual_coords.lat.values}, lon={actual_coords.lon.values}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="performing-operations-on-multi-dimensional-data">
 <h2><span class="section-number">18.8. </span>Performing Operations on Multi-Dimensional Data<a class="headerlink" href="#performing-operations-on-multi-dimensional-data" title="Link to this heading">#</a></h2>
 <section id="statistical-operations-across-dimensions">
 <h3><span class="section-number">18.8.1. </span>Statistical Operations Across Dimensions<a class="headerlink" href="#statistical-operations-across-dimensions" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate the temporal mean (average temperature at each location)
+mean_temperature = temperature.mean(dim=&quot;time&quot;)
+print(f&quot;Original data shape: {temperature.shape}&quot;)
+print(f&quot;Time-averaged data shape: {mean_temperature.shape}&quot;)
+print(
+    f&quot;Temperature range: {mean_temperature.min().values:.1f} to {mean_temperature.max().values:.1f} K&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="computing-anomalies">
 <h3><span class="section-number">18.8.2. </span>Computing Anomalies<a class="headerlink" href="#computing-anomalies" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate temperature anomalies by subtracting the time mean from each time step
+anomalies = temperature - mean_temperature
+print(f&quot;Anomaly range: {anomalies.min().values:.1f} to {anomalies.max().values:.1f} K&quot;)
+
+# Find the location and time of the largest positive anomaly
+max_anomaly = anomalies.max()
+max_location = anomalies.where(anomalies == max_anomaly, drop=True)
+print(f&quot;Largest positive anomaly: {max_anomaly.values:.1f} K&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="spatial-statistics">
 <h3><span class="section-number">18.8.3. </span>Spatial Statistics<a class="headerlink" href="#spatial-statistics" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate area-weighted spatial mean for each time step
+spatial_mean = temperature.mean(dim=[&quot;lat&quot;, &quot;lon&quot;])
+print(f&quot;Spatial mean temperature time series shape: {spatial_mean.shape}&quot;)
+
+# Find the warmest and coldest time periods
+warmest_date = spatial_mean.time[spatial_mean.argmax()]
+coldest_date = spatial_mean.time[spatial_mean.argmin()]
+print(f&quot;Warmest period: {warmest_date.values}&quot;)
+print(f&quot;Coldest period: {coldest_date.values}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="data-visualization-with-xarray">
 <h2><span class="section-number">18.9. </span>Data Visualization with Xarray<a class="headerlink" href="#data-visualization-with-xarray" title="Link to this heading">#</a></h2>
 <section id="plotting-2d-spatial-data">
 <h3><span class="section-number">18.9.1. </span>Plotting 2D Spatial Data<a class="headerlink" href="#plotting-2d-spatial-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a map of long-term average temperature
+fig, ax = plt.subplots(figsize=(12, 6))
+mean_temperature.plot(ax=ax, cmap=&quot;RdYlBu_r&quot;, add_colorbar=True)
+plt.title(&quot;Long-term Average Air Temperature&quot;, fontsize=14, fontweight=&quot;bold&quot;)
+plt.xlabel(&quot;Longitude&quot;)
+plt.ylabel(&quot;Latitude&quot;)
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="customizing-spatial-plots">
 <h3><span class="section-number">18.9.2. </span>Customizing Spatial Plots<a class="headerlink" href="#customizing-spatial-plots" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a more customized visualization
+fig, ax = plt.subplots(figsize=(12, 6))
+plot = mean_temperature.plot(
+    ax=ax,
+    cmap=&quot;RdYlBu_r&quot;,
+    levels=20,  # Number of contour levels
+    add_colorbar=True,
+    cbar_kwargs={&quot;label&quot;: &quot;Temperature (K)&quot;, &quot;shrink&quot;: 0.8, &quot;pad&quot;: 0.02},
+)
+plt.title(&quot;Mean Air Temperature (2013)&quot;, fontsize=16, fontweight=&quot;bold&quot;)
+plt.xlabel(&quot;Longitude (°E)&quot;, fontsize=12)
+plt.ylabel(&quot;Latitude (°N)&quot;, fontsize=12)
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="time-series-visualization">
 <h3><span class="section-number">18.9.3. </span>Time Series Visualization<a class="headerlink" href="#time-series-visualization" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Select and plot time series for a specific location
+location_ts = temperature.sel(lat=40.0, lon=260.0)
+
+fig, ax = plt.subplots(figsize=(12, 6))
+location_ts.plot(ax=ax, linewidth=1.5, color=&quot;darkblue&quot;)
+plt.title(&quot;Temperature Time Series at 40°N, 260°E&quot;, fontsize=14, fontweight=&quot;bold&quot;)
+plt.xlabel(&quot;Time&quot;)
+plt.ylabel(&quot;Temperature (K)&quot;)
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="working-with-datasets-multiple-variables">
 <h2><span class="section-number">18.10. </span>Working with Datasets: Multiple Variables<a class="headerlink" href="#working-with-datasets-multiple-variables" title="Link to this heading">#</a></h2>
 <section id="exploring-dataset-structure">
 <h3><span class="section-number">18.10.1. </span>Exploring Dataset Structure<a class="headerlink" href="#exploring-dataset-structure" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Examine all variables in the dataset
+print(&quot;Data variables in the dataset:&quot;)
+for var_name, var_info in ds.data_vars.items():
+    print(f&quot;  {var_name}: {var_info.dims}, shape {var_info.shape}&quot;)
+
+print(f&quot;\nShared coordinates: {list(ds.coords.keys())}&quot;)
+print(f&quot;Global attributes: {len(ds.attrs)} metadata items&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="dataset-level-operations">
 <h3><span class="section-number">18.10.2. </span>Dataset-Level Operations<a class="headerlink" href="#dataset-level-operations" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate temporal statistics for all variables in the dataset
+dataset_means = ds.mean(dim=&quot;time&quot;)
+dataset_means
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="the-power-of-label-based-operations">
 <h2><span class="section-number">18.11. </span>The Power of Label-Based Operations<a class="headerlink" href="#the-power-of-label-based-operations" title="Link to this heading">#</a></h2>
 <section id="the-numpy-approach-index-based-selection">
 <h3><span class="section-number">18.11.1. </span>The NumPy Approach: Index-Based Selection<a class="headerlink" href="#the-numpy-approach-index-based-selection" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Extract raw arrays and coordinates
+lat_values = ds.air.lat.values
+lon_values = ds.air.lon.values
+temp_values = ds.air.values
+
+print(f&quot;Data shape: {temp_values.shape}&quot;)
+print(&quot;To plot the first time step, you need to remember:&quot;)
+print(&quot;- Time is dimension 0&quot;)
+print(&quot;- Latitude is dimension 1&quot;)
+print(&quot;- Longitude is dimension 2&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Plot using NumPy approach - requires careful index management
+fig, ax = plt.subplots(figsize=(12, 6))
+im = ax.pcolormesh(lon_values, lat_values, temp_values[0, :, :], cmap=&quot;RdYlBu_r&quot;)
+plt.colorbar(im, ax=ax, label=&quot;Temperature (K)&quot;)
+plt.title(&quot;First Time Step (NumPy approach)&quot;)
+plt.xlabel(&quot;Longitude&quot;)
+plt.ylabel(&quot;Latitude&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="the-xarray-approach-label-based-selection">
 <h3><span class="section-number">18.11.2. </span>The Xarray Approach: Label-Based Selection<a class="headerlink" href="#the-xarray-approach-label-based-selection" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Same result with Xarray - much more readable and less error-prone
+ds.air.isel(time=0).plot(figsize=(12, 6), cmap=&quot;RdYlBu_r&quot;)
+plt.title(&quot;First Time Step (Xarray approach)&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Select by actual date rather than array index
+ds.air.sel(time=&quot;2013-01-01T00:00:00&quot;).plot(figsize=(12, 6), cmap=&quot;RdYlBu_r&quot;)
+plt.title(&quot;Temperature on January 1, 2013&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="advanced-indexing-techniques">
 <h2><span class="section-number">18.12. </span>Advanced Indexing Techniques<a class="headerlink" href="#advanced-indexing-techniques" title="Link to this heading">#</a></h2>
 <section id="position-based-vs-label-based-indexing">
 <h3><span class="section-number">18.12.1. </span>Position-Based vs. Label-Based Indexing<a class="headerlink" href="#position-based-vs-label-based-indexing" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Position-based indexing using isel() - useful for systematic sampling
+first_last_times = ds.air.isel(time=[0, -1])  # First and last time steps
+print(f&quot;Selected time steps: {first_last_times.time.values}&quot;)
+
+# Label-based indexing using sel() - useful for specific values
+specific_months = ds.air.sel(time=slice(&quot;2013-05&quot;, &quot;2013-07&quot;))
+print(f&quot;May-July 2013 contains {len(specific_months.time)} time steps&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="boolean-indexing-and-conditional-selection">
 <h3><span class="section-number">18.12.2. </span>Boolean Indexing and Conditional Selection<a class="headerlink" href="#boolean-indexing-and-conditional-selection" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Find locations where average temperature exceeds a threshold
+warm_locations = mean_temperature.where(mean_temperature &gt; 280)  # 280 K ≈ 7°C
+warm_count = warm_locations.count()
+print(f&quot;Number of grid points with mean temperature &gt; 280 K: {warm_count.values}&quot;)
+
+# Find time periods when spatial average temperature was unusually high
+temp_threshold = spatial_mean.quantile(0.9)  # 90th percentile
+warm_periods = spatial_mean.where(spatial_mean &gt; temp_threshold, drop=True)
+print(f&quot;Number of exceptionally warm time periods: {len(warm_periods)}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="high-level-computational-operations">
 <h2><span class="section-number">18.13. </span>High-Level Computational Operations<a class="headerlink" href="#high-level-computational-operations" title="Link to this heading">#</a></h2>
 <section id="groupby-operations-for-temporal-analysis">
 <h3><span class="section-number">18.13.1. </span>GroupBy Operations for Temporal Analysis<a class="headerlink" href="#groupby-operations-for-temporal-analysis" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate seasonal climatology
+seasonal_means = ds.air.groupby(&quot;time.season&quot;).mean()
+print(&quot;Seasonal temperature patterns:&quot;)
+seasonal_means
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Visualize seasonal patterns
+fig, axes = plt.subplots(2, 2, figsize=(12, 6))
+seasons = [&quot;DJF&quot;, &quot;MAM&quot;, &quot;JJA&quot;, &quot;SON&quot;]
+season_names = [&quot;Winter&quot;, &quot;Spring&quot;, &quot;Summer&quot;, &quot;Fall&quot;]
+
+for i, (season, name) in enumerate(zip(seasons, season_names)):
+    ax = axes[i // 2, i % 2]
+    seasonal_means.sel(season=season).plot(ax=ax, cmap=&quot;RdYlBu_r&quot;, add_colorbar=False)
+    ax.set_title(f&quot;{name} ({season})&quot;)
+    ax.set_xlabel(&quot;Longitude&quot;)
+    ax.set_ylabel(&quot;Latitude&quot;)
+
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="rolling-window-operations">
 <h3><span class="section-number">18.13.2. </span>Rolling Window Operations<a class="headerlink" href="#rolling-window-operations" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a smoothed time series using a rolling window
+location_data = temperature.sel(lat=40.0, lon=260.0)
+
+fig, ax = plt.subplots(figsize=(12, 6))
+
+# Plot original data
+location_data.plot(ax=ax, alpha=0.5, label=&quot;Original&quot;, color=&quot;lightblue&quot;)
+
+# Plot smoothed data using a 30-day rolling window
+smoothed_data = location_data.rolling(time=30, center=True).mean()
+smoothed_data.plot(ax=ax, label=&quot;30-day smoothed&quot;, color=&quot;darkblue&quot;, linewidth=2)
+
+plt.title(&quot;Temperature Time Series: Original vs Smoothed&quot;)
+plt.xlabel(&quot;Time&quot;)
+plt.ylabel(&quot;Temperature (K)&quot;)
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="weighted-operations">
 <h3><span class="section-number">18.13.3. </span>Weighted Operations<a class="headerlink" href="#weighted-operations" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create simple area weights (this is a simplified example)
+# In practice, you would use proper latitude-based area weighting
+lat_weights = np.cos(np.radians(ds.air.lat))
+area_weighted_mean = ds.air.weighted(lat_weights).mean(dim=[&quot;lat&quot;, &quot;lon&quot;])
+
+# Compare simple vs area-weighted spatial averages
+fig, ax = plt.subplots(figsize=(12, 6))
+spatial_mean.plot(ax=ax, label=&quot;Simple average&quot;, alpha=0.7)
+area_weighted_mean.plot(ax=ax, label=&quot;Area-weighted average&quot;, linewidth=2)
+plt.title(&quot;Spatial Temperature Averages: Simple vs Area-Weighted&quot;)
+plt.xlabel(&quot;Time&quot;)
+plt.ylabel(&quot;Temperature (K)&quot;)
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="data-input-and-output">
@@ -702,9 +1094,38 @@ document.write(`
 </section>
 <section id="writing-data-to-netcdf">
 <h3><span class="section-number">18.14.2. </span>Writing Data to NetCDF<a class="headerlink" href="#writing-data-to-netcdf" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Prepare data for saving (ensure proper data types)
+output_ds = ds.copy()
+output_ds[&quot;air&quot;] = output_ds[&quot;air&quot;].astype(&quot;float32&quot;)  # Reduce file size
+
+# Add processing metadata
+output_ds.attrs[&quot;processing_date&quot;] = str(np.datetime64(&quot;now&quot;))
+output_ds.attrs[&quot;created_by&quot;] = &quot;GIS Pro&quot;
+
+# Save to NetCDF file
+output_ds.to_netcdf(&quot;processed_air_temperature.nc&quot;)
+print(&quot;Dataset saved to processed_air_temperature.nc&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="reading-data-from-netcdf">
 <h3><span class="section-number">18.14.3. </span>Reading Data from NetCDF<a class="headerlink" href="#reading-data-from-netcdf" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Load the saved dataset
+reloaded_ds = xr.open_dataset(&quot;processed_air_temperature.nc&quot;)
+print(&quot;Successfully reloaded dataset:&quot;)
+print(f&quot;Variables: {list(reloaded_ds.data_vars.keys())}&quot;)
+print(f&quot;Processing date: {reloaded_ds.attrs.get(&#39;processing_date&#39;, &#39;Not specified&#39;)}&quot;)
+print(f&quot;Data matches original: {reloaded_ds.air.equals(ds.air.astype(&#39;float32&#39;))}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="key-takeaways">

@@ -565,18 +565,93 @@ document.write(`
 <h2><span class="section-number">15.4. </span>Setting Up Your Environment<a class="headerlink" href="#setting-up-your-environment" title="Link to this heading">#</a></h2>
 <section id="option-1-using-uv-recommended-for-beginners">
 <h3><span class="section-number">15.4.1. </span>Option 1: Using uv (Recommended for Beginners)<a class="headerlink" href="#option-1-using-uv-recommended-for-beginners" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install uv</span>
+<span class="c1"># macOS and Linux:</span>
+curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+
+<span class="c1"># Windows:</span>
+powershell<span class="w"> </span>-ExecutionPolicy<span class="w"> </span>ByPass<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;irm https://astral.sh/uv/install.ps1 | iex&quot;</span>
+
+<span class="c1"># Create virtual environment</span>
+uv<span class="w"> </span>venv
+
+<span class="c1"># Activate environment</span>
+<span class="c1"># macOS and Linux:</span>
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+
+<span class="c1"># Windows:</span>
+.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+
+<span class="c1"># Install geospatial package (includes most libraries covered in this book)</span>
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--find-links<span class="w"> </span>https://girder.github.io/large_image_wheels<span class="w"> </span>gdal<span class="w"> </span>pyproj
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pygis
+</pre></div>
+</div>
 </section>
 <section id="option-2-using-pixi-for-complex-dependencies">
 <h3><span class="section-number">15.4.2. </span>Option 2: Using pixi (For Complex Dependencies)<a class="headerlink" href="#option-2-using-pixi-for-complex-dependencies" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install pixi</span>
+<span class="c1"># macOS and Linux:</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://pixi.sh/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+
+<span class="c1"># Windows:</span>
+iwr<span class="w"> </span>-useb<span class="w"> </span>https://pixi.sh/install.ps1<span class="w"> </span><span class="p">|</span><span class="w"> </span>iex
+
+<span class="c1"># Initialize project and add dependencies</span>
+pixi<span class="w"> </span>init
+pixi<span class="w"> </span>add<span class="w"> </span>pygis<span class="w"> </span>jupyterlab
+pixi<span class="w"> </span>run<span class="w"> </span>jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
 </section>
 <section id="option-3-using-conda-mamba-traditional-approach">
 <h3><span class="section-number">15.4.3. </span>Option 3: Using conda/mamba (Traditional Approach)<a class="headerlink" href="#option-3-using-conda-mamba-traditional-approach" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create environment</span>
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>geo<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12
+conda<span class="w"> </span>activate<span class="w"> </span>geo
+
+<span class="c1"># Install from conda-forge</span>
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>mamba
+mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>pygis
+</pre></div>
+</div>
 </section>
 </section>
 <section id="verification-and-first-steps">
 <h2><span class="section-number">15.5. </span>Verification and First Steps<a class="headerlink" href="#verification-and-first-steps" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Test core geospatial libraries
+import geopandas as gpd
+import rasterio
+import xarray as xr
+import rioxarray
+import leafmap
+import pandas as pd
+import numpy as np
+
+print(&quot;✓ All core libraries imported successfully!&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 <section id="create-your-first-interactive-map">
 <h3><span class="section-number">15.5.1. </span>Create Your First Interactive Map<a class="headerlink" href="#create-your-first-interactive-map" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create an interactive map using Leafmap
+m = leafmap.Map(center=[40, -100], zoom=4, height=&quot;500px&quot;)
+
+# Add different basemap options
+m.add_basemap(&quot;OpenTopoMap&quot;)
+m.add_basemap(&quot;USGS Imagery&quot;)
+
+# Display the map
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="learning-path-and-chapter-overview">

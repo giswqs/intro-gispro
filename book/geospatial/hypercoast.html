@@ -536,33 +536,198 @@ document.write(`
 </section>
 <section id="environment-setup">
 <h2><span class="section-number">24.3. </span>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># %pip install hypercoast pygis
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import hypercoast
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>hypercoast.nasa_earth_login()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="finding-hyperspectral-data">
 <h2><span class="section-number">24.4. </span>Finding Hyperspectral Data<a class="headerlink" href="#finding-hyperspectral-data" title="Link to this heading">#</a></h2>
 <section id="programmatic-search">
 <h3><span class="section-number">24.4.1. </span>Programmatic Search<a class="headerlink" href="#programmatic-search" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>results, gdf = hypercoast.search_emit(
+    bbox=(-83, 25, -81, 28),
+    temporal=(&quot;2024-04-01&quot;, &quot;2024-05-16&quot;),
+    count=10,  # use -1 to return all datasets
+    return_gdf=True,
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdf.explore()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>hypercoast.download_emit(results[:1], out_dir=&quot;data&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="interactive-search">
 <h3><span class="section-number">24.4.2. </span>Interactive Search<a class="headerlink" href="#interactive-search" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = hypercoast.Map(center=[30.0262, -90.1345], zoom=8)
+m.search_emit()
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if hasattr(m, &quot;_NASA_DATA_GDF&quot;):
+    display(m._NASA_DATA_GDF.head())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>hypercoast.download_emit(results[:1], out_dir=&quot;data&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="downloading-hyperspectral-data">
 <h2><span class="section-number">24.5. </span>Downloading Hyperspectral Data<a class="headerlink" href="#downloading-hyperspectral-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://github.com/opengeos/datasets/releases/download/hypercoast/EMIT_L2A_RFL_001_20240404T161230_2409511_009.nc&quot;
+filepath = &quot;data/EMIT_L2A_RFL_001_20240404T161230_2409511_009.nc&quot;
+hypercoast.download_file(url, filepath, quiet=True)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="reading-hyperspectral-data">
 <h2><span class="section-number">24.6. </span>Reading Hyperspectral Data<a class="headerlink" href="#reading-hyperspectral-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dataset = hypercoast.read_emit(filepath)
+dataset
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="visualizing-hyperspectral-data">
 <h2><span class="section-number">24.7. </span>Visualizing Hyperspectral Data<a class="headerlink" href="#visualizing-hyperspectral-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = hypercoast.Map()
+m.add_basemap(&quot;SATELLITE&quot;)
+m.add_emit(dataset, wavelengths=[1000, 600, 500], vmin=0, vmax=0.3, layer_name=&quot;EMIT&quot;)
+m.add(&quot;spectral&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="creating-image-cubes">
 <h2><span class="section-number">24.8. </span>Creating Image Cubes<a class="headerlink" href="#creating-image-cubes" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ds = dataset.sel(longitude=slice(-90.1482, -89.7321), latitude=slice(30.0225, 29.7451))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p = hypercoast.image_cube(
+    ds,
+    variable=&quot;reflectance&quot;,
+    cmap=&quot;jet&quot;,
+    clim=(0, 0.4),
+    rgb_wavelengths=[1000, 700, 500],
+    rgb_gamma=2,
+    title=&quot;EMIT Reflectance&quot;,
+)
+p.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="interactive-slicing">
 <h2><span class="section-number">24.9. </span>Interactive Slicing<a class="headerlink" href="#interactive-slicing" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ds = dataset.sel(longitude=slice(-90.05, -89.99), latitude=slice(30.00, 29.93))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p = hypercoast.image_cube(
+    ds,
+    variable=&quot;reflectance&quot;,
+    cmap=&quot;jet&quot;,
+    clim=(0, 0.5),
+    rgb_wavelengths=[1000, 700, 500],
+    rgb_gamma=2,
+    title=&quot;EMIT Reflectance&quot;,
+    widget=&quot;plane&quot;,
+)
+p.add_text(&quot;Band slicing&quot;, position=&quot;upper_right&quot;, font_size=14)
+p.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="interactive-thresholding">
 <h2><span class="section-number">24.10. </span>Interactive Thresholding<a class="headerlink" href="#interactive-thresholding" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>p = hypercoast.image_cube(
+    ds,
+    variable=&quot;reflectance&quot;,
+    cmap=&quot;jet&quot;,
+    clim=(0, 0.5),
+    rgb_wavelengths=[1000, 700, 500],
+    rgb_gamma=2,
+    title=&quot;EMIT Reflectance&quot;,
+    widget=&quot;threshold&quot;,
+)
+p.add_text(&quot;Thresholding&quot;, position=&quot;upper_right&quot;, font_size=14)
+p.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="key-takeaways">
 <h2><span class="section-number">24.11. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>

@@ -527,18 +527,265 @@ document.write(`
 </section>
 <section id="creating-a-sample-file">
 <h2><span class="section-number">13.3. </span>Creating a Sample File<a class="headerlink" href="#creating-a-sample-file" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sample_data = &quot;&quot;&quot;35.6895,139.6917
+34.0522,-118.2437
+51.5074,-0.1278
+-33.8688,151.2093
+48.8566,2.3522&quot;&quot;&quot;
+
+output_file = &quot;coordinates.txt&quot;
+
+try:
+    with open(output_file, &quot;w&quot;) as file:
+        file.write(sample_data)
+    print(f&quot;Sample file &#39;{output_file}&#39; has been created successfully.&quot;)
+except Exception as e:
+    print(f&quot;An error occurred while creating the file: {e}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="reading-and-writing-files">
 <h2><span class="section-number">13.4. </span>Reading and Writing Files<a class="headerlink" href="#reading-and-writing-files" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Example of reading coordinates from a file and writing to another file
+input_file = &quot;coordinates.txt&quot;
+output_file = &quot;output_coordinates.txt&quot;
+
+try:
+    # Step 1: Read the coordinate data from our input file
+    with open(input_file, &quot;r&quot;) as infile:
+        # readlines() returns a list where each element is a line from the file
+        # Each line still includes the newline character (\n) at the end
+        coordinates = infile.readlines()
+
+    # Step 2: Process the data and write it to a new file with better formatting
+    with open(output_file, &quot;w&quot;) as outfile:
+        for line in coordinates:
+            # strip() removes whitespace (including \n) from both ends of the string
+            # split(&quot;,&quot;) breaks the line into parts wherever it finds a comma
+            lat, lon = line.strip().split(&quot;,&quot;)
+
+            # Write the formatted data to our output file
+            # The \n adds a newline character so each coordinate is on its own line
+            outfile.write(f&quot;Latitude: {lat}, Longitude: {lon}\n&quot;)
+
+    print(f&quot;Coordinates have been written to {output_file}&quot;)
+
+except FileNotFoundError:
+    print(f&quot;Error: The file {input_file} was not found.&quot;)
+    print(
+        &quot;Make sure you ran the previous code cell to create the coordinates.txt file.&quot;
+    )
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="exception-handling">
 <h2><span class="section-number">13.5. </span>Exception Handling<a class="headerlink" href="#exception-handling" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Example of exception handling when parsing coordinates
+def parse_coordinates(line):
+    &quot;&quot;&quot;
+    Parse a line of text into latitude and longitude coordinates.
+
+    Args:
+        line (str): A string containing coordinates in the format &quot;lat,lon&quot;
+
+    Returns:
+        tuple: (latitude, longitude) as floats, or None if parsing fails
+    &quot;&quot;&quot;
+    try:
+        # Attempt to split the line and convert to numbers
+        lat, lon = line.strip().split(&quot;,&quot;)
+        lat = float(lat)  # This might raise ValueError if lat isn&#39;t a valid number
+        lon = float(lon)  # This might raise ValueError if lon isn&#39;t a valid number
+        return lat, lon
+
+    except ValueError as e:
+        # This happens when we can&#39;t convert to float or split doesn&#39;t work as expected
+        print(f&quot;Data format error: {e}. Could not parse line: &#39;{line.strip()}&#39;&quot;)
+        return None
+
+    except Exception as e:
+        # This catches any other unexpected errors
+        print(f&quot;An unexpected error occurred: {e}&quot;)
+        return None
+
+
+# Test with both valid and invalid data
+test_lines = [
+    &quot;35.6895,139.6917&quot;,  # Valid coordinates (Tokyo)
+    &quot;invalid data&quot;,  # Invalid format
+    &quot;45.0,-119.0&quot;,  # Valid coordinates
+    &quot;45.0,not_a_number&quot;,  # Invalid longitude
+    &quot;only_one_value&quot;,  # Missing comma
+]
+
+print(&quot;Testing coordinate parsing:&quot;)
+for line in test_lines:
+    coordinates = parse_coordinates(line)
+    if coordinates:
+        print(f&quot;✓ Successfully parsed: {coordinates}&quot;)
+    else:
+        print(f&quot;✗ Failed to parse: &#39;{line}&#39;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="combining-file-handling-and-exception-handling">
 <h2><span class="section-number">13.6. </span>Combining File Handling and Exception Handling<a class="headerlink" href="#combining-file-handling-and-exception-handling" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Example of robust file handling with exceptions
+def process_geospatial_file(input_file):
+    &quot;&quot;&quot;
+    Process a file containing coordinate data, handling various potential errors.
+
+    This function demonstrates robust file processing by:
+    - Handling missing files gracefully
+    - Continuing processing even when individual lines fail
+    - Providing informative feedback about the processing results
+    &quot;&quot;&quot;
+    processed_count = 0
+    error_count = 0
+
+    try:
+        print(f&quot;Starting to process file: {input_file}&quot;)
+
+        with open(input_file, &quot;r&quot;) as infile:
+            for line_number, line in enumerate(infile, 1):
+                # Skip empty lines
+                if not line.strip():
+                    continue
+
+                coordinates = parse_coordinates(line)
+                if coordinates:
+                    lat, lon = coordinates
+                    print(
+                        f&quot;Line {line_number}: Processed coordinates ({lat:.4f}, {lon:.4f})&quot;
+                    )
+                    processed_count += 1
+                else:
+                    print(f&quot;Line {line_number}: Skipped due to parsing error&quot;)
+                    error_count += 1
+
+    except FileNotFoundError:
+        print(f&quot;Error: The file &#39;{input_file}&#39; was not found.&quot;)
+        print(&quot;Please check the file path and make sure the file exists.&quot;)
+        return
+
+    except PermissionError:
+        print(f&quot;Error: Permission denied when trying to read &#39;{input_file}&#39;.&quot;)
+        print(&quot;Please check if you have read permissions for this file.&quot;)
+        return
+
+    except Exception as e:
+        print(f&quot;An unexpected error occurred while processing the file: {e}&quot;)
+        return
+
+    finally:
+        # This block always runs, whether there was an error or not
+        print(f&quot;\n--- Processing Summary ---&quot;)
+        print(f&quot;Successfully processed: {processed_count} coordinates&quot;)
+        print(f&quot;Errors encountered: {error_count} lines&quot;)
+        print(f&quot;Finished processing {input_file}&quot;)
+
+
+# Example usage with our coordinates file
+process_geospatial_file(&quot;coordinates.txt&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="working-with-different-file-formats">
 <h2><span class="section-number">13.7. </span>Working with Different File Formats<a class="headerlink" href="#working-with-different-file-formats" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a CSV-style file with city names and coordinates
+csv_data = &quot;&quot;&quot;City,Latitude,Longitude
+Tokyo,35.6895,139.6917
+Los Angeles,34.0522,-118.2437
+London,51.5074,-0.1278
+Sydney,-33.8688,151.2093
+Paris,48.8566,2.3522&quot;&quot;&quot;
+
+csv_file = &quot;cities.csv&quot;
+
+try:
+    with open(csv_file, &quot;w&quot;) as file:
+        file.write(csv_data)
+    print(f&quot;CSV file &#39;{csv_file}&#39; created successfully.&quot;)
+except Exception as e:
+    print(f&quot;Error creating CSV file: {e}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def read_city_coordinates(filename):
+    &quot;&quot;&quot;
+    Read city coordinate data from a CSV-style file.
+
+    Returns a list of dictionaries containing city information.
+    &quot;&quot;&quot;
+    cities = []
+
+    try:
+        with open(filename, &quot;r&quot;) as file:
+            lines = file.readlines()
+
+            # Skip the header line (first line)
+            for line_num, line in enumerate(lines[1:], 2):  # Start from line 2
+                try:
+                    # Parse each line
+                    parts = line.strip().split(&quot;,&quot;)
+                    if len(parts) == 3:
+                        city_name = parts[0]
+                        latitude = float(parts[1])
+                        longitude = float(parts[2])
+
+                        cities.append(
+                            {
+                                &quot;name&quot;: city_name,
+                                &quot;latitude&quot;: latitude,
+                                &quot;longitude&quot;: longitude,
+                            }
+                        )
+
+                except ValueError as e:
+                    print(f&quot;Warning: Could not parse line {line_num}: {line.strip()}&quot;)
+                    continue
+
+    except FileNotFoundError:
+        print(f&quot;Error: File &#39;{filename}&#39; not found.&quot;)
+        return []
+    except Exception as e:
+        print(f&quot;Error reading file: {e}&quot;)
+        return []
+
+    return cities
+
+
+# Read and display the city data
+cities = read_city_coordinates(&quot;cities.csv&quot;)
+
+print(f&quot;Successfully loaded {len(cities)} cities:&quot;)
+for city in cities:
+    print(f&quot;- {city[&#39;name&#39;]}: ({city[&#39;latitude&#39;]:.4f}, {city[&#39;longitude&#39;]:.4f})&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="key-takeaways">
 <h2><span class="section-number">13.8. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
@@ -550,6 +797,27 @@ document.write(`
 </section>
 <section id="exercise-2-processing-coordinates-from-a-file">
 <h3><span class="section-number">13.9.2. </span>Exercise 2: Processing Coordinates from a File<a class="headerlink" href="#exercise-2-processing-coordinates-from-a-file" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a sample coordinates.txt file
+sample_data = &quot;&quot;&quot;35.6895,139.6917
+34.0522,-118.2437
+51.5074,-0.1278
+-33.8688,151.2093
+48.8566,2.3522&quot;&quot;&quot;
+
+output_file = &quot;coordinates.txt&quot;
+
+try:
+    with open(output_file, &quot;w&quot;) as file:
+        file.write(sample_data)
+    print(f&quot;Sample file &#39;{output_file}&#39; has been created successfully.&quot;)
+except Exception as e:
+    print(f&quot;An error occurred while creating the file: {e}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="exercise-3-exception-handling-in-data-processing">
 <h3><span class="section-number">13.9.3. </span>Exercise 3: Exception Handling in Data Processing<a class="headerlink" href="#exercise-3-exception-handling-in-data-processing" title="Link to this heading">#</a></h3>

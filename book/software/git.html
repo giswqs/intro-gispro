@@ -585,15 +585,48 @@ document.write(`
 </section>
 <section id="verifying-installation">
 <h3><span class="section-number">4.4.2. </span>Verifying Installation<a class="headerlink" href="#verifying-installation" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Check Git version
+git --version
+
+# Check installation location
+which git  # macOS/Linux
+where git  # Windows
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="configuring-git">
 <h2><span class="section-number">4.5. </span>Configuring Git<a class="headerlink" href="#configuring-git" title="Link to this heading">#</a></h2>
 <section id="essential-configuration">
 <h3><span class="section-number">4.5.1. </span>Essential Configuration<a class="headerlink" href="#essential-configuration" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Replace with your actual name and GitHub email
+git config --global user.name &quot;Your Full Name&quot;
+git config --global user.email &quot;your.github@email.com&quot;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="verification">
 <h3><span class="section-number">4.5.2. </span>Verification<a class="headerlink" href="#verification" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># View all global configuration
+git config --global --list
+
+# Check specific values
+git config --global user.name
+git config --global user.email
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="understanding-git-concepts">
@@ -609,24 +642,162 @@ document.write(`
 <h2><span class="section-number">4.7. </span>Essential Git Commands<a class="headerlink" href="#essential-git-commands" title="Link to this heading">#</a></h2>
 <section id="starting-a-new-project">
 <h3><span class="section-number">4.7.1. </span>Starting a New Project<a class="headerlink" href="#starting-a-new-project" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Navigate to your project folder
+cd ~/my-geo-project
+
+# Initialize Git repository
+git init
+
+# Check repository status
+git status
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Clone a repository from GitHub
+git clone https://github.com/&lt;your-username&gt;/intro-gispro.git
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="tracking-changes">
 <h3><span class="section-number">4.7.2. </span>Tracking Changes<a class="headerlink" href="#tracking-changes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Add specific files
+git add analysis.py
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Add all files in current directory
+git add .
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># See status of all files
+git status
+
+# See detailed changes
+git diff
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Commit with inline message
+git commit -m &quot;Add rainfall analysis function&quot;
+
+# Commit all tracked files (skip staging)
+git commit -am &quot;Update visualization parameters&quot;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="writing-good-commit-messages">
 <h3><span class="section-number">4.7.3. </span>Writing Good Commit Messages<a class="headerlink" href="#writing-good-commit-messages" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git commit -m &quot;Add NDVI calculation for Landsat 8 imagery&quot;
+git commit -m &quot;Fix coordinate transformation bug in UTM conversion&quot;
+git commit -m &quot;Update flood mapping algorithm to handle edge cases&quot;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="working-with-github">
 <h3><span class="section-number">4.7.4. </span>Working with GitHub<a class="headerlink" href="#working-with-github" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Add remote repository
+git remote add origin https://github.com/&lt;your-username&gt;/&lt;repo-name&gt;.git
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Push to GitHub (first time)
+git push -u origin main
+
+# Push subsequent changes
+git push
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Pull changes from GitHub
+git pull
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="basic-branching">
 <h3><span class="section-number">4.7.5. </span>Basic Branching<a class="headerlink" href="#basic-branching" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create new branch for experimental feature
+git checkout -b satellite-analysis
+
+# List all branches
+git branch
+
+# Switch back to main branch
+git checkout main
+
+# Merge feature branch into main
+git merge satellite-analysis
+
+# Delete merged branch
+git branch -d satellite-analysis
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="viewing-project-history">
 <h3><span class="section-number">4.7.6. </span>Viewing Project History<a class="headerlink" href="#viewing-project-history" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># View commit history
+git log
+
+# Compact one-line format
+git log --oneline
+
+# View specific file history
+git log -- data_processing.py
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="undoing-changes">
 <h3><span class="section-number">4.7.7. </span>Undoing Changes<a class="headerlink" href="#undoing-changes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Undo last commit but keep changes
+git reset --soft HEAD~1
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="using-github">
@@ -654,6 +825,16 @@ document.write(`
 </section>
 <section id="commit-message-conventions">
 <h3><span class="section-number">4.10.3. </span>Commit Message Conventions<a class="headerlink" href="#commit-message-conventions" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Format: &lt;type&gt;: &lt;description&gt;
+git commit -m &quot;feat: add NDVI calculation for Sentinel-2&quot;
+git commit -m &quot;fix: handle NoData values in elevation processing&quot;
+git commit -m &quot;docs: update README with installation instructions&quot;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="key-takeaways">

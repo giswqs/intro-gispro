@@ -564,15 +564,16 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">26.16. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">26.17. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-data-inspection-and-understanding">26.17.1. Exercise 1: Data Inspection and Understanding</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-coordinate-transformation-practice">26.17.2. Exercise 2: Coordinate Transformation Practice</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-format-conversion-and-optimization">26.17.3. Exercise 3: Format Conversion and Optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-spatial-clipping-and-analysis">26.17.4. Exercise 4: Spatial Clipping and Analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-raster-band-mathematics">26.17.5. Exercise 5: Raster Band Mathematics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-terrain-analysis-workflow">26.17.6. Exercise 6: Terrain Analysis Workflow</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-raster-vector-conversion">26.17.7. Exercise 7: Raster-Vector Conversion</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-geometry-processing-and-data-management">26.17.8. Exercise 8: Geometry Processing and Data Management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-reading">26.17. References and Further Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">26.18. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-data-inspection-and-understanding">26.18.1. Exercise 1: Data Inspection and Understanding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-coordinate-transformation-practice">26.18.2. Exercise 2: Coordinate Transformation Practice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-format-conversion-and-optimization">26.18.3. Exercise 3: Format Conversion and Optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-spatial-clipping-and-analysis">26.18.4. Exercise 4: Spatial Clipping and Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-raster-band-mathematics">26.18.5. Exercise 5: Raster Band Mathematics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-terrain-analysis-workflow">26.18.6. Exercise 6: Terrain Analysis Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-raster-vector-conversion">26.18.7. Exercise 7: Raster-Vector Conversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-geometry-processing-and-data-management">26.18.8. Exercise 8: Geometry Processing and Data Management</a></li>
 </ul>
 </li>
 </ul>
@@ -599,164 +600,608 @@ document.write(`
 </section>
 <section id="installation-and-setup">
 <h2><span class="section-number">26.3. </span>Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>gdal<span class="w"> </span>pygis
+</pre></div>
+</div>
 </section>
 <section id="sample-datasets">
 <h2><span class="section-number">26.4. </span>Sample Datasets<a class="headerlink" href="#sample-datasets" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wget https://github.com/opengeos/datasets/releases/download/gdal/gdal_sample_data.zip
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>unzip gdal_sample_data.zip
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="understanding-your-data">
 <h2><span class="section-number">26.5. </span>Understanding Your Data<a class="headerlink" href="#understanding-your-data" title="Link to this heading">#</a></h2>
 <section id="examining-raster-data">
 <h3><span class="section-number">26.5.1. </span>Examining Raster Data<a class="headerlink" href="#examining-raster-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdalinfo dem.tif
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="examining-vector-data">
 <h3><span class="section-number">26.5.2. </span>Examining Vector Data<a class="headerlink" href="#examining-vector-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogrinfo buildings.geojson
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogrinfo buildings.geojson -al -so
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="coordinate-transformation">
 <h2><span class="section-number">26.6. </span>Coordinate Transformation<a class="headerlink" href="#coordinate-transformation" title="Link to this heading">#</a></h2>
 <section id="reprojecting-raster-data">
 <h3><span class="section-number">26.6.1. </span>Reprojecting Raster Data<a class="headerlink" href="#reprojecting-raster-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdalwarp -t_srs EPSG:4326 dem.tif dem_4326.tif
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="reprojecting-vector-data">
 <h3><span class="section-number">26.6.2. </span>Reprojecting Vector Data<a class="headerlink" href="#reprojecting-vector-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -t_srs EPSG:3857 buildings_3857.gpkg buildings.geojson
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="format-conversion">
 <h2><span class="section-number">26.7. </span>Format Conversion<a class="headerlink" href="#format-conversion" title="Link to this heading">#</a></h2>
 <section id="converting-raster-formats">
 <h3><span class="section-number">26.7.1. </span>Converting Raster Formats<a class="headerlink" href="#converting-raster-formats" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_translate dem.tif dem.img
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="converting-vector-formats">
 <h3><span class="section-number">26.7.2. </span>Converting Vector Formats<a class="headerlink" href="#converting-vector-formats" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr buildings.gpkg buildings.geojson
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr las_vegas_bbox.fgb las_vegas_bbox.geojson
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="clipping-and-masking">
 <h2><span class="section-number">26.8. </span>Clipping and Masking<a class="headerlink" href="#clipping-and-masking" title="Link to this heading">#</a></h2>
 <section id="clipping-raster-with-vector-boundaries">
 <h3><span class="section-number">26.8.1. </span>Clipping Raster with Vector Boundaries<a class="headerlink" href="#clipping-raster-with-vector-boundaries" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdalwarp -cutline las_vegas_bbox.geojson -crop_to_cutline landsat.tif las_vegas.tif
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="clipping-vector-data">
 <h3><span class="section-number">26.8.2. </span>Clipping Vector Data<a class="headerlink" href="#clipping-vector-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -clipsrc las_vegas_bbox.geojson las_vegas_roads_clipped.geojson las_vegas_roads.geojson
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogrinfo las_vegas_bbox_4326.geojson -al -so
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -clipsrc -115.387634 35.943333 -114.883495 36.359161 las_vegas_roads_clipped.geojson las_vegas_roads.geojson
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="raster-analysis-and-calculations">
 <h2><span class="section-number">26.9. </span>Raster Analysis and Calculations<a class="headerlink" href="#raster-analysis-and-calculations" title="Link to this heading">#</a></h2>
 <section id="working-with-individual-bands">
 <h3><span class="section-number">26.9.1. </span>Working with Individual Bands<a class="headerlink" href="#working-with-individual-bands" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_translate -b 5 landsat.tif nir.tif
+gdal_translate -b 4 landsat.tif red.tif
+gdal_translate -b 3 landsat.tif green.tif
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="performing-band-mathematics">
 <h3><span class="section-number">26.9.2. </span>Performing Band Mathematics<a class="headerlink" href="#performing-band-mathematics" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_calc.py \
+  -A nir.tif \
+  -B red.tif \
+  --outfile=ndvi.tif \
+  --calc=&quot;(A.astype(float) - B) / (A + B + 1e-6)&quot; \
+  --type=Float32 \
+  --NoDataValue=-9999
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_calc.py \
+  -A ndvi.tif \
+  --outfile=ndvi_clipped.tif \
+  --calc=&quot;(A &lt; -1)*-1 + (A &gt; 1)*1 + ((A &gt;= -1) * (A &lt;= 1))*A&quot; \
+  --type=Float32 \
+  --NoDataValue=-9999 \
+  --overwrite
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_calc.py -A ndvi_clipped.tif --outfile=vegetation.tif --calc=&quot;A&gt;0.3&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_translate -a_nodata 0 vegetation.tif vegetation_bin.tif
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_edit.py -a_nodata 0 vegetation.tif
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="converting-between-raster-and-vector">
 <h2><span class="section-number">26.10. </span>Converting Between Raster and Vector<a class="headerlink" href="#converting-between-raster-and-vector" title="Link to this heading">#</a></h2>
 <section id="vectorization">
 <h3><span class="section-number">26.10.1. </span>Vectorization<a class="headerlink" href="#vectorization" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_polygonize.py building_masks.tif building_masks.gpkg
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="rasterization">
 <h3><span class="section-number">26.10.2. </span>Rasterization<a class="headerlink" href="#rasterization" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_rasterize -a uid -tr 0.6 0.6 -l buildings buildings_3857.gpkg buildings.tif
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_rasterize -burn 1 -tr 0.6 0.6 -l buildings buildings_3857.gpkg buildings2.tif
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="geometry-processing">
 <h2><span class="section-number">26.11. </span>Geometry Processing<a class="headerlink" href="#geometry-processing" title="Link to this heading">#</a></h2>
 <section id="simplifying-complex-geometries">
 <h3><span class="section-number">26.11.1. </span>Simplifying Complex Geometries<a class="headerlink" href="#simplifying-complex-geometries" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -f GPKG -t_srs EPSG:26911 -simplify 1 simplified.gpkg building_masks.gpkg
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="dissolving-features-by-attributes">
 <h3><span class="section-number">26.11.2. </span>Dissolving Features by Attributes<a class="headerlink" href="#dissolving-features-by-attributes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogrinfo -al -so us_states.geojson
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -dialect sqlite -sql &quot;SELECT ST_Union(geometry), country FROM us_states GROUP BY country&quot; us_states_dissolved.gpkg us_states.geojson
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="exploding-multi-part-geometries">
 <h3><span class="section-number">26.11.3. </span>Exploding Multi-part Geometries<a class="headerlink" href="#exploding-multi-part-geometries" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -explodecollections hawaii_parts.geojson hawaii.geojson
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="managing-fields-and-layers">
 <h2><span class="section-number">26.12. </span>Managing Fields and Layers<a class="headerlink" href="#managing-fields-and-layers" title="Link to this heading">#</a></h2>
 <section id="selecting-specific-fields">
 <h3><span class="section-number">26.12.1. </span>Selecting Specific Fields<a class="headerlink" href="#selecting-specific-fields" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -select id,name us_states_select.geojson us_states.geojson
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="renaming-layers">
 <h3><span class="section-number">26.12.2. </span>Renaming Layers<a class="headerlink" href="#renaming-layers" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -nln states us_states_rename.gpkg us_states_select.geojson
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-new-fields">
 <h3><span class="section-number">26.12.3. </span>Adding New Fields<a class="headerlink" href="#adding-new-fields" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogrinfo us_states_rename.gpkg -sql &quot;ALTER TABLE states ADD COLUMN area DOUBLE&quot;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="tiling-and-data-management">
 <h2><span class="section-number">26.13. </span>Tiling and Data Management<a class="headerlink" href="#tiling-and-data-management" title="Link to this heading">#</a></h2>
 <section id="creating-raster-tiles">
 <h3><span class="section-number">26.13.1. </span>Creating Raster Tiles<a class="headerlink" href="#creating-raster-tiles" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir -p tiles
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_retile.py -targetDir tiles -ps 512 512 -co &quot;TILED=YES&quot; landsat.tif
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="merging-raster-data">
 <h3><span class="section-number">26.13.2. </span>Merging Raster Data<a class="headerlink" href="#merging-raster-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_merge.py -o landsat_merged.tif -of GTiff tiles/*.tif
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdalwarp -of GTiff tiles/*.tif landsat_merged2.tif
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="working-with-multiple-vector-files">
 <h3><span class="section-number">26.13.3. </span>Working with Multiple Vector Files<a class="headerlink" href="#working-with-multiple-vector-files" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir -p states
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogrinfo -ro -al -geom=NO us_states.geojson | grep &quot;id (&quot; | awk &#39;{print $4}&#39; | while read id; do
+    ogr2ogr -f GeoJSON &quot;states/${id}.geojson&quot; us_states.geojson -where &quot;id = &#39;${id}&#39;&quot;
+done
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -f &quot;ESRI Shapefile&quot; us_states_merged.shp us_states.geojson
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ogr2ogr -f &quot;ESRI Shapefile&quot; -update -append \
+  us_states_merged.shp hawaii.geojson -nln us_states_merged
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="advanced-raster-processing">
 <h2><span class="section-number">26.14. </span>Advanced Raster Processing<a class="headerlink" href="#advanced-raster-processing" title="Link to this heading">#</a></h2>
 <section id="resampling-and-resolution-management">
 <h3><span class="section-number">26.14.1. </span>Resampling and Resolution Management<a class="headerlink" href="#resampling-and-resolution-management" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdalwarp -tr 100 100 -r average dem.tif dem_100m.tif
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="creating-band-composites">
 <h3><span class="section-number">26.14.2. </span>Creating Band Composites<a class="headerlink" href="#creating-band-composites" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_merge.py -separate -o composite.tif nir.tif red.tif green.tif
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdalbuildvrt -separate stack.vrt nir.tif red.tif green.tif
+gdal_translate stack.vrt composite.tif -co COMPRESS=DEFLATE
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="handling-missing-data">
 <h3><span class="section-number">26.14.3. </span>Handling Missing Data<a class="headerlink" href="#handling-missing-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_fillnodata.py -md 5 -of GTiff dem.tif filled_dem.tif
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_translate -a_nodata 0 dem.tif dem_nodata.tif
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="cloud-optimized-geotiff">
 <h3><span class="section-number">26.14.4. </span>Cloud Optimized GeoTIFF<a class="headerlink" href="#cloud-optimized-geotiff" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_translate dem.tif dem_cog.tif -of COG -co COMPRESS=DEFLATE
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="terrain-analysis">
 <h2><span class="section-number">26.15. </span>Terrain Analysis<a class="headerlink" href="#terrain-analysis" title="Link to this heading">#</a></h2>
 <section id="computing-slope">
 <h3><span class="section-number">26.15.1. </span>Computing Slope<a class="headerlink" href="#computing-slope" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdaldem slope dem.tif slope.tif \
+  -of GTiff \
+  -compute_edges
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdaldem slope dem.tif slope_percent.tif \
+  -of GTiff \
+  -compute_edges \
+  -p
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="computing-aspect">
 <h3><span class="section-number">26.15.2. </span>Computing Aspect<a class="headerlink" href="#computing-aspect" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdaldem aspect dem.tif aspect.tif \
+  -of GTiff \
+  -compute_edges
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="creating-hillshade-visualizations">
 <h3><span class="section-number">26.15.3. </span>Creating Hillshade Visualizations<a class="headerlink" href="#creating-hillshade-visualizations" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdaldem hillshade dem.tif hillshade.tif
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdaldem hillshade dem.tif multidirectional_hillshade.tif -multidirectional
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="creating-color-relief-maps">
 <h3><span class="section-number">26.15.4. </span>Creating Color Relief Maps<a class="headerlink" href="#creating-color-relief-maps" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cat &lt;&lt; EOF &gt; colormap.txt
+500, 51, 51, 153
+1000, 3, 147, 249
+1500, 37, 211, 109
+2000, 181, 240, 138
+2500, 218, 208, 133
+3000, 146, 115, 94
+4000, 183, 163, 159
+5000, 255, 255, 255
+EOF
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdaldem color-relief dem.tif colormap.txt color_relief.tif
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="combining-hillshade-and-color-relief">
 <h3><span class="section-number">26.15.5. </span>Combining Hillshade and Color Relief<a class="headerlink" href="#combining-hillshade-and-color-relief" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_calc.py \
+  -A color_relief.tif \
+  -B hillshade.tif \
+  --outfile=shaded_relief.tif \
+  --calc=&quot;((A.astype(float) * 0.6) + (B.astype(float) * 0.4))&quot; \
+  --type=Byte
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_calc.py \
+  -A color_relief.tif \
+  -B hillshade.tif \
+  --outfile=color_hillshade.tif \
+  --calc=&quot;A * (B / 255.0)&quot; \
+  --type=Byte
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_calc.py -A color_relief.tif --A_band=1 -B hillshade.tif --outfile=r.tif --calc=&quot;A*(B/255.0)&quot; --type=Byte
+gdal_calc.py -A color_relief.tif --A_band=2 -B hillshade.tif --outfile=g.tif --calc=&quot;A*(B/255.0)&quot; --type=Byte
+gdal_calc.py -A color_relief.tif --A_band=3 -B hillshade.tif --outfile=b.tif --calc=&quot;A*(B/255.0)&quot; --type=Byte
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_merge.py -separate -o color_shaded_relief.tif r.tif g.tif b.tif
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="generating-contour-lines">
 <h3><span class="section-number">26.15.6. </span>Generating Contour Lines<a class="headerlink" href="#generating-contour-lines" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_contour -i 100 dem.tif contours.shp
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="key-takeaways">
 <h2><span class="section-number">26.16. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
 </section>
+<section id="references-and-further-reading">
+<h2><span class="section-number">26.17. </span>References and Further Reading<a class="headerlink" href="#references-and-further-reading" title="Link to this heading">#</a></h2>
+</section>
 <section id="exercises">
-<h2><span class="section-number">26.17. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">26.18. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <section id="exercise-1-data-inspection-and-understanding">
-<h3><span class="section-number">26.17.1. </span>Exercise 1: Data Inspection and Understanding<a class="headerlink" href="#exercise-1-data-inspection-and-understanding" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">26.18.1. </span>Exercise 1: Data Inspection and Understanding<a class="headerlink" href="#exercise-1-data-inspection-and-understanding" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-2-coordinate-transformation-practice">
-<h3><span class="section-number">26.17.2. </span>Exercise 2: Coordinate Transformation Practice<a class="headerlink" href="#exercise-2-coordinate-transformation-practice" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">26.18.2. </span>Exercise 2: Coordinate Transformation Practice<a class="headerlink" href="#exercise-2-coordinate-transformation-practice" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-3-format-conversion-and-optimization">
-<h3><span class="section-number">26.17.3. </span>Exercise 3: Format Conversion and Optimization<a class="headerlink" href="#exercise-3-format-conversion-and-optimization" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">26.18.3. </span>Exercise 3: Format Conversion and Optimization<a class="headerlink" href="#exercise-3-format-conversion-and-optimization" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-4-spatial-clipping-and-analysis">
-<h3><span class="section-number">26.17.4. </span>Exercise 4: Spatial Clipping and Analysis<a class="headerlink" href="#exercise-4-spatial-clipping-and-analysis" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">26.18.4. </span>Exercise 4: Spatial Clipping and Analysis<a class="headerlink" href="#exercise-4-spatial-clipping-and-analysis" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-5-raster-band-mathematics">
-<h3><span class="section-number">26.17.5. </span>Exercise 5: Raster Band Mathematics<a class="headerlink" href="#exercise-5-raster-band-mathematics" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">26.18.5. </span>Exercise 5: Raster Band Mathematics<a class="headerlink" href="#exercise-5-raster-band-mathematics" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-6-terrain-analysis-workflow">
-<h3><span class="section-number">26.17.6. </span>Exercise 6: Terrain Analysis Workflow<a class="headerlink" href="#exercise-6-terrain-analysis-workflow" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">26.18.6. </span>Exercise 6: Terrain Analysis Workflow<a class="headerlink" href="#exercise-6-terrain-analysis-workflow" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-7-raster-vector-conversion">
-<h3><span class="section-number">26.17.7. </span>Exercise 7: Raster-Vector Conversion<a class="headerlink" href="#exercise-7-raster-vector-conversion" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">26.18.7. </span>Exercise 7: Raster-Vector Conversion<a class="headerlink" href="#exercise-7-raster-vector-conversion" title="Link to this heading">#</a></h3>
 </section>
 <section id="exercise-8-geometry-processing-and-data-management">
-<h3><span class="section-number">26.17.8. </span>Exercise 8: Geometry Processing and Data Management<a class="headerlink" href="#exercise-8-geometry-processing-and-data-management" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">26.18.8. </span>Exercise 8: Geometry Processing and Data Management<a class="headerlink" href="#exercise-8-geometry-processing-and-data-management" title="Link to this heading">#</a></h3>
 </section>
 </section>
 </section>
@@ -897,15 +1342,16 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">26.16. Key Takeaways</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">26.17. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-data-inspection-and-understanding">26.17.1. Exercise 1: Data Inspection and Understanding</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-coordinate-transformation-practice">26.17.2. Exercise 2: Coordinate Transformation Practice</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-format-conversion-and-optimization">26.17.3. Exercise 3: Format Conversion and Optimization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-spatial-clipping-and-analysis">26.17.4. Exercise 4: Spatial Clipping and Analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-raster-band-mathematics">26.17.5. Exercise 5: Raster Band Mathematics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-terrain-analysis-workflow">26.17.6. Exercise 6: Terrain Analysis Workflow</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-raster-vector-conversion">26.17.7. Exercise 7: Raster-Vector Conversion</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-geometry-processing-and-data-management">26.17.8. Exercise 8: Geometry Processing and Data Management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-further-reading">26.17. References and Further Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">26.18. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-data-inspection-and-understanding">26.18.1. Exercise 1: Data Inspection and Understanding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-coordinate-transformation-practice">26.18.2. Exercise 2: Coordinate Transformation Practice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-format-conversion-and-optimization">26.18.3. Exercise 3: Format Conversion and Optimization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-spatial-clipping-and-analysis">26.18.4. Exercise 4: Spatial Clipping and Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-raster-band-mathematics">26.18.5. Exercise 5: Raster Band Mathematics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-terrain-analysis-workflow">26.18.6. Exercise 6: Terrain Analysis Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-raster-vector-conversion">26.18.7. Exercise 7: Raster-Vector Conversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-geometry-processing-and-data-management">26.18.8. Exercise 8: Geometry Processing and Data Management</a></li>
 </ul>
 </li>
 </ul>

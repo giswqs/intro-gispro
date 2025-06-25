@@ -543,18 +543,59 @@ document.write(`
 <h2><span class="section-number">6.3. </span>Installing and Setting Up JupyterLab<a class="headerlink" href="#installing-and-setting-up-jupyterlab" title="Link to this heading">#</a></h2>
 <section id="using-conda">
 <h3><span class="section-number">6.3.1. </span>Using conda<a class="headerlink" href="#using-conda" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda create -n geo python=3.12
+conda activate geo
+conda install -c conda-forge jupyterlab leafmap
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="using-pip">
 <h3><span class="section-number">6.3.2. </span>Using pip<a class="headerlink" href="#using-pip" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install jupyterlab leafmap
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="verifying-your-installation">
 <h3><span class="section-number">6.3.3. </span>Verifying Your Installation<a class="headerlink" href="#verifying-your-installation" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>jupyter lab --version
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="getting-started-with-jupyterlab">
 <h2><span class="section-number">6.4. </span>Getting Started with JupyterLab<a class="headerlink" href="#getting-started-with-jupyterlab" title="Link to this heading">#</a></h2>
 <section id="launching-jupyterlab">
 <h3><span class="section-number">6.4.1. </span>Launching JupyterLab<a class="headerlink" href="#launching-jupyterlab" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>jupyter lab
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Launch on a specific port (useful if the default port is busy)
+jupyter lab --port=8889
+
+# Launch without automatically opening browser (useful for remote servers)
+jupyter lab --no-browser --port=8888
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="understanding-the-jupyterlab-interface">
 <h3><span class="section-number">6.4.2. </span>Understanding the JupyterLab Interface<a class="headerlink" href="#understanding-the-jupyterlab-interface" title="Link to this heading">#</a></h3>
@@ -588,6 +629,13 @@ document.write(`
 <h2><span class="section-number">6.8. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <section id="exercise-1-setting-up-your-geospatial-jupyterlab-environment">
 <h3><span class="section-number">6.8.1. </span>Exercise 1: Setting Up Your Geospatial JupyterLab Environment<a class="headerlink" href="#exercise-1-setting-up-your-geospatial-jupyterlab-environment" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>geolab<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12
+conda<span class="w"> </span>activate<span class="w"> </span>geolab
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>jupyterlab<span class="w"> </span>geopandas<span class="w"> </span>matplotlib<span class="w"> </span>ipyleaflet
+</pre></div>
+</div>
 </section>
 <section id="exercise-2-mastering-keyboard-shortcuts-and-efficient-workflow">
 <h3><span class="section-number">6.8.2. </span>Exercise 2: Mastering Keyboard Shortcuts and Efficient Workflow<a class="headerlink" href="#exercise-2-mastering-keyboard-shortcuts-and-efficient-workflow" title="Link to this heading">#</a></h3>

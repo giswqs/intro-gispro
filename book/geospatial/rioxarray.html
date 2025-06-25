@@ -573,9 +573,32 @@ document.write(`
 <h2><span class="section-number">19.3. </span>Setting Up Your Rioxarray Environment<a class="headerlink" href="#setting-up-your-rioxarray-environment" title="Link to this heading">#</a></h2>
 <section id="installing-required-libraries">
 <h3><span class="section-number">19.3.1. </span>Installing Required Libraries<a class="headerlink" href="#installing-required-libraries" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># %pip install rioxarray pygis
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="importing-libraries-and-configuration">
 <h3><span class="section-number">19.3.2. </span>Importing Libraries and Configuration<a class="headerlink" href="#importing-libraries-and-configuration" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import rioxarray
+import numpy as np
+import xarray as xr
+import matplotlib.pyplot as plt
+
+# Configure Xarray for better display
+xr.set_options(keep_attrs=True, display_expand_data=False)
+
+# Configure matplotlib for high-quality plots
+plt.rcParams[&quot;figure.dpi&quot;] = 150
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="loading-and-exploring-georeferenced-raster-data">
@@ -585,78 +608,527 @@ document.write(`
 </section>
 <section id="loading-a-real-satellite-image">
 <h3><span class="section-number">19.4.2. </span>Loading a Real Satellite Image<a class="headerlink" href="#loading-a-real-satellite-image" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Load a Landsat satellite image covering Las Vegas area
+url = &quot;https://github.com/opengeos/datasets/releases/download/raster/LC09_039035_20240708_90m.tif&quot;
+data = rioxarray.open_rasterio(url)
+print(f&quot;Successfully loaded raster with shape: {data.shape}&quot;)
+data
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="exploring-the-dataset-structure">
 <h3><span class="section-number">19.4.3. </span>Exploring the Dataset Structure<a class="headerlink" href="#exploring-the-dataset-structure" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Examine the basic structure
+print(&quot;Dataset dimensions:&quot;, data.dims)
+print(&quot;Dataset shape:&quot;, data.shape)
+print(&quot;Data type:&quot;, data.dtype)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Explore the coordinate information
+print(&quot;Coordinates:&quot;)
+for name, coord in data.coords.items():
+    print(f&quot;  {name}: {coord.values.min()} to {coord.values.max()}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Check metadata attributes
+print(&quot;\nKey attributes:&quot;)
+for key, value in data.attrs.items():
+    if key in [&quot;long_name&quot;, &quot;grid_mapping&quot;, &quot;AREA_OR_POINT&quot;]:
+        print(f&quot;  {key}: {value}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="accessing-spatial-reference-information">
 <h3><span class="section-number">19.4.4. </span>Accessing Spatial Reference Information<a class="headerlink" href="#accessing-spatial-reference-information" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Check the coordinate reference system
+print(f&quot;Coordinate Reference System: {data.rio.crs}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Examine the affine transformation
+print(&quot;\nAffine transformation:&quot;)
+transform = data.rio.transform()
+print(transform)
+print(f&quot;Pixel size: {abs(transform[0]):.1f} x {abs(transform[4]):.1f} meters&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="setting-crs-when-missing">
 <h3><span class="section-number">19.4.5. </span>Setting CRS When Missing<a class="headerlink" href="#setting-crs-when-missing" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Example: Set CRS if missing or incorrect (only run if needed)
+# data = data.rio.write_crs(&quot;EPSG:32611&quot;, inplace=True)
+print(f&quot;Current CRS is properly set: {data.rio.crs}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="fundamental-geospatial-operations">
 <h2><span class="section-number">19.5. </span>Fundamental Geospatial Operations<a class="headerlink" href="#fundamental-geospatial-operations" title="Link to this heading">#</a></h2>
 <section id="coordinate-system-transformations">
 <h3><span class="section-number">19.5.1. </span>Coordinate System Transformations<a class="headerlink" href="#coordinate-system-transformations" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Reproject from UTM to Geographic coordinates (WGS84)
+print(f&quot;Original CRS: {data.rio.crs}&quot;)
+data_geographic = data.rio.reproject(&quot;EPSG:4326&quot;)
+print(f&quot;Reprojected CRS: {data_geographic.rio.crs}&quot;)
+print(f&quot;New coordinate ranges:&quot;)
+print(
+    f&quot;  Longitude: {data_geographic.x.min().values:.3f} to {data_geographic.x.max().values:.3f}&quot;
+)
+print(
+    f&quot;  Latitude: {data_geographic.y.min().values:.3f} to {data_geographic.y.max().values:.3f}&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="spatial-subsetting-with-bounding-boxes">
 <h3><span class="section-number">19.5.2. </span>Spatial Subsetting with Bounding Boxes<a class="headerlink" href="#spatial-subsetting-with-bounding-boxes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Define a bounding box around central Las Vegas
+# (longitude_min, latitude_min, longitude_max, latitude_max)
+vegas_bbox = [-115.391, 35.982, -114.988, 36.425]
+
+print(&quot;Clipping raster to Las Vegas area...&quot;)
+clipped_data = data_geographic.rio.clip_box(*vegas_bbox)
+print(f&quot;Original size: {data_geographic.shape}&quot;)
+print(f&quot;Clipped size: {clipped_data.shape}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="vector-based-clipping">
 <h3><span class="section-number">19.5.3. </span>Vector-Based Clipping<a class="headerlink" href="#vector-based-clipping" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import geopandas as gpd
+
+# Load a vector boundary for more precise clipping
+boundary_url = &quot;https://github.com/opengeos/datasets/releases/download/places/las_vegas_bounds_utm.geojson&quot;
+boundary = gpd.read_file(boundary_url)
+
+print(f&quot;Boundary CRS: {boundary.crs}&quot;)
+print(f&quot;Raster CRS: {data.rio.crs}&quot;)
+
+# Clip the raster using the vector boundary
+clipped_by_vector = data.rio.clip(boundary.geometry, boundary.crs)
+print(f&quot;Vector-clipped size: {clipped_by_vector.shape}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="working-with-spatial-dimensions-and-resolution">
 <h2><span class="section-number">19.6. </span>Working with Spatial Dimensions and Resolution<a class="headerlink" href="#working-with-spatial-dimensions-and-resolution" title="Link to this heading">#</a></h2>
 <section id="understanding-spatial-resolution">
 <h3><span class="section-number">19.6.1. </span>Understanding Spatial Resolution<a class="headerlink" href="#understanding-spatial-resolution" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate current spatial resolution
+transform = data.rio.transform()
+x_resolution = abs(transform[0])
+y_resolution = abs(transform[4])
+
+print(f&quot;Current spatial resolution:&quot;)
+print(f&quot;  X (East-West): {x_resolution:.1f} meters&quot;)
+print(f&quot;  Y (North-South): {y_resolution:.1f} meters&quot;)
+
+# Calculate total area covered
+width_km = (data.x.max() - data.x.min()).values / 1000
+height_km = (data.y.max() - data.y.min()).values / 1000
+print(f&quot;\nSpatial extent:&quot;)
+print(f&quot;  Width: {width_km:.1f} km&quot;)
+print(f&quot;  Height: {height_km:.1f} km&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="resampling-to-different-resolutions">
 <h3><span class="section-number">19.6.2. </span>Resampling to Different Resolutions<a class="headerlink" href="#resampling-to-different-resolutions" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Resample to 1km resolution for regional analysis
+print(&quot;Resampling to 1km resolution...&quot;)
+resampled_data = data.rio.reproject(
+    data.rio.crs, resolution=(1000, 1000)  # Keep the same CRS  # 1km x 1km pixels
+)
+
+print(f&quot;Original shape: {data.shape}&quot;)
+print(f&quot;Resampled shape: {resampled_data.shape}&quot;)
+
+# Calculate the reduction in data size
+original_pixels = np.prod(data.shape)
+resampled_pixels = np.prod(resampled_data.shape)
+reduction_factor = original_pixels / resampled_pixels
+print(f&quot;Data reduction factor: {reduction_factor:.1f}x&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="spatial-subsetting-by-coordinates">
 <h3><span class="section-number">19.6.3. </span>Spatial Subsetting by Coordinates<a class="headerlink" href="#spatial-subsetting-by-coordinates" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Extract a subset using coordinate ranges (in geographic coordinates)
+lon_range = (-115.391, -114.988)
+lat_range = (35.982, 36.425)
+
+print(&quot;Selecting subset by coordinate ranges...&quot;)
+subset = data_geographic.sel(
+    x=slice(*lon_range),
+    y=slice(lat_range[1], lat_range[0]),  # Note: y coordinates often decrease
+)
+
+print(f&quot;Subset shape: {subset.shape}&quot;)
+print(f&quot;Longitude range: {subset.x.min().values:.3f} to {subset.x.max().values:.3f}&quot;)
+print(f&quot;Latitude range: {subset.y.min().values:.3f} to {subset.y.max().values:.3f}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="visualizing-geospatial-raster-data">
 <h2><span class="section-number">19.7. </span>Visualizing Geospatial Raster Data<a class="headerlink" href="#visualizing-geospatial-raster-data" title="Link to this heading">#</a></h2>
 <section id="creating-true-color-composite-images">
 <h3><span class="section-number">19.7.1. </span>Creating True-Color Composite Images<a class="headerlink" href="#creating-true-color-composite-images" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a true-color (RGB) composite using bands 4, 3, 2 (Red, Green, Blue)
+fig, ax = plt.subplots(figsize=(6, 6))
+
+# Select RGB bands and create composite
+rgb_bands = data_geographic.sel(band=[4, 3, 2])
+rgb_bands.plot.imshow(
+    ax=ax,
+    vmin=0,
+    vmax=0.3,  # Adjust based on data range
+)
+# ax.set_aspect(&#39;equal&#39;)
+plt.title(
+    &quot;Landsat True-Color Composite - Las Vegas Area&quot;, fontsize=14, fontweight=&quot;bold&quot;
+)
+plt.xlabel(&quot;Longitude (°)&quot;, fontsize=12)
+plt.ylabel(&quot;Latitude (°)&quot;, fontsize=12)
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="visualizing-individual-bands">
 <h3><span class="section-number">19.7.2. </span>Visualizing Individual Bands<a class="headerlink" href="#visualizing-individual-bands" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Plot a single band with proper spatial context
+fig, ax = plt.subplots(figsize=(8, 6))
+
+# Select near-infrared band (band 5) which is useful for vegetation analysis
+nir_band = data_geographic.sel(band=5)
+im = nir_band.plot.imshow(
+    ax=ax,
+    cmap=&quot;RdYlGn&quot;,  # Red-Yellow-Green colormap
+    vmin=0,
+    vmax=0.5,
+    add_colorbar=True,
+    cbar_kwargs={&quot;label&quot;: &quot;Near-Infrared Reflectance&quot;, &quot;shrink&quot;: 0.8},
+)
+
+plt.title(&quot;Near-Infrared Band - Vegetation Analysis&quot;, fontsize=14, fontweight=&quot;bold&quot;)
+plt.xlabel(&quot;Longitude (°)&quot;, fontsize=12)
+plt.ylabel(&quot;Latitude (°)&quot;, fontsize=12)
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="overlaying-vector-data-on-raster-images">
 <h3><span class="section-number">19.7.3. </span>Overlaying Vector Data on Raster Images<a class="headerlink" href="#overlaying-vector-data-on-raster-images" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a visualization with vector overlay
+fig, ax = plt.subplots(figsize=(8, 6))
+
+# Plot raster as background (single band for clarity)
+data.attrs[&quot;long_name&quot;] = &quot;Surface Reflectance&quot;
+single_band = data.sel(band=4)  # Red band
+single_band.plot.imshow(
+    ax=ax,
+    vmin=0,
+    vmax=0.4,
+    cmap=&quot;gray&quot;,
+    add_colorbar=True,
+    cbar_kwargs={&quot;label&quot;: &quot;Red Band Reflectance&quot;},
+)
+
+# Overlay vector boundary
+if &quot;boundary&quot; in locals():
+    boundary.to_crs(data.rio.crs).boundary.plot(ax=ax, color=&quot;red&quot;, linewidth=2)
+
+plt.title(&quot;Landsat Image with Administrative Boundary&quot;, fontsize=14, fontweight=&quot;bold&quot;)
+plt.xlabel(&quot;Easting (m)&quot;, fontsize=12)
+plt.ylabel(&quot;Northing (m)&quot;, fontsize=12)
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="data-storage-and-file-management">
 <h2><span class="section-number">19.8. </span>Data Storage and File Management<a class="headerlink" href="#data-storage-and-file-management" title="Link to this heading">#</a></h2>
 <section id="saving-processed-raster-data">
 <h3><span class="section-number">19.8.1. </span>Saving Processed Raster Data<a class="headerlink" href="#saving-processed-raster-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Save processed data as GeoTIFF (most common geospatial raster format)
+output_filename = &quot;las_vegas_landsat_processed.tif&quot;
+
+# Add metadata before saving
+clipped_data.attrs[&quot;processing_date&quot;] = str(np.datetime64(&quot;now&quot;))
+clipped_data.attrs[&quot;processed_by&quot;] = &quot;rioxarray tutorial&quot;
+clipped_data.attrs[&quot;description&quot;] = &quot;Landsat image clipped to Las Vegas area&quot;
+
+print(f&quot;Saving processed data to {output_filename}...&quot;)
+clipped_data.rio.to_raster(output_filename)
+print(&quot;File saved successfully!&quot;)
+
+# Verify the saved file
+saved_data = rioxarray.open_rasterio(output_filename)
+print(f&quot;Verified: Saved file has shape {saved_data.shape} and CRS {saved_data.rio.crs}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>output_filename = &quot;las_vegas_landsat_processed_cog.tif&quot;
+clipped_data.rio.to_raster(output_filename, driver=&quot;COG&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="managing-nodata-values">
 <h3><span class="section-number">19.8.2. </span>Managing NoData Values<a class="headerlink" href="#managing-nodata-values" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Check for existing NoData values
+print(&quot;Current NoData value:&quot;, data.rio.nodata)
+
+# Set NoData value if needed
+data_with_nodata = data.rio.set_nodata(-9999)
+print(&quot;Updated NoData value:&quot;, data_with_nodata.rio.nodata)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Example: Mask out extreme values as NoData
+# This is useful for removing outliers or invalid measurements
+masked_data = data.where(data &lt; 1.0, -9999)  # Mask very high reflectance values
+masked_data = masked_data.rio.set_nodata(-9999)
+print(f&quot;Applied masking: {np.sum(masked_data == -9999).values} pixels set to NoData&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="coordinate-system-comparisons">
 <h2><span class="section-number">19.9. </span>Coordinate System Comparisons<a class="headerlink" href="#coordinate-system-comparisons" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Compare the same data in different coordinate systems
+print(&quot;Comparing coordinate systems...&quot;)
+
+# Web Mercator (common for web mapping)
+mercator_data = data.rio.reproject(&quot;EPSG:3857&quot;)
+print(f&quot;Web Mercator (EPSG:3857): {mercator_data.rio.crs}&quot;)
+print(
+    f&quot;  Coordinate range: X: {mercator_data.x.min().values:.0f} to {mercator_data.x.max().values:.0f}&quot;
+)
+print(
+    f&quot;                    Y: {mercator_data.y.min().values:.0f} to {mercator_data.y.max().values:.0f}&quot;
+)
+
+# Geographic coordinates (WGS84)
+print(f&quot;\nGeographic (EPSG:4326): {data_geographic.rio.crs}&quot;)
+print(
+    f&quot;  Coordinate range: Lon: {data_geographic.x.min().values:.3f} to {data_geographic.x.max().values:.3f}&quot;
+)
+print(
+    f&quot;                    Lat: {data_geographic.y.min().values:.3f} to {data_geographic.y.max().values:.3f}&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 <section id="side-by-side-coordinate-system-visualization">
 <h3><span class="section-number">19.9.1. </span>Side-by-Side Coordinate System Visualization<a class="headerlink" href="#side-by-side-coordinate-system-visualization" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create side-by-side comparison of different projections
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
+
+# Plot in geographic coordinates
+data_geographic.sel(band=[4, 3, 2]).plot.imshow(ax=ax1, vmin=0, vmax=0.3)
+ax1.set_title(&quot;Geographic Coordinates (EPSG:4326)&quot;)
+ax1.set_xlabel(&quot;Longitude (°)&quot;)
+ax1.set_ylabel(&quot;Latitude (°)&quot;)
+
+# Plot in Web Mercator
+mercator_data.sel(band=[4, 3, 2]).plot.imshow(ax=ax2, vmin=0, vmax=0.3)
+ax2.set_title(&quot;Web Mercator (EPSG:3857)&quot;)
+ax2.set_xlabel(&quot;Easting (m)&quot;)
+ax2.set_ylabel(&quot;Northing (m)&quot;)
+
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="introduction-to-band-math">
 <h2><span class="section-number">19.10. </span>Introduction to Band Math<a class="headerlink" href="#introduction-to-band-math" title="Link to this heading">#</a></h2>
 <section id="computing-vegetation-indices">
 <h3><span class="section-number">19.10.1. </span>Computing Vegetation Indices<a class="headerlink" href="#computing-vegetation-indices" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Calculate NDVI using the standard formula: (NIR - Red) / (NIR + Red)
+print(&quot;Calculating NDVI...&quot;)
+
+# Extract the required bands
+red_band = data_geographic.sel(band=4)  # Red band
+nir_band = data_geographic.sel(band=5)  # Near-infrared band
+
+# Calculate NDVI with proper handling of division by zero
+ndvi = (nir_band - red_band) / (nir_band + red_band)
+
+# Clip values to valid NDVI range and handle any invalid calculations
+ndvi = ndvi.clip(min=-1, max=1)
+ndvi = ndvi.where(np.isfinite(ndvi))  # Remove infinite values
+
+# Add descriptive metadata
+ndvi.attrs[&quot;long_name&quot;] = &quot;Normalized Difference Vegetation Index&quot;
+ndvi.attrs[&quot;valid_range&quot;] = &quot;[-1, 1]&quot;
+ndvi.attrs[&quot;description&quot;] = &quot;NDVI = (NIR - Red) / (NIR + Red)&quot;
+
+print(f&quot;NDVI statistics:&quot;)
+print(f&quot;  Range: {ndvi.min().values:.3f} to {ndvi.max().values:.3f}&quot;)
+print(f&quot;  Mean: {ndvi.mean().values:.3f}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="visualizing-vegetation-analysis">
 <h3><span class="section-number">19.10.2. </span>Visualizing Vegetation Analysis<a class="headerlink" href="#visualizing-vegetation-analysis" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create a comprehensive NDVI visualization
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
+
+# Plot raw NDVI
+ndvi.plot.imshow(
+    ax=ax1,
+    cmap=&quot;RdYlGn&quot;,
+    vmin=-0.5,
+    vmax=0.8,
+    add_colorbar=True,
+    cbar_kwargs={&quot;label&quot;: &quot;NDVI Value&quot;},
+)
+ax1.set_title(&quot;Raw NDVI Values&quot;, fontsize=14, fontweight=&quot;bold&quot;)
+ax1.set_xlabel(&quot;Longitude (°)&quot;)
+ax1.set_ylabel(&quot;Latitude (°)&quot;)
+
+# Plot vegetation areas only (NDVI &gt; 0.2)
+vegetation_mask = ndvi.where(ndvi &gt; 0.2)
+vegetation_mask.plot.imshow(
+    ax=ax2,
+    cmap=&quot;Greens&quot;,
+    vmin=0.2,
+    vmax=0.6,
+    add_colorbar=True,
+    cbar_kwargs={&quot;label&quot;: &quot;NDVI Value (Vegetation Only)&quot;},
+)
+ax2.set_title(&quot;Vegetation Areas (NDVI &gt; 0.2)&quot;, fontsize=14, fontweight=&quot;bold&quot;)
+ax2.set_xlabel(&quot;Longitude (°)&quot;)
+ax2.set_ylabel(&quot;Latitude (°)&quot;)
+
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="interpreting-ndvi-results">
 <h3><span class="section-number">19.10.3. </span>Interpreting NDVI Results<a class="headerlink" href="#interpreting-ndvi-results" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Analyze vegetation distribution
+total_pixels = ndvi.size
+vegetation_pixels = np.sum(ndvi &gt; 0.2).values
+water_pixels = np.sum(ndvi &lt; 0).values
+urban_pixels = np.sum((ndvi &gt;= 0) &amp; (ndvi &lt;= 0.2)).values
+
+print(&quot;NDVI Analysis Results:&quot;)
+print(f&quot;  Total pixels analyzed: {total_pixels:,}&quot;)
+print(
+    f&quot;  Vegetation pixels (NDVI &gt; 0.2): {vegetation_pixels:,} ({100*vegetation_pixels/total_pixels:.1f}%)&quot;
+)
+print(
+    f&quot;  Water pixels (NDVI &lt; 0): {water_pixels:,} ({100*water_pixels/total_pixels:.1f}%)&quot;
+)
+print(
+    f&quot;  Urban/Bare soil (0 ≤ NDVI ≤ 0.2): {urban_pixels:,} ({100*urban_pixels/total_pixels:.1f}%)&quot;
+)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="key-takeaways">

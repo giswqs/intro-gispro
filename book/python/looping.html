@@ -549,42 +549,250 @@ document.write(`
 <h2><span class="section-number">11.3. </span>For Loops<a class="headerlink" href="#for-loops" title="Link to this heading">#</a></h2>
 <section id="basic-for-loop-syntax">
 <h3><span class="section-number">11.3.1. </span>Basic For Loop Syntax<a class="headerlink" href="#basic-for-loop-syntax" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>coordinates = [
+    (35.6895, 139.6917),
+    (34.0522, -118.2437),
+    (51.5074, -0.1278),
+]  # List of tuples representing coordinates
+
+for lat, lon in coordinates:
+    print(f&quot;Latitude: {lat}, Longitude: {lon}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="processing-multiple-data-points">
 <h3><span class="section-number">11.3.2. </span>Processing Multiple Data Points<a class="headerlink" href="#processing-multiple-data-points" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def calculate_distance(lat1, lon1, lat2, lon2):
+    # Placeholder for distance calculation logic
+    return ((lat2 - lat1) ** 2 + (lon2 - lon1) ** 2) ** 0.5
+
+
+reference_point = (0, 0)  # Reference point (latitude, longitude)
+
+for lat, lon in coordinates:
+    distance = calculate_distance(reference_point[0], reference_point[1], lat, lon)
+    print(f&quot;Distance from {reference_point} to ({lat}, {lon}): {distance:.2f}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="iterating-through-geographic-collections">
 <h3><span class="section-number">11.3.3. </span>Iterating Through Geographic Collections<a class="headerlink" href="#iterating-through-geographic-collections" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Working with a list of place names
+cities = [&quot;New York&quot;, &quot;Los Angeles&quot;, &quot;Chicago&quot;, &quot;Houston&quot;, &quot;Phoenix&quot;]
+
+print(&quot;Major US Cities:&quot;)
+for i, city in enumerate(cities):
+    print(f&quot;{i+1}. {city}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="while-loops">
 <h2><span class="section-number">11.4. </span>While Loops<a class="headerlink" href="#while-loops" title="Link to this heading">#</a></h2>
 <section id="basic-while-loop-structure">
 <h3><span class="section-number">11.4.1. </span>Basic While Loop Structure<a class="headerlink" href="#basic-while-loop-structure" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>counter = 0
+while counter &lt; len(coordinates):
+    lat, lon = coordinates[counter]
+    print(f&quot;Processing coordinate: ({lat}, {lon})&quot;)
+    counter += 1
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="practical-while-loop-example">
 <h3><span class="section-number">11.4.2. </span>Practical While Loop Example<a class="headerlink" href="#practical-while-loop-example" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Simulate searching for a coordinate within a certain range
+import random
+
+target_latitude = 40.0
+tolerance = 0.1
+attempts = 0
+max_attempts = 10
+
+print(f&quot;Searching for coordinates near latitude {target_latitude}&quot;)
+
+while attempts &lt; max_attempts:
+    # Simulate getting a new coordinate
+    random_lat = random.uniform(39.5, 40.5)
+    random_lon = random.uniform(-74.5, -73.5)
+    attempts += 1
+
+    print(f&quot;Attempt {attempts}: Found coordinate ({random_lat:.4f}, {random_lon:.4f})&quot;)
+
+    # Check if we&#39;re close enough to the target
+    if abs(random_lat - target_latitude) &lt;= tolerance:
+        print(f&quot;✓ Found coordinate within tolerance after {attempts} attempts!&quot;)
+        break
+else:
+    print(f&quot;✗ Could not find suitable coordinate within {max_attempts} attempts&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="control-statements-making-decisions-in-your-code">
 <h2><span class="section-number">11.5. </span>Control Statements: Making Decisions in Your Code<a class="headerlink" href="#control-statements-making-decisions-in-your-code" title="Link to this heading">#</a></h2>
 <section id="the-if-statement">
 <h3><span class="section-number">11.5.1. </span>The if Statement<a class="headerlink" href="#the-if-statement" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for lat, lon in coordinates:
+    if lat &gt; 0:
+        print(f&quot;{lat} is in the Northern Hemisphere&quot;)
+    elif lat &lt; 0:
+        print(f&quot;{lat} is in the Southern Hemisphere&quot;)
+    else:
+        print(f&quot;{lat} is near the equator&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="multiple-conditions-and-complex-logic">
 <h3><span class="section-number">11.5.2. </span>Multiple Conditions and Complex Logic<a class="headerlink" href="#multiple-conditions-and-complex-logic" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for lat, lon in coordinates:
+    if lat &gt; 0:
+        hemisphere = &quot;Northern&quot;
+    else:
+        hemisphere = &quot;Southern&quot;
+
+    if lon &gt; 0:
+        direction = &quot;Eastern&quot;
+    else:
+        direction = &quot;Western&quot;
+
+    print(
+        f&quot;The coordinate ({lat}, {lon}) is in the {hemisphere} Hemisphere and {direction} Hemisphere.&quot;
+    )
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="logical-operators-for-complex-conditions">
 <h3><span class="section-number">11.5.3. </span>Logical Operators for Complex Conditions<a class="headerlink" href="#logical-operators-for-complex-conditions" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Classify coordinates by quadrant
+for lat, lon in coordinates:
+    if lat &gt; 0 and lon &gt; 0:
+        quadrant = &quot;Northeast&quot;
+    elif lat &gt; 0 and lon &lt; 0:
+        quadrant = &quot;Northwest&quot;
+    elif lat &lt; 0 and lon &gt; 0:
+        quadrant = &quot;Southeast&quot;
+    else:  # lat &lt; 0 and lon &lt; 0
+        quadrant = &quot;Southwest&quot;
+
+    print(f&quot;Coordinate ({lat}, {lon}) is in the {quadrant} quadrant&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="combining-loops-and-control-statements">
 <h2><span class="section-number">11.6. </span>Combining Loops and Control Statements<a class="headerlink" href="#combining-loops-and-control-statements" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>filtered_coordinates = []
+for lat, lon in coordinates:
+    if lon &gt; 0:
+        filtered_coordinates.append((lat, lon))
+print(f&quot;Filtered coordinates (only with positive longitude): {filtered_coordinates}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 <section id="counting-and-analyzing-data">
 <h3><span class="section-number">11.6.1. </span>Counting and Analyzing Data<a class="headerlink" href="#counting-and-analyzing-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>southern_count = 0
+for lat, lon in coordinates:
+    if lat &lt; 0:
+        southern_count += 1
+print(f&quot;Number of coordinates in the Southern Hemisphere: {southern_count}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="building-summary-statistics">
 <h3><span class="section-number">11.6.2. </span>Building Summary Statistics<a class="headerlink" href="#building-summary-statistics" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Analyze a set of coordinates
+analysis_coordinates = [
+    (40.7128, -74.0060),  # New York
+    (-33.8688, 151.2093),  # Sydney
+    (51.5074, -0.1278),  # London
+    (-1.2921, 36.8219),  # Nairobi
+    (35.6762, 139.6503),  # Tokyo
+]
+
+# Initialize counters
+northern_count = 0
+southern_count = 0
+eastern_count = 0
+western_count = 0
+valid_coordinates = []
+
+print(&quot;Coordinate Analysis:&quot;)
+print(&quot;-&quot; * 40)
+
+for lat, lon in analysis_coordinates:
+    # Validate coordinates (basic check)
+    if -90 &lt;= lat &lt;= 90 and -180 &lt;= lon &lt;= 180:
+        valid_coordinates.append((lat, lon))
+
+        # Count by hemisphere
+        if lat &gt;= 0:
+            northern_count += 1
+        else:
+            southern_count += 1
+
+        # Count by longitude
+        if lon &gt;= 0:
+            eastern_count += 1
+        else:
+            western_count += 1
+
+        print(f&quot;Valid: ({lat:7.4f}, {lon:8.4f})&quot;)
+    else:
+        print(f&quot;Invalid: ({lat}, {lon}) - coordinates out of range&quot;)
+
+print(f&quot;\nSummary:&quot;)
+print(f&quot;Valid coordinates: {len(valid_coordinates)}&quot;)
+print(f&quot;Northern Hemisphere: {northern_count}&quot;)
+print(f&quot;Southern Hemisphere: {southern_count}&quot;)
+print(f&quot;Eastern Longitude: {eastern_count}&quot;)
+print(f&quot;Western Longitude: {western_count}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="loop-and-control-statement-decision-guide">

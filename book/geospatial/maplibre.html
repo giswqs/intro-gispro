@@ -604,20 +604,83 @@ document.write(`
 </section>
 <section id="installation-and-setup">
 <h2><span class="section-number">22.4. </span>Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># %pip install -U leafmap pygis
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import leafmap.maplibregl as leafmap
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="creating-interactive-maps">
 <h2><span class="section-number">22.5. </span>Creating Interactive Maps<a class="headerlink" href="#creating-interactive-maps" title="Link to this heading">#</a></h2>
 <section id="basic-map-setup">
 <h3><span class="section-number">22.5.1. </span>Basic Map Setup<a class="headerlink" href="#basic-map-setup" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="customizing-the-map-s-center-and-zoom-level">
 <h3><span class="section-number">22.5.2. </span>Customizing the Map’s Center and Zoom Level<a class="headerlink" href="#customizing-the-map-s-center-and-zoom-level" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-100, 40], zoom=3, pitch=0, bearing=0)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="choosing-a-basemap-style">
 <h3><span class="section-number">22.5.3. </span>Choosing a Basemap Style<a class="headerlink" href="#choosing-a-basemap-style" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;positron&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;liberty&quot;, projection=&quot;globe&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-background-colors">
 <h3><span class="section-number">22.5.4. </span>Adding Background Colors<a class="headerlink" href="#adding-background-colors" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;background-lightgray&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>style = &quot;https://demotiles.maplibre.org/style.json&quot;
+m = leafmap.Map(style=style)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="adding-map-controls">
@@ -627,145 +690,1684 @@ document.write(`
 </section>
 <section id="adding-geolocate-control">
 <h3><span class="section-number">22.6.2. </span>Adding Geolocate Control<a class="headerlink" href="#adding-geolocate-control" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
+m.add_control(&quot;geolocate&quot;, position=&quot;top-left&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-fullscreen-control">
 <h3><span class="section-number">22.6.3. </span>Adding Fullscreen Control<a class="headerlink" href="#adding-fullscreen-control" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[11.255, 43.77], zoom=13, style=&quot;positron&quot;, controls={})
+m.add_control(&quot;fullscreen&quot;, position=&quot;top-right&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-navigation-control">
 <h3><span class="section-number">22.6.4. </span>Adding Navigation Control<a class="headerlink" href="#adding-navigation-control" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[11.255, 43.77], zoom=13, style=&quot;positron&quot;, controls={})
+m.add_control(&quot;navigation&quot;, position=&quot;top-left&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-draw-control">
 <h3><span class="section-number">22.6.5. </span>Adding Draw Control<a class="headerlink" href="#adding-draw-control" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-100, 40], zoom=3, style=&quot;positron&quot;)
+m.add_draw_control(position=&quot;top-left&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-100, 40], zoom=3, style=&quot;positron&quot;)
+geojson = {
+    &quot;type&quot;: &quot;FeatureCollection&quot;,
+    &quot;features&quot;: [
+        {
+            &quot;id&quot;: &quot;abc&quot;,
+            &quot;type&quot;: &quot;Feature&quot;,
+            &quot;properties&quot;: {},
+            &quot;geometry&quot;: {
+                &quot;coordinates&quot;: [
+                    [
+                        [-119.08, 45.95],
+                        [-119.79, 42.08],
+                        [-107.28, 41.43],
+                        [-108.15, 46.44],
+                        [-119.08, 45.95],
+                    ]
+                ],
+                &quot;type&quot;: &quot;Polygon&quot;,
+            },
+        },
+        {
+            &quot;id&quot;: &quot;xyz&quot;,
+            &quot;type&quot;: &quot;Feature&quot;,
+            &quot;properties&quot;: {},
+            &quot;geometry&quot;: {
+                &quot;coordinates&quot;: [
+                    [
+                        [-103.87, 38.08],
+                        [-108.54, 36.44],
+                        [-106.25, 33.00],
+                        [-99.91, 31.79],
+                        [-96.82, 35.48],
+                        [-98.80, 37.77],
+                        [-103.87, 38.08],
+                    ]
+                ],
+                &quot;type&quot;: &quot;Polygon&quot;,
+            },
+        },
+    ],
+}
+m.add_draw_control(position=&quot;top-left&quot;, geojson=geojson)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.draw_features_selected
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.draw_feature_collection_all
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="adding-layers">
 <h2><span class="section-number">22.7. </span>Adding Layers<a class="headerlink" href="#adding-layers" title="Link to this heading">#</a></h2>
 <section id="adding-basemaps">
 <h3><span class="section-number">22.7.1. </span>Adding Basemaps<a class="headerlink" href="#adding-basemaps" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
+m.add_basemap(&quot;OpenTopoMap&quot;)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.add_basemap(&quot;Esri.WorldImagery&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.add_basemap()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-xyz-tile-layer">
 <h3><span class="section-number">22.7.2. </span>Adding XYZ Tile Layer<a class="headerlink" href="#adding-xyz-tile-layer" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
+url = &quot;https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}&quot;
+m.add_tile_layer(url, name=&quot;USGS TOpo&quot;, attribution=&quot;USGS&quot;, opacity=1.0, visible=True)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-wms-layer">
 <h3><span class="section-number">22.7.3. </span>Adding WMS Layer<a class="headerlink" href="#adding-wms-layer" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-74.5447, 40.6892], zoom=8, style=&quot;liberty&quot;)
+url = &quot;https://img.nj.gov/imagerywms/Natural2015&quot;
+layers = &quot;Natural2015&quot;
+m.add_wms_layer(url, layers=layers, before_id=&quot;aeroway_fill&quot;)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-100.307965, 46.98692], zoom=13, pitch=45, style=&quot;liberty&quot;)
+m.add_basemap(&quot;Esri.WorldImagery&quot;)
+url = &quot;https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/services/Wetlands/MapServer/WMSServer&quot;
+m.add_wms_layer(url, layers=&quot;1&quot;, name=&quot;NWI&quot;, opacity=0.6)
+m.add_layer_control()
+m.add_legend(builtin_legend=&quot;NWI&quot;, title=&quot;Wetland Type&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="using-maptiler">
 <h2><span class="section-number">22.8. </span>Using MapTiler<a class="headerlink" href="#using-maptiler" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># import os
+# os.environ[&quot;MAPTILER_KEY&quot;] = &quot;YOUR_API_KEY&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;streets&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;satellite&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;hybrid&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;topo&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="d-mapping">
 <h2><span class="section-number">22.9. </span>3D Mapping<a class="headerlink" href="#d-mapping" title="Link to this heading">#</a></h2>
 <section id="d-terrain">
 <h3><span class="section-number">22.9.1. </span>3D Terrain<a class="headerlink" href="#d-terrain" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(
+    center=[-122.1874314, 46.2022386], zoom=13, pitch=60, bearing=220, style=&quot;3d-hybrid&quot;
+)
+m.add_layer_control(bg_layers=True)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(
+    center=[-122.1874314, 46.2022386],
+    zoom=13,
+    pitch=60,
+    bearing=220,
+    style=&quot;3d-satellite&quot;,
+)
+m.add_layer_control(bg_layers=True)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(
+    center=[-122.1874314, 46.2022386],
+    zoom=13,
+    pitch=60,
+    bearing=220,
+    style=&quot;3d-topo&quot;,
+    exaggeration=1.5,
+    hillshade=False,
+)
+m.add_layer_control(bg_layers=True)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(
+    center=[-122.1874314, 46.2022386],
+    zoom=13,
+    pitch=60,
+    bearing=220,
+    style=&quot;3d-terrain&quot;,
+)
+m.add_layer_control(bg_layers=True)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;3d-ocean&quot;, exaggeration=1.5, hillshade=True)
+m.add_layer_control(bg_layers=True)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="d-buildings">
 <h3><span class="section-number">22.9.2. </span>3D Buildings<a class="headerlink" href="#d-buildings" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(
+    center=[-74.01201, 40.70473], zoom=16, pitch=60, bearing=35, style=&quot;basic-v2&quot;
+)
+MAPTILER_KEY = leafmap.get_api_key(&quot;MAPTILER_KEY&quot;)
+m.add_basemap(&quot;Esri.WorldImagery&quot;, visible=False)
+source = {
+    &quot;url&quot;: f&quot;https://api.maptiler.com/tiles/v3/tiles.json?key={MAPTILER_KEY}&quot;,
+    &quot;type&quot;: &quot;vector&quot;,
+}
+
+layer = {
+    &quot;id&quot;: &quot;3d-buildings&quot;,
+    &quot;source&quot;: &quot;openmaptiles&quot;,
+    &quot;source-layer&quot;: &quot;building&quot;,
+    &quot;type&quot;: &quot;fill-extrusion&quot;,
+    &quot;min-zoom&quot;: 15,
+    &quot;paint&quot;: {
+        &quot;fill-extrusion-color&quot;: [
+            &quot;interpolate&quot;,
+            [&quot;linear&quot;],
+            [&quot;get&quot;, &quot;render_height&quot;],
+            0,
+            &quot;lightgray&quot;,
+            200,
+            &quot;royalblue&quot;,
+            400,
+            &quot;lightblue&quot;,
+        ],
+        &quot;fill-extrusion-height&quot;: [
+            &quot;interpolate&quot;,
+            [&quot;linear&quot;],
+            [&quot;zoom&quot;],
+            15,
+            0,
+            16,
+            [&quot;get&quot;, &quot;render_height&quot;],
+        ],
+        &quot;fill-extrusion-base&quot;: [
+            &quot;case&quot;,
+            [&quot;&gt;=&quot;, [&quot;get&quot;, &quot;zoom&quot;], 16],
+            [&quot;get&quot;, &quot;render_min_height&quot;],
+            0,
+        ],
+    },
+}
+m.add_source(&quot;openmaptiles&quot;, source)
+m.add_layer(layer)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(
+    center=[-74.01201, 40.70473], zoom=16, pitch=60, bearing=35, style=&quot;basic-v2&quot;
+)
+m.add_basemap(&quot;Esri.WorldImagery&quot;, visible=False)
+m.add_3d_buildings(min_zoom=15)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="d-indoor-mapping">
 <h3><span class="section-number">22.9.3. </span>3D Indoor Mapping<a class="headerlink" href="#d-indoor-mapping" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>data = &quot;https://maplibre.org/maplibre-gl-js/docs/assets/indoor-3d-map.geojson&quot;
+gdf = leafmap.geojson_to_gdf(data)
+gdf.explore()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdf.head()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(
+    center=(-87.61694, 41.86625), zoom=17, pitch=40, bearing=20, style=&quot;positron&quot;
+)
+m.add_basemap(&quot;OpenStreetMap.Mapnik&quot;)
+m.add_geojson(
+    data,
+    layer_type=&quot;fill-extrusion&quot;,
+    name=&quot;floorplan&quot;,
+    paint={
+        &quot;fill-extrusion-color&quot;: [&quot;get&quot;, &quot;color&quot;],
+        &quot;fill-extrusion-height&quot;: [&quot;get&quot;, &quot;height&quot;],
+        &quot;fill-extrusion-base&quot;: [&quot;get&quot;, &quot;base_height&quot;],
+        &quot;fill-extrusion-opacity&quot;: 0.5,
+    },
+)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="d-choropleth-map">
 <h3><span class="section-number">22.9.4. </span>3D Choropleth Map<a class="headerlink" href="#d-choropleth-map" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[19.43, 49.49], zoom=3, pitch=60, style=&quot;basic&quot;)
+source = {
+    &quot;type&quot;: &quot;geojson&quot;,
+    &quot;data&quot;: &quot;https://docs.maptiler.com/sdk-js/assets/Mean_age_of_women_at_first_marriage_in_2019.geojson&quot;,
+}
+m.add_source(&quot;countries&quot;, source)
+layer = {
+    &quot;id&quot;: &quot;eu-countries&quot;,
+    &quot;source&quot;: &quot;countries&quot;,
+    &quot;type&quot;: &quot;fill-extrusion&quot;,
+    &quot;paint&quot;: {
+        &quot;fill-extrusion-color&quot;: [
+            &quot;interpolate&quot;,
+            [&quot;linear&quot;],
+            [&quot;get&quot;, &quot;age&quot;],
+            23.0,
+            &quot;#fff5eb&quot;,
+            24.0,
+            &quot;#fee6ce&quot;,
+            25.0,
+            &quot;#fdd0a2&quot;,
+            26.0,
+            &quot;#fdae6b&quot;,
+            27.0,
+            &quot;#fd8d3c&quot;,
+            28.0,
+            &quot;#f16913&quot;,
+            29.0,
+            &quot;#d94801&quot;,
+            30.0,
+            &quot;#8c2d04&quot;,
+        ],
+        &quot;fill-extrusion-opacity&quot;: 1,
+        &quot;fill-extrusion-height&quot;: [&quot;*&quot;, [&quot;get&quot;, &quot;age&quot;], 5000],
+    },
+}
+first_symbol_layer_id = m.find_first_symbol_layer()[&quot;id&quot;]
+m.add_layer(layer, first_symbol_layer_id)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-100, 40], zoom=3, pitch=60, style=&quot;basic&quot;, projection=&quot;globe&quot;)
+source = {
+    &quot;type&quot;: &quot;geojson&quot;,
+    &quot;data&quot;: &quot;https://opengeos.org/data/us/us_counties.geojson&quot;,
+}
+m.add_source(&quot;counties&quot;, source)
+layer = {
+    &quot;id&quot;: &quot;us-counties&quot;,
+    &quot;source&quot;: &quot;counties&quot;,
+    &quot;type&quot;: &quot;fill-extrusion&quot;,
+    &quot;paint&quot;: {
+        &quot;fill-extrusion-color&quot;: [
+            &quot;interpolate&quot;,
+            [&quot;linear&quot;],
+            [&quot;get&quot;, &quot;CENSUSAREA&quot;],
+            400,
+            &quot;#fff5eb&quot;,
+            600,
+            &quot;#fee6ce&quot;,
+            800,
+            &quot;#fdd0a2&quot;,
+            1000,
+            &quot;#fdae6b&quot;,
+        ],
+        &quot;fill-extrusion-opacity&quot;: 1,
+        &quot;fill-extrusion-height&quot;: [&quot;*&quot;, [&quot;get&quot;, &quot;CENSUSAREA&quot;], 50],
+    },
+}
+first_symbol_layer_id = m.find_first_symbol_layer()[&quot;id&quot;]
+m.add_layer(layer, first_symbol_layer_id)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="visualizing-vector-data">
 <h2><span class="section-number">22.10. </span>Visualizing Vector Data<a class="headerlink" href="#visualizing-vector-data" title="Link to this heading">#</a></h2>
 <section id="point-data">
 <h3><span class="section-number">22.10.1. </span>Point Data<a class="headerlink" href="#point-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[12.550343, 55.665957], zoom=8, style=&quot;positron&quot;)
+m.add_marker(lng_lat=[12.550343, 55.665957])
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[12.550343, 55.665957], zoom=8, style=&quot;positron&quot;)
+m.add_marker(lng_lat=[12.550343, 55.665957], options={&quot;draggable&quot;: True})
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = (
+    &quot;https://github.com/opengeos/datasets/releases/download/world/world_cities.geojson&quot;
+)
+geojson = leafmap.read_geojson(url)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;streets&quot;)
+m.add_geojson(geojson, name=&quot;cities&quot;)
+m.add_popup(&quot;cities&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;streets&quot;)
+source = {&quot;type&quot;: &quot;geojson&quot;, &quot;data&quot;: geojson}
+
+layer = {
+    &quot;id&quot;: &quot;cities&quot;,
+    &quot;type&quot;: &quot;symbol&quot;,
+    &quot;source&quot;: &quot;point&quot;,
+    &quot;layout&quot;: {
+        &quot;icon-image&quot;: &quot;marker_15&quot;,
+        &quot;icon-size&quot;: 1,
+    },
+}
+m.add_source(&quot;point&quot;, source)
+m.add_layer(layer)
+m.add_popup(&quot;cities&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 <section id="customizing-marker-icon-image">
 <h4><span class="section-number">22.10.1.1. </span>Customizing Marker Icon Image<a class="headerlink" href="#customizing-marker-icon-image" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[0, 0], zoom=1, style=&quot;positron&quot;)
+image = &quot;https://maplibre.org/maplibre-gl-js/docs/assets/osgeo-logo.png&quot;
+m.add_image(&quot;custom-marker&quot;, image)
+
+url = &quot;https://github.com/opengeos/datasets/releases/download/places/osgeo_conferences.geojson&quot;
+geojson = leafmap.read_geojson(url)
+
+source = {&quot;type&quot;: &quot;geojson&quot;, &quot;data&quot;: geojson}
+
+m.add_source(&quot;conferences&quot;, source)
+layer = {
+    &quot;id&quot;: &quot;conferences&quot;,
+    &quot;type&quot;: &quot;symbol&quot;,
+    &quot;source&quot;: &quot;conferences&quot;,
+    &quot;layout&quot;: {
+        &quot;icon-image&quot;: &quot;custom-marker&quot;,
+        &quot;text-field&quot;: [&quot;get&quot;, &quot;year&quot;],
+        &quot;text-font&quot;: [&quot;Open Sans Semibold&quot;, &quot;Arial Unicode MS Bold&quot;],
+        &quot;text-offset&quot;: [0, 1.25],
+        &quot;text-anchor&quot;: &quot;top&quot;,
+    },
+}
+
+m.add_layer(layer)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="line-data">
 <h3><span class="section-number">22.10.2. </span>Line Data<a class="headerlink" href="#line-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-122.486052, 37.830348], zoom=15, style=&quot;streets&quot;)
+
+source = {
+    &quot;type&quot;: &quot;geojson&quot;,
+    &quot;data&quot;: {
+        &quot;type&quot;: &quot;Feature&quot;,
+        &quot;properties&quot;: {},
+        &quot;geometry&quot;: {
+            &quot;type&quot;: &quot;LineString&quot;,
+            &quot;coordinates&quot;: [
+                [-122.48369693756104, 37.83381888486939],
+                [-122.48348236083984, 37.83317489144141],
+                [-122.48339653015138, 37.83270036637107],
+                [-122.48356819152832, 37.832056363179625],
+                [-122.48404026031496, 37.83114119107971],
+                [-122.48404026031496, 37.83049717427869],
+                [-122.48348236083984, 37.829920943955045],
+                [-122.48356819152832, 37.82954808664175],
+                [-122.48507022857666, 37.82944639795659],
+            ],
+        },
+    },
+}
+
+layer = {
+    &quot;id&quot;: &quot;route&quot;,
+    &quot;type&quot;: &quot;line&quot;,
+    &quot;source&quot;: &quot;route&quot;,
+    &quot;layout&quot;: {&quot;line-join&quot;: &quot;round&quot;, &quot;line-cap&quot;: &quot;round&quot;},
+    &quot;paint&quot;: {&quot;line-color&quot;: &quot;#888&quot;, &quot;line-width&quot;: 8},
+}
+m.add_source(&quot;route&quot;, source)
+m.add_layer(layer)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="polygon-data">
 <h3><span class="section-number">22.10.3. </span>Polygon Data<a class="headerlink" href="#polygon-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;hybrid&quot;)
+geojson = &quot;https://github.com/opengeos/datasets/releases/download/places/wa_overture_buildings.geojson&quot;
+paint = {&quot;fill-color&quot;: &quot;#ffff00&quot;, &quot;fill-opacity&quot;: 0.5, &quot;fill-outline-color&quot;: &quot;#ff0000&quot;}
+m.add_geojson(geojson, layer_type=&quot;fill&quot;, paint=paint, name=&quot;Fill&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;hybrid&quot;)
+geojson = &quot;https://github.com/opengeos/datasets/releases/download/places/wa_overture_buildings.geojson&quot;
+paint_line = {&quot;line-color&quot;: &quot;#ff0000&quot;, &quot;line-width&quot;: 3}
+m.add_geojson(geojson, layer_type=&quot;line&quot;, paint=paint_line, name=&quot;Outline&quot;)
+paint_fill = {&quot;fill-color&quot;: &quot;#ffff00&quot;, &quot;fill-opacity&quot;: 0.5}
+m.add_geojson(geojson, layer_type=&quot;fill&quot;, paint=paint_fill, name=&quot;Fill&quot;)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="multiple-geometries">
 <h3><span class="section-number">22.10.4. </span>Multiple Geometries<a class="headerlink" href="#multiple-geometries" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(
+    center=[-123.13, 49.254], zoom=11, style=&quot;dark-matter&quot;, pitch=45, bearing=0
+)
+url = &quot;https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/geojson/vancouver-blocks.json&quot;
+paint_line = {
+    &quot;line-color&quot;: &quot;white&quot;,
+    &quot;line-width&quot;: 2,
+}
+paint_fill = {
+    &quot;fill-extrusion-color&quot;: {
+        &quot;property&quot;: &quot;valuePerSqm&quot;,
+        &quot;stops&quot;: [
+            [0, &quot;grey&quot;],
+            [1000, &quot;yellow&quot;],
+            [5000, &quot;orange&quot;],
+            [10000, &quot;darkred&quot;],
+            [50000, &quot;lightblue&quot;],
+        ],
+    },
+    &quot;fill-extrusion-height&quot;: [&quot;*&quot;, 10, [&quot;sqrt&quot;, [&quot;get&quot;, &quot;valuePerSqm&quot;]]],
+    &quot;fill-extrusion-opacity&quot;: 0.9,
+}
+m.add_geojson(url, layer_type=&quot;line&quot;, paint=paint_line, name=&quot;blocks-line&quot;)
+m.add_geojson(url, layer_type=&quot;fill-extrusion&quot;, paint=paint_fill, name=&quot;blocks-fill&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="marker-cluster">
 <h3><span class="section-number">22.10.5. </span>Marker Cluster<a class="headerlink" href="#marker-cluster" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-103.59179, 40.66995], zoom=3, style=&quot;streets&quot;)
+data = &quot;https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson&quot;
+source_args = {
+    &quot;cluster&quot;: True,
+    &quot;cluster_radius&quot;: 50,
+    &quot;cluster_min_points&quot;: 2,
+    &quot;cluster_max_zoom&quot;: 14,
+    &quot;cluster_properties&quot;: {
+        &quot;maxMag&quot;: [&quot;max&quot;, [&quot;get&quot;, &quot;mag&quot;]],
+        &quot;minMag&quot;: [&quot;min&quot;, [&quot;get&quot;, &quot;mag&quot;]],
+    },
+}
+
+m.add_geojson(
+    data,
+    layer_type=&quot;circle&quot;,
+    name=&quot;earthquake-circles&quot;,
+    filter=[&quot;!&quot;, [&quot;has&quot;, &quot;point_count&quot;]],
+    paint={&quot;circle-color&quot;: &quot;darkblue&quot;},
+    source_args=source_args,
+)
+
+m.add_geojson(
+    data,
+    layer_type=&quot;circle&quot;,
+    name=&quot;earthquake-clusters&quot;,
+    filter=[&quot;has&quot;, &quot;point_count&quot;],
+    paint={
+        &quot;circle-color&quot;: [
+            &quot;step&quot;,
+            [&quot;get&quot;, &quot;point_count&quot;],
+            &quot;#51bbd6&quot;,
+            100,
+            &quot;#f1f075&quot;,
+            750,
+            &quot;#f28cb1&quot;,
+        ],
+        &quot;circle-radius&quot;: [&quot;step&quot;, [&quot;get&quot;, &quot;point_count&quot;], 20, 100, 30, 750, 40],
+    },
+    source_args=source_args,
+)
+
+m.add_geojson(
+    data,
+    layer_type=&quot;symbol&quot;,
+    name=&quot;earthquake-labels&quot;,
+    filter=[&quot;has&quot;, &quot;point_count&quot;],
+    layout={
+        &quot;text-field&quot;: [&quot;get&quot;, &quot;point_count_abbreviated&quot;],
+        &quot;text-size&quot;: 12,
+    },
+    source_args=source_args,
+)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="local-vector-data">
 <h3><span class="section-number">22.10.6. </span>Local Vector Data<a class="headerlink" href="#local-vector-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://github.com/opengeos/datasets/releases/download/us/us_states.geojson&quot;
+filepath = &quot;data/us_states.geojson&quot;
+leafmap.download_file(url, filepath, quiet=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-100, 40], zoom=3)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.open_geojson()
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="changing-building-color">
 <h3><span class="section-number">22.10.7. </span>Changing Building Color<a class="headerlink" href="#changing-building-color" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-90.73414, 14.55524], zoom=13, style=&quot;basic&quot;)
+m.set_paint_property(
+    &quot;building&quot;,
+    &quot;fill-color&quot;,
+    [&quot;interpolate&quot;, [&quot;exponential&quot;, 0.5], [&quot;zoom&quot;], 15, &quot;#e2714b&quot;, 22, &quot;#eee695&quot;],
+)
+m.set_paint_property(
+    &quot;building&quot;,
+    &quot;fill-opacity&quot;,
+    [&quot;interpolate&quot;, [&quot;exponential&quot;, 0.5], [&quot;zoom&quot;], 15, 0, 22, 1],
+)
+m.add_layer_control(bg_layers=True)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m.add_call(&quot;zoomTo&quot;, 19, {&quot;duration&quot;: 9000})
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-a-new-layer-below-labels">
 <h3><span class="section-number">22.10.8. </span>Adding a New Layer Below Labels<a class="headerlink" href="#adding-a-new-layer-below-labels" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-88.137343, 35.137451], zoom=4, style=&quot;streets&quot;)
+source = {
+    &quot;type&quot;: &quot;geojson&quot;,
+    &quot;data&quot;: &quot;https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_urban_areas.geojson&quot;,
+}
+m.add_source(&quot;urban-areas&quot;, source)
+first_symbol_layer = m.find_first_symbol_layer()
+layer = {
+    &quot;id&quot;: &quot;urban-areas-fill&quot;,
+    &quot;type&quot;: &quot;fill&quot;,
+    &quot;source&quot;: &quot;urban-areas&quot;,
+    &quot;layout&quot;: {},
+    &quot;paint&quot;: {&quot;fill-color&quot;: &quot;#f08&quot;, &quot;fill-opacity&quot;: 0.4},
+}
+m.add_layer(layer, before_id=first_symbol_layer[&quot;id&quot;])
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="visualizing-population-density">
 <h3><span class="section-number">22.10.9. </span>Visualizing Population Density<a class="headerlink" href="#visualizing-population-density" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[30.0222, -1.9596], zoom=7, style=&quot;streets&quot;)
+source = {
+    &quot;type&quot;: &quot;geojson&quot;,
+    &quot;data&quot;: &quot;https://maplibre.org/maplibre-gl-js/docs/assets/rwanda-provinces.geojson&quot;,
+}
+m.add_source(&quot;rwanda-provinces&quot;, source)
+layer = {
+    &quot;id&quot;: &quot;rwanda-provinces&quot;,
+    &quot;type&quot;: &quot;fill&quot;,
+    &quot;source&quot;: &quot;rwanda-provinces&quot;,
+    &quot;layout&quot;: {},
+    &quot;paint&quot;: {
+        &quot;fill-color&quot;: [
+            &quot;let&quot;,
+            &quot;density&quot;,
+            [&quot;/&quot;, [&quot;get&quot;, &quot;population&quot;], [&quot;get&quot;, &quot;sq-km&quot;]],
+            [
+                &quot;interpolate&quot;,
+                [&quot;linear&quot;],
+                [&quot;zoom&quot;],
+                8,
+                [
+                    &quot;interpolate&quot;,
+                    [&quot;linear&quot;],
+                    [&quot;var&quot;, &quot;density&quot;],
+                    274,
+                    [&quot;to-color&quot;, &quot;#edf8e9&quot;],
+                    1551,
+                    [&quot;to-color&quot;, &quot;#006d2c&quot;],
+                ],
+                10,
+                [
+                    &quot;interpolate&quot;,
+                    [&quot;linear&quot;],
+                    [&quot;var&quot;, &quot;density&quot;],
+                    274,
+                    [&quot;to-color&quot;, &quot;#eff3ff&quot;],
+                    1551,
+                    [&quot;to-color&quot;, &quot;#08519c&quot;],
+                ],
+            ],
+        ],
+        &quot;fill-opacity&quot;: 0.7,
+    },
+}
+m.add_layer(layer)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="visualizing-raster-data">
 <h2><span class="section-number">22.11. </span>Visualizing Raster Data<a class="headerlink" href="#visualizing-raster-data" title="Link to this heading">#</a></h2>
 <section id="local-raster-data">
 <h3><span class="section-number">22.11.1. </span>Local Raster Data<a class="headerlink" href="#local-raster-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://github.com/opengeos/datasets/releases/download/raster/landsat.tif&quot;
+filepath = &quot;landsat.tif&quot;
+leafmap.download_file(url, filepath, quiet=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;streets&quot;)
+m.add_raster(filepath, indexes=[3, 2, 1], vmin=0, vmax=100, name=&quot;Landsat-321&quot;)
+m.add_raster(filepath, indexes=[4, 3, 2], vmin=0, vmax=100, name=&quot;Landsat-432&quot;)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://github.com/opengeos/datasets/releases/download/raster/srtm90.tif&quot;
+filepath = &quot;srtm90.tif&quot;
+leafmap.download_file(url, filepath, quiet=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;satellite&quot;)
+m.add_raster(filepath, colormap=&quot;terrain&quot;, name=&quot;DEM&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="cloud-optimized-geotiff-cog">
 <h3><span class="section-number">22.11.2. </span>Cloud Optimized GeoTIFF (COG)<a class="headerlink" href="#cloud-optimized-geotiff-cog" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;satellite&quot;)
+before = (
+    &quot;https://github.com/opengeos/datasets/releases/download/raster/Libya-2023-07-01.tif&quot;
+)
+after = (
+    &quot;https://github.com/opengeos/datasets/releases/download/raster/Libya-2023-09-13.tif&quot;
+)
+m.add_cog_layer(before, name=&quot;Before&quot;, attribution=&quot;Maxar&quot;)
+m.add_cog_layer(after, name=&quot;After&quot;, attribution=&quot;Maxar&quot;, fit_bounds=True)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="stac-layer">
 <h3><span class="section-number">22.11.3. </span>STAC Layer<a class="headerlink" href="#stac-layer" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;streets&quot;)
+url = &quot;https://canada-spot-ortho.s3.amazonaws.com/canada_spot_orthoimages/canada_spot5_orthoimages/S5_2007/S5_11055_6057_20070622/S5_11055_6057_20070622.json&quot;
+m.add_stac_layer(url, bands=[&quot;pan&quot;], name=&quot;Panchromatic&quot;, vmin=0, vmax=150)
+m.add_stac_layer(url, bands=[&quot;B4&quot;, &quot;B3&quot;, &quot;B2&quot;], name=&quot;RGB&quot;, vmin=0, vmax=150)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>collection = &quot;landsat-8-c2-l2&quot;
+item = &quot;LC08_L2SP_047027_20201204_02_T1&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>leafmap.stac_assets(collection=collection, item=item, titiler_endpoint=&quot;pc&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;satellite&quot;)
+m.add_stac_layer(
+    collection=collection,
+    item=item,
+    assets=[&quot;SR_B5&quot;, &quot;SR_B4&quot;, &quot;SR_B3&quot;],
+    name=&quot;Color infrared&quot;,
+)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="adding-custom-components">
 <h2><span class="section-number">22.12. </span>Adding Custom Components<a class="headerlink" href="#adding-custom-components" title="Link to this heading">#</a></h2>
 <section id="adding-image">
 <h3><span class="section-number">22.12.1. </span>Adding Image<a class="headerlink" href="#adding-image" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[0.349419, -1.80921], zoom=3, style=&quot;streets&quot;)
+image = &quot;https://upload.wikimedia.org/wikipedia/commons/7/7c/201408_cat.png&quot;
+source = {
+    &quot;type&quot;: &quot;geojson&quot;,
+    &quot;data&quot;: {
+        &quot;type&quot;: &quot;FeatureCollection&quot;,
+        &quot;features&quot;: [
+            {&quot;type&quot;: &quot;Feature&quot;, &quot;geometry&quot;: {&quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [0, 0]}}
+        ],
+    },
+}
+
+layer = {
+    &quot;id&quot;: &quot;points&quot;,
+    &quot;type&quot;: &quot;symbol&quot;,
+    &quot;source&quot;: &quot;point&quot;,
+    &quot;layout&quot;: {
+        &quot;icon-image&quot;: &quot;cat&quot;,
+        &quot;icon-size&quot;: 0.25,
+        &quot;text-field&quot;: &quot;I love kitty!&quot;,
+        &quot;text-font&quot;: [&quot;Open Sans Regular&quot;],
+        &quot;text-offset&quot;: [0, 3],
+        &quot;text-anchor&quot;: &quot;top&quot;,
+    },
+}
+m.add_image(&quot;cat&quot;, image)
+m.add_source(&quot;point&quot;, source)
+m.add_layer(layer)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-100, 40], zoom=3, style=&quot;positron&quot;)
+image = &quot;https://i.imgur.com/LmTETPX.png&quot;
+m.add_image(image=image, position=&quot;bottom-right&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-100, 40], zoom=3, style=&quot;positron&quot;)
+content = &#39;&lt;img src=&quot;https://i.imgur.com/LmTETPX.png&quot;&gt;&#39;
+m.add_html(content, bg_color=&quot;transparent&quot;, position=&quot;bottom-right&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-text">
 <h3><span class="section-number">22.12.2. </span>Adding Text<a class="headerlink" href="#adding-text" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-100, 40], zoom=3, style=&quot;liberty&quot;)
+text = &quot;Hello World&quot;
+m.add_text(text, fontsize=20, position=&quot;bottom-right&quot;)
+text2 = &quot;Awesome Text!&quot;
+m.add_text(text2, fontsize=25, bg_color=&quot;rgba(255, 255, 255, 0.8)&quot;, position=&quot;top-left&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-gif">
 <h3><span class="section-number">22.12.3. </span>Adding GIF<a class="headerlink" href="#adding-gif" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-100, 40], zoom=3, style=&quot;positron&quot;)
+image = &quot;https://i.imgur.com/KeiAsTv.gif&quot;
+m.add_image(image=image, width=250, height=250, position=&quot;bottom-right&quot;)
+text = &quot;I love sloth!🦥&quot;
+m.add_text(text, fontsize=35, padding=&quot;20px&quot;)
+image2 = &quot;https://i.imgur.com/kZC2tpr.gif&quot;
+m.add_image(image=image2, bg_color=&quot;transparent&quot;, position=&quot;bottom-left&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-html">
 <h3><span class="section-number">22.12.4. </span>Adding HTML<a class="headerlink" href="#adding-html" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-100, 40], zoom=3, style=&quot;positron&quot;)
+html = &quot;&quot;&quot;
+&lt;html&gt;
+&lt;style&gt;
+body {
+  font-size: 20px;
+}
+&lt;/style&gt;
+&lt;body&gt;
+
+&lt;span style=&#39;font-size:100px;&#39;&gt;&amp;#128640;&lt;/span&gt;
+&lt;p&gt;I will display &amp;#128641;&lt;/p&gt;
+&lt;p&gt;I will display &amp;#128642;&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+&quot;&quot;&quot;
+m.add_html(html, bg_color=&quot;transparent&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-color-bar">
 <h3><span class="section-number">22.12.5. </span>Adding Color bar<a class="headerlink" href="#adding-color-bar" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import numpy as np
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;topo&quot;, height=&quot;500px&quot;)
+dem = &quot;https://github.com/opengeos/datasets/releases/download/raster/dem.tif&quot;
+m.add_cog_layer(
+    dem,
+    name=&quot;DEM&quot;,
+    colormap_name=&quot;terrain&quot;,
+    rescale=&quot;0, 1500&quot;,
+    fit_bounds=True,
+    nodata=np.nan,
+)
+m.add_colorbar(
+    cmap=&quot;terrain&quot;, vmin=0, vmax=1500, label=&quot;Elevation (m)&quot;, position=&quot;bottom-right&quot;
+)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;topo&quot;)
+m.add_cog_layer(
+    dem,
+    name=&quot;DEM&quot;,
+    colormap_name=&quot;terrain&quot;,
+    rescale=&quot;0, 1500&quot;,
+    nodata=np.nan,
+    fit_bounds=True,
+)
+m.add_colorbar(
+    cmap=&quot;terrain&quot;,
+    vmin=0,
+    vmax=1500,
+    label=&quot;Elevation (m)&quot;,
+    position=&quot;bottom-right&quot;,
+    transparent=True,
+)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(style=&quot;topo&quot;)
+m.add_cog_layer(
+    dem,
+    name=&quot;DEM&quot;,
+    colormap_name=&quot;terrain&quot;,
+    rescale=&quot;0, 1500&quot;,
+    nodata=np.nan,
+    fit_bounds=True,
+)
+m.add_colorbar(
+    cmap=&quot;terrain&quot;,
+    vmin=0,
+    vmax=1500,
+    label=&quot;Elevation (m)&quot;,
+    position=&quot;bottom-right&quot;,
+    width=0.2,
+    height=3,
+    orientation=&quot;vertical&quot;,
+)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-legend">
 <h3><span class="section-number">22.12.6. </span>Adding Legend<a class="headerlink" href="#adding-legend" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-100, 40], zoom=3, style=&quot;positron&quot;, height=&quot;500px&quot;)
+m.add_basemap(&quot;Esri.WorldImagery&quot;)
+url = &quot;https://www.mrlc.gov/geoserver/mrlc_display/NLCD_2021_Land_Cover_L48/wms&quot;
+layers = &quot;NLCD_2021_Land_Cover_L48&quot;
+m.add_wms_layer(url, layers=layers, name=&quot;NLCD 2021&quot;)
+m.add_legend(
+    title=&quot;NLCD Land Cover Type&quot;,
+    builtin_legend=&quot;NLCD&quot;,
+    bg_color=&quot;rgba(255, 255, 255, 0.5)&quot;,
+    position=&quot;bottom-left&quot;,
+)
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-100, 40], zoom=3, style=&quot;positron&quot;)
+m.add_basemap(&quot;Esri.WorldImagery&quot;)
+url = &quot;https://www.mrlc.gov/geoserver/mrlc_display/NLCD_2021_Land_Cover_L48/wms&quot;
+layers = &quot;NLCD_2021_Land_Cover_L48&quot;
+m.add_wms_layer(url, layers=layers, name=&quot;NLCD 2021&quot;)
+
+legend_dict = {
+    &quot;11 Open Water&quot;: &quot;466b9f&quot;,
+    &quot;12 Perennial Ice/Snow&quot;: &quot;d1def8&quot;,
+    &quot;21 Developed, Open Space&quot;: &quot;dec5c5&quot;,
+    &quot;22 Developed, Low Intensity&quot;: &quot;d99282&quot;,
+    &quot;23 Developed, Medium Intensity&quot;: &quot;eb0000&quot;,
+    &quot;24 Developed High Intensity&quot;: &quot;ab0000&quot;,
+    &quot;31 Barren Land (Rock/Sand/Clay)&quot;: &quot;b3ac9f&quot;,
+    &quot;41 Deciduous Forest&quot;: &quot;68ab5f&quot;,
+    &quot;42 Evergreen Forest&quot;: &quot;1c5f2c&quot;,
+    &quot;43 Mixed Forest&quot;: &quot;b5c58f&quot;,
+    &quot;51 Dwarf Scrub&quot;: &quot;af963c&quot;,
+    &quot;52 Shrub/Scrub&quot;: &quot;ccb879&quot;,
+    &quot;71 Grassland/Herbaceous&quot;: &quot;dfdfc2&quot;,
+    &quot;72 Sedge/Herbaceous&quot;: &quot;d1d182&quot;,
+    &quot;73 Lichens&quot;: &quot;a3cc51&quot;,
+    &quot;74 Moss&quot;: &quot;82ba9e&quot;,
+    &quot;81 Pasture/Hay&quot;: &quot;dcd939&quot;,
+    &quot;82 Cultivated Crops&quot;: &quot;ab6c28&quot;,
+    &quot;90 Woody Wetlands&quot;: &quot;b8d9eb&quot;,
+    &quot;95 Emergent Herbaceous Wetlands&quot;: &quot;6c9fb8&quot;,
+}
+m.add_legend(
+    title=&quot;NLCD Land Cover Type&quot;,
+    legend_dict=legend_dict,
+    bg_color=&quot;rgba(255, 255, 255, 0.5)&quot;,
+    position=&quot;bottom-left&quot;,
+)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="adding-video">
 <h3><span class="section-number">22.12.7. </span>Adding Video<a class="headerlink" href="#adding-video" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(
+    center=[-122.514426, 37.562984], zoom=17, bearing=-96, style=&quot;satellite&quot;
+)
+urls = [
+    &quot;https://static-assets.mapbox.com/mapbox-gl-js/drone.mp4&quot;,
+    &quot;https://static-assets.mapbox.com/mapbox-gl-js/drone.webm&quot;,
+]
+coordinates = [
+    [-122.51596391201019, 37.56238816766053],
+    [-122.51467645168304, 37.56410183312965],
+    [-122.51309394836426, 37.563391708549425],
+    [-122.51423120498657, 37.56161849366671],
+]
+m.add_video(urls, coordinates)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-115, 25], zoom=4, style=&quot;satellite&quot;)
+urls = [
+    &quot;https://data.opengeos.org/patricia_nasa.mp4&quot;,
+    &quot;https://data.opengeos.org/patricia_nasa.webm&quot;,
+]
+coordinates = [
+    [-130, 32],
+    [-100, 32],
+    [-100, 13],
+    [-130, 13],
+]
+m.add_video(urls, coordinates)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="visualizing-pmtiles">
 <h2><span class="section-number">22.13. </span>Visualizing PMTiles<a class="headerlink" href="#visualizing-pmtiles" title="Link to this heading">#</a></h2>
 <section id="building-footprint-data">
 <h3><span class="section-number">22.13.1. </span>Building Footprint Data<a class="headerlink" href="#building-footprint-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://data.source.coop/vida/google-microsoft-open-buildings/pmtiles/go_ms_building_footprints.pmtiles&quot;
+metadata = leafmap.pmtiles_metadata(url)
+print(f&quot;layer names: {metadata[&#39;layer_names&#39;]}&quot;)
+print(f&quot;bounds: {metadata[&#39;bounds&#39;]}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[0, 20], zoom=2)
+m.add_basemap(&quot;Esri.WorldImagery&quot;, visible=False)
+
+style = {
+    &quot;version&quot;: 8,
+    &quot;sources&quot;: {
+        &quot;example_source&quot;: {
+            &quot;type&quot;: &quot;vector&quot;,
+            &quot;url&quot;: &quot;pmtiles://&quot; + url,
+            &quot;attribution&quot;: &quot;PMTiles&quot;,
+        }
+    },
+    &quot;layers&quot;: [
+        {
+            &quot;id&quot;: &quot;buildings&quot;,
+            &quot;source&quot;: &quot;example_source&quot;,
+            &quot;source-layer&quot;: &quot;building_footprints&quot;,
+            &quot;type&quot;: &quot;fill&quot;,
+            &quot;paint&quot;: {&quot;fill-color&quot;: &quot;#3388ff&quot;, &quot;fill-opacity&quot;: 0.5},
+        },
+    ],
+}
+
+# style = leafmap.pmtiles_style(url)  # Use default style
+
+m.add_pmtiles(
+    url,
+    style=style,
+    visible=True,
+    opacity=1.0,
+    tooltip=True,
+)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="fields-of-the-world">
 <h3><span class="section-number">22.13.2. </span>Fields of The World<a class="headerlink" href="#fields-of-the-world" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://data.source.coop/kerner-lab/fields-of-the-world/ftw-sources.pmtiles&quot;
+metadata = leafmap.pmtiles_metadata(url)
+print(f&quot;layer names: {metadata[&#39;layer_names&#39;]}&quot;)
+print(f&quot;bounds: {metadata[&#39;bounds&#39;]}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
+# Define colors for each last digit (0-9)
+style = {
+    &quot;layers&quot;: [
+        {
+            &quot;id&quot;: &quot;Field Polygon&quot;,
+            &quot;source&quot;: &quot;example_source&quot;,
+            &quot;source-layer&quot;: &quot;ftw-sources&quot;,
+            &quot;type&quot;: &quot;fill&quot;,
+            &quot;paint&quot;: {
+                &quot;fill-color&quot;: [
+                    &quot;case&quot;,
+                    [&quot;==&quot;, [&quot;%&quot;, [&quot;to-number&quot;, [&quot;get&quot;, &quot;id&quot;]], 10], 0],
+                    &quot;#FF5733&quot;,  # Color for last digit 0
+                    [&quot;==&quot;, [&quot;%&quot;, [&quot;to-number&quot;, [&quot;get&quot;, &quot;id&quot;]], 10], 1],
+                    &quot;#33FF57&quot;,  # Color for last digit 1
+                    [&quot;==&quot;, [&quot;%&quot;, [&quot;to-number&quot;, [&quot;get&quot;, &quot;id&quot;]], 10], 2],
+                    &quot;#3357FF&quot;,  # Color for last digit 2
+                    [&quot;==&quot;, [&quot;%&quot;, [&quot;to-number&quot;, [&quot;get&quot;, &quot;id&quot;]], 10], 3],
+                    &quot;#FF33A1&quot;,  # Color for last digit 3
+                    [&quot;==&quot;, [&quot;%&quot;, [&quot;to-number&quot;, [&quot;get&quot;, &quot;id&quot;]], 10], 4],
+                    &quot;#FF8C33&quot;,  # Color for last digit 4
+                    [&quot;==&quot;, [&quot;%&quot;, [&quot;to-number&quot;, [&quot;get&quot;, &quot;id&quot;]], 10], 5],
+                    &quot;#33FFF6&quot;,  # Color for last digit 5
+                    [&quot;==&quot;, [&quot;%&quot;, [&quot;to-number&quot;, [&quot;get&quot;, &quot;id&quot;]], 10], 6],
+                    &quot;#A833FF&quot;,  # Color for last digit 6
+                    [&quot;==&quot;, [&quot;%&quot;, [&quot;to-number&quot;, [&quot;get&quot;, &quot;id&quot;]], 10], 7],
+                    &quot;#FF333D&quot;,  # Color for last digit 7
+                    [&quot;==&quot;, [&quot;%&quot;, [&quot;to-number&quot;, [&quot;get&quot;, &quot;id&quot;]], 10], 8],
+                    &quot;#33FFBD&quot;,  # Color for last digit 8
+                    [&quot;==&quot;, [&quot;%&quot;, [&quot;to-number&quot;, [&quot;get&quot;, &quot;id&quot;]], 10], 9],
+                    &quot;#FF9933&quot;,  # Color for last digit 9
+                    &quot;#FF0000&quot;,  # Fallback color if no match
+                ],
+                &quot;fill-opacity&quot;: 0.5,
+            },
+        },
+        {
+            &quot;id&quot;: &quot;Field Outline&quot;,
+            &quot;source&quot;: &quot;example_source&quot;,
+            &quot;source-layer&quot;: &quot;ftw-sources&quot;,
+            &quot;type&quot;: &quot;line&quot;,
+            &quot;paint&quot;: {&quot;line-color&quot;: &quot;#ffffff&quot;, &quot;line-width&quot;: 1, &quot;line-opacity&quot;: 1},
+        },
+    ],
+}
+
+m.add_basemap(&quot;Esri.WorldImagery&quot;)
+m.add_pmtiles(url, style=style, name=&quot;FTW&quot;, zoom_to_layer=False)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="d-pmtiles">
 <h3><span class="section-number">22.13.3. </span>3D PMTiles<a class="headerlink" href="#d-pmtiles" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://data.source.coop/cholmes/overture/overture-buildings.pmtiles&quot;
+metadata = leafmap.pmtiles_metadata(url)
+print(f&quot;layer names: {metadata[&#39;layer_names&#39;]}&quot;)
+print(f&quot;bounds: {metadata[&#39;bounds&#39;]}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id1">
 <h3><span class="section-number">22.13.4. </span>3D Buildings<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(
+    center=[-74.0095, 40.7046],
+    zoom=16,
+    pitch=60,
+    bearing=-17,
+    style=&quot;positron&quot;,
+    height=&quot;500px&quot;,
+)
+m.add_basemap(&quot;Esri.WorldImagery&quot;, visible=False)
+m.add_overture_3d_buildings(template=&quot;simple&quot;)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="d-buildings-transportation-and-other-themes">
 <h3><span class="section-number">22.13.5. </span>2D Buildings, Transportation, and Other Themes<a class="headerlink" href="#d-buildings-transportation-and-other-themes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-74.0095, 40.7046], zoom=16)
+m.add_basemap(&quot;Esri.WorldImagery&quot;, visible=False)
+m.add_overture_data(theme=&quot;buildings&quot;, opacity=0.8)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-74.0095, 40.7046], zoom=16)
+m.add_basemap(&quot;Esri.WorldImagery&quot;, visible=False)
+m.add_overture_data(theme=&quot;transportation&quot;, opacity=0.8)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-74.0095, 40.7046], zoom=16)
+m.add_basemap(&quot;Esri.WorldImagery&quot;, visible=False)
+m.add_overture_data(theme=&quot;places&quot;, opacity=0.8)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-74.0095, 40.7046], zoom=16)
+m.add_basemap(&quot;Esri.WorldImagery&quot;, visible=False)
+m.add_overture_data(theme=&quot;addresses&quot;, opacity=0.8)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(center=[-74.0095, 40.7046], zoom=16)
+m.add_basemap(&quot;Esri.WorldImagery&quot;, visible=False)
+m.add_overture_data(theme=&quot;base&quot;, opacity=0.8)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map()
+m.add_basemap(&quot;Esri.WorldImagery&quot;, visible=False)
+m.add_overture_data(theme=&quot;divisions&quot;, opacity=0.8)
+m.add_layer_control()
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="adding-deckgl-layers">
 <h2><span class="section-number">22.14. </span>Adding DeckGL Layers<a class="headerlink" href="#adding-deckgl-layers" title="Link to this heading">#</a></h2>
 <section id="single-deckgl-layer">
 <h3><span class="section-number">22.14.1. </span>Single DeckGL Layer<a class="headerlink" href="#single-deckgl-layer" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(
+    style=&quot;positron&quot;,
+    center=(-122.4, 37.74),
+    zoom=12,
+    pitch=40,
+)
+deck_grid_layer = {
+    &quot;@@type&quot;: &quot;GridLayer&quot;,
+    &quot;id&quot;: &quot;GridLayer&quot;,
+    &quot;data&quot;: &quot;https://raw.githubusercontent.com/visgl/deck.gl/master/examples/layer-browser/data/sf.bike.parking.json&quot;,
+    &quot;extruded&quot;: True,
+    &quot;getPosition&quot;: &quot;@@=COORDINATES&quot;,
+    &quot;getColorWeight&quot;: &quot;@@=SPACES&quot;,
+    &quot;getElevationWeight&quot;: &quot;@@=SPACES&quot;,
+    &quot;elevationScale&quot;: 4,
+    &quot;cellSize&quot;: 200,
+    &quot;pickable&quot;: True,
+}
+
+m.add_deck_layers([deck_grid_layer], tooltip=&quot;Number of points: {{ count }}&quot;)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="multiple-deckgl-layers">
 <h3><span class="section-number">22.14.2. </span>Multiple DeckGL Layers<a class="headerlink" href="#multiple-deckgl-layers" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>url = &quot;https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_10m_airports.geojson&quot;
+data = leafmap.read_geojson(url)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(
+    style=&quot;positron&quot;,
+    center=(0.45, 51.47),
+    zoom=4,
+    pitch=30,
+)
+deck_geojson_layer = {
+    &quot;@@type&quot;: &quot;GeoJsonLayer&quot;,
+    &quot;id&quot;: &quot;airports&quot;,
+    &quot;data&quot;: data,
+    &quot;filled&quot;: True,
+    &quot;pointRadiusMinPixels&quot;: 2,
+    &quot;pointRadiusScale&quot;: 2000,
+    &quot;getPointRadius&quot;: &quot;@@=11 - properties.scalerank&quot;,
+    &quot;getFillColor&quot;: [200, 0, 80, 180],
+    &quot;autoHighlight&quot;: True,
+    &quot;pickable&quot;: True,
+}
+
+deck_arc_layer = {
+    &quot;@@type&quot;: &quot;ArcLayer&quot;,
+    &quot;id&quot;: &quot;arcs&quot;,
+    &quot;data&quot;: [
+        feature
+        for feature in data[&quot;features&quot;]
+        if feature[&quot;properties&quot;][&quot;scalerank&quot;] &lt; 4
+    ],
+    &quot;getSourcePosition&quot;: [-0.4531566, 51.4709959],  # London
+    &quot;getTargetPosition&quot;: &quot;@@=geometry.coordinates&quot;,
+    &quot;getSourceColor&quot;: [0, 128, 200],
+    &quot;getTargetColor&quot;: [200, 0, 80],
+    &quot;getWidth&quot;: 2,
+    &quot;pickable&quot;: True,
+}
+
+m.add_deck_layers(
+    [deck_geojson_layer, deck_arc_layer],
+    tooltip={
+        &quot;airports&quot;: &quot;{{ &amp;properties.name }}&quot;,
+        &quot;arcs&quot;: &quot;gps_code: {{ properties.gps_code }}&quot;,
+    },
+)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="exporting-to-html">
 <h2><span class="section-number">22.15. </span>Exporting to HTML<a class="headerlink" href="#exporting-to-html" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># import os
+# os.environ[&quot;MAPTILER_KEY&quot;] = &quot;YOUR_PRIVATE_API_KEY&quot;
+# os.environ[&quot;MAPTILER_KEY_PUBLIC&quot;] = &quot;YOUR_PUBLIC_API_KEY&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>m = leafmap.Map(
+    center=[-122.19861, 46.21168], zoom=13, pitch=60, bearing=150, style=&quot;3d-terrain&quot;
+)
+m.add_layer_control(bg_layers=True)
+m.to_html(
+    &quot;terrain.html&quot;,
+    title=&quot;Awesome 3D Map&quot;,
+    width=&quot;100%&quot;,
+    height=&quot;100%&quot;,
+    replace_key=True,
+)
+m
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="key-takeaways">
 <h2><span class="section-number">22.16. </span>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
