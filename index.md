@@ -66,4 +66,4 @@ docker run -it -p 8888:8888 -p 4040:4040 -p 8080:8080 -p 8081:8081 -p 7077:7077 
 
 ## Acknowledgments
 
-This book was written using [MyST Markdown](https://mystmd.org) and compiled using [Typst](https://github.com/typst/typst) with the[ min-book](https://github.com/mayconfmelo/min-book) template. Credits to developers and maintainers of the Typst and MyST Markdown projects. Special thanks to [@mayconfmelo](https://github.com/mayconfmelo) for the [min-book](https://github.com/mayconfmelo/min-book) template and their help with customizing the template for this book.
+This book was written using [MyST Markdown](https://mystmd.org) and compiled using [Typst](https://github.com/typst/typst) with the[min-book](https://github.com/mayconfmelo/min-book) template. Credits to developers and maintainers of the Typst and MyST Markdown projects. Special thanks to [@mayconfmelo](https://github.com/mayconfmelo) for the [min-book](https://github.com/mayconfmelo/min-book) template and their help with customizing the template for this book.
