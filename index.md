@@ -5,7 +5,7 @@
 
 ## Introduction
 
-This repository contains the code examples for the book - **Introduction to GIS Programming: A Practical Python Guide to Open Source Geospatial Tools**
+This repository contains the code examples for the book - **Introduction to GIS Programming: A Practical Python Guide to Open Source Geospatial Tools**.
 
 To purchase a PDF version of the book, please visit <https://leanpub.com/gispro>.
 
@@ -30,6 +30,7 @@ The color print version of the book will soon be available on Amazon. Stay tuned
   - Licensing and Copyright
 
 - **Software Setup**
+
   - Overview of Software Tools
   - Introduction to Python Package Management
   - Setting Up Visual Studio Code
@@ -37,7 +38,7 @@ The color print version of the book will soon be available on Amazon. Stay tuned
   - Using Google Colab
   - Working with JupyterLab
   - Using Docker
--
+
 - **Python Programming Fundamentals**
 
   - Variables and Data Types
@@ -107,7 +108,7 @@ Please note that you can access the [course materials](https://geog-312.gishub.o
 
 ## About the Author
 
-Dr. Qiusheng Wu is an Associate Professor and the Director of Graduate Studies in the Department of Geography & Sustainability at the University of Tennessee, Knoxville. He also serves as an Amazon Scholar. Dr. Wu's research focuses on geospatial data science and open-source software development, with an emphasis on leveraging big geospatial data and cloud computing to study environmental change, particularly surface water and wetland inundation dynamics. He is the creator of several widely used open-source Python packages, including [geemap](https://geemap.org) [^geemap], [leafmap](https://leafmap.org) [^leafmap], [segment-geospatial](https://samgeo.gishub.org) [^samgeo], and [geoai](https://opengeoai.org) [^geoai], which support advanced geospatial analysis and interactive visualization. His open-source work is available at the [Open Geospatial Solutions](https://github.com/opengeos) [^opengeos] on GitHub.
+Dr. Qiusheng Wu is an Associate Professor and the Director of Graduate Studies in the Department of Geography & Sustainability at the University of Tennessee, Knoxville. He also serves as an Amazon Scholar. Dr. Wu's research focuses on geospatial data science and open-source software development, with an emphasis on leveraging big geospatial data and cloud computing to study environmental change, particularly surface water and wetland inundation dynamics. He is the creator of several widely used open-source Python packages, including [geemap](https://geemap.org), [leafmap](https://leafmap.org), [segment-geospatial](https://samgeo.gishub.org), and [geoai](https://opengeoai.org), which support advanced geospatial analysis and interactive visualization. His open-source work is available at the [Open Geospatial Solutions](https://github.com/opengeos) on GitHub.
 
 ## Acknowledgments
 
