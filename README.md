@@ -15,6 +15,8 @@ The color print version of the book will soon be available on Amazon. Stay tuned
 
 ## Table of Contents
 
+To download a PDF version of the Table of Contents, please visit <https://gispro.gishub.org/book-toc.pdf>.
+
 - **Preface**
 
   - Introduction
