@@ -9,6 +9,8 @@ This repository contains the code examples for the book - **Introduction to GIS 
 
 To purchase a PDF version (553 pages) of the book, please visit <https://leanpub.com/gispro>.
 
+To purchase a PDF version (540 pages) of the book in Chinese (中文), please visit <https://leanpub.com/gispro-zh>.
+
 The color print version of the book will soon be available on Amazon. Stay tuned!
 
 ![book cover](https://assets.gishub.org/images/gispro-book-cover.png)
