@@ -60,7 +60,14 @@ html:
 
 sphinx:
   config:
-    html_extra_path: ["CNAME", "robots.txt", "book-toc.pdf", "book-toc-zh.pdf"]
+    html_extra_path:
+      [
+        "CNAME",
+        "robots.txt",
+        "book-toc.pdf",
+        "book-toc-zh.pdf",
+        "book-toc-es.pdf",
+      ]
     html_theme_options:
       use_download_button: true
       repository_url: https://github.com/giswqs/intro-gispro
