@@ -17,7 +17,7 @@ Welcome to the official repository for **_Introduction to GIS Programming: A Pra
   👉 [https://leanpub.com/gispro-zh](https://leanpub.com/gispro-zh)
 
 - 📕 **Full-Color Print Edition (556 pages):** Now available on Amazon
-  👉 [https://www.amazon.com/dp/B0FFW34LL3](https://www.amazon.com/dp/B0FFW34LL3)
+  👉 [https://amazon.com/dp/B0FFW34LL3](https://amazon.com/dp/B0FFW34LL3)
 
 ## Cite the Book
 
