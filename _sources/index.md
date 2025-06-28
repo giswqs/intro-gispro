@@ -23,7 +23,7 @@ Welcome to the official repository for **_Introduction to GIS Programming: A Pra
 
 If you use this book in your research or teaching, please consider citing it as follows:
 
-> Wu, Q. (2025). _Introduction to GIS Programming: A Practical Python Guide to Open Source Geospatial Tools_. Independently published. ISBN 979-8286979455. <https://www.amazon.com/dp/B0FFW34LL3>
+> Wu, Q. (2025). _Introduction to GIS Programming: A Practical Python Guide to Open Source Geospatial Tools_. Independently published. ISBN 979-8286979455. <https://amazon.com/dp/B0FFW34LL3>
 
 ![book cover](https://assets.gishub.org/images/gispro-book-cover.png)
 
