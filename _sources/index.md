@@ -2,16 +2,28 @@
 
 [![image](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/giswqs/intro-gispro/HEAD)
 [![image](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/intro-gispro/blob/main)
+[![Docker Image](https://img.shields.io/badge/docker-giswqs%2Fpygis%3Abook-blue?logo=docker)](https://hub.docker.com/r/giswqs/pygis/tags)
 
 ## Introduction
 
-This repository contains the code examples for the book - **Introduction to GIS Programming: A Practical Python Guide to Open Source Geospatial Tools**.
+Welcome to the official repository for **_Introduction to GIS Programming: A Practical Python Guide to Open Source Geospatial Tools_**. This repository contains all the code examples featured in the book, designed to help you learn and apply Python for geospatial analysis using open-source tools.
 
-To purchase a PDF version (553 pages) of the book, please visit <https://leanpub.com/gispro>.
+## Get the Book
 
-To purchase a PDF version (540 pages) of the book in Chinese (中文), please visit <https://leanpub.com/gispro-zh>.
+- 📘 **English PDF Edition (553 pages):** Available on Leanpub
+  👉 [https://leanpub.com/gispro](https://leanpub.com/gispro)
 
-The color print version of the book will soon be available on Amazon. Stay tuned!
+- 📗 **Chinese PDF Edition (540 pages):** 中文电子版可在 Leanpub 购买
+  👉 [https://leanpub.com/gispro-zh](https://leanpub.com/gispro-zh)
+
+- 📕 **Full-Color Print Edition (556 pages):** Now available on Amazon
+  👉 [https://www.amazon.com/dp/B0FFW34LL3](https://www.amazon.com/dp/B0FFW34LL3)
+
+## Cite the Book
+
+If you use this book in your research or teaching, please consider citing it as follows:
+
+> Wu, Q. (2025). _Introduction to GIS Programming: A Practical Python Guide to Open Source Geospatial Tools_. Independently published. ISBN 979-8286979455. <https://www.amazon.com/dp/B0FFW34LL3>
 
 ![book cover](https://assets.gishub.org/images/gispro-book-cover.png)
 
