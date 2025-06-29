@@ -3,12 +3,16 @@
 [![image](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/giswqs/intro-gispro/HEAD)
 [![image](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/intro-gispro/blob/main)
 [![Docker Image](https://img.shields.io/badge/docker-giswqs%2Fpygis%3Abook-blue?logo=docker)](https://hub.docker.com/r/giswqs/pygis/tags)
+[![Amazon](https://img.shields.io/badge/Buy%20on-Amazon-orange?logo=amazon&logoColor=white)](https://amazon.com/dp/B0FFW34LL3)
 
 ## Introduction
 
 Welcome to the official repository for **_Introduction to GIS Programming: A Practical Python Guide to Open Source Geospatial Tools_**. This repository contains all the code examples featured in the book, designed to help you learn and apply Python for geospatial analysis using open-source tools.
 
 ## Get the Book
+
+- 📕 **Full-Color Print Edition (556 pages):** Now available on Amazon
+  [https://amazon.com/dp/B0FFW34LL3](https://amazon.com/dp/B0FFW34LL3)
 
 - 📘 **English PDF Edition (553 pages):** Available on Leanpub
   [https://leanpub.com/gispro](https://leanpub.com/gispro)
@@ -19,8 +23,8 @@ Welcome to the official repository for **_Introduction to GIS Programming: A Pra
 * 📙 **Spanish PDF Edition (572 pages):** Edición en español disponible en Leanpub
   [https://leanpub.com/gispro-es](https://leanpub.com/gispro-es)
 
-- 📕 **Full-Color Print Edition (556 pages):** Now available on Amazon
-  [https://amazon.com/dp/B0FFW34LL3](https://amazon.com/dp/B0FFW34LL3)
+- 📒 **Japanese PDF Edition (573 pages):** 日本語版が Leanpub で利用可能  
+  [https://leanpub.com/gispro-ja](https://leanpub.com/gispro-ja)
 
 ## Cite the Book
 
