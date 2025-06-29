@@ -16,7 +16,7 @@ Welcome to the official repository for **_Introduction to GIS Programming: A Pra
 - 📗 **Chinese PDF Edition (540 pages):** 中文电子版可在 Leanpub 购买
   👉 [https://leanpub.com/gispro-zh](https://leanpub.com/gispro-zh)
 
-* 📙 **Spanish PDF Edition (572 páginas):** Edición en español disponible en Leanpub
+* 📙 **Spanish PDF Edition (572 pages):** Edición en español disponible en Leanpub
   👉 [https://leanpub.com/gispro-es](https://leanpub.com/gispro-es)
 
 - 📕 **Full-Color Print Edition (556 pages):** Now available on Amazon
@@ -153,7 +153,7 @@ This book embraces the principles of open science and open education. To support
 
 Please attribute code usage by citing the book or linking to the GitHub repository:
 
-> Wu, Q. (2025). _Introduction to GIS Programming: A Practical Python Guide to Open Source Geospatial Tools_. [https://gispro.gishub.org](https://gispro.gishub.org)
+> Wu, Q. (2025). _Introduction to GIS Programming: A Practical Python Guide to Open Source Geospatial Tools_. Independently published. ISBN 979-8286979455. <https://amazon.com/dp/B0FFW34LL3>
 
 While the code is freely available, the **text, figures, and images** in this book are **copyrighted** by the author and may not be reproduced, redistributed, or modified without explicit permission. This includes all written content, custom diagrams, and embedded visualizations unless otherwise noted.
 
