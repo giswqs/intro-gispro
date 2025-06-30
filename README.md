@@ -4,6 +4,7 @@
 [![image](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/intro-gispro/blob/main)
 [![Docker Image](https://img.shields.io/badge/docker-giswqs%2Fpygis%3Abook-blue?logo=docker)](https://hub.docker.com/r/giswqs/pygis/tags)
 [![Amazon](https://img.shields.io/badge/Buy%20on-Amazon-orange?logo=amazon&logoColor=white)](https://amazon.com/dp/B0FFW34LL3)
+[![YouTube](https://img.shields.io/badge/Watch-Video-red?logo=youtube&logoColor=white)](https://www.youtube.com/playlist?list=PLAxJ4-o7ZoPfb18kNe2luWX9xKg1233i9)
 
 ## Introduction
 
@@ -23,7 +24,7 @@ Welcome to the official repository for **_Introduction to GIS Programming: A Pra
 * 📙 **Spanish PDF Edition (572 pages):** Edición en español disponible en Leanpub
   [https://leanpub.com/gispro-es](https://leanpub.com/gispro-es)
 
-- 📒 **Japanese PDF Edition (573 pages):** 日本語版が Leanpub で利用可能
+- 📒 **Japanese PDF Edition (573 pages):** 日本語版が Leanpub で利用可能  
   [https://leanpub.com/gispro-ja](https://leanpub.com/gispro-ja)
 
 ## Cite the Book
@@ -89,6 +90,8 @@ To download a PDF version of the Table of Contents, please visit <https://gispro
   - Distributed Computing with Apache Sedona
 
 ## How to Run Code Examples
+
+The code examples are organized into folders, each corresponding to a chapter in the book. The code examples are written in Python and can be run using MyBinder, Google Colab, or Docker. Follow this [video tutorial](https://www.youtube.com/embed/6GwMoV4LOiU) to learn how to run the code examples.
 
 ### Using MyBinder
 
