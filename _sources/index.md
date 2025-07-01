@@ -21,17 +21,20 @@ Welcome to the official repository for **_Introduction to GIS Programming: A Pra
 - 📗 **Chinese PDF Edition (540 pages):** 中文电子版可在 Leanpub 购买
   [https://leanpub.com/gispro-zh](https://leanpub.com/gispro-zh)
 
-* 📙 **Spanish PDF Edition (572 pages):** Edición en español disponible en Leanpub
-  [https://leanpub.com/gispro-es](https://leanpub.com/gispro-es)
-
 - 📒 **Japanese PDF Edition (573 pages):** 日本語版が Leanpub で利用可能
   [https://leanpub.com/gispro-ja](https://leanpub.com/gispro-ja)
+
+- 📓 **Korean PDF Edition (555 pages):** 한국어판 Leanpub에서 이용 가능
+  [https://leanpub.com/gispro-ko](https://leanpub.com/gispro-ko)
+
+* 📙 **Spanish PDF Edition (572 pages):** Edición en español disponible en Leanpub
+  [https://leanpub.com/gispro-es](https://leanpub.com/gispro-es)
 
 - 📔 **French PDF Edition (581 pages):** Édition française disponible sur Leanpub
   [https://leanpub.com/gispro-fr](https://leanpub.com/gispro-fr)
 
-- 📓 **Korean PDF Edition (555 pages):** 한국어판 Leanpub에서 이용 가능
-  [https://leanpub.com/gispro-ko](https://leanpub.com/gispro-ko)
+- 📘 **Portuguese PDF Edition (569 pages):** Edição em português disponível na Leanpub
+  [https://leanpub.com/gispro-pt](https://leanpub.com/gispro-pt)
 
 ## Cite the Book
 
