@@ -71,6 +71,7 @@ sphinx:
         "book-toc-fr.pdf",
         "book-toc-ko.pdf",
         "book-toc-pt.pdf",
+        "book-toc-id.pdf",
       ]
     html_theme_options:
       use_download_button: true
