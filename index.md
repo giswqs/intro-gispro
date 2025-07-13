@@ -30,6 +30,8 @@ Welcome to the official repository for **_Introduction to GIS Programming: A Pra
 
 - 🇮🇩 **Indonesian PDF Edition (565 pages):** Edisi bahasa Indonesia tersedia di Leanpub ([link](https://leanpub.com/gispro-id))
 
+- 🇩🇪 **German PDF Edition (565 pages):** Deutschsprachige Edition auf Leanpub verfügbar ([link](https://leanpub.com/gispro-de))
+
 ## Cite the Book
 
 If you use this book in your research or teaching, please consider citing it as follows:
