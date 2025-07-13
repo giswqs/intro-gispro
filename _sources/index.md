@@ -12,23 +12,23 @@ Welcome to the official repository for **_Introduction to GIS Programming: A Pra
 
 ## Get the Book
 
-- 📕 **Full-Color Print Edition (556 pages):** Now available on Amazon ([link](https://amazon.com/dp/B0FFW34LL3))
+- 🇺🇸 **Full-Color Print Edition (556 pages):** Now available on Amazon ([link](https://amazon.com/dp/B0FFW34LL3))
 
-- 📘 **English PDF Edition (553 pages):** Available on Leanpub ([link](https://leanpub.com/gispro))
+- 🇺🇸 **English PDF Edition (553 pages):** Available on Leanpub ([link](https://leanpub.com/gispro))
 
-- 📗 **Chinese PDF Edition (540 pages):** 中文电子版可在 Leanpub 购买 ([link](https://leanpub.com/gispro-zh))
+- 🇨🇳 **Chinese PDF Edition (540 pages):** 中文电子版可在 Leanpub 购买 ([link](https://leanpub.com/gispro-zh))
 
-- 📒 **Japanese PDF Edition (573 pages):** 日本語版が Leanpub で利用可能 ([link](https://leanpub.com/gispro-ja))
+- 🇯🇵 **Japanese PDF Edition (573 pages):** 日本語版が Leanpub で利用可能 ([link](https://leanpub.com/gispro-ja))
 
-- 📓 **Korean PDF Edition (555 pages):** 한국어판 Leanpub에서 이용 가능 ([link](https://leanpub.com/gispro-ko))
+- 🇰🇷 **Korean PDF Edition (555 pages):** 한국어판 Leanpub에서 이용 가능 ([link](https://leanpub.com/gispro-ko))
 
-* 📙 **Spanish PDF Edition (572 pages):** Edición en español disponible en Leanpub ([link](https://leanpub.com/gispro-es))
+- 🇲🇽 **Spanish PDF Edition (572 pages):** Edición en español disponible en Leanpub ([link](https://leanpub.com/gispro-es))
 
-- 📔 **French PDF Edition (581 pages):** Édition française disponible sur Leanpub ([link](https://leanpub.com/gispro-fr))
+- 🇫🇷 **French PDF Edition (581 pages):** Édition française disponible sur Leanpub ([link](https://leanpub.com/gispro-fr))
 
-- 📘 **Portuguese PDF Edition (569 pages):** Edição em português disponível na Leanpub ([link](https://leanpub.com/gispro-pt))
+- 🇵🇹 **Portuguese PDF Edition (569 pages):** Edição em português disponível na Leanpub ([link](https://leanpub.com/gispro-pt))
 
-- 📕 **Indonesian PDF Edition (565 pages):** Edisi bahasa Indonesia tersedia di Leanpub ([link](https://leanpub.com/gispro-id))
+- 🇮🇩 **Indonesian PDF Edition (565 pages):** Edisi bahasa Indonesia tersedia di Leanpub ([link](https://leanpub.com/gispro-id))
 
 ## Cite the Book
 
