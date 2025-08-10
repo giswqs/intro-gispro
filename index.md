@@ -34,6 +34,8 @@ Welcome to the official repository for **_Introduction to GIS Programming: A Pra
 
 - 🇷🇺 **Russian PDF Edition (599 pages):** Российская версия на Leanpub доступна ([link](https://leanpub.com/gispro-ru))
 
+- 🇮🇹 **Italian PDF Edition (563 pages):** Edizione italiana disponibile su Leanpub ([link](https://leanpub.com/gispro-it))
+
 ## Cite the Book
 
 If you use this book in your research or teaching, please consider citing it as follows:
