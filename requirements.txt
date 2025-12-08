@@ -1,4 +1,4 @@
 ghp-import
-jupyter-book==1.0.4
+jupyter-book==2.1.0
 jupytext
 pygis
