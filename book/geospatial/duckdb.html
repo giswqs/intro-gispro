@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
@@ -50,7 +50,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -1195,12 +1195,10 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        CREATE TABLE IF NOT EXISTS cities2 AS</span>
-<span class="sd">        SELECT * FROM ST_Read(&#39;cities.shp&#39;)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-<span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        CREATE TABLE IF NOT EXISTS cities2 AS</span>
+<span class="s2">        SELECT * FROM ST_Read(&#39;cities.shp&#39;)</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1222,12 +1220,10 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span> <span class="o">=</span> <span class="n">duckdb</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
 <span class="n">con</span><span class="o">.</span><span class="n">load_extension</span><span class="p">(</span><span class="s2">&quot;spatial&quot;</span><span class="p">)</span>
-<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">CREATE TABLE IF NOT EXISTS cities AS</span>
-<span class="sd">FROM &#39;https://opengeos.org/data/duckdb/cities.parquet&#39;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">CREATE TABLE IF NOT EXISTS cities AS</span>
+<span class="s2">FROM &#39;https://opengeos.org/data/duckdb/cities.parquet&#39;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1393,22 +1389,20 @@ document.write(`
 <h3><span class="section-number">25.8.3. </span>Creating and Understanding Geometries<a class="headerlink" href="#creating-and-understanding-geometries" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 
-<span class="sd">CREATE or REPLACE TABLE samples (name VARCHAR, geom GEOMETRY);</span>
+<span class="s2">CREATE or REPLACE TABLE samples (name VARCHAR, geom GEOMETRY);</span>
 
-<span class="sd">INSERT INTO samples VALUES</span>
-<span class="sd">  (&#39;Point&#39;, ST_GeomFromText(&#39;POINT(-100 40)&#39;)),</span>
-<span class="sd">  (&#39;Linestring&#39;, ST_GeomFromText(&#39;LINESTRING(0 0, 1 1, 2 1, 2 2)&#39;)),</span>
-<span class="sd">  (&#39;Polygon&#39;, ST_GeomFromText(&#39;POLYGON((0 0, 1 0, 1 1, 0 1, 0 0))&#39;)),</span>
-<span class="sd">  (&#39;PolygonWithHole&#39;, ST_GeomFromText(&#39;POLYGON((0 0, 10 0, 10 10, 0 10, 0 0),(1 1, 1 2, 2 2, 2 1, 1 1))&#39;)),</span>
-<span class="sd">  (&#39;Collection&#39;, ST_GeomFromText(&#39;GEOMETRYCOLLECTION(POINT(2 0),POLYGON((0 0, 1 0, 1 1, 0 1, 0 0)))&#39;));</span>
+<span class="s2">INSERT INTO samples VALUES</span>
+<span class="s2">  (&#39;Point&#39;, ST_GeomFromText(&#39;POINT(-100 40)&#39;)),</span>
+<span class="s2">  (&#39;Linestring&#39;, ST_GeomFromText(&#39;LINESTRING(0 0, 1 1, 2 1, 2 2)&#39;)),</span>
+<span class="s2">  (&#39;Polygon&#39;, ST_GeomFromText(&#39;POLYGON((0 0, 1 0, 1 1, 0 1, 0 0))&#39;)),</span>
+<span class="s2">  (&#39;PolygonWithHole&#39;, ST_GeomFromText(&#39;POLYGON((0 0, 10 0, 10 10, 0 10, 0 0),(1 1, 1 2, 2 2, 2 1, 1 1))&#39;)),</span>
+<span class="s2">  (&#39;Collection&#39;, ST_GeomFromText(&#39;GEOMETRYCOLLECTION(POINT(2 0),POLYGON((0 0, 1 0, 1 1, 0 1, 0 0)))&#39;));</span>
 
-<span class="sd">SELECT * FROM samples;</span>
+<span class="s2">SELECT * FROM samples;</span>
 
-<span class="sd">  &quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="s2">  &quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1422,11 +1416,9 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">COPY samples TO &#39;samples.geojson&#39; (FORMAT GDAL, DRIVER GeoJSON);</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">COPY samples TO &#39;samples.geojson&#39; (FORMAT GDAL, DRIVER GeoJSON);</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1436,50 +1428,42 @@ document.write(`
 <h3><span class="section-number">25.8.4. </span>Working with Points<a class="headerlink" href="#working-with-points" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT ST_AsText(geom)</span>
-<span class="sd">  FROM samples</span>
-<span class="sd">  WHERE name = &#39;Point&#39;;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT ST_AsText(geom)</span>
+<span class="s2">  FROM samples</span>
+<span class="s2">  WHERE name = &#39;Point&#39;;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT ST_X(geom), ST_Y(geom)</span>
-<span class="sd">  FROM samples</span>
-<span class="sd">  WHERE name = &#39;Point&#39;;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT ST_X(geom), ST_Y(geom)</span>
+<span class="s2">  FROM samples</span>
+<span class="s2">  WHERE name = &#39;Point&#39;;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT * FROM nyc_subway_stations</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT * FROM nyc_subway_stations</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT name, ST_AsText(geom)</span>
-<span class="sd">  FROM nyc_subway_stations</span>
-<span class="sd">  LIMIT 10;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT name, ST_AsText(geom)</span>
+<span class="s2">  FROM nyc_subway_stations</span>
+<span class="s2">  LIMIT 10;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1489,26 +1473,22 @@ document.write(`
 <h3><span class="section-number">25.8.5. </span>Working with LineStrings<a class="headerlink" href="#working-with-linestrings" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT ST_AsText(geom)</span>
-<span class="sd">  FROM samples</span>
-<span class="sd">  WHERE name = &#39;Linestring&#39;;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT ST_AsText(geom)</span>
+<span class="s2">  FROM samples</span>
+<span class="s2">  WHERE name = &#39;Linestring&#39;;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT ST_Length(geom)</span>
-<span class="sd">  FROM samples</span>
-<span class="sd">  WHERE name = &#39;Linestring&#39;;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT ST_Length(geom)</span>
+<span class="s2">  FROM samples</span>
+<span class="s2">  WHERE name = &#39;Linestring&#39;;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1518,28 +1498,24 @@ document.write(`
 <h3><span class="section-number">25.8.6. </span>Working with Polygons<a class="headerlink" href="#working-with-polygons" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT ST_AsText(geom)</span>
-<span class="sd">  FROM samples</span>
-<span class="sd">  WHERE name = &#39;Polygon&#39;;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT ST_AsText(geom)</span>
+<span class="s2">  FROM samples</span>
+<span class="s2">  WHERE name = &#39;Polygon&#39;;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT</span>
-<span class="sd">    ST_Area(geom) as area,</span>
-<span class="sd">    ST_Perimeter(geom) as perimeter</span>
-<span class="sd">FROM samples</span>
-<span class="sd">WHERE name = &#39;Polygon&#39;;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT</span>
+<span class="s2">    ST_Area(geom) as area,</span>
+<span class="s2">    ST_Perimeter(geom) as perimeter</span>
+<span class="s2">FROM samples</span>
+<span class="s2">WHERE name = &#39;Polygon&#39;;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1556,13 +1532,11 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find subway station</span>
-<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT name, geom</span>
-<span class="sd">FROM nyc_subway_stations</span>
-<span class="sd">WHERE name = &#39;Broad St&#39;;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT name, geom</span>
+<span class="s2">FROM nyc_subway_stations</span>
+<span class="s2">WHERE name = &#39;Broad St&#39;;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1573,13 +1547,11 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test spatial equality</span>
-<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT name</span>
-<span class="sd">FROM nyc_subway_stations</span>
-<span class="sd">WHERE ST_Equals(geom, ST_GeomFromText(&#39;POINT (583571.9059213118 4506714.341192182)&#39;));</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT name</span>
+<span class="s2">FROM nyc_subway_stations</span>
+<span class="s2">WHERE ST_Equals(geom, ST_GeomFromText(&#39;POINT (583571.9059213118 4506714.341192182)&#39;));</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1597,13 +1569,11 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find neighborhood containing a point</span>
-<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT name, boroname</span>
-<span class="sd">FROM nyc_neighborhoods</span>
-<span class="sd">WHERE ST_Intersects(geom, ST_GeomFromText(&#39;POINT(583571 4506714)&#39;));</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT name, boroname</span>
+<span class="s2">FROM nyc_neighborhoods</span>
+<span class="s2">WHERE ST_Intersects(geom, ST_GeomFromText(&#39;POINT(583571 4506714)&#39;));</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1614,13 +1584,11 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find features within distance</span>
-<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT COUNT(*) as nearby_stations</span>
-<span class="sd">FROM nyc_subway_stations</span>
-<span class="sd">WHERE ST_DWithin(geom, ST_GeomFromText(&#39;POINT(583571 4506714)&#39;), 500);</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT COUNT(*) as nearby_stations</span>
+<span class="s2">FROM nyc_subway_stations</span>
+<span class="s2">WHERE ST_DWithin(geom, ST_GeomFromText(&#39;POINT(583571 4506714)&#39;), 500);</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1654,18 +1622,16 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find subway stations and their neighborhoods</span>
-<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT</span>
-<span class="sd">  subways.name AS subway_name,</span>
-<span class="sd">  neighborhoods.name AS neighborhood_name,</span>
-<span class="sd">  neighborhoods.boroname AS borough</span>
-<span class="sd">FROM nyc_neighborhoods AS neighborhoods</span>
-<span class="sd">JOIN nyc_subway_stations AS subways</span>
-<span class="sd">ON ST_Intersects(neighborhoods.geom, subways.geom)</span>
-<span class="sd">WHERE subways.NAME = &#39;Broad St&#39;;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT</span>
+<span class="s2">  subways.name AS subway_name,</span>
+<span class="s2">  neighborhoods.name AS neighborhood_name,</span>
+<span class="s2">  neighborhoods.boroname AS borough</span>
+<span class="s2">FROM nyc_neighborhoods AS neighborhoods</span>
+<span class="s2">JOIN nyc_subway_stations AS subways</span>
+<span class="s2">ON ST_Intersects(neighborhoods.geom, subways.geom)</span>
+<span class="s2">WHERE subways.NAME = &#39;Broad St&#39;;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1675,11 +1641,9 @@ document.write(`
 <h3><span class="section-number">25.10.4. </span>Advanced Spatial Analysis<a class="headerlink" href="#advanced-spatial-analysis" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT DISTINCT COLOR FROM nyc_subway_stations;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT DISTINCT COLOR FROM nyc_subway_stations;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1687,18 +1651,16 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find RED subway stations and their neighborhoods</span>
-<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT</span>
-<span class="sd">  subways.name AS subway_name,</span>
-<span class="sd">  neighborhoods.name AS neighborhood_name,</span>
-<span class="sd">  neighborhoods.boroname AS borough</span>
-<span class="sd">FROM nyc_neighborhoods AS neighborhoods</span>
-<span class="sd">JOIN nyc_subway_stations AS subways</span>
-<span class="sd">ON ST_Intersects(neighborhoods.geom, subways.geom)</span>
-<span class="sd">WHERE subways.color = &#39;RED&#39;;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT</span>
+<span class="s2">  subways.name AS subway_name,</span>
+<span class="s2">  neighborhoods.name AS neighborhood_name,</span>
+<span class="s2">  neighborhoods.boroname AS borough</span>
+<span class="s2">FROM nyc_neighborhoods AS neighborhoods</span>
+<span class="s2">JOIN nyc_subway_stations AS subways</span>
+<span class="s2">ON ST_Intersects(neighborhoods.geom, subways.geom)</span>
+<span class="s2">WHERE subways.color = &#39;RED&#39;;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1709,28 +1671,24 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get baseline demographics</span>
-<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT</span>
-<span class="sd">  100.0 * Sum(popn_white) / Sum(popn_total) AS white_pct,</span>
-<span class="sd">  100.0 * Sum(popn_black) / Sum(popn_total) AS black_pct,</span>
-<span class="sd">  Sum(popn_total) AS popn_total</span>
-<span class="sd">FROM nyc_census_blocks;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT</span>
+<span class="s2">  100.0 * Sum(popn_white) / Sum(popn_total) AS white_pct,</span>
+<span class="s2">  100.0 * Sum(popn_black) / Sum(popn_total) AS black_pct,</span>
+<span class="s2">  Sum(popn_total) AS popn_total</span>
+<span class="s2">FROM nyc_census_blocks;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT DISTINCT routes</span>
-<span class="sd">FROM nyc_subway_stations AS subways</span>
-<span class="sd">WHERE strpos(subways.routes,&#39;A&#39;) &gt; 0;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT DISTINCT routes</span>
+<span class="s2">FROM nyc_subway_stations AS subways</span>
+<span class="s2">WHERE strpos(subways.routes,&#39;A&#39;) &gt; 0;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1738,18 +1696,16 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Demographics within 200 meters of A-train</span>
-<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT</span>
-<span class="sd">  100.0 * Sum(popn_white) / Sum(popn_total) AS white_pct,</span>
-<span class="sd">  100.0 * Sum(popn_black) / Sum(popn_total) AS black_pct,</span>
-<span class="sd">  Sum(popn_total) AS popn_total</span>
-<span class="sd">FROM nyc_census_blocks AS census</span>
-<span class="sd">JOIN nyc_subway_stations AS subways</span>
-<span class="sd">ON ST_DWithin(census.geom, subways.geom, 200)</span>
-<span class="sd">WHERE strpos(subways.routes,&#39;A&#39;) &gt; 0;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT</span>
+<span class="s2">  100.0 * Sum(popn_white) / Sum(popn_total) AS white_pct,</span>
+<span class="s2">  100.0 * Sum(popn_black) / Sum(popn_total) AS black_pct,</span>
+<span class="s2">  Sum(popn_total) AS popn_total</span>
+<span class="s2">FROM nyc_census_blocks AS census</span>
+<span class="s2">JOIN nyc_subway_stations AS subways</span>
+<span class="s2">ON ST_DWithin(census.geom, subways.geom, 200)</span>
+<span class="s2">WHERE strpos(subways.routes,&#39;A&#39;) &gt; 0;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1760,16 +1716,14 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create subway lines reference table</span>
-<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">CREATE OR REPLACE TABLE subway_lines ( route char(1) );</span>
-<span class="sd">INSERT INTO subway_lines (route) VALUES</span>
-<span class="sd">  (&#39;A&#39;),(&#39;B&#39;),(&#39;C&#39;),(&#39;D&#39;),(&#39;E&#39;),(&#39;F&#39;),(&#39;G&#39;),</span>
-<span class="sd">  (&#39;J&#39;),(&#39;L&#39;),(&#39;M&#39;),(&#39;N&#39;),(&#39;Q&#39;),(&#39;R&#39;),(&#39;S&#39;),</span>
-<span class="sd">  (&#39;Z&#39;),(&#39;1&#39;),(&#39;2&#39;),(&#39;3&#39;),(&#39;4&#39;),(&#39;5&#39;),(&#39;6&#39;),</span>
-<span class="sd">  (&#39;7&#39;);</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">CREATE OR REPLACE TABLE subway_lines ( route char(1) );</span>
+<span class="s2">INSERT INTO subway_lines (route) VALUES</span>
+<span class="s2">  (&#39;A&#39;),(&#39;B&#39;),(&#39;C&#39;),(&#39;D&#39;),(&#39;E&#39;),(&#39;F&#39;),(&#39;G&#39;),</span>
+<span class="s2">  (&#39;J&#39;),(&#39;L&#39;),(&#39;M&#39;),(&#39;N&#39;),(&#39;Q&#39;),(&#39;R&#39;),(&#39;S&#39;),</span>
+<span class="s2">  (&#39;Z&#39;),(&#39;1&#39;),(&#39;2&#39;),(&#39;3&#39;),(&#39;4&#39;),(&#39;5&#39;),(&#39;6&#39;),</span>
+<span class="s2">  (&#39;7&#39;);</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1777,22 +1731,20 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Analyze demographics by subway line</span>
-<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT</span>
-<span class="sd">  lines.route,</span>
-<span class="sd">  100.0 * Sum(popn_white) / Sum(popn_total) AS white_pct,</span>
-<span class="sd">  100.0 * Sum(popn_black) / Sum(popn_total) AS black_pct,</span>
-<span class="sd">  Sum(popn_total) AS popn_total</span>
-<span class="sd">FROM nyc_census_blocks AS census</span>
-<span class="sd">JOIN nyc_subway_stations AS subways</span>
-<span class="sd">ON ST_DWithin(census.geom, subways.geom, 200)</span>
-<span class="sd">JOIN subway_lines AS lines</span>
-<span class="sd">ON strpos(subways.routes, lines.route) &gt; 0</span>
-<span class="sd">GROUP BY lines.route</span>
-<span class="sd">ORDER BY black_pct DESC;</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT</span>
+<span class="s2">  lines.route,</span>
+<span class="s2">  100.0 * Sum(popn_white) / Sum(popn_total) AS white_pct,</span>
+<span class="s2">  100.0 * Sum(popn_black) / Sum(popn_total) AS black_pct,</span>
+<span class="s2">  Sum(popn_total) AS popn_total</span>
+<span class="s2">FROM nyc_census_blocks AS census</span>
+<span class="s2">JOIN nyc_subway_stations AS subways</span>
+<span class="s2">ON ST_DWithin(census.geom, subways.geom, 200)</span>
+<span class="s2">JOIN subway_lines AS lines</span>
+<span class="s2">ON strpos(subways.routes, lines.route) &gt; 0</span>
+<span class="s2">GROUP BY lines.route</span>
+<span class="s2">ORDER BY black_pct DESC;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1838,12 +1790,10 @@ document.write(`
 <h4><span class="section-number">25.11.2.1. </span>Count the Total Number of Wetlands<a class="headerlink" href="#count-the-total-number-of-wetlands" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">SELECT COUNT(*) AS Count</span>
 <span class="s2">FROM &#39;s3://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet&#39;</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1854,14 +1804,12 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Count wetlands by state using filename</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">SELECT filename, COUNT(*) AS Count</span>
 <span class="s2">FROM read_parquet(&#39;s3://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet&#39;, filename=true)</span>
 <span class="s2">GROUP BY filename</span>
 <span class="s2">ORDER BY COUNT(*) DESC;</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="p">)</span><span class="o">.</span><span class="n">df</span><span class="p">()</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">df</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1870,14 +1818,12 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract state codes from filenames</span>
-<span class="n">count_df</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="n">count_df</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">SELECT SUBSTRING(filename, LENGTH(filename) - 18, 2) AS State, COUNT(*) AS Count</span>
 <span class="s2">FROM read_parquet(&#39;s3://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet&#39;, filename=true)</span>
 <span class="s2">GROUP BY State</span>
 <span class="s2">ORDER BY COUNT(*) DESC;</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="p">)</span><span class="o">.</span><span class="n">df</span><span class="p">()</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">df</span><span class="p">()</span>
 <span class="n">count_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1900,23 +1846,19 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create states table with geometries</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://opengeos.org/data/us/us_states.parquet&quot;</span>
-<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">CREATE OR REPLACE TABLE states AS</span>
 <span class="s2">SELECT * FROM &#39;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">&#39;</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT * FROM states INNER JOIN wetlands ON states.id = wetlands.State</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT * FROM states INNER JOIN wetlands ON states.id = wetlands.State</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1925,16 +1867,14 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Join wetlands count with state geometries for visualization</span>
 <span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;states_with_wetlands.geojson&quot;</span>
-<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    COPY (</span>
 <span class="s2">    SELECT s.name, s.id, w.Count, s.geometry</span>
 <span class="s2">    FROM states s</span>
 <span class="s2">    JOIN wetlands w ON s.id = w.State</span>
 <span class="s2">    ORDER BY w.Count DESC</span>
 <span class="s2">    ) TO &#39;</span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&#39; WITH (FORMAT GDAL, DRIVER &#39;GeoJSON&#39;)</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1986,12 +1926,10 @@ document.write(`
 <h4><span class="section-number">25.11.5.1. </span>Total Wetland Area in the U.S.<a class="headerlink" href="#total-wetland-area-in-the-u-s" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">SELECT SUM(Shape_Area) /  1000000 AS Area_SqKm</span>
 <span class="s2">FROM &#39;s3://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet&#39;</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2001,14 +1939,12 @@ document.write(`
 <h4><span class="section-number">25.11.5.2. </span>Wetland Area by State<a class="headerlink" href="#wetland-area-by-state" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">area_df</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">area_df</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">SELECT SUBSTRING(filename, LENGTH(filename) - 18, 2) AS State, SUM(Shape_Area) /  1000000 AS Area_SqKm</span>
 <span class="s2">FROM read_parquet(&#39;s3://us-west-2.opendata.source.coop/giswqs/nwi/wetlands/*.parquet&#39;, filename=true)</span>
 <span class="s2">GROUP BY State</span>
 <span class="s2">ORDER BY COUNT(*) DESC;</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="p">)</span><span class="o">.</span><span class="n">df</span><span class="p">()</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">df</span><span class="p">()</span>
 <span class="n">area_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>

@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
@@ -50,7 +50,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -1354,17 +1354,15 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create binary mask for areas above 2000m elevation using map algebra</span>
-<span class="n">mountain</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">SELECT</span>
-<span class="sd">  RS_MapAlgebra(</span>
-<span class="sd">    raster,</span>
-<span class="sd">    &#39;D&#39;,</span>
-<span class="sd">    &#39;out = (rast[0] &gt; 2000) ? 1 : 0;&#39;</span>
-<span class="sd">  ) AS mountain</span>
-<span class="sd">FROM dem_df</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="n">mountain</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">SELECT</span>
+<span class="s2">  RS_MapAlgebra(</span>
+<span class="s2">    raster,</span>
+<span class="s2">    &#39;D&#39;,</span>
+<span class="s2">    &#39;out = (rast[0] &gt; 2000) ? 1 : 0;&#39;</span>
+<span class="s2">  ) AS mountain</span>
+<span class="s2">FROM dem_df</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1422,15 +1420,13 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate average elevation within the study area polygon</span>
-<span class="n">mount_elev</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="n">mount_elev</span> <span class="o">=</span> <span class="n">sedona</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">select</span>
 <span class="s2">RS_ZonalStats(dem_df.raster, ST_Transform(</span>
 <span class="s2">    ST_GeomFromText(&#39;</span><span class="si">{</span><span class="n">polygon</span><span class="si">}</span><span class="s2">&#39;), &#39;EPSG:4326&#39;, &#39;EPSG:3857&#39;</span>
 <span class="s2">    ), 1, &#39;avg&#39;, false, false) as avg_elev</span>
 <span class="s2">from dem_df</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="p">)</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1664,15 +1660,13 @@ document.write(`
     <span class="p">)</span>
     <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
         <span class="s2">&quot;city_category&quot;</span><span class="p">,</span>
-        <span class="n">expr</span><span class="p">(</span>
-<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        CASE</span>
-<span class="sd">            WHEN population &gt; 5000000 THEN &#39;Megacity&#39;      -- Cities &gt; 5M people</span>
-<span class="sd">            WHEN population &gt; 1000000 THEN &#39;Large City&#39;    -- Cities 1-5M people</span>
-<span class="sd">            ELSE &#39;Medium City&#39;                              -- Cities 500K-1M people</span>
-<span class="sd">        END</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-        <span class="p">),</span>
+        <span class="n">expr</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        CASE</span>
+<span class="s2">            WHEN population &gt; 5000000 THEN &#39;Megacity&#39;      -- Cities &gt; 5M people</span>
+<span class="s2">            WHEN population &gt; 1000000 THEN &#39;Large City&#39;    -- Cities 1-5M people</span>
+<span class="s2">            ELSE &#39;Medium City&#39;                              -- Cities 500K-1M people</span>
+<span class="s2">        END</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">),</span>
     <span class="p">)</span>
 <span class="p">)</span>
 
