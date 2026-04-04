@@ -1,0 +1,65 @@
+version: 1
+project:
+  title: Introduction to GIS Programming
+  authors:
+    - name: Qiusheng Wu
+  copyright: '2025'
+  exclude:
+    - _build
+    - Thumbs.db
+    - .DS_Store
+    - '**.ipynb_checkpoints'
+  github: giswqs/intro-gispro
+  thebe:
+    binder:
+      repo: giswqs/intro-gispro
+      provider: github
+      url: https://mybinder.org
+      ref: main
+  bibliography:
+    - book/references.bib
+  toc:
+    - file: index.md
+    - title: Preface
+      children:
+        - file: book/preface.md
+    - title: Software Setup
+      children:
+        - file: book/software/overview.md
+        - file: book/software/conda.md
+        - file: book/software/vscode.md
+        - file: book/software/git.md
+        - file: book/software/colab.md
+        - file: book/software/jupyterlab.md
+        - file: book/software/docker.md
+    - title: Python Programming Fundamentals
+      children:
+        - file: book/python/variables.md
+        - file: book/python/data-structures.md
+        - file: book/python/string-operations.md
+        - file: book/python/looping.md
+        - file: book/python/functions-classes.md
+        - file: book/python/files.md
+        - file: book/python/numpy-pandas.md
+    - title: Geospatial Programming with Python
+      children:
+        - file: book/geospatial/get-started.md
+        - file: book/geospatial/geopandas.md
+        - file: book/geospatial/rasterio.md
+        - file: book/geospatial/xarray.md
+        - file: book/geospatial/rioxarray.md
+        - file: book/geospatial/leafmap.md
+        - file: book/geospatial/whitebox.md
+        - file: book/geospatial/maplibre.md
+        - file: book/geospatial/geemap.md
+        - file: book/geospatial/hypercoast.md
+        - file: book/geospatial/duckdb.md
+        - file: book/geospatial/gdal.md
+        - file: book/geospatial/solara.md
+        - file: book/geospatial/sedona.md
+site:
+  options:
+    logo: logo.png
+    favicon: fav.ico
+    folders: true
+  template: book-theme

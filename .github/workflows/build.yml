@@ -1,13 +1,15 @@
 name: build
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
 
-# This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
-  build-the-book:
+  build-and-deploy:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -32,10 +34,17 @@ jobs:
           uv venv
           uv pip install -r requirements.txt
 
-      # Build the book
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+
+      - name: Install MyST
+        run: npm install -g mystmd
+
       - name: Build the book
-        run: |
-          uv run jupyter-book build .
+        run: myst build --html
+
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0
         with:
