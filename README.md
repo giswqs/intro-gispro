@@ -12,31 +12,13 @@ Welcome to the official repository for **_Introduction to GIS Programming: A Pra
 
 ## Get the Book
 
-- 🇺🇸 **Full-Color Print Edition (556 pages):** Now available on Amazon ([link](https://amazon.com/dp/B0FFW34LL3))
+### Print Edition
 
-- 🇺🇸 **English PDF Edition (553 pages):** Available on Leanpub ([link](https://leanpub.com/gispro))
+- 🇺🇸 English Full-Color Print Edition (556 pages) is available on Amazon ([link](https://amazon.com/dp/B0FFW34LL3))
 
-- 🇨🇳 **Chinese PDF Edition (540 pages):** 中文电子版可在 Leanpub 购买 ([link](https://leanpub.com/gispro-zh))
+### PDF and EPUB Editions
 
-- 🇯🇵 **Japanese PDF Edition (573 pages):** 日本語版が Leanpub で利用可能 ([link](https://leanpub.com/gispro-ja))
-
-- 🇰🇷 **Korean PDF Edition (555 pages):** 한국어판 Leanpub에서 이용 가능 ([link](https://leanpub.com/gispro-ko))
-
-- 🇲🇽 **Spanish PDF Edition (572 pages):** Edición en español disponible en Leanpub ([link](https://leanpub.com/gispro-es))
-
-- 🇫🇷 **French PDF Edition (581 pages):** Édition française disponible sur Leanpub ([link](https://leanpub.com/gispro-fr))
-
-- 🇵🇹 **Portuguese PDF Edition (569 pages):** Edição em português disponível na Leanpub ([link](https://leanpub.com/gispro-pt))
-
-- 🇮🇩 **Indonesian PDF Edition (565 pages):** Edisi bahasa Indonesia tersedia di Leanpub ([link](https://leanpub.com/gispro-id))
-
-- 🇩🇪 **German PDF Edition (582 pages):** Deutschsprachige Edition auf Leanpub verfügbar ([link](https://leanpub.com/gispro-de))
-
-- 🇷🇺 **Russian PDF Edition (599 pages):** Российская версия на Leanpub доступна ([link](https://leanpub.com/gispro-ru))
-
-- 🇮🇹 **Italian PDF Edition (563 pages):** Edizione italiana disponibile su Leanpub ([link](https://leanpub.com/gispro-it))
-
-- 🇨🇿 **Czech PDF Edition (555 pages):** Česká edice dostupná na Leanpub ([link](https://leanpub.com/gispro-cs))
+🇺🇸 [English](https://leanpub.com/gispro) | 🇨🇳 [Chinese](https://leanpub.com/gispro-zh) | 🇯🇵 [Japanese](https://leanpub.com/gispro-ja) | 🇰🇷 [Korean](https://leanpub.com/gispro-ko) | 🇲🇽 [Spanish](https://leanpub.com/gispro-es) | 🇫🇷 [French](https://leanpub.com/gispro-fr) | 🇵🇹 [Portuguese](https://leanpub.com/gispro-pt) | 🇮🇩 [Indonesian](https://leanpub.com/gispro-id) | 🇩🇪 [German](https://leanpub.com/gispro-de) | 🇷🇺 [Russian](https://leanpub.com/gispro-ru) | 🇮🇹 [Italian](https://leanpub.com/gispro-it) | 🇨🇿 [Czech](https://leanpub.com/gispro-cs)
 
 ## Cite the Book
 
