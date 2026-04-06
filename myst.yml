@@ -63,6 +63,7 @@ site:
     logo_dark: logo.png
     favicon: fav.ico
     folders: true
+    analytics_google: G-DW6JRKQ7NK
   template: book-theme
   parts:
     primary_sidebar_footer: ''
