@@ -18,7 +18,7 @@ Welcome to the official repository for **_Introduction to GIS Programming: A Pra
 
 ### PDF and EPUB Editions
 
-🇺🇸 [English](https://leanpub.com/gispro) | 🇨🇳 [Chinese](https://leanpub.com/gispro-zh) | 🇯🇵 [Japanese](https://leanpub.com/gispro-ja) | 🇰🇷 [Korean](https://leanpub.com/gispro-ko) | 🇲🇽 [Spanish](https://leanpub.com/gispro-es) | 🇫🇷 [French](https://leanpub.com/gispro-fr) | 🇵🇹 [Portuguese](https://leanpub.com/gispro-pt) | 🇮🇩 [Indonesian](https://leanpub.com/gispro-id) | 🇩🇪 [German](https://leanpub.com/gispro-de) | 🇷🇺 [Russian](https://leanpub.com/gispro-ru) | 🇮🇹 [Italian](https://leanpub.com/gispro-it) | 🇨🇿 [Czech](https://leanpub.com/gispro-cs)
+🇺🇸 [English](https://opengeopub.com/books/gispro) | 🇨🇳 [Chinese](https://opengeopub.com/books/gispro-zh) | 🇯🇵 [Japanese](https://opengeopub.com/books/gispro-ja) | 🇰🇷 [Korean](https://opengeopub.com/books/gispro-ko) | 🇲🇽 [Spanish](https://opengeopub.com/books/gispro-es) | 🇫🇷 [French](https://opengeopub.com/books/gispro-fr) | 🇵🇹 [Portuguese](https://opengeopub.com/books/gispro-pt) | 🇮🇩 [Indonesian](https://opengeopub.com/books/gispro-id) | 🇩🇪 [German](https://opengeopub.com/books/gispro-de) | 🇷🇺 [Russian](https://opengeopub.com/books/gispro-ru) | 🇮🇹 [Italian](https://opengeopub.com/books/gispro-it) | 🇨🇿 [Czech](https://opengeopub.com/books/gispro-cs)
 
 ## Cite the Book
 
