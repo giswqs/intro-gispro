@@ -18,7 +18,7 @@ Welcome to the official repository for **_Introduction to GIS Programming: A Pra
 
 ### PDF and EPUB Editions
 
-🇺🇸 [English](https://opengeopub.com/books/gispro) | 🇨🇳 [Chinese](https://opengeopub.com/books/gispro-zh) | 🇯🇵 [Japanese](https://opengeopub.com/books/gispro-ja) | 🇰🇷 [Korean](https://opengeopub.com/books/gispro-ko) | 🇲🇽 [Spanish](https://opengeopub.com/books/gispro-es) | 🇫🇷 [French](https://opengeopub.com/books/gispro-fr) | 🇵🇹 [Portuguese](https://opengeopub.com/books/gispro-pt) | 🇮🇩 [Indonesian](https://opengeopub.com/books/gispro-id) | 🇩🇪 [German](https://opengeopub.com/books/gispro-de) | 🇷🇺 [Russian](https://opengeopub.com/books/gispro-ru) | 🇮🇹 [Italian](https://opengeopub.com/books/gispro-it) | 🇨🇿 [Czech](https://opengeopub.com/books/gispro-cs)
+🇺🇸 [English](https://opengeopub.com/books/gispro) | 🇨🇳 [Chinese](https://opengeopub.com/books/gispro-zh) | 🇨🇿 [Czech](https://opengeopub.com/books/gispro-cs) | 🇫🇷 [French](https://opengeopub.com/books/gispro-fr) | 🇩🇪 [German](https://opengeopub.com/books/gispro-de) | 🇮🇩 [Indonesian](https://opengeopub.com/books/gispro-id) | 🇮🇹 [Italian](https://opengeopub.com/books/gispro-it) | 🇯🇵 [Japanese](https://opengeopub.com/books/gispro-ja) | 🇰🇷 [Korean](https://opengeopub.com/books/gispro-ko) | 🇵🇹 [Portuguese](https://opengeopub.com/books/gispro-pt) | 🇷🇺 [Russian](https://opengeopub.com/books/gispro-ru) | 🇲🇽 [Spanish](https://opengeopub.com/books/gispro-es)
 
 ## Cite the Book
 
@@ -33,7 +33,6 @@ If you use this book in your research or teaching, please consider citing it as 
 To download a PDF version of the Table of Contents, please visit <https://gispro.gishub.org/book-toc.pdf>.
 
 - **Preface**
-
   - Introduction
   - Who This Book Is For
   - What This Book Covers
@@ -47,7 +46,6 @@ To download a PDF version of the Table of Contents, please visit <https://gispro
   - Licensing and Copyright
 
 - **Software Setup**
-
   - Overview of Software Tools
   - Introduction to Python Package Management
   - Setting Up Visual Studio Code
@@ -57,7 +55,6 @@ To download a PDF version of the Table of Contents, please visit <https://gispro
   - Using Docker
 
 - **Python Programming Fundamentals**
-
   - Variables and Data Types
   - Python Data Structures
   - String Operations
