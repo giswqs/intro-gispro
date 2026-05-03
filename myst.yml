@@ -3,12 +3,12 @@ project:
   title: Introduction to GIS Programming
   authors:
     - name: Qiusheng Wu
-  copyright: '2025'
+  copyright: "2025"
   exclude:
     - _build
     - Thumbs.db
     - .DS_Store
-    - '**.ipynb_checkpoints'
+    - "**.ipynb_checkpoints"
   github: giswqs/intro-gispro
   thebe:
     binder:
@@ -20,9 +20,7 @@ project:
     - book/references.bib
   toc:
     - file: index.md
-    - title: Preface
-      children:
-        - file: book/preface.md
+    - file: book/preface.md
     - title: Software Setup
       children:
         - file: book/software/overview.md
@@ -66,4 +64,4 @@ site:
     analytics_google: G-DW6JRKQ7NK
   template: book-theme
   parts:
-    primary_sidebar_footer: ''
+    primary_sidebar_footer: ""
