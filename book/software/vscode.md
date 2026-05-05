@@ -10,6 +10,10 @@ kernelspec:
   language: python
   name: python3
 ---
+
+[![image](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/intro-gispro/blob/main/book/software/vscode.ipynb)
+[![image](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/giswqs/intro-gispro/main?urlpath=lab/tree/book/software/vscode.ipynb)
+
 # Setting Up Visual Studio Code
 
 ## Introduction
