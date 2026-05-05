@@ -10,12 +10,12 @@ project:
     - .DS_Store
     - "**.ipynb_checkpoints"
   github: giswqs/intro-gispro
-  thebe:
-    binder:
-      repo: giswqs/intro-gispro
-      provider: github
-      url: https://mybinder.org
-      ref: main
+  # thebe:
+  #   binder:
+  #     repo: giswqs/intro-gispro
+  #     provider: github
+  #     url: https://mybinder.org
+  #     ref: main
   bibliography:
     - book/references.bib
   toc:
