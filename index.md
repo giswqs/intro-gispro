@@ -18,7 +18,7 @@ Welcome to the official repository for **_Introduction to GIS Programming: A Pra
 
 ### PDF and EPUB Editions
 
-🇺🇸 [English](https://opengeopub.com/books/gispro) | 🇨🇳 [Chinese](https://opengeopub.com/books/gispro-zh) | 🇨🇿 [Czech](https://opengeopub.com/books/gispro-cs) | 🇫🇷 [French](https://opengeopub.com/books/gispro-fr) | 🇩🇪 [German](https://opengeopub.com/books/gispro-de) | 🇮🇩 [Indonesian](https://opengeopub.com/books/gispro-id) | 🇮🇹 [Italian](https://opengeopub.com/books/gispro-it) | 🇯🇵 [Japanese](https://opengeopub.com/books/gispro-ja) | 🇰🇷 [Korean](https://opengeopub.com/books/gispro-ko) | 🇵🇹 [Portuguese](https://opengeopub.com/books/gispro-pt) | 🇷🇺 [Russian](https://opengeopub.com/books/gispro-ru) | 🇲🇽 [Spanish](https://opengeopub.com/books/gispro-es)
+🇺🇸 [English](https://opengeopub.com/books/gispro) | 🇨🇳 [Chinese](https://opengeopub.com/books/gispro-zh) | 🇨🇿 [Czech](https://opengeopub.com/books/gispro-cs) | 🇳🇱 [Dutch](https://opengeopub.com/books/gispro-nl) | 🇫🇷 [French](https://opengeopub.com/books/gispro-fr) | 🇩🇪 [German](https://opengeopub.com/books/gispro-de) | 🇮🇳 [Hindi](https://opengeopub.com/books/gispro-hi) | 🇮🇩 [Indonesian](https://opengeopub.com/books/gispro-id) | 🇮🇹 [Italian](https://opengeopub.com/books/gispro-it) | 🇯🇵 [Japanese](https://opengeopub.com/books/gispro-ja) | 🇰🇷 [Korean](https://opengeopub.com/books/gispro-ko) | 🇵🇹 [Portuguese](https://opengeopub.com/books/gispro-pt) | 🇷🇺 [Russian](https://opengeopub.com/books/gispro-ru) | 🇲🇽 [Spanish](https://opengeopub.com/books/gispro-es) | 🇹🇷 [Turkish](https://opengeopub.com/books/gispro-tr)
 
 ## Cite the Book
 
