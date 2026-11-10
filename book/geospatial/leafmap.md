@@ -481,13 +481,13 @@ m
 ### Visualizing Overture Maps Data
 
 ```{code-cell} ipython3
-release = leafmap.get_overture_latest_release()
+release = leafmap.get_overture_latest_release(patch=True)
 release
 ```
 
 ```{code-cell} ipython3
 theme = "buildings"
-url = f"https://overturemaps-tiles-us-west-2-beta.s3.amazonaws.com/{release}/{theme}.pmtiles"
+url = f"https://tiles.overturemaps.org/{release}/{theme}.pmtiles"
 ```
 
 ```{code-cell} ipython3
@@ -531,7 +531,7 @@ m
 
 ```{code-cell} ipython3
 m = leafmap.Map(center=[39.494897, -108.507278], zoom=10)
-url = "https://opendata.digitalglobe.com/events/california-fire-2020/pre-event/2018-02-16/pine-gulch-fire20/1030010076004E00.tif"
+url = "https://data.source.coop/giswqs/opengeos/pine-gulch-fire20-2018-02-16.tif"
 m.add_cog_layer(url, name="Fire (pre-event)")
 m
 ```
@@ -552,7 +552,7 @@ stats = leafmap.cog_stats(url)
 #### Adding Multiple COGs
 
 ```{code-cell} ipython3
-url2 = "https://opendata.digitalglobe.com/events/california-fire-2020/post-event/2020-08-14/pine-gulch-fire20/10300100AAC8DD00.tif"
+url2 = "https://data.source.coop/giswqs/opengeos/pine-gulch-fire20-2020-08-14.tif"
 m.add_cog_layer(url2, name="Fire (post-event)")
 m
 ```
