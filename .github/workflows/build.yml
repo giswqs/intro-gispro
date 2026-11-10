@@ -45,7 +45,11 @@ jobs:
       - name: Build the book
         run: myst build --html
 
+      # Production is deployed to GitHub Pages by deploy.yml; Netlify is only used for PR previews.
       - name: Deploy to Netlify
+        if: github.event_name == 'pull_request'
+        # A preview deploy failure (e.g. an expired NETLIFY_AUTH_TOKEN) should not fail the build check.
+        continue-on-error: true
         uses: nwtgck/actions-netlify@v4.0
         with:
           publish-dir: "./_build/html"
