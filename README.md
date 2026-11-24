@@ -79,6 +79,15 @@ To download a PDF version of the Table of Contents, please visit <https://gispro
   - Building Interactive Dashboards with Voila and Solara
   - Distributed Computing with Apache Sedona
 
+## Clone the code examples
+
+To work with the examples on your computer, clone this repository.
+
+```sh
+git clone https://github.com/giswqs/intro-gispro.git
+cd intro-gispro
+```
+
 ## How to Run Code Examples
 
 The code examples are organized into folders, each corresponding to a chapter in the book. The code examples are written in Python and can be run using MyBinder, Google Colab, or Docker. Follow this [video tutorial](https://www.youtube.com/embed/6GwMoV4LOiU) to learn how to run the code examples.
